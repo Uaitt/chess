@@ -2,6 +2,11 @@
 
 # this class represents the board in chess
 class Board
+  def initialize
+    set_black_pieces
+    set_white_pieces
+  end
+
   def move(piece, end_position)
     initial_position = current_position(piece)
     @data[end_position[0]][end_position[1]] = piece
