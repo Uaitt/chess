@@ -1,7 +1,12 @@
 # frozen_string_literal: true
 
 require_relative '../lib/board'
+require_relative '../lib/pieces/bishop'
+require_relative '../lib/pieces/king'
 require_relative '../lib/pieces/knight'
+require_relative '../lib/pieces/pawn'
+require_relative '../lib/pieces/queen'
+require_relative '../lib/pieces/rook'
 
 describe Board do
   subject(:board) { described_class.new }
@@ -61,7 +66,7 @@ describe Board do
     end
 
     it 'places eight pawns on the second row' do
-      expect(data[0].all? { |piece| piece.instance_of?(Pawn) }).to eq(true)
+      expect(data[1].all? { |piece| piece.instance_of?(Pawn) }).to eq(true)
     end
 
     it 'places eight pawns on the seventh row' do
@@ -102,7 +107,7 @@ describe Board do
   end
 
   describe '#move' do
-    let(:knight) { Knight.new }
+    let(:knight) { Knight.new(:black) }
     before do
       data = Array.new(8) { Array.new(8, nil) }
       data[0][1] = knight
