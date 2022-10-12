@@ -5,6 +5,6 @@ class Knight
   attr_reader :position
 
   def initialize
-    @position = [0, 1]
+    @current_position = [0, 1]
   end
 end
