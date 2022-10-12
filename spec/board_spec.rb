@@ -68,7 +68,6 @@ describe Board do
       expect(data[6].all? { |piece| piece.instance_of?(Pawn) }).to eq(true)
     end
 
-
     it 'places a rook on the first square of the eighth row' do
       expect(data[0][0].instance_of?(Rook)).to eq(true)
     end

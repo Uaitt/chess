@@ -25,6 +25,11 @@ class Board
     @data[row].map!.with_index { |_, index| current_piece(index).new(color) }
   end
 
+  def dispose_pawns(color)
+    row = color == :black ? 1 : 6
+    @data[row].map! { Pawn.new(color) }
+  end
+
   def current_piece(index)
     case index
     when 0, 7 then Rook
