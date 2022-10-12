@@ -11,7 +11,23 @@ describe Board do
     before do
       board.set
     end
-    
+
+    it 'places only black pieces on top row' do
+      expect(data[0].all? { |piece| piece.color == :black }).to eq true
+    end
+
+    it 'places only black pieces on second row' do
+      expect(data[1].all? { |piece| piece.color == :black }).to eq true
+    end
+
+    it 'places only white pieces on seventh row' do
+      expect(data[6].all? { |piece| piece.color == :white }).to eq true
+    end
+
+    it 'places only white pieces on eighth row' do
+      expect(data[7].all? { |piece| piece.color == :white }).to eq true
+    end
+
     it 'places a rook on the first square of top row' do
       expect(data[0][0].class).to eq(Rook)
     end
