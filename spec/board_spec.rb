@@ -5,6 +5,7 @@ require_relative '../lib/pieces/knight'
 
 describe Board do
   subject(:board) { described_class.new }
+
   describe '#move' do
     let(:knight) { Knight.new }
     before do
