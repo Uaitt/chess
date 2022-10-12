@@ -3,8 +3,8 @@
 # this class represents the board in chess
 class Board
   def set
-    dispose_pieces('black')
-    dispose_pieces('white')
+    dispose_pieces(:black)
+    dispose_pieces(:white)
   end
 
   def move(piece, end_position)
@@ -20,15 +20,20 @@ class Board
     dispose_pawns(color)
   end
 
-=begin
   def dispose_main_pieces(color)
+    row = color == :black ? 0 : 7
+    @data[row].map!.with_index { |_, index| current_piece(index).new(color) }
   end
 
-  def dispose_pawns(color)
-    row = color == 'black' ? 1 : 6
-    @data[row].map! { Pawn.new(color) }
+  def current_piece(index)
+    case index
+    when 0, 7 then Rook
+    when 1, 6 then Knight
+    when 2, 5 then Bishop
+    when 3 then Queen
+    when 4 then King
+    end
   end
-=end
 
   def current_position(piece)
     @data.each_with_index do |row, row_index|
