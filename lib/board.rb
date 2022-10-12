@@ -3,6 +3,7 @@
 # this class represents the board in chess
 class Board
   def set
+    @data.map! { |row| row.fill(nil) }
     dispose_pieces(:black)
     dispose_pieces(:white)
   end
