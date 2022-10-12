@@ -8,6 +8,8 @@ class Board
     @data[initial_position[0]][initial_position[1]] = nil
   end
 
+  private
+
   def current_position(piece)
     @data.each_with_index do |row, row_index|
       row.each_with_index do |square, column_index|
