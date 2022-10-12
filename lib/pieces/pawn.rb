@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # this class represents a pawn in chess
-def Pawn
+class Pawn
   def initialize(color)
     @color = color
   end
