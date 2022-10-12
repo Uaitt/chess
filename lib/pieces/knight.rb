@@ -2,6 +2,8 @@
 
 # this class represents a knight in chess
 class Knight
+  attr_accessor :color
+
   def initialize(color)
     @color = color
   end
