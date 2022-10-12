@@ -12,52 +12,93 @@ describe Board do
       board.set
     end
 
-    it 'places only black pieces on top row' do
-      expect(data[0].all? { |piece| piece.color == :black }).to eq true
+    it 'places only black pieces on the first row' do
+      expect(data[0].all? { |piece| piece.color == :black }).to eq(true)
     end
 
-    it 'places only black pieces on second row' do
-      expect(data[1].all? { |piece| piece.color == :black }).to eq true
+    it 'places only black pieces on the second row' do
+      expect(data[1].all? { |piece| piece.color == :black }).to eq(true)
     end
 
-    it 'places only white pieces on seventh row' do
-      expect(data[6].all? { |piece| piece.color == :white }).to eq true
+    it 'places only white pieces on the seventh row' do
+      expect(data[6].all? { |piece| piece.color == :white }).to eq(true)
     end
 
-    it 'places only white pieces on eighth row' do
-      expect(data[7].all? { |piece| piece.color == :white }).to eq true
+    it 'places only white pieces on the eighth row' do
+      expect(data[7].all? { |piece| piece.color == :white }).to eq(true)
     end
 
-    it 'places a rook on the first square of top row' do
-      expect(data[0][0].class).to eq(Rook)
+    it 'places a rook on the first square of the first row' do
+      expect(data[0][0].instance_of?(Rook)).to eq(true)
     end
 
-    it 'places a knight on the second square of tow row' do
-      expect(data[0][1].class).to eq(Knight)
+    it 'places a knight on the second square of the first row' do
+      expect(data[0][1].instance_of?(Knight)).to eq(true)
     end
 
-    it 'places a bishop on the third square of top row' do
-      expect(data[0][2].class).to eq(Bishop)
+    it 'places a bishop on the third square of the first row' do
+      expect(data[0][2].instance_of?(Bishop)).to eq(true)
     end
 
-    it 'places a queen on the fourth square of top row' do
-      expect(data[0][3].class).to eq(Queen)
+    it 'places a queen on the fourth square of the first row' do
+      expect(data[0][3].instance_of?(Queen)).to eq(true)
     end
 
-    it 'places a king on the fifth square of top row' do
-      expect(data[0][4].class).to eq(King)
+    it 'places a king on the fifth square of the first row' do
+      expect(data[0][4].instance_of?(King)).to eq(true)
     end
 
-    it 'places a bishop on the sixth square of top row' do
-      expect(data[0][5].class).to eq(Bishop)
+    it 'places a bishop on the sixth square of the first row' do
+      expect(data[0][5].instance_of?(Bishop)).to eq(true)
     end
 
-    it 'places a knight on the seventh square of top row' do
-      expect(data[0][6].class).to eq(Knight)
+    it 'places a knight on the seventh square of the first row' do
+      expect(data[0][6].instance_of?(Knight)).to eq(true)
     end
 
-    it 'places a rook on the eighth square of top row' do
-      expect(data[0][7].class).to eq(Rook)
+    it 'places a rook on the eighth square of the first row' do
+      expect(data[0][7].instance_of?(Rook)).to eq(true)
+    end
+
+    it 'places eight pawns on the second row' do
+      expect(data[0].all? { |piece| piece.instance_of?(Pawn) }).to eq(true)
+    end
+
+    it 'places eight pawns on the seventh row' do
+      expect(data[6].all? { |piece| piece.instance_of?(Pawn) }).to eq(true)
+    end
+
+
+    it 'places a rook on the first square of the eighth row' do
+      expect(data[0][0].instance_of?(Rook)).to eq(true)
+    end
+
+    it 'places a knight on the second square of the eighth row' do
+      expect(data[0][1].instance_of?(Knight)).to eq(true)
+    end
+
+    it 'places a bishop on the third square of the eighth row' do
+      expect(data[0][2].instance_of?(Bishop)).to eq(true)
+    end
+
+    it 'places a queen on the fourth square of the eighth row' do
+      expect(data[0][3].instance_of?(Queen)).to eq(true)
+    end
+
+    it 'places a king on the fifth square of the eighth row' do
+      expect(data[0][4].instance_of?(King)).to eq(true)
+    end
+
+    it 'places a bishop on the sixth square of the eighth row' do
+      expect(data[0][5].instance_of?(Bishop)).to eq(true)
+    end
+
+    it 'places a knight on the seventh square of the eighth row' do
+      expect(data[0][6].instance_of?(Knight)).to eq(true)
+    end
+
+    it 'places a rook on the eighth square of the eighth row' do
+      expect(data[0][7].instance_of?(Rook)).to eq(true)
     end
   end
 
