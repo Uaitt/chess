@@ -109,9 +109,7 @@ describe Board do
   describe '#move' do
     let(:knight) { Knight.new(:black) }
     before do
-      data = Array.new(8) { Array.new(8, nil) }
-      data[0][1] = knight
-      board.instance_variable_set(:@data, data)
+      board.set
     end
 
     context 'when given a knight and a position' do
