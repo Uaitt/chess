@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+# checks wether various inputs are valid or not
 class Validator
-  def valid_input?(coordinate)
+  def valid_square?(coordinate)
     valid_length?(coordinate) && valid_values?(coordinate)
   end
 
