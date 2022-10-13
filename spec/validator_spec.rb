@@ -5,26 +5,25 @@ require_relative '../lib/validator'
 describe Validator do
   subject(:validator) { described_class.new }
   describe '#valid_input?' do
-    context 'when given a valid input' do
-      context 'when given \'a8\'' do
-        it 'returns true' do
-          coordinate = 'a8'
-          expect(validator.valid_input?(coordinate)).to eq(true)
-        end
-      end
 
-      context 'when given \'a1\'' do
-        it 'returns true' do
-          coordinate = 'a1'
-          expect(validator.valid_input?(coordinate)).to eq(true)
-        end
+    context 'when given \'a8\'' do
+      it 'returns true' do
+        coordinate = 'a8'
+        expect(validator.valid_input?(coordinate)).to eq(true)
       end
+    end
 
-      context 'when given \'h7\'' do
-        it 'returns true' do
-          coordinate = 'h7'
-          expect(validator.valid_input?(coordinate)).to eq(true)
-        end
+    context 'when given \'a1\'' do
+      it 'returns true' do
+        coordinate = 'a1'
+        expect(validator.valid_input?(coordinate)).to eq(true)
+      end
+    end
+
+    context 'when given \'h7\'' do
+      it 'returns true' do
+        coordinate = 'h7'
+        expect(validator.valid_input?(coordinate)).to eq(true)
       end
     end
 
