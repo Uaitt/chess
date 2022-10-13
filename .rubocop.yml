@@ -1,0 +1,3 @@
+BlockLength:
+  Exclude:
+    - './spec/tour_spec.rb'
