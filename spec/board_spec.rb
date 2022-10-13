@@ -108,24 +108,26 @@ describe Board do
 
   describe '#move' do
     let(:knight) { Knight.new(:black) }
-    context 'when given a knight and a position' do
-      it 'moves the knight to the exact position' do
-        board.set
-        end_position = [3, 3]
-        board.move(knight, end_position)
-        result_data = board.instance_variable_get(:@data)
-        expect(result_data[end_position[0][end_position1]]).to eq(knight)
-      end
+    before do
+      data = Array.new(8) { Array.new(8, nil) }
+      board.instance_variable_set(:@data, data)
     end
 
-    context 'when given a knight and a different position' do
-      xit 'moves the knight to the exact position' do
-        end_position = [1, 6]
+    context 'when given a knight and a position' do
+      let(:end_position) { [1, 2] }
+      let(:initial_position) { [0, 0] }
+      let(:data) { board.instance_variable_get(:@data) }
+      before do
+        data[initial_position[0]][initial_position[1]] = knight
         board.move(knight, end_position)
-        result_data = board.instance_variable_get(:@data)
-        expected_data = Array.new(8) { Array.new(8, nil) }
-        expected_data[end_position[0]][end_position[1]] = knight
-        expect(result_data).to eq(expected_data)
+      end
+
+      it 'moves the knight to the exact position' do
+        expect(data[end_position[0]][end_position[1]]).to eq(knight)
+      end
+
+      it 'sets the previous position to nil' do
+        expect(data[initial_position[0]][initial_position[1]]).to eq(nil)
       end
     end
   end
