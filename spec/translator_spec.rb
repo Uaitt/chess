@@ -36,5 +36,21 @@ describe Translator do
         expect(result).to eq([2, 7])
       end
     end
+
+    context 'when given \'h1\'' do
+      it 'returns [7, 7]' do
+        coordinate = 'h1'
+        result = translator.translate(coordinate)
+        expect(result).to eq([7, 7])
+      end
+    end
+
+    context 'when given \'e4\'' do
+      it 'returns  [4, 4]' do
+        coordinate = 'e4'
+        result = translator.translate(coordinate)
+        expect(result).to eq([4, 4])
+      end
+    end
   end
 end
