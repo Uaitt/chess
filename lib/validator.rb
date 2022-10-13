@@ -6,6 +6,12 @@ class Validator
     valid_length?(coordinate) && valid_values?(coordinate)
   end
 
+  def valid_move?(board, piece, end_position)
+    current_position = board.current_position(piece)
+    square_available?(board, piece, end_position) &&
+      piece.reachable?(current_position, end_position)
+  end
+
   private
 
   def valid_length?(coordinate)
