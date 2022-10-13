@@ -17,6 +17,14 @@ class Board
     @data[initial_position[0]][initial_position[1]] = nil
   end
 
+  def current_position(piece)
+    @data.each_with_index do |row, row_index|
+      row.each_with_index do |square, column_index|
+        return [row_index, column_index] if square == piece
+      end
+    end
+  end
+
   private
 
   def dispose_pieces(color)
@@ -41,14 +49,6 @@ class Board
     when 2, 5 then Bishop
     when 3 then Queen
     when 4 then King
-    end
-  end
-
-  def current_position(piece)
-    @data.each_with_index do |row, row_index|
-      row.each_with_index do |square, column_index|
-        return [row_index, column_index] if square == piece
-      end
     end
   end
 end
