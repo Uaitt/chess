@@ -122,7 +122,7 @@ describe Board do
         board.move(knight, end_position)
       end
 
-      it 'moves the knight to the exact position' do
+      it 'moves the knight to that position' do
         expect(data[end_position[0]][end_position[1]]).to eq(knight)
       end
 
