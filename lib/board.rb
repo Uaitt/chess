@@ -2,8 +2,11 @@
 
 # this class represents the board in chess
 class Board
-  def set
+  def initialize
     @data = Array.new(8) { Array.new(8, nil) }
+  end
+
+  def set
     dispose_pieces(:black)
     dispose_pieces(:white)
   end
