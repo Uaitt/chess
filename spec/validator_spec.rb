@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 require_relative '../lib/validator'
+require_relative '../lib/board'
+require_relative '../lib/pieces/knight'
 
 describe Validator do
   subject(:validator) { described_class.new }
@@ -66,6 +68,29 @@ describe Validator do
       it 'returns false' do
         coordinate = '34'
         expect(validator.valid_square?(coordinate)).to eq(false)
+      end
+    end
+  end
+
+  describe '#valid_move?' do
+    let(:board) { Board.new }
+    let(:knight) { Knight.new(:black) }
+    let(:data) { board.instance_variable_get(:@data) }
+    context 'when the end position is reachable and empty ' do
+      before do
+        data[0][0] = knight
+      end
+      it 'returns true' do
+        expect(validator.valid_move?(board, knight, [1, 2])).to eq(true)
+      end
+    end
+
+    context 'when the end position is not reachable' do
+      before do
+        data[0][0] = knight
+      end
+      it 'returns false' do
+        expect(validator.valid_move?(board, knight, [1, 1])).to eq(false)
       end
     end
   end
