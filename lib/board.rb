@@ -17,7 +17,7 @@ class Board
     @data[initial_position[0]][initial_position[1]] = nil
   end
 
-  def current_position(piece) # TO DO: write specs for this method
+  def current_position(piece)
     @data.each_with_index do |row, row_index|
       row.each_with_index do |square, column_index|
         return [row_index, column_index] if square == piece
