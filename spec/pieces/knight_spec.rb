@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../../lib/pieces/knight'
+require_relative '../../lib/board'
 
 describe Knight do
   subject(:knight) { described_class.new(:black) }
@@ -64,8 +65,9 @@ describe Knight do
   end
 
   describe '#meets_nobody?' do
+    let(:board) { Board.new }
     it 'returns true' do
-      expect(knight.meets_nobody?).to eq(true)
+      expect(knight.meets_nobody?(board, [3, 4], [4, 6])).to eq(true)
     end
   end
 end

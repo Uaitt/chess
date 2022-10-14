@@ -20,7 +20,7 @@ class Knight
     false
   end
 
-  def meets_nobody?
+  def meets_nobody?(_, _, _)
     true
   end
 
