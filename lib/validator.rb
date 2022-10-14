@@ -2,7 +2,7 @@
 
 # checks wether various inputs are valid or not
 class Validator
-  def valid_square?(coordinate)
+  def valid_coordinate?(coordinate)
     valid_length?(coordinate) && valid_values?(coordinate)
   end
 
