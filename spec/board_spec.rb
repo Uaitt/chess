@@ -143,4 +143,13 @@ describe Board do
       end
     end
   end
+
+  describe '#get_piece' do
+    let(:data) { board.instance_variable_get(:@data) }
+    let(:knight) { Knight.new(:black) }
+    it 'returns the piece in the exact position' do
+      data[0][0] = knight
+      expect(board.get_piece([0, 0])).to eq(knight)
+    end
+  end
 end
