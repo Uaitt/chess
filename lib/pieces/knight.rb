@@ -12,7 +12,10 @@ class Knight
 
   def reachable?(initial_position, end_position)
     @possible_moves.each do |current_move|
-      return true if current_move_matches?(initial_position, current_move, end_position)
+      if current_move_matches?(initial_position, current_move, end_position)
+        @current_move = current_move
+        return true
+      end
     end
     false
   end
