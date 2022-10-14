@@ -132,16 +132,15 @@ describe Board do
     let(:knight) { Knight.new(:black) }
     let(:data) { board.instance_variable_get(:@data) }
     context 'when given a knight' do
-
       it 'returns the current position of the knight' do
         data[0][0] = knight
         expect(board.current_position(knight)).to eq([0, 0])
       end
-    end
 
-    it 'returns the current position of the knight' do
-      data[5][2] = knight
-      expect(board.current_position(knight)).to eq([5, 2])
+      it 'returns the current position of the knight' do
+        data[5][2] = knight
+        expect(board.current_position(knight)).to eq([5, 2])
+      end
     end
   end
 end
