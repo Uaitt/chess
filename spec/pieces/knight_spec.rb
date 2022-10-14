@@ -62,4 +62,10 @@ describe Knight do
       end
     end
   end
+
+  describe '#meets_nobody?' do
+    it 'always returns true' do
+      expect(knight.meets_nobody?).to eq(true)
+    end
+  end
 end
