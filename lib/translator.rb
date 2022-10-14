@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# turns chess coordinates into array indexes
+# this class represents a translator that turns chess coordinates into array indexes
 class Translator
   def translate(coordinate)
     [convert_number(coordinate[1]), convert_letter(coordinate[0])]

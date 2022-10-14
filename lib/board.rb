@@ -25,6 +25,7 @@ class Board
     end
   end
 
+  # maybe has to be removed
   def get_piece(end_position)
     @data[end_position[0]][end_position[1]]
   end
