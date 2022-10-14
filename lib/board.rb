@@ -25,6 +25,10 @@ class Board
     end
   end
 
+  def get_piece(end_position)
+    @data[end_position[0]][end_position[1]]
+  end
+
   private
 
   def dispose_pieces(color)
