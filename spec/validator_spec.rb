@@ -110,6 +110,13 @@ describe Validator do
           expect(validator.valid_move?(board, knight, [1, 2])).to eq(true)
         end
       end
+
+      context 'when it is not able to reach the position' do
+        it 'returns false' do
+          data[0][0] = knight
+          expect(validator.valid_move?(board, knight, [1, 1])).to eq(false)
+        end
+      end
     end
   end
 end
