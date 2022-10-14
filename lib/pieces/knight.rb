@@ -10,12 +10,9 @@ class Knight
                        [2, 1], [2, -1], [-2, 1], [-2, -1]]
   end
 
-  def able_to_reach?(initial_position, end_position)
-    @possible_moves.each do |current_move|
-      if current_move_matches?(initial_position, current_move, end_position)
-        @actual_move = current_move
-        return true
-      end
+  def able_to_reach?(current_position, end_position)
+    @possible_moves.each do |move|
+      return true if current_move_matches?(current_position, move, end_position)
     end
     false
   end

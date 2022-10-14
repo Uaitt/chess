@@ -30,14 +30,14 @@ describe Validator do
       end
     end
 
-    context 'when given l4' do
+    context 'when given \'l4\'' do
       it 'returns false' do
         coordinate = 'l4'
         expect(validator.valid_coordinate?(coordinate)).to eq(false)
       end
     end
 
-    context 'when given aa' do
+    context 'when given \'aa\'' do
       it 'returns false' do
         coordinate = 'aa'
         expect(validator.valid_coordinate?(coordinate)).to eq(false)
