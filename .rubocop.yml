@@ -1,3 +1,4 @@
 BlockLength:
   Exclude:
-    - './spec/*/*'
+    - './spec/*'
+    - './spec/pieces/*'
