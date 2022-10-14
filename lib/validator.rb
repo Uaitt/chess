@@ -8,8 +8,8 @@ class Validator
 
   def valid_move?(board, piece, end_position)
     current_position = board.current_position(piece)
-    piece.reachable?(current_position, end_position) &&
-      piece.path_clear?(board, current_position, end_position)
+    piece.able_to_reach?(current_position, end_position) &&
+      piece.meets_nobody?(board, current_position, end_position)
   end
 
   private
