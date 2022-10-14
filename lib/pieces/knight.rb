@@ -20,6 +20,10 @@ class Knight
     false
   end
 
+  def meets_nobody?
+    true
+  end
+
   private
 
   def current_move_matches?(initial_position, current_move, end_position)
