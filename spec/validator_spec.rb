@@ -74,23 +74,30 @@ describe Validator do
 
   describe '#valid_move?' do
     let(:board) { Board.new }
+    let(:rook) { Rook.new(:black) }
     let(:knight) { Knight.new(:black) }
     let(:data) { board.instance_variable_get(:@data) }
-    context 'when the end position is reachable and empty ' do
-      before do
-        data[0][0] = knight
+    context 'when the piece is a rook' do
+      context 'when position is not reachable' do
+        it 'returns false' do
+          data[0][0] = rook
+          expect(validator.valid_move?(board, knight, [1, 1])).to eq(false)
+        end
       end
-      it 'returns true' do
-        expect(validator.valid_move?(board, knight, [1, 2])).to eq(true)
-      end
-    end
 
-    context 'when the end position is not reachable' do
-      before do
-        data[0][0] = knight
+      context 'when position is reachable but path is blocked by a piece of the same color' do
+        it 'returns false' do
+          data[0][0] = rook
+          data[1][0] = knight
+          expect(validator.valid_move?(board, knight, [2, 0])).to eq(false)
+        end
       end
-      it 'returns false' do
-        expect(validator.valid_move?(board, knight, [1, 1])).to eq(false)
+
+      context 'when position is reachable and path is not blocked' do
+        it 'returns true' do
+          data[0][0] = rook
+          expect(validator.valid_move?(board, knight, [2, 0])).to eq(false)
+        end
       end
     end
   end
