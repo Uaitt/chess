@@ -8,7 +8,7 @@ class Validator
 
   def valid_move?(board, piece, end_position)
     current_position = board.current_position(piece)
-    square_available?(board, piece, end_position) &&
+    valid_square?(board, piece, end_position) &&
       piece.reachable?(current_position, end_position)
   end
 
@@ -21,5 +21,10 @@ class Validator
   def valid_values?(coordinate)
     coordinate[0] >= 'a' && coordinate[0] <= 'h' &&
       coordinate[1] >= '1' && coordinate[1] <= '8'
+  end
+
+  def valid_square?(board, piece, end_position)
+    piece_at_end_position = board.get_piece(end_position)
+    piece_at_end_position.nil? || piece_at_end_position.color != piece.color
   end
 end
