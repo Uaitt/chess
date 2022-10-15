@@ -11,7 +11,7 @@ class Board
     dispose_pieces(:white)
   end
 
-  def move(piece, end_position)
+  def move(piece, end_position) # maybe has to be removed
     initial_position = current_position(piece)
     @data[end_position[0]][end_position[1]] = piece
     @data[initial_position[0]][initial_position[1]] = nil
@@ -25,7 +25,6 @@ class Board
     end
   end
 
-  # maybe has to be removed
   def get_piece(end_position)
     @data[end_position[0]][end_position[1]]
   end
@@ -39,7 +38,7 @@ class Board
 
   def dispose_main_pieces(color)
     row = color == :black ? 0 : 7
-    @data[row].map!.with_index { |_, index| current_piece(index).new(color) }
+    @data[row].map!.with_index { |_, index| current_piece(index).new(color) } # remember to use Factory
   end
 
   def dispose_pawns(color)
