@@ -4,6 +4,72 @@ require_relative '../lib/coordinates'
 
 describe Coordinates do
   subject(:coordinates) { described_class.new(input) }
+
+  describe '#valid?' do
+    context 'when coordinates are \'a8\'' do
+      let(:input) { 'a8' }
+      it 'returns true' do
+        expect(coordinates.valid?).to eq(true)
+      end
+    end
+
+    context 'when coordinates are \'a1\'' do
+      let(:input) { 'a1' }
+      it 'returns true' do
+        expect(coordinates.valid?).to eq(true)
+      end
+    end
+
+    context 'when coordinates are \'h7\'' do
+      let(:input) { 'h7' }
+      it 'returns true' do
+        expect(coordinates.valid?).to eq(true)
+      end
+    end
+
+    context 'when coordinates are \'l4\'' do
+      let(:input) { 'l4' }
+      it 'returns false' do
+        expect(coordinates.valid?).to eq(false)
+      end
+    end
+
+    context 'when coordinates are \'aa\'' do
+      let(:input) { 'aa' }
+      it 'returns false' do
+        expect(coordinates.valid?).to eq(false)
+      end
+    end
+
+    context 'when coordinates are \'\'' do
+      let(:input) { '' }
+      it 'returns false' do
+        expect(coordinates.valid?).to eq(false)
+      end
+    end
+
+    context 'when coordinates are \'1a\'' do
+      let(:input) { '1a' }
+      it 'returns false' do
+        expect(coordinates.valid?).to eq(false)
+      end
+    end
+
+    context 'when coordinates are \'a2n\'' do
+      let(:input) { 'a2n' }
+      it 'returns false' do
+        expect(coordinates.valid?).to eq(false)
+      end
+    end
+
+    context 'when coordinates are \'34\'' do
+      let(:input) { '34' }
+      it 'returns false' do
+        expect(coordinates.valid?).to eq(false)
+      end
+    end
+  end
+
   describe '#convert' do
     context 'when coordinates are \'a8\'' do
       let(:input) { 'a8' }
