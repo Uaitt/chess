@@ -3,11 +3,25 @@
 # this class represents a pair of coordinates in the chess board
 class Coordinates
   def initialize(input)
-    @letter = input[0]
-    @number = input[1]
+    @data = input
+  end
+
+  def valid?
+    valid_length? && valid_values?
   end
 
   def convert
-    [8 - @number.to_i, @letter.ord - 97]
+    [8 - @data[1].to_i, @data[0].ord - 97]
+  end
+
+  private
+
+  def valid_length?
+    @data.length == 2
+  end
+
+  def valid_values?
+    @data[0] >= 'a' && @data[0] <= 'h' &&
+      @data[1] >= '1' && @data[1] <= '8'
   end
 end
