@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
+require_relative '../../lib/pieces/knight'
 require_relative '../../lib/pieces/rook'
+require_relative '../../lib/board'
 
 describe Rook do
   subject(:rook) { described_class.new(:color) }
@@ -58,6 +60,26 @@ describe Rook do
 
       it 'returns false' do
         expect(rook.able_to_reach?([3, 3], [5, 5])).to eq(false)
+      end
+    end
+  end
+
+  describe '#not_blocked?' do
+    let(:board) { Board.new }
+    let(:data) { board.instance_variable_get(:@data) }
+    before do
+      data[0][0] = rook
+    end
+    context 'when it is not blocked by any piece' do
+      it 'returns true' do
+        expect(rook.not_blocked?(board, [0, 0], [5, 0])).to eq(true)
+      end
+    end
+
+    context 'when it is blocked by a piece of the same color' do
+      it 'returns false' do
+        data[2][0] = Knight.new(:white)
+        expect(rook.not_blocked?(board, [0, 0], [5, 0])).to eq(false)
       end
     end
   end

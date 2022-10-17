@@ -17,7 +17,17 @@ class Rook
     false
   end
 
+  def not_blocked?(board, initial_position, end_position)
+    current_move = end_position - initial_position
+    base_move = get_base_move(current_move)
+  end
+
   private
+
+  def get_base_move(current_move)
+    factor = current_move.reject(&:zero?).first.abs
+    current_move.collect { |item| item / factor }
+  end
 
   def create_possible_moves
     forward_moves + backward_moves
