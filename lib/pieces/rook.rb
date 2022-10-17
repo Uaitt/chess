@@ -20,5 +20,12 @@ class Rook
   private
 
   def create_possible_moves
+    [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
+     [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7]]
+  end
+
+  def current_move_matches?(current_position, move, end_position)
+    current_position[0] + move[0] == end_position[0] &&
+      current_position[1] + move[1] == end_position[1]
   end
 end
