@@ -6,8 +6,7 @@ class Knight
 
   def initialize(color)
     @color = color
-    @possible_moves = [[1, 2], [1, -2], [-1, 2], [-1, -2],
-                       [2, 1], [2, -1], [-2, 1], [-2, -1]]
+    @possible_moves = create_possible_moves
   end
 
   def able_to_reach?(current_position, end_position)
@@ -22,6 +21,11 @@ class Knight
   end
 
   private
+
+  def create_possible_moves
+    [[1, 2], [1, -2], [-1, 2], [-1, -2],
+     [2, 1], [2, -1], [-2, 1], [-2, -1]]
+  end
 
   def current_move_matches?(current_position, move, end_position)
     current_position[0] + move[0] == end_position[0] &&
