@@ -17,9 +17,15 @@ class Rook
     false
   end
 
-  def not_blocked?(board, initial_position, end_position)
-    current_move = end_position - initial_position
+  def not_blocked?(board, current_position, end_position)
+    current_move = end_position - current_position
     base_move = get_base_move(current_move)
+
+=begin
+    until current_move == base_move
+      current_position = base_move.zip(current_move).map(&:sum)
+      return false if board.data[current_position[0]][current_position[1]].nil?
+=end
   end
 
   private
