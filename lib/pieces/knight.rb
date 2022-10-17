@@ -16,7 +16,7 @@ class Knight
     false
   end
 
-  def meets_nobody?(_, _, _)
+  def is_not_blocked?(_, _, _)
     true
   end
 

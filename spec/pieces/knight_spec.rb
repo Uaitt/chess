@@ -67,7 +67,7 @@ describe Knight do
   describe '#meets_nobody?' do
     let(:board) { Board.new }
     it 'returns true' do
-      expect(knight.meets_nobody?(board, [3, 4], [4, 6])).to eq(true)
+      expect(knight.is_not_blocked?(board, [3, 4], [4, 6])).to eq(true)
     end
   end
 end
