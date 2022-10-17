@@ -20,8 +20,17 @@ class Rook
   private
 
   def create_possible_moves
+    forward_moves + backward_moves
+  end
+
+  def forward_moves
     [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
      [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7]]
+  end
+
+  def backward_moves
+    [[-1, 0], [-2, 0], [-3, 0], [-4, 0], [-5, 0], [-6, 0], [-7, 0],
+     [0, -1], [0, -2], [0, -3], [0, -4], [0, -5], [0, -6], [0, -7]]
   end
 
   def current_move_matches?(current_position, move, end_position)
