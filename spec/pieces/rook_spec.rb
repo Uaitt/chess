@@ -64,22 +64,23 @@ describe Rook do
     end
   end
 
-  describe '#not_blocked?' do
+  describe '#blocked?' do
     let(:board) { Board.new }
     let(:data) { board.instance_variable_get(:@data) }
     before do
       data[0][0] = rook
     end
-    context 'when it is not blocked by any piece' do
+
+    context 'when it is blocked by a piece of the same color' do
       it 'returns true' do
-        expect(rook.not_blocked?(board, [0, 0], [5, 0])).to eq(true)
+        data[2][0] = Knight.new(:white)
+        expect(rook.blocked?(board, [0, 0], [5, 0])).to eq(true)
       end
     end
 
-    context 'when it is blocked by a piece of the same color' do
+    context 'when it is not blocked by any piece' do
       it 'returns false' do
-        data[2][0] = Knight.new(:white)
-        expect(rook.not_blocked?(board, [0, 0], [5, 0])).to eq(false)
+        expect(rook.blocked?(board, [0, 0], [5, 0])).to eq(false)
       end
     end
   end
