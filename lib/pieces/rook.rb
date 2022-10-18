@@ -17,15 +17,18 @@ class Rook
   end
 
   def blocked?(board, current_position, end_position)
-    blocked_on_path?(board, current_position, end_position) ||
+    base_move = base_move(current_position, end_position)
+
+    blocked_on_path?(board, base_move, current_position, end_position) ||
       blocked_on_final_square?(board, end_position)
   end
 
   private
 
-  def base_move
-    factor = @move.reject(&:zero?).first.abs
-    @move.collect { |item| item / factor }
+  def base_move(current_position, end_position)
+    move = end_position.zip(current_position).map { |first, second| first - second }
+    factor = move.reject(&:zero?).first.abs
+    move.collect { |item| item / factor }
   end
 
   def create_possible_moves
@@ -47,7 +50,7 @@ class Rook
       current_position[1] + move[1] == end_position[1]
   end
 
-  def blocked_on_path?(board, current_position, end_position)
+  def blocked_on_path?(board, base_move, current_position, end_position)
     until current_position == end_position
       current_position = current_position.zip(base_move).map(&:sum)
 
@@ -57,6 +60,7 @@ class Rook
   end
 
   def blocked_on_final_square?(board, end_position)
-    board.data[end_position[0]][end_position[1]].color == @color
+    !board.data[end_position[0]][end_position[1]].nil? &&
+      board.data[end_position[0]][end_position[1]].color == @color
   end
 end
