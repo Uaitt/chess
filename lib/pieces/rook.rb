@@ -35,7 +35,7 @@ class Rook
   end
 
   def base_move(current_position, end_position)
-    move = end_position.zip(current_position)&:-
+    move = end_position.zip(current_position).map { |finish, current| finish - current }
     factor = move.reject(&:zero?).first.abs
     move.collect { |item| item / factor }
   end
