@@ -11,28 +11,25 @@ class Rook
 
   def able_to_reach?(current_position, end_position)
     @possible_moves.each do |move|
-      return true if current_move_matches?(current_position, move, end_position)
+      if current_move_matches?(current_position, move, end_position)
+        @move = move
+        return true
+      end
     end
 
     false
   end
 
-  def not_blocked?(board, current_position, end_position)
-    current_move = end_position - current_position
-    base_move = get_base_move(current_move)
-
-=begin
-    until current_move == base_move
-      current_position = base_move.zip(current_move).map(&:sum)
-      return false if board.data[current_position[0]][current_position[1]].nil?
-=end
+  def blocked?(board, end_position)
+    blocked_on_final_square?(board, end_position) &&
+      blocked_on_path_to_final_square?(board)
   end
 
   private
 
-  def get_base_move(current_move)
-    factor = current_move.reject(&:zero?).first.abs
-    current_move.collect { |item| item / factor }
+  def base_move
+    factor = @move.reject(&:zero?).first.abs
+    @move.collect { |item| item / factor }
   end
 
   def create_possible_moves
