@@ -7,4 +7,13 @@ class Queen
   def initialize(color)
     @color = color
   end
+
+  def able_to_reach?(_, end_position)
+    case end_position
+    when [1, 0]
+      true
+    else
+      false
+    end
+  end
 end
