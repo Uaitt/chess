@@ -26,7 +26,8 @@ class Bishop
   private
 
   def create_possible_moves
-    left_to_right_moves + right_to_left_moves
+    left_right_up__down_moves + left_right_down__up_moves +
+      right_left_up_down_moves + right_left_down_up_moves
   end
 
   def reaches_position?(current_position, move, end_position)
@@ -40,14 +41,20 @@ class Bishop
     move.map { |item| item / factor }
   end
 
-  def left_to_right_moves
-    [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7],
-     [-1, -1], [-2, -2], [-3, -3], [-4, -4], [-5, -5], [-6, -6], [-7, -7]]
+  def left_right_up__down_moves
+    [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7]]
   end
 
-  def right_to_left_moves
-    [[1, -1], [2, -2], [3, -3], [4, -4], [5, -5], [6, -6], [7, -7],
-     [-1, 1], [-2, 2], [-3, 3], [-4, 4], [-5, 5], [-6, 6], [-7, 7]]
+  def left_right_down__up_moves
+    [[-1, -1], [-2, -2], [-3, -3], [-4, -4], [-5, -5], [-6, -6], [-7, -7]]
+  end
+
+  def right_left_up_down_moves
+    [[1, -1], [2, -2], [3, -3], [4, -4], [5, -5], [6, -6], [7, -7]]
+  end
+
+  def right_left_down_up_moves
+    [[-1, 1], [-2, 2], [-3, 3], [-4, 4], [-5, 5], [-6, 6], [-7, 7]]
   end
 
   def blocked_on_path?(board, base_move, current_position, end_position)
