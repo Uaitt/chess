@@ -26,7 +26,7 @@ class Rook
   private
 
   def create_possible_moves
-    forward_moves + backward_moves
+    vertical_moves + horizontal_moves
   end
 
   def reaches_position?(current_position, move, end_position)
@@ -40,14 +40,28 @@ class Rook
     move.collect { |item| item / factor }
   end
 
-  def forward_moves
-    [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0],
-     [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7]]
+  def vertical_moves
+    up_to_down_moves + down_to_up_moves
   end
 
-  def backward_moves
-    [[-1, 0], [-2, 0], [-3, 0], [-4, 0], [-5, 0], [-6, 0], [-7, 0],
-     [0, -1], [0, -2], [0, -3], [0, -4], [0, -5], [0, -6], [0, -7]]
+  def horizontal_moves
+    left_to_right_moves + right_to_left_moves
+  end
+
+  def up_to_down_moves
+    [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]]
+  end
+
+  def down_to_up_moves
+    [[-1, 0], [-2, 0], [-3, 0], [-4, 0], [-5, 0], [-6, 0], [-7, 0]]
+  end
+
+  def left_to_right_moves
+    [[0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7]]
+  end
+
+  def right_to_left_moves
+    [[0, -1], [0, -2], [0, -3], [0, -4], [0, -5], [0, -6], [0, -7]]
   end
 
   def blocked_on_path?(board, base_move, current_position, end_position)
