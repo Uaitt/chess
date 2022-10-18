@@ -26,7 +26,8 @@ class Rook
   private
 
   def create_possible_moves
-    vertical_moves + horizontal_moves
+    up_to_down_moves + down_to_up_moves +
+      left_to_right_moves + right_to_left_moves
   end
 
   def reaches_position?(current_position, move, end_position)
@@ -38,14 +39,6 @@ class Rook
     move = end_position.zip(current_position).map { |finish, current| finish - current }
     factor = move.reject(&:zero?).first.abs
     move.collect { |item| item / factor }
-  end
-
-  def vertical_moves
-    up_to_down_moves + down_to_up_moves
-  end
-
-  def horizontal_moves
-    left_to_right_moves + right_to_left_moves
   end
 
   def up_to_down_moves
