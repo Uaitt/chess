@@ -51,10 +51,11 @@ class Rook
   end
 
   def blocked_on_path?(board, base_move, current_position, end_position)
+    current_position = current_position.zip(base_move).map(&:sum)
     until current_position == end_position
-      current_position = current_position.zip(base_move).map(&:sum)
-
       return true unless board.data[current_position[0]][current_position[1]].nil?
+
+      current_position = current_position.zip(base_move).map(&:sum)
     end
     false
   end
