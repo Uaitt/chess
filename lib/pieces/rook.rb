@@ -11,7 +11,7 @@ class Rook
 
   def able_to_reach?(current_position, end_position)
     @possible_moves.each do |move|
-      return true if move_reaches_position?(current_position, move, end_position)
+      return true if reaches_position?(current_position, move, end_position)
     end
     false
   end
@@ -29,7 +29,7 @@ class Rook
     forward_moves + backward_moves
   end
 
-  def move_reaches_position?(current_position, move, end_position)
+  def reaches_position?(current_position, move, end_position)
     current_position[0] + move[0] == end_position[0] &&
       current_position[1] + move[1] == end_position[1]
   end

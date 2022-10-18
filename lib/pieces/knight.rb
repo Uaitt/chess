@@ -16,7 +16,7 @@ class Knight
     false
   end
 
-  def is_not_blocked?(_, _, _)
+  def not_blocked?(_, _, _)
     true
   end
 
