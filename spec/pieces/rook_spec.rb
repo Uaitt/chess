@@ -5,7 +5,7 @@ require_relative '../../lib/pieces/rook'
 require_relative '../../lib/board'
 
 describe Rook do
-  subject(:rook) { described_class.new(:color) }
+  subject(:rook) { described_class.new(:white) }
   describe '#able_to_reach?' do
     context 'when the position is reachable' do
       it 'returns true' do
@@ -71,15 +71,36 @@ describe Rook do
       data[0][0] = rook
     end
 
-    context 'when it is blocked by a piece of the same color' do
+    context 'when it is blocked by a piece of the same color in the path' do
       it 'returns true' do
         data[2][0] = Knight.new(:white)
         expect(rook.blocked?(board, [0, 0], [5, 0])).to eq(true)
       end
     end
 
+    context 'when it is blocked by a piece of the opposite color in the path' do
+      it 'returns true' do
+        data[4][0] = Knight.new(:black)
+        expect(rook.blocked?(board, [0, 0], [5, 0])).to eq(true)
+      end
+    end
+
     context 'when it is not blocked by any piece' do
       it 'returns false' do
+        expect(rook.blocked?(board, [0, 0], [5, 0])).to eq(false)
+      end
+    end
+
+    context 'when it is blocked by a piece of the same color in the last square' do
+      it 'returns true' do
+        data[5][0] = Knight.new(:white)
+        expect(rook.blocked?(board, [0, 0], [5, 0])).to eq(true)
+      end
+    end
+
+    context 'when it is blocked by a piece of the opposite color in the last square' do
+      it 'returns false' do
+        data[5][0] = Knight.new(:black)
         expect(rook.blocked?(board, [0, 0], [5, 0])).to eq(false)
       end
     end
