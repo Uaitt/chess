@@ -9,23 +9,22 @@ class Bishop
     @possible_moves = create_possible_moves
   end
 
-  def able_to_reach?(_, end_position)
-    case end_position
-    when [1, 1]
-      true
-    when [2, 2]
-      true
-    when [7, 7]
-      true
-    else
-      false
+  def able_to_reach?(current_position, end_position)
+    @possible_moves.each do |move|
+      return true if reaches_position?(current_position, move, end_position)
     end
+    false
   end
 
   private
 
   def create_possible_moves
     left_to_right_moves + right_to_left_moves
+  end
+
+  def reaches_position?(current_position, move, end_position)
+    current_position[0] + move[0] == end_position[0] &&
+      current_position[1] + move[1] == end_position[1]
   end
 
   def left_to_right_moves
