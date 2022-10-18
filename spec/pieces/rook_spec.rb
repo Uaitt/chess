@@ -85,12 +85,6 @@ describe Rook do
       end
     end
 
-    context 'when it is not blocked by any piece' do
-      it 'returns false' do
-        expect(rook.blocked?(board, [0, 0], [5, 0])).to eq(false)
-      end
-    end
-
     context 'when it is blocked by a piece of the same color in the last square' do
       it 'returns true' do
         data[5][0] = Knight.new(:white)
@@ -101,6 +95,12 @@ describe Rook do
     context 'when it is blocked by a piece of the opposite color in the last square' do
       it 'returns false' do
         data[5][0] = Knight.new(:black)
+        expect(rook.blocked?(board, [0, 0], [5, 0])).to eq(false)
+      end
+    end
+
+    context 'when it is not blocked by any piece' do
+      it 'returns false' do
         expect(rook.blocked?(board, [0, 0], [5, 0])).to eq(false)
       end
     end
