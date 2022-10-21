@@ -9,7 +9,7 @@ describe Queen do
   describe '#able_to_reach?' do
     context 'when the position is reachable' do
       it 'returns true' do
-        expect(queen.able_to_reach?([0, 0], [1, 0])).to eq(true)
+        expect(queen.able_to_reach?([0, 0], [0, 1])).to eq(true)
       end
 
       it 'returns true' do
@@ -17,7 +17,11 @@ describe Queen do
       end
 
       it 'returns true' do
-        expect(queen.able_to_reach?([0, 0], [0, 1])).to eq(true)
+        expect(queen.able_to_reach?([0, 0], [1, 0])).to eq(true)
+      end
+
+      it 'returns true' do
+        expect(queen.able_to_reach?([4, 3], [1, 0])).to eq(true)
       end
 
       it 'returns true' do
@@ -25,7 +29,7 @@ describe Queen do
       end
 
       it 'returns true' do
-        expect(queen.able_to_reach?([4, 3], [7, 3])).to eq(true)
+        expect(queen.able_to_reach?([4, 3], [0, 7])).to eq(true)
       end
 
       it 'returns true' do
@@ -37,19 +41,15 @@ describe Queen do
       end
 
       it 'returns true' do
-        expect(queen.able_to_reach?([4, 3], [1, 0])).to eq(true)
-      end
-
-      it 'returns true' do
         expect(queen.able_to_reach?([4, 3], [7, 0])).to eq(true)
       end
 
       it 'returns true' do
-        expect(queen.able_to_reach?([4, 3], [7, 6])).to eq(true)
+        expect(queen.able_to_reach?([4, 3], [7, 3])).to eq(true)
       end
 
       it 'returns true' do
-        expect(queen.able_to_reach?([4, 3], [0, 7])).to eq(true)
+        expect(queen.able_to_reach?([4, 3], [7, 6])).to eq(true)
       end
     end
 
@@ -59,11 +59,11 @@ describe Queen do
       end
 
       it 'returns false' do
-        expect(queen.able_to_reach?([4, 3], [0, 0])).to eq(false)
+        expect(queen.able_to_reach?([0, 0], [2, 1])).to eq(false)
       end
 
       it 'returns false' do
-        expect(queen.able_to_reach?([4, 3], [7, 7])).to eq(false)
+        expect(queen.able_to_reach?([4, 3], [0, 0])).to eq(false)
       end
 
       it 'returns false' do
@@ -72,6 +72,18 @@ describe Queen do
 
       it 'returns false' do
         expect(queen.able_to_reach?([4, 3], [3, 1])).to eq(false)
+      end
+
+      it 'returns false' do
+        expect(queen.able_to_reach?([4, 3], [3, 5])).to eq(false)
+      end
+
+      it 'returns false' do
+        expect(queen.able_to_reach?([4, 3], [7, 1])).to eq(false)
+      end
+
+      it 'returns false' do
+        expect(queen.able_to_reach?([4, 3], [7, 7])).to eq(false)
       end
     end
   end
