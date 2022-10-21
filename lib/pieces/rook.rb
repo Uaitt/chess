@@ -23,6 +23,12 @@ class Rook
       blocked_on_final_square?(board, end_position)
   end
 
+  def base_move(current_position, end_position)
+    move = end_position.zip(current_position).map { |finish, current| finish - current }
+    factor = move.reject(&:zero?).first.abs
+    move.collect { |item| item / factor }
+  end
+
   private
 
   def create_possible_moves
@@ -33,12 +39,6 @@ class Rook
   def reaches_position?(current_position, move, end_position)
     current_position[0] + move[0] == end_position[0] &&
       current_position[1] + move[1] == end_position[1]
-  end
-
-  def base_move(current_position, end_position)
-    move = end_position.zip(current_position).map { |finish, current| finish - current }
-    factor = move.reject(&:zero?).first.abs
-    move.collect { |item| item / factor }
   end
 
   def up_to_down_moves
