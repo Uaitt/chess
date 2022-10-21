@@ -101,4 +101,46 @@ describe Bishop do
       end
     end
   end
+
+  describe '#base_move' do
+    context 'when the movement is from top left to bottom right' do
+      it 'returns [1, 1]' do
+        expect(bishop.base_move([0, 0], [5, 5])).to eq([1, 1])
+      end
+
+      it 'returns [1, 1]' do
+        expect(bishop.base_move([4, 3], [7, 6])).to eq([1, 1])
+      end
+    end
+
+    context 'when the movement is from bottom right to top left' do
+      it 'returns [-1, -1]' do
+        expect(bishop.base_move([5, 5], [0, 0])).to eq([-1, -1])
+      end
+
+      it 'returns [-1, -1]' do
+        expect(bishop.base_move([7, 6], [4, 3])).to eq([-1, -1])
+      end
+    end
+
+    context 'when the movement is from top right to bottom left' do
+      it 'returns [1, -1]' do
+        expect(bishop.base_move([0, 7], [2, 5])).to eq([1, -1])
+      end
+
+      it 'returns [1, -1]' do
+        expect(bishop.base_move([4, 3], [6, 1])).to eq([1, -1])
+      end
+    end
+
+    context 'when the movement is from bottom left to top right' do
+      it 'returns [-1, 1]' do
+        expect(bishop.base_move([2, 5], [0, 7])).to eq([-1, 1])
+      end
+
+      it 'returns [-1, 1]' do
+        expect(bishop.base_move([6, 1], [4, 3])).to eq([-1, 1])
+      end
+    end
+  end
 end
