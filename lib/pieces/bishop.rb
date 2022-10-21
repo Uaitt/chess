@@ -32,8 +32,8 @@ class Bishop
   private
 
   def create_possible_moves
-    left_right_up__down_moves + left_right_down__up_moves +
-      right_left_up_down_moves + right_left_down_up_moves
+    top_left_bottom_right_moves + bottom_right_top_left_moves +
+      top_right_bottom_left_moves + bottom_left_top_right_moves
   end
 
   def reaches_position?(current_position, move, end_position)
@@ -41,19 +41,19 @@ class Bishop
       current_position[1] + move[1] == end_position[1]
   end
 
-  def left_right_up__down_moves
+  def top_left_bottom_right_moves
     [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7]]
   end
 
-  def left_right_down__up_moves
+  def bottom_right_top_left_moves
     [[-1, -1], [-2, -2], [-3, -3], [-4, -4], [-5, -5], [-6, -6], [-7, -7]]
   end
 
-  def right_left_up_down_moves
+  def top_right_bottom_left_moves
     [[1, -1], [2, -2], [3, -3], [4, -4], [5, -5], [6, -6], [7, -7]]
   end
 
-  def right_left_down_up_moves
+  def bottom_left_top_right_moves
     [[-1, 1], [-2, 2], [-3, 3], [-4, 4], [-5, 5], [-6, 6], [-7, 7]]
   end
 
