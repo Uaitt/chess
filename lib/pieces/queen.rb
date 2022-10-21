@@ -2,7 +2,7 @@
 
 # this class represents a queen in chess
 class Queen
-  attr_accessor :color, :possible_moves
+  attr_accessor :color
 
   def initialize(color)
     @color = color
@@ -10,7 +10,7 @@ class Queen
   end
 
   def able_to_reach?(current_position, end_position)
-    possible_moves.each do |move|
+    @possible_moves.each do |move|
       return true if reaches_position?(current_position, move, end_position)
     end
     false
