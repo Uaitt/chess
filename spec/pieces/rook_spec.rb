@@ -105,4 +105,46 @@ describe Rook do
       end
     end
   end
+
+  describe '#base_move' do
+    context 'when the movement is from up to down' do
+      it 'returns [1, 0]' do
+        expect(rook.base_move([0, 0], [5, 0])).to eq([1, 0])
+      end
+
+      it 'returns [1, 0]' do
+        expect(rook.base_move([0, 7], [4, 7])).to eq([1, 0])
+      end
+    end
+
+    context 'when the movement is from down to up' do
+      it 'returns [-1, 0]' do
+        expect(rook.base_move([5, 0], [0, 0])).to eq([-1, 0])
+      end
+
+      it 'returns [-1, 0]' do
+        expect(rook.base_move([4, 7], [0, 7])).to eq([-1, 0])
+      end
+    end
+
+    context 'when the movement is from left to right' do
+      it 'returns [0, 1]' do
+        expect(rook.base_move([0, 0], [0, 5])).to eq([0, 1])
+      end
+
+      it 'returns [0, 1]' do
+        expect(rook.base_move([7, 0], [7, 7])).to eq([0, 1])
+      end
+    end
+
+    context 'when the movement is from right to left' do
+      it 'returns [0, -1]' do
+        expect(rook.base_move([0, 5], [0, 0])).to eq([0, -1])
+      end
+
+      it 'returns [0, -1]' do
+        expect(rook.base_move([7, 7], [7, 0])).to eq([0, -1])
+      end
+    end
+  end
 end
