@@ -2,7 +2,7 @@
 
 # this class represents a rook in chess
 class Rook
-  attr_accessor :color
+  attr_accessor :color, :possible_moves
 
   def initialize(color)
     @color = color
