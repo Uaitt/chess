@@ -18,6 +18,7 @@ class BasicMovement
 
   def blocked?
   end
+
   private
 
   def reaches_position?(move)
