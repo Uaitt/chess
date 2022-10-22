@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
+require_relative '../lib/basic_movement'
 require_relative '../lib/pieces/knight'
 require_relative '../lib/pieces/rook'
 require_relative '../lib/board'
-require_relative '../lib/basic_movement'
+
 
 describe BasicMovement do
   subject(:basic_movement) { described_class.new(board, piece, end_position) }
@@ -44,6 +45,47 @@ describe BasicMovement do
         end
 
         let(:end_position) { [1, 6] }
+        it 'returns false' do
+          expect(basic_movement.possible?).to eq(false)
+        end
+      end
+    end
+
+    context 'when a knight is moving' do
+      let(:piece) { Knight.new(:black) }
+      before do
+        board.data[1][1] = piece
+      end
+
+      context 'when the movement is possible' do
+        let(:end_position) { [3, 2] }
+        it 'returns true' do
+          expect(basic_movement.possible?).to eq(true)
+        end
+
+        let(:end_position) { [2, 3] }
+        it 'returns true' do
+          expect(basic_movement.possible?).to eq(true)
+        end
+
+        let(:end_position) { [0, 3] }
+        it 'returns true' do
+          expect(basic_movement.possible?).to eq(true)
+        end
+      end
+
+      context 'when the movement is not possible' do
+        let(:end_position) { [1, 2] }
+        it 'returns false' do
+          expect(basic_movement.possible?).to eq(false)
+        end
+
+        let(:end_position) { [3, 3] }
+        it 'returns false' do
+          expect(basic_movement.possible?).to eq(false)
+        end
+
+        let(:end_position) { [0, 2] }
         it 'returns false' do
           expect(basic_movement.possible?).to eq(false)
         end
