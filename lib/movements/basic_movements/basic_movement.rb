@@ -2,7 +2,7 @@
 
 # this class represents a basic movement in a chess board
 class BasicMovement
-  def initialize(board, piece, end_position = nil)
+  def initialize(board, piece, end_position)
     @board = board
     @piece = piece
     @initial_position = board.current_position(piece)
