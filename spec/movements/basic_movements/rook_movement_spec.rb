@@ -62,5 +62,46 @@ describe RookMovement do
         end
       end
     end
+
+    context 'when the movement is not possible' do
+      context 'when the rook is placed in the top left corner' do
+        before do
+          board.data[0][0] = piece
+        end
+
+        let(:end_position) { [1, 1] }
+        it 'returns false' do
+          expect(rook_movement.possible?).to eq(false)
+        end
+
+        let(:end_position) { [3, 1] }
+        it 'returns false' do
+          expect(rook_movement.possible?).to eq(false)
+        end
+      end
+
+      context 'when the rook is placed in a random position' do
+        before do
+          board.data[1][6] = piece
+        end
+
+        let(:end_position) { [2, 7] }
+        it 'returns false' do
+          expect(rook_movement.possible?).to eq(false)
+        end
+
+        let(:end_position) { [4, 2] }
+        it 'returns false' do
+          expect(rook_movement.possible?).to eq(false)
+        end
+      end
+    end
   end
+=begin
+  describe '#blocked?' do
+    before do
+      board.data[0][0] = piece
+    end
+    context 'when it is blocked by a'
+=end
 end
