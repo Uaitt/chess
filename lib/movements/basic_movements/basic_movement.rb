@@ -47,4 +47,8 @@ class BasicMovement
     !@board.data[@end_position[0]][@end_position[1]].nil? &&
       @board.data[@end_position[0]][@end_position[1]].color == @piece.color
   end
+
+  def direction
+    raise NotImplementedError, 'direction'
+  end
 end
