@@ -6,7 +6,6 @@ require_relative '../lib/pieces/rook'
 require_relative '../lib/pieces/bishop'
 require_relative '../lib/board'
 
-
 describe BasicMovement do
   subject(:basic_movement) { described_class.new(board, piece, end_position) }
   let(:board) { Board.new }
@@ -130,6 +129,50 @@ describe BasicMovement do
         let(:end_position) { [7, 3] }
         it 'returns false' do
           expect(basic_movement.possible?).to eq(false)
+        end
+      end
+    end
+  end
+
+  describe '#blocked?' do
+    context 'when a rook is moving' do
+      let(:piece) { Rook.new(:black) }
+      let(:end_position) { [5, 0] }
+      before do
+        board.data[0][0] = piece
+      end
+
+      context 'when it is blocked by a piece of the same color in the path' do
+        it 'returns true' do
+          board.data[2][0] = Knight.new(:white)
+          expect(basic_movement.blocked?).to eq(true)
+        end
+      end
+
+      context 'when it is blocked by a piece of the opposite color in the path' do
+        it 'returns true' do
+          board.data[2][0] = Knight.new(:black)
+          expect(basic_movement.blocked?).to eq(true)
+        end
+      end
+
+      context 'when it is blocked by a piece of the same color in the arriving square' do
+        it 'returns true' do
+          board.data[5][0] = Knight.new(:black)
+          expect(basic_movement.blocked?).to eq(true)
+        end
+      end
+
+      context 'when it is blocked by a piece of the opposite color in the arriving square' do
+        it 'returns false' do
+          board.data[5][0] = Knight.new(:white)
+          expect(basic_movement.blocked?).to eq(false)
+        end
+      end
+
+      context 'when it is not blocked by any piece' do
+        it 'returns false' do
+          expect(basic_movement.blocked?).to eq(false)
         end
       end
     end
