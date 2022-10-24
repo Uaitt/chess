@@ -3,6 +3,7 @@
 require_relative '../../../lib/movements/basic_movements/rook_movement'
 require_relative '../../../lib/board'
 require_relative '../../../lib/pieces/rook'
+require_relative '../../../lib/pieces/knight'
 
 describe RookMovement do
   subject(:rook_movement) { described_class.new(board, piece, end_position) }
