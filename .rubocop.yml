@@ -2,3 +2,5 @@ BlockLength:
   Exclude:
     - './spec/*'
     - './spec/pieces/*'
+    - './spec/movements/*'
+    './spec/movements/basic_movements/*'
