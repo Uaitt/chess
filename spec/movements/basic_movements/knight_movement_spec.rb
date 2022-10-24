@@ -174,12 +174,13 @@ describe KnightMovement do
       board.data[3][4] = knight
     end
 
+    # TO FIX!!
     context 'when the movement is towards top left corner' do
       let(:end_position) { [2, 2] }
       it 'returns [-1, -2]' do
         expect(knight_movement.direction).to eq([-1, -2])
       end
-    
+
       let(:end_position) { [1, 3] }
       it 'returns [-2, -1]' do
         expect(knight_movement.direction).to eq([-2, -1])
