@@ -118,4 +118,44 @@ describe BiShopMovement do
       end
     end
   end
+
+  describe '#blocked?' do
+    let(:end_position) { [5, 5] }
+    before do
+      board.data[0][0] = bishop
+    end
+    context 'when the movement is blocked on transition by a piece of the same color' do
+      it 'returns true' do
+        board.data[2][2] = Knight.new(:white)
+        expect(bishop_movement.blocked?).to eq(true)
+      end
+    end
+
+    context 'when the movement is blocked on transition by a piece of the opposite color' do
+      it 'returns true' do
+        board.data[3][3] = Knight.new(:black)
+        expect(bishop_movement.blocked?).to eq(true)
+      end
+    end
+
+    context 'when the movement is blocked on arrival by a piece of the same color' do
+      it 'returns true' do
+        board.data[5][5] = Knight.new(:black)
+        expect(bishop_movement.blocked?).to eq(true)
+      end
+    end
+
+    context 'when the movement is blocked on arrival by a piece of the opposite color' do
+      it 'returns false' do
+        board.data[5][5] = Knight.new(:white)
+        expect(bishop_movement.blocked?).to eq(false)
+      end
+    end
+
+    context ' when the movement is not blocked by any piece' do
+      it 'returns false' do
+        expect(bishop_movement.blocked?).to eq(false)
+      end
+    end
+  end
 end
