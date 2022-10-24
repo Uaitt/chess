@@ -168,4 +168,58 @@ describe KnightMovement do
       end
     end
   end
+
+  describe '#direction' do
+    before do
+      board.data[3][4] = knight
+    end
+
+    context 'when the movement is towards top left corner' do
+      let(:end_position) { [2, 2] }
+      it 'returns [-1, -2]' do
+        expect(knight_movement.direction).to eq([-1, -2])
+      end
+    
+      let(:end_position) { [1, 3] }
+      it 'returns [-2, -1]' do
+        expect(knight_movement.direction).to eq([-2, -1])
+      end
+    end
+
+    context 'when the movement is towards top right corner' do
+      let(:end_position) { [1, 5] }
+      it 'returns [-2, 1]' do
+        expect(knight_movement.direction).to eq([-2, 1])
+      end
+
+      let(:end_position) { [2, 6] }
+      it 'returns [-1, 2]' do
+        expect(knight_movement.direction).to eq([-1, 2])
+      end
+    end
+
+    context 'when the movement is towards bottom right corner' do
+      let(:end_position) { [4, 6] }
+      it 'returns [1, 2]' do
+        expect(knight_movement.direction).to eq([1, 2])
+      end
+
+      let(:end_position) { [5, 5] }
+      it 'returns [2, 1]' do
+        expect(knight_movement.direction).to eq([2, 1])
+      end
+    end
+
+    context 'when the movement is towards bottom left corner' do
+      let(:end_position) { [4, 2] }
+      it 'returns [1, -2]' do
+        expect(knight_movement.direction).to eq([1, -2])
+      end
+
+      let(:end_position) { [5, 3] }
+      it 'returns [2, -1]' do
+        expect(knight_movement.direction).to eq([2, -1])
+      end
+    end
+  end
 end

@@ -9,4 +9,8 @@ class KnightMovement
   def blocked?
     blocked_on_arrival?
   end
+
+  def direction
+    @end_position.zip(@initial_position).map { |finish, start| finish - start }
+  end
 end
