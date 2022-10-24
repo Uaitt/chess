@@ -11,6 +11,10 @@ class BasicMovement
     @end_position = end_position
   end
 
+  def valid?
+    possible? && !not_blocked?
+  end
+
   def possible?
     @piece.possible_moves.each do |move|
       return true if reaches_position?(move)
