@@ -3,7 +3,9 @@
 require_relative 'basic_movement'
 
 # class that represents a bishop movement in chess
-class BishopMovement < BasicMovement
+class BishopMovement
+  include BasicMovement
+
   def direction
     direction = @end_position.zip(@initial_position).map { |finish, start| finish - start }
     factor = direction.max.abs

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# abstract class that represents a basic movement in a chess board
-class BasicMovement
+# set of common methods for basic movements in a chess
+module BasicMovement
   def initialize(board, piece, end_position)
     raise 'abstract superclass' if instance_of?(BasicMovement)
 
