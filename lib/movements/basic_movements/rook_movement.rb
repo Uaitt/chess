@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'matrix'
 require_relative 'basic_movement'
 
 # this class represents a rook movement in chess
