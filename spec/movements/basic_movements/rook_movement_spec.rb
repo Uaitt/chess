@@ -97,11 +97,44 @@ describe RookMovement do
       end
     end
   end
-=begin
+
   describe '#blocked?' do
+    let(:end_position) { [5, 0] }
     before do
       board.data[0][0] = piece
     end
-    context 'when it is blocked by a'
-=end
+    context 'when the movement is blocked by a piece of the same color in the path' do
+      it 'returns true' do
+        board.data[2][0] = Knight.new(:white)
+        expect(rook_movement.blocked?).to eq(true)
+      end
+    end
+
+    context 'when the movement is blocked by a piece of the opposite color in the path' do
+      it 'returns true' do
+        board.data[3][0] = Knight.new(:black)
+        expect(rook_movement.blocked?).to eq(true)
+      end
+    end
+
+    context 'when the movement is blocked by a piece of the same color in the arriving square' do
+      it 'returns true' do
+        board.data[5][0] = Knight.new(:black)
+        expect(rook_movement.blocked?).to eq(true)
+      end
+    end
+
+    context 'when the movement is blocked by a piece of the opposite color in the arriving square' do
+      it 'returns false' do
+        board.data[5][0] = Knight.new(:white)
+        expect(rook_movement.blocked?).to eq(false)
+      end
+    end
+
+    context ' when the movement is not blocked by any piece' do
+      it 'returns false' do
+        expect(rook_movement.blocked?).to eq(false)
+      end
+    end
+  end
 end
