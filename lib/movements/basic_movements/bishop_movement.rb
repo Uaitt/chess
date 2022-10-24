@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'basic_movement'
+
 # class that represents a bishop movement in chess
 class BiShopMovement < BasicMovement
   def direction
