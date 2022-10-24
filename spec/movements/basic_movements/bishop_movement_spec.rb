@@ -5,7 +5,7 @@ require_relative '../../../lib/pieces/bishop'
 require_relative '../../../lib/pieces/knight'
 require_relative '../../../lib/board'
 
-describe BiShopMovement do
+describe BishopMovement do
   subject(:bishop_movement) { described_class.new(board, bishop, end_position) }
   let(:bishop) { Bishop.new(:black) }
   let(:board) { Board.new }
