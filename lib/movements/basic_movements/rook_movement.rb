@@ -2,7 +2,7 @@
 
 require_relative 'basic_movement'
 
-# this class represents a rook movement in chess
+# class that represents a rook movement in chess
 class RookMovement < BasicMovement
   def direction
     direction = @end_position.zip(@initial_position).map { |finish, start| finish - start }
