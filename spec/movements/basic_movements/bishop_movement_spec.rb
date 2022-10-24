@@ -158,4 +158,39 @@ describe BiShopMovement do
       end
     end
   end
+
+  describe '#direction' do
+    before do
+      board.data[3][5] = bishop
+    end
+
+    context 'when the movement is from top left to bottom right' do
+      let(:end_position) { [4, 6] }
+      it 'returns [1, 1]' do
+        expect(bishop_movement.direction).to eq([1, 1])
+      end
+    end
+
+    context 'when the movement is from bottom right to top left' do
+      let(:end_position) { [0, 2] }
+      it 'returns [-1, -1]' do
+        expect(bishop_movement.direction).to eq([-1, -1])
+      end
+    end
+
+    context 'when the movement is from top right to bottom left' do
+      let(:end_position) { [4, 4] }
+      it 'returns [1, -1]' do
+        expect(bishop_movement.direction).to eq([1, -1])
+      end
+    end
+
+    context 'when the movement is from bottom left to top right' do
+      let(:end_position) { [1, 7] }
+      it 'returns [-1, 1]' do
+        expect(bishop_movement.direction).to eq([-1, 1])
+      end
+    end
+  end
+
 end
