@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../../movements/basic_movements/rook_movement'
-require_relative '../../../board'
-require_relative '../../../pieces/rook'
+require_relative '../../../lib/movements/basic_movements/rook_movement'
+require_relative '../../../lib/board'
+require_relative '../../../lib/pieces/rook'
 
 describe RookMovement do
   subject(:rook_movement) { described_class.new(board, piece, end_position) }
