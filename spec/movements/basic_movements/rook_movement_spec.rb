@@ -137,4 +137,38 @@ describe RookMovement do
       end
     end
   end
+
+  describe '#direction' do
+    before do
+      board.data[3][3] = piece
+    end
+
+    context 'when the movement is from top to bottom' do
+      let(:end_position) { [6, 3] }
+      it 'returns [1, 0]' do
+        expect(rook_movement.direction).to eq([1, 0])
+      end
+    end
+
+    context 'when the movement is from bottom to top' do
+      let(:end_position) { [0, 3] }
+      it 'returns [-1, 0]' do
+        expect(rook_movement.direction).to eq([-1, 0])
+      end
+    end
+
+    context 'when the movement is from left to right' do
+      let(:end_position) { [3, 6] }
+      it 'returns [0, 1]' do
+        expect(rook_movement.direction).to eq([0, 1])
+      end
+    end
+
+    context 'when the movement is from right to left' do
+      let(:end_position) { [3, 0] }
+      it 'returns [0, -1]' do
+        expect(rook_movement.direction).to eq([0, -1])
+      end
+    end
+  end
 end
