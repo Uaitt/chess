@@ -3,6 +3,8 @@
 # abstract class that represents a basic movement in a chess board
 class BasicMovement
   def initialize(board, piece, end_position)
+    raise 'abstract superclass' if instance_of?(BasicMovement)
+
     @board = board
     @piece = piece
     @initial_position = board.current_position(piece)
