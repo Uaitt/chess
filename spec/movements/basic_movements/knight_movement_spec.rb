@@ -128,4 +128,44 @@ describe KnightMovement do
       end
     end
   end
+
+  describe '#blocked?' do
+    let(:end_position) { [5, 5] }
+    before do
+      board.data[3][4] = knight
+    end
+    context 'when the movement is blocked on transition by a piece of the same color' do
+      it 'returns false' do
+        board.data[5][4] = Knight.new(:white)
+        expect(knight_movement.blocked?).to eq(false)
+      end
+    end
+
+    context 'when the movement is blocked on transition by a piece of the opposite color' do
+      it 'returns false' do
+        board.data[4][5] = Knight.new(:black)
+        expect(knight_movement.blocked?).to eq(false)
+      end
+    end
+
+    context 'when the movement is blocked on arrival by a piece of the same color' do
+      it 'returns true' do
+        board.data[5][5] = Knight.new(:black)
+        expect(knight_movement.blocked?).to eq(true)
+      end
+    end
+
+    context 'when the movement is blocked on arrival by a piece of the opposite color' do
+      it 'returns false' do
+        board.data[5][5] = Knight.new(:white)
+        expect(knight_movement.blocked?).to eq(false)
+      end
+    end
+
+    context ' when the movement is not blocked by any piece' do
+      it 'returns false' do
+        expect(knight_movement.blocked?).to eq(false)
+      end
+    end
+  end
 end
