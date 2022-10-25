@@ -131,4 +131,66 @@ describe KingMovement do
       it { is_expected.not_to be_blocked }
     end
   end
+
+  describe '#direction' do
+    before do
+      board.data[3][4] = king
+    end
+
+    context 'when the movement is one step towards bottom' do
+      let(:end_position) { [4, 4] }
+      it 'returns [1, 0]' do
+        expect(subject.direction).to eq([1, 0])
+      end
+    end
+
+    context 'when the movement is one step towards top' do
+      let(:end_position) { [2, 4] }
+      it 'returns [-1, 0]' do
+        expect(subject.direction).to eq([-1, 0])
+      end
+    end
+
+    context 'when the movement is one step towards right' do
+      let(:end_position) { [3, 5] }
+      it 'returns [0, 1]' do
+        expect(subject.direction).to eq([0, 1])
+      end
+    end
+
+    context 'when the movement is one step towards left' do
+      let(:end_position) { [3, 3] }
+      it 'returns [0, -1]' do
+        expect(subject.direction).to eq([0, -1])
+      end
+    end
+
+    context 'when the movement is one step towards top right corner' do
+      let(:end_position) { [2, 5] }
+      it 'returns [-1, 1]' do
+        expect(subject.direction).to eq([-1, 1])
+      end
+    end
+
+    context 'when the movement is one step towards bottom right corner' do
+      let(:end_position) { [4, 5] }
+      it 'returns [1, 1]' do
+        expect(subject.direction).to eq([1, 1])
+      end
+    end
+
+    context 'when the movement is one step towards top left corner' do
+      let(:end_position) { [2, 3] }
+      it 'returns [-1, -1]' do
+        expect(subject.direction).to eq([-1, -1])
+      end
+    end
+
+    context 'when the movement is one step towards bottom left corner' do
+      let(:end_position) { [4, 3] }
+      it 'returns [1, -1]' do
+        expect(subject.direction).to eq([1, -1])
+      end
+    end
+  end
 end
