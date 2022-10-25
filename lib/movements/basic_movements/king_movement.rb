@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'basic_movement'
+
 # this class represents a king movement in chess
 class KingMovement
   include BasicMovement
