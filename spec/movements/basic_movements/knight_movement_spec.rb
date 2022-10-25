@@ -6,7 +6,7 @@ require_relative '../../../lib/pieces/rook'
 require_relative '../../../lib/board'
 
 describe KnightMovement do
-  subject(:knight_movement) { described_class.new(board, knight, end_position) }
+  subject(:knight_movement) { described_class.new(board, knight, @end_position) }
   let(:knight) { Knight.new(:black) }
   let(:board) { Board.new }
   describe '#possible?' do
@@ -174,7 +174,6 @@ describe KnightMovement do
       board.data[3][4] = knight
     end
 
-    # TO FIX!!
     context 'when the movement is towards top left corner' do
       let(:end_position) { [2, 2] }
       it 'returns [-1, -2]' do
