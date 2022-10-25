@@ -3,8 +3,6 @@
 # set of common methods for basic movements in a chess
 module BasicMovement
   def initialize(board, piece, end_position)
-    raise 'abstract superclass' if instance_of?(BasicMovement)
-
     @board = board
     @piece = piece
     @initial_position = board.current_position(piece)
@@ -46,9 +44,5 @@ module BasicMovement
   def blocked_on_arrival?
     !@board.data[@end_position[0]][@end_position[1]].nil? &&
       @board.data[@end_position[0]][@end_position[1]].color == @piece.color
-  end
-
-  def direction
-    raise NotImplementedError, 'direction'
   end
 end

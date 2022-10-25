@@ -6,7 +6,7 @@ require_relative '../../../lib/pieces/knight'
 require_relative '../../../lib/board'
 
 describe QueenMovement do
-  subject(:queen_movement) { described_class.new(board, queen, end_position) }
+  subject { described_class.new(board, queen, end_position) }
   let(:queen) { Queen.new(:black) }
   let(:board) { Board.new }
 
