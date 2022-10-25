@@ -2,7 +2,7 @@
 
 require_relative 'basic_movement'
 
-# class that represents a rook movement in chess
+# this class represents represents a rook movement in chess
 class RookMovement
   include BasicMovement
 

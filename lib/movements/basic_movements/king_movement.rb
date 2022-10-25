@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-# this class represents a rook movement in chess
+# this class represents a king movement in chess
 class KingMovement
 end

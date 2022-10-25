@@ -2,7 +2,7 @@
 
 require_relative 'basic_movement'
 
-# class that represents a bishop movement in chess
+# this class represents a bishop movement in chess
 class BishopMovement
   include BasicMovement
 
