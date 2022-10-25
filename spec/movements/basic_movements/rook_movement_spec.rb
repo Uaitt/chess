@@ -10,7 +10,7 @@ describe RookMovement do
   let(:piece) { Rook.new(:black) }
   let(:board) { Board.new }
   describe '#possible?' do
-    context 'when the rook is placed on the top-left corner' do
+    context 'when the rook is placed on the top left corner' do
       before do
         board.data[0][0] = piece
       end
