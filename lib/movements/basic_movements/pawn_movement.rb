@@ -16,11 +16,9 @@ class PawnMovement
   private
 
   def arrival_clear?(count)
-    if count.zero?
-      true
-    else
-      !@board.data[@end_position[0]][@end_position[1]].nil? &&
-        @board.data[@end_position[0]][@end_position[1]].color != @piece.color
-    end
+    return true if count.zero?
+
+    !@board.data[@end_position[0]][@end_position[1]].nil? &&
+      @board.data[@end_position[0]][@end_position[1]].color != @piece.color
   end
 end
