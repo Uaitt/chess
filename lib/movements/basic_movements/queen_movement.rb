@@ -6,11 +6,10 @@ require_relative 'bishop_movement'
 
 # this class represents a rook movement in chess
 class QueenMovement
-
   include BasicMovement
 
   def direction
-    if vertical_or_horizontal?
+    if vertical_or_horizontal? # to make a factory
       RookMovement
     else
       BishopMovement

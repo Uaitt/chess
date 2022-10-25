@@ -109,6 +109,49 @@ describe QueenMovement do
     end
   end
 
+  describe '#blocked?' do
+    let(:end_position) { [5, 5] }
+    before do
+      board.data[0][0] = queen
+    end
+
+    context 'when the movement is blocked on transition by a piece of the same color' do
+      before do
+        board.data[2][2] = Knight.new(:black)
+      end
+
+      it { is_expected.to be_blocked }
+    end
+
+    context 'when the movement is blocked on transition by a piece of the opposite color' do
+      before do
+        board.data[3][3] = Knight.new(:white)
+      end
+
+      it { is_expected.to be_blocked }
+    end
+
+    context 'when the movement is blocked on arrival by a piece of the same color' do
+      before do
+        board.data[5][5] = Knight.new(:black)
+      end
+
+      it { is_expected.to be_blocked }
+    end
+
+    context 'when the movement is blocked on arrival by a piece of the opposite color' do
+      before do
+        board.data[5][5] = Knight.new(:white)
+      end
+
+      it { is_expected.not_to be_blocked }
+    end
+
+    context ' when the movement is not blocked by any piece' do
+      it { is_expected.not_to be_blocked }
+    end
+  end
+
   describe '#direction' do
     before do
       board.data[3][4] = queen
