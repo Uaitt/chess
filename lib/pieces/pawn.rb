@@ -9,6 +9,16 @@ class Pawn
   end
 
   def basic_moves
-    [[1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]]
+    basic_forward + basic_diagonals
+  end
+
+  private
+
+  def basic_forward
+    color == :black ? [1, 0] : [-1, 0]
+  end
+
+  def basic_diagonals
+    color == :black ? [[1, 1], [1, -1]] : [[-1, 1], [-1, -1]]
   end
 end
