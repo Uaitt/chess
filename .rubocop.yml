@@ -3,4 +3,4 @@ BlockLength:
     - './spec/*'
     - './spec/pieces/*'
     - './spec/movements/*'
-    './spec/movements/basic_movements/*'
+    - './spec/movements/basic_movements/*'
