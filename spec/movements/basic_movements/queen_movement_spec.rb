@@ -108,4 +108,66 @@ describe QueenMovement do
       end
     end
   end
+
+  describe '#direction' do
+    before do
+      board.data[3][4] = queen
+    end
+
+    context 'when the movement is towards bottom' do
+      let(:end_position) { [7, 4] }
+      it 'returns [1, 0]' do
+        expect(subject.direction).to eq([1, 0])
+      end
+    end
+
+    context 'when the movement is towards top' do
+      let(:end_position) { [2, 4] }
+      it 'returns [-1, 0]' do
+        expect(subject.direction).to eq([-1, 0])
+      end
+    end
+
+    context 'when the movement is towards right' do
+      let(:end_position) { [3, 7] }
+      it 'returns [0, 1]' do
+        expect(subject.direction).to eq([0, 1])
+      end
+    end
+
+    context 'when the movement is towards left' do
+      let(:end_position) { [3, 1] }
+      it 'returns [0, -1]' do
+        expect(subject.direction).to eq([0, -1])
+      end
+    end
+
+    context 'when the movement is towards top left corner' do
+      let(:end_position) { [1, 2] }
+      it 'returns [-1, -1]' do
+        expect(subject.direction).to eq([-1, -1])
+      end
+    end
+
+    context 'when the movement is towards top right corner' do
+      let(:end_position) { [2, 5] }
+      it 'returns [-1, 1]' do
+        expect(subject.direction).to eq([-1, 1])
+      end
+    end
+
+    context 'when the movement is towards bottom right corner' do
+      let(:end_position) { [5, 6] }
+      it 'returns [1, 1]' do
+        expect(subject.direction).to eq([1, 1])
+      end
+    end
+
+    context 'when the movement is towards bottom left corner' do
+      let(:end_position) { [5, 3] }
+      it 'returns [1, -1]' do
+        expect(subject.direction).to eq([1, -1])
+      end
+    end
+  end
 end
