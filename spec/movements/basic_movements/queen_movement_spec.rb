@@ -17,32 +17,32 @@ describe QueenMovement do
       end
 
       context 'when the movement is one step towards bottom' do
-        let(:end_position) { [1, 0]}
+        let(:end_position) { [1, 0] }
         it { is_expected.to be_possible }
       end
 
       context 'when  the movement is one step towards the right' do
-        let(:end_position) { [0, 1]}
+        let(:end_position) { [0, 1] }
         it { is_expected.to be_possible }
       end
 
       context 'when  the movement is one step towards bottom right corner' do
-        let(:end_position) { [1, 1]}
+        let(:end_position) { [1, 1] }
         it { is_expected.to be_possible }
       end
 
       context 'when  the movement is one step towards bottom and two towards right' do
-        let(:end_position) { [1, 2]}
+        let(:end_position) { [1, 2] }
         it { is_expected.not_to be_possible }
       end
 
       context 'when  the movement is one step towards bottom and three towards right' do
-        let(:end_position) { [1, 3]}
+        let(:end_position) { [1, 3] }
         it { is_expected.not_to be_possible }
       end
 
       context 'when  the movement is three step towards bottom and one towards right' do
-        let(:end_position) { [3, 1]}
+        let(:end_position) { [3, 1] }
         it { is_expected.not_to be_possible }
       end
     end
@@ -53,57 +53,57 @@ describe QueenMovement do
       end
 
       context 'when the movement is one step towards bottom' do
-        let(:end_position) { [4, 4]}
+        let(:end_position) { [4, 4] }
         it { is_expected.to be_possible }
       end
 
       context 'when the movement is one step towards top' do
-        let(:end_position) { [2, 4]}
+        let(:end_position) { [2, 4] }
         it { is_expected.to be_possible }
       end
 
       context 'when the movement is one step towards right' do
-        let(:end_position) { [3, 5]}
+        let(:end_position) { [3, 5] }
         it { is_expected.to be_possible }
       end
 
       context 'when the movement is one step towards left' do
-        let(:end_position) { [3, 3]}
+        let(:end_position) { [3, 3] }
         it { is_expected.to be_possible }
       end
 
       context 'when the movement is one step towards top left corner' do
-        let(:end_position) { [2, 3]}
+        let(:end_position) { [2, 3] }
         it { is_expected.to be_possible }
       end
 
       context 'when the movement is one step towards top right corner' do
-        let(:end_position) { [2, 5]}
+        let(:end_position) { [2, 5] }
         it { is_expected.to be_possible }
       end
 
       context 'when the movement is one step towards bottom right corner' do
-        let(:end_position) { [4, 5]}
+        let(:end_position) { [4, 5] }
         it { is_expected.to be_possible }
       end
 
       context 'when the movement is one step towards bottom left corner' do
-        let(:end_position) { [4, 3]}
+        let(:end_position) { [4, 3] }
         it { is_expected.to be_possible }
       end
 
       context 'when the movement is one step towards bottom and two towards right' do
-        let(:end_position) { [4, 6]}
+        let(:end_position) { [4, 6] }
         it { is_expected.not_to be_possible }
       end
 
       context 'when the movement is one step towards top and two towards left' do
-        let(:end_position) { [2, 2]}
+        let(:end_position) { [2, 2] }
         it { is_expected.not_to be_possible }
       end
 
       context 'when the movement is two steps towards top and three towards right' do
-        let(:end_position) { [2, 7]}
+        let(:end_position) { [2, 7] }
         it { is_expected.not_to be_possible }
       end
     end

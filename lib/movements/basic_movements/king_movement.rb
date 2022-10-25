@@ -16,6 +16,6 @@ class KingMovement
 
   def vertical_or_horizontal?
     @initial_position[0] == @end_position[0] ||
-    @initial_position[1] == @initial_position[1]
+      @initial_position[1] == @initial_position[1]
   end
 end

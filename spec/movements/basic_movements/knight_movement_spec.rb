@@ -6,7 +6,7 @@ require_relative '../../../lib/pieces/rook'
 require_relative '../../../lib/board'
 
 describe KnightMovement do
-  subject{ described_class.new(board, knight, end_position) }
+  subject { described_class.new(board, knight, end_position) }
   let(:knight) { Knight.new(:black) }
   let(:board) { Board.new }
   describe '#possible?' do
@@ -19,7 +19,6 @@ describe KnightMovement do
         let(:end_position) { [1, 2] }
         it { is_expected.to be_possible }
       end
-
 
       context 'when the movement is two steps towards bottom and one towards right' do
         let(:end_position) { [2, 1] }
