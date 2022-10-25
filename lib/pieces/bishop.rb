@@ -2,33 +2,32 @@
 
 # this class represents a bishop in chess
 class Bishop
-  attr_reader :color, :possible_moves
+  attr_reader :color
 
   def initialize(color)
     @color = color
-    @possible_moves = create_possible_moves
   end
 
   private
 
-  def create_possible_moves
-    top_left_bottom_right_moves + bottom_right_top_left_moves +
-      top_right_bottom_left_moves + bottom_left_top_right_moves
+  def basic_moves
+    towards_bottom_right_corner_moves + towards_top_left_corner_moves +
+      towards_bottom_left_corner_moves + toward_top_right_corner_moves
   end
 
-  def top_left_bottom_right_moves
+  def towards_bottom_right_corner_moves
     [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7]]
   end
 
-  def bottom_right_top_left_moves
+  def towards_top_left_corner_moves
     [[-1, -1], [-2, -2], [-3, -3], [-4, -4], [-5, -5], [-6, -6], [-7, -7]]
   end
 
-  def top_right_bottom_left_moves
+  def towards_bottom_left_corner_moves
     [[1, -1], [2, -2], [3, -3], [4, -4], [5, -5], [6, -6], [7, -7]]
   end
 
-  def bottom_left_top_right_moves
+  def toward_top_right_corner_moves
     [[-1, 1], [-2, 2], [-3, 3], [-4, 4], [-5, 5], [-6, 6], [-7, 7]]
   end
 end
