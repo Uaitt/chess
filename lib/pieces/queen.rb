@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative '../rook'
-require_relative '../bishop'
+require_relative 'rook'
+require_relative 'bishop'
 
 # this class represents a queen in chess
 class Queen
-  attr_accessor :color
+  attr_accessor :color, :possible_moves
 
   def initialize(color)
     @color = color
