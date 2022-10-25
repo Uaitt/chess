@@ -9,25 +9,25 @@ class Rook
   end
 
   def basic_moves
-    up_to_down_moves + down_to_up_moves +
-      left_to_right_moves + right_to_left_moves
+    towards_bottom + towards_top +
+      towards_right + towards_left
   end
 
   private
 
-  def up_to_down_moves
+  def towards_bottom
     [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]]
   end
 
-  def down_to_up_moves
+  def towards_top
     [[-1, 0], [-2, 0], [-3, 0], [-4, 0], [-5, 0], [-6, 0], [-7, 0]]
   end
 
-  def left_to_right_moves
+  def towards_right
     [[0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7]]
   end
 
-  def right_to_left_moves
+  def towards_left
     [[0, -1], [0, -2], [0, -3], [0, -4], [0, -5], [0, -6], [0, -7]]
   end
 end
