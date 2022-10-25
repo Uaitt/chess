@@ -2,7 +2,7 @@
 
 # this class represents a bishop in chess
 class Bishop
-  attr_accessor :color, :possible_moves
+  attr_reader :color, :possible_moves
 
   def initialize(color)
     @color = color

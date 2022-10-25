@@ -2,7 +2,7 @@
 
 # this class represents a pawn in chess
 class Pawn
-  attr_accessor :color
+  attr_reader :color
 
   def initialize(color)
     @color = color

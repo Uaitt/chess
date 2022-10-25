@@ -5,7 +5,7 @@ require_relative 'bishop'
 
 # this class represents a queen in chess
 class Queen
-  attr_accessor :color, :possible_moves
+  attr_reader :color, :possible_moves
 
   def initialize(color)
     @color = color
