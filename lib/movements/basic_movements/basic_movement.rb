@@ -45,4 +45,8 @@ module BasicMovement
     !@board.data[@end_position[0]][@end_position[1]].nil? &&
       @board.data[@end_position[0]][@end_position[1]].color == @piece.color
   end
+
+  def vertical_or_horizontal?
+    @end_position.zip(@initial_position).map { |finish, start| finish - start }.include?(0)
+  end
 end
