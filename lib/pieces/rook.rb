@@ -2,19 +2,18 @@
 
 # this class represents a rook in chess
 class Rook
-  attr_reader :color, :possible_moves
+  attr_reader :color
 
   def initialize(color)
     @color = color
-    @possible_moves = create_possible_moves
   end
 
-  private
-
-  def create_possible_moves
+  def basic_moves
     up_to_down_moves + down_to_up_moves +
       left_to_right_moves + right_to_left_moves
   end
+
+  private
 
   def up_to_down_moves
     [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]]
