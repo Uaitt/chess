@@ -7,4 +7,8 @@ class Pawn
   def initialize(color)
     @color = color
   end
+
+  def basic_moves
+    [[1, 0], [1, 1], [-1, -1], [1, -1], [-1, 1]]
+  end
 end
