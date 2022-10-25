@@ -12,6 +12,6 @@ class Queen
   end
 
   def basic_moves
-    Rook.new(color).possible_moves + Bishop.new(color).possible_moves
+    Rook.new(color).basic_moves + Bishop.new(color).basic_moves
   end
 end

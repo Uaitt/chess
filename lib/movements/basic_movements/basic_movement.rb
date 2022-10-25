@@ -14,7 +14,7 @@ module BasicMovement
   end
 
   def possible?
-    @piece.possible_moves.each do |move|
+    @piece.basic_moves.each do |move|
       return true if reaches_position?(move)
     end
     false
