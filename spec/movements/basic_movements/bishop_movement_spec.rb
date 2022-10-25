@@ -141,28 +141,28 @@ describe BishopMovement do
       board.data[3][5] = bishop
     end
 
-    context 'when the movement is from top left to bottom right' do
+    context 'when the movement is towards bottom right corner' do
       let(:end_position) { [4, 6] }
       it 'returns [1, 1]' do
         expect(subject.direction).to eq([1, 1])
       end
     end
 
-    context 'when the movement is from bottom right to top left' do
+    context 'when the movement is towards top left corner' do
       let(:end_position) { [0, 2] }
       it 'returns [-1, -1]' do
         expect(subject.direction).to eq([-1, -1])
       end
     end
 
-    context 'when the movement is from top right to bottom left' do
+    context 'when the movement is towards bottom left corner' do
       let(:end_position) { [4, 4] }
       it 'returns [1, -1]' do
         expect(subject.direction).to eq([1, -1])
       end
     end
 
-    context 'when the movement is from bottom left to top right' do
+    context 'when the movement is towards top right corner' do
       let(:end_position) { [1, 7] }
       it 'returns [-1, 1]' do
         expect(subject.direction).to eq([-1, 1])
