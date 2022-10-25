@@ -102,4 +102,33 @@ describe KingMovement do
       end
     end
   end
+
+  describe '#blocked?' do
+    before do
+      board.data[0][0] = king
+    end
+
+    context 'when the movement is blocked on arrival by a piece of the same color' do
+      let(:end_position) { [1, 0] }
+      before do
+        board.data[1][0] = Knight.new(:black)
+      end
+
+      it { is_expected.to be_blocked }
+    end
+
+    context 'when the movement is blocked on arrival by a piece of the opposite color' do
+      let(:end_position) { [1, 1] }
+      before do
+        board.data[1][1] = Knight.new(:white)
+      end
+
+      it { is_expected.not_to be_blocked }
+    end
+
+    context ' when the movement is not blocked by any piece' do
+      let(:end_position) { [0, 1] }
+      it { is_expected.not_to be_blocked }
+    end
+  end
 end
