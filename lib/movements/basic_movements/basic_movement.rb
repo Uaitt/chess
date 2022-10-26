@@ -10,7 +10,7 @@ module BasicMovement
   end
 
   def valid?
-    possible? && !not_blocked?
+    possible? && !blocked?
   end
 
   def possible?
