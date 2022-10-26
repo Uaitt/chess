@@ -8,7 +8,7 @@ require_relative 'bishop_movement'
 class PawnMovement
   include BasicMovement
 
-  def possible?
+  def valid?
     @piece.basic_moves.each_with_index do |move, count|
       return true if reaches_position?(move) && environment_allows?(count)
     end
@@ -34,9 +34,7 @@ class PawnMovement
   end
 
   def turn_allows?(count)
-    return true unless count.zero?
-
-    !already_happened?
+    count.zero? ? !already_happened? : true
   end
 
   def blocked_vertically?
