@@ -2,132 +2,279 @@
 
 require_relative '../../../lib/movements/basic_movements/rook_movement'
 require_relative '../../../lib/pieces/rook'
-require_relative '../../../lib/pieces/knight'
+require_relative '../../../lib/piece'
 require_relative '../../../lib/board'
 
 describe RookMovement do
-  subject { described_class.new(board, piece, end_position) }
-  let(:piece) { Rook.new(:black) }
+  subject { described_class.new(board, rook, end_position) }
+  let(:rook) { Rook.new(:black) }
+  let(:piece) { Piece.new(color) }
   let(:board) { Board.new }
-  describe '#possible?' do
+  describe '#valid?' do
     context 'when the rook is placed on the top left corner' do
       before do
-        board.data[0][0] = piece
+        board.data[0][0] = rook
       end
 
-      context 'when the movement is one step towards bottom ' do
+      context 'when the movement is one step towards bottom' do
         let(:end_position) { [1, 0] }
-        it { is_expected.to be_possible }
-      end
+        context 'when it is not blocked by any piece' do
+          it { is_expected.to be_valid }
+        end
 
-      context 'when the movement is three steps towards bottom ' do
-        let(:end_position) { [3, 0] }
-        it { is_expected.to be_possible }
-      end
+        context 'when it is blocked' do
+          before do
+            board.data[1][0] = piece
+          end
 
-      context 'when the movement is one step to the right' do
-        let(:end_position) { [0, 1] }
-        it { is_expected.to be_possible }
-      end
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.to be_valid }
+          end
 
-      context 'when the movement is two steps to the right' do
-        let(:end_position) { [0, 2] }
-        it { is_expected.to be_possible }
-      end
-
-      context 'when the movement is one step towards bottom and one towards right' do
-        let(:end_position) { [1, 1] }
-        it { is_expected.not_to be_possible }
-      end
-
-      context 'when the movement is three steps towards bottom and one towards right' do
-        let(:end_position) { [3, 1] }
-        it { is_expected.not_to be_possible }
-      end
-    end
-
-    context 'when the rook is placed in a random position' do
-      before do
-        board.data[3][5] = piece
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
       end
 
       context 'when the movement is one step towards right' do
-        let(:end_position) { [3, 6] }
-        it { is_expected.to be_possible }
+        let(:end_position) { [0, 1] }
+        context 'when it is not blocked by any piece' do
+          it { is_expected.to be_valid }
+        end
+
+        context 'when it is blocked' do
+          before do
+            board.data[0][1] = piece
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
       end
 
-      context 'when the movement is five steps towards left' do
+      context 'when the movement is three steps towards bottom' do
         let(:end_position) { [3, 0] }
-        it { is_expected.to be_possible }
+        context 'when it is not blocked by any piece' do
+          it { is_expected.to be_valid }
+        end
+
+        context 'when it is blocked on transition' do
+          before do
+            board.data[2][0] = piece
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.not_to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
+
+        context 'when it is blocked on arrival' do
+          before do
+            board.data[3][0] = piece
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
       end
 
-      context 'when the movement is three steps towards top' do
-        let(:end_position) { [0, 5] }
-        it { is_expected.to be_possible }
+      context 'when the movement is one step towards bottom right corner' do
+        let(:end_position) { [1, 1] }
+        it { is_expected.not_to be_valid }
       end
 
-      context 'when the movement is two steps towards bottom' do
-        let(:end_position) { [5, 5] }
-        it { is_expected.to be_possible }
+      context 'when the movement is three step towards bottom right corner' do
+        let(:end_position) { [3, 3] }
+        it { is_expected.not_to be_valid }
       end
 
-      context 'when the movement is two steps towards top and one towards right' do
-        let(:end_position) { [1, 6] }
-        it { is_expected.not_to be_possible }
+      context 'when the movement is one step towards bottom and two towards right' do
+        let(:end_position) { [1, 2] }
+        it { is_expected.not_to be_valid }
       end
 
-      context 'when the movement is four steps towards bottom and two towards left' do
-        let(:end_position) { [7, 4] }
-        it { is_expected.not_to be_possible }
+      context 'when the movement is two steps towards bottom and one towards right' do
+        let(:end_position) { [2, 1] }
+        it { is_expected.not_to be_valid }
       end
     end
-  end
 
-  describe '#blocked?' do
-    let(:end_position) { [5, 0] }
-    before do
-      board.data[0][0] = piece
-    end
-    context 'when the movement is blocked on transition by a piece of the same color' do
+    context 'when the bishop is placed in a random position' do
       before do
-        board.data[2][0] = Knight.new(:white)
+        board.data[3][5] = rook
+      end
+      context 'when the movement is one step towards bottom' do
+        let(:end_position) { [4, 5] }
+        context 'when it is not blocked by any piece' do
+          it { is_expected.to be_valid }
+        end
+
+        context 'when it is blocked on arrival' do
+          before do
+            board.data[4][5] = piece
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
       end
 
-      it { is_expected.to be_blocked }
-    end
+      context 'when the movement is one step towards top' do
+        let(:end_position) { [2, 5] }
+        context 'when it is not blocked by any piece' do
+          it { is_expected.to be_valid }
+        end
 
-    context 'when the movement is blocked on transition by a piece of the opposite color' do
-      before do
-        board.data[3][0] = Knight.new(:black)
+        context 'when it is blocked' do
+          before do
+            board.data[2][5] = piece
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
       end
 
-      it { is_expected.to be_blocked }
-    end
+      context 'when the movement is two steps towards right' do
+        let(:end_position) { [3, 7] }
+        context 'when it is not blocked by any piece' do
+          it { is_expected.to be_valid }
+        end
 
-    context 'when the movement is blocked on arrival by a piece of the same color' do
-      before do
-        board.data[5][0] = Knight.new(:black)
+        context 'when it is blocked on transition' do
+          before do
+            board.data[3][6] = piece
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.not_to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
+
+        context 'when it is blocked on arrival' do
+          before do
+            board.data[3][7] = piece
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
       end
 
-      it { is_expected.to be_blocked }
-    end
+      context 'when the movement is two steps towards top left' do
+        let(:end_position) { [3, 3] }
+        context 'when it is not blocked by any piece' do
+          it { is_expected.to be_valid }
+        end
 
-    context 'when the movement is blocked on arrival by a piece of the opposite color' do
-      before do
-        board.data[5][0] = Knight.new(:white)
+        context 'when it is blocked on transition' do
+          before do
+            board.data[3][4] = piece
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.not_to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
+
+        context 'when it is blocked on arrival' do
+          before do
+            board.data[3][3] = piece
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
       end
 
-      it { is_expected.not_to be_blocked }
-    end
+      context 'when the movement is two steps towards bottom right corner' do
+        let(:end_position) { [5, 7] }
+        it { is_expected.not_to be_valid }
+      end
 
-    context ' when the movement is not blocked by any piece' do
-      it { is_expected.not_to be_blocked }
+      context 'when the movement is two steps towards bottom left corner' do
+        let(:end_position) { [5, 3] }
+        it { is_expected.not_to be_valid }
+      end
+
+      context 'when the movement is one step towards top left corner' do
+        let(:end_position) { [2, 4] }
+        it { is_expected.not_to be_valid }
+      end
+
+      context 'when the movement is one step towards top right corner' do
+        let(:end_position) { [2, 6] }
+        it { is_expected.not_to be_valid }
+      end
     end
   end
 
   describe '#direction' do
     before do
-      board.data[3][3] = piece
+      board.data[3][3] = rook
     end
 
     context 'when the movement is from top to bottom' do
