@@ -15,7 +15,7 @@ class Pawn
   private
 
   def basic_forward
-    color == :black ? [[1, 0]] : [[-1, 0]]
+    color == :black ? [[2, 0], [1, 0]] : [[-2, 0], [-1, 0]]
   end
 
   def basic_diagonals
