@@ -2,13 +2,13 @@
 
 require_relative '../../../lib/movements/basic_movements/bishop_movement'
 require_relative '../../../lib/pieces/bishop'
-require_relative '../../../lib/pieces/knight'
+require_relative '../../../lib/piece'
 require_relative '../../../lib/board'
 
 describe BishopMovement do
   subject { described_class.new(board, bishop, end_position) }
   let(:bishop) { Bishop.new(:black) }
-  let(:knight) { Knight.new(color) }
+  let(:piece) { Piece.new(color) }
   let(:board) { Board.new }
   describe '#valid?' do
     context 'when the bishop is placed in the top left corner' do
@@ -24,7 +24,7 @@ describe BishopMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[1][1] = knight
+            board.data[1][1] = piece
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -47,7 +47,7 @@ describe BishopMovement do
 
         context 'when it is blocked on transition' do
           before do
-            board.data[2][2] = knight
+            board.data[2][2] = piece
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -63,7 +63,7 @@ describe BishopMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[4][4] = knight
+            board.data[4][4] = piece
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -111,7 +111,7 @@ describe BishopMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[4][6] = knight
+            board.data[4][6] = piece
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -134,7 +134,7 @@ describe BishopMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[4][4] = knight
+            board.data[4][4] = piece
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -157,7 +157,7 @@ describe BishopMovement do
 
         context 'when it is blocked on transition' do
           before do
-            board.data[2][4] = knight
+            board.data[2][4] = piece
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -173,7 +173,7 @@ describe BishopMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[1][3] = knight
+            board.data[1][3] = piece
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -196,7 +196,7 @@ describe BishopMovement do
 
         context 'when it is blocked on transition' do
           before do
-            board.data[2][6] = knight
+            board.data[2][6] = piece
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -212,7 +212,7 @@ describe BishopMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[1][7] = knight
+            board.data[1][7] = piece
           end
 
           context 'when the blocking piece is of the opposite color' do
