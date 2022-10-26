@@ -21,13 +21,13 @@ describe PawnMovement do
           it { is_expected.to be_possible }
         end
 
-        context 'when the movement is one step towards right' do
-          let(:end_position) { [0, 1] }
+        context 'when the movement is two steps towards bottom' do
+          let(:end_position) { [2, 0] }
           it { is_expected.not_to be_possible }
         end
 
-        context 'when the movement is two steps towards bottom' do
-          let(:end_position) { [2, 0] }
+        context 'when the movement is one step towards right' do
+          let(:end_position) { [0, 1] }
           it { is_expected.not_to be_possible }
         end
 
@@ -55,6 +55,22 @@ describe PawnMovement do
           end
         end
       end
+
+      context 'when it is placed in the second row' do
+        before do
+          board.data[1][0] = pawn
+        end
+
+        context 'when the movement is one step towards bottom' do
+          let(:end_position) { [2, 0] }
+          it { is_expected.to be_possible }
+        end
+
+        context 'when the movement is two steps towards bottom' do
+          let(:end_position) { [3, 0] }
+          it { is_expected.to be_possible }
+        end
+      end
     end
 
     context 'when the pawn is white' do
@@ -69,8 +85,8 @@ describe PawnMovement do
           it { is_expected.to be_possible }
         end
 
-        context 'when the movement is one step towards bottom' do
-          let(:end_position) { [4, 4] }
+        context 'when the movement is two step towards top' do
+          let(:end_position) { [1, 4] }
           it { is_expected.not_to be_possible }
         end
 
@@ -101,6 +117,22 @@ describe PawnMovement do
 
             it { is_expected.to be_possible }
           end
+        end
+      end
+
+      context 'when it is placed in the seventh row' do
+        before do
+          board.data[6][0] = pawn
+        end
+
+        context 'when the movement is one steps towards top' do
+          let(:end_position) { [5, 0] }
+          it { is_expected.to be_possible }
+        end
+
+        context 'when the movement is two steps towards top' do
+          let(:end_position) { [4, 0] }
+          it { is_expected.to be_possible }
         end
       end
     end
