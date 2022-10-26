@@ -81,6 +81,8 @@ describe BishopMovement do
         it { is_expected.not_to be_valid }
       end
     end
+
+    context 'when the bishop is placed in a random position' do 
   end
 
   describe '#direction' do
