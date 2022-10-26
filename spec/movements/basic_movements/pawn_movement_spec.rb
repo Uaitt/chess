@@ -18,7 +18,48 @@ describe PawnMovement do
 
         context 'when the movement is one step towards bottom' do
           let(:end_position) { [1, 0] }
-          it { is_expected.to be_possible }
+          context 'when it is not blocked by any piece' do
+            it { is_expected.to be_possible }
+          end
+
+          context 'when it is blocked' do
+            before do
+              board.data[1][0] = Knight.new(color)
+            end
+            context 'when the blocking piece is of the same color' do
+              let(:color) { :black }
+              it { is_expected.not_to be_possible }
+            end
+
+            context 'when the blocking piece is of the opposite color' do
+              let(:color) { :white }
+              it { is_expected.not_to be_possible }
+            end
+          end
+        end
+
+        context 'when the movement is one step towards bottom right corner' do
+          let(:end_position) { [1, 1] }
+
+          context 'when it is not blocked by any piece' do
+            it { is_expected.not_to be_possible }
+          end
+
+          context 'when it is blocked' do
+            before do
+              board.data[1][1] = Knight.new(color)
+            end
+
+            context 'when the blocking piece is of the same color' do
+              let(:color) { :black }
+              it { is_expected.not_to be_possible }
+            end
+
+            context 'when the blocking piece is of the opposite color' do
+              let(:color) { :white }
+              it { is_expected.to be_possible }
+            end
+          end
         end
 
         context 'when the movement is two steps towards bottom' do
@@ -30,30 +71,6 @@ describe PawnMovement do
           let(:end_position) { [0, 1] }
           it { is_expected.not_to be_possible }
         end
-
-        context 'when the movement is one step towards bottom right corner' do
-          let(:end_position) { [1, 1] }
-
-          context 'when it is not blocked by any piece' do
-            it { is_expected.not_to be_possible }
-          end
-
-          context 'when it is blocked by a piece of the same color on arrival' do
-            before do
-              board.data[1][1] = Knight.new(:black)
-            end
-
-            it { is_expected.not_to be_possible }
-          end
-
-          context 'when it is blocked by a piece of the opposite color on arrival' do
-            before do
-              board.data[1][1] = Knight.new(:white)
-            end
-
-            it { is_expected.to be_possible }
-          end
-        end
       end
 
       context 'when it is placed in the second row' do
@@ -62,13 +79,33 @@ describe PawnMovement do
         end
 
         context 'when the movement is one step towards bottom' do
-          let(:end_position) { [2, 0] }
-          it { is_expected.to be_possible }
+          context 'when the movement is not blocked by any piece' do
+            let(:end_position) { [2, 0] }
+            it { is_expected.to be_possible }
+          end
         end
 
         context 'when the movement is two steps towards bottom' do
-          let(:end_position) { [3, 0] }
-          it { is_expected.to be_possible }
+          context 'when the movement is not blocked by any piece' do
+            let(:end_position) { [3, 0] }
+            it { is_expected.to be_possible }
+          end
+
+          context 'when the movement is blocked' do
+            before do
+              board.data[2][0] = Knight.new(color)
+            end
+
+            context 'when the blocking piece is of the same color' do
+              let(:color) { :black }
+              it { is_expected.not_to be_possible }
+            end
+
+            context 'when the blocking piece is of the opposite color' do
+              let(:color) { :white }
+              it { is_expected.not_to be_possible }
+            end
+          end
         end
       end
     end
@@ -82,7 +119,48 @@ describe PawnMovement do
 
         context 'when the movement is one step towards top' do
           let(:end_position) { [2, 4] }
-          it { is_expected.to be_possible }
+          context 'when it is not blocked by any piece' do
+            it { is_expected.to be_possible }
+          end
+
+          context 'when the movement is blocked' do
+            before do
+              board.data[2][4] = Knight.new(color)
+            end
+            context 'when the blocking piece is of the same color' do
+              let(:color) { :white }
+              it { is_expected.not_to be_possible }
+            end
+
+            context 'when the blocking piece is of the opposite color' do
+              let(:color) { :black }
+              it { is_expected.not_to be_possible }
+            end
+          end
+        end
+
+        context 'when the movement is one step towards top right corner' do
+          let(:end_position) { [2, 5] }
+
+          context 'when it is not blocked by any piece' do
+            it { is_expected.not_to be_possible }
+          end
+
+          context 'when it is blocked' do
+            before do
+              board.data[2][5] = Knight.new(color)
+            end
+
+            context 'when the blocking piece is of the same color' do
+              let(:color) { :white }
+              it { is_expected.not_to be_possible }
+            end
+
+            context 'when it is blocked by a piece of the opposite color on arrival' do
+              let(:color) { :black }
+              it { is_expected.to be_possible }
+            end
+          end
         end
 
         context 'when the movement is two step towards top' do
@@ -94,30 +172,6 @@ describe PawnMovement do
           let(:end_position) { [3, 5] }
           it { is_expected.not_to be_possible }
         end
-
-        context 'when the movement is one step towards top right corner' do
-          let(:end_position) { [2, 5] }
-
-          context 'when it is not blocked by any piece' do
-            it { is_expected.not_to be_possible }
-          end
-
-          context 'when it is blocked by a piece of the same color on arrival' do
-            before do
-              board.data[2][5] = Knight.new(:white)
-            end
-
-            it { is_expected.not_to be_possible }
-          end
-
-          context 'when it is blocked by a piece of the opposite color on arrival' do
-            before do
-              board.data[2][5] = Knight.new(:black)
-            end
-
-            it { is_expected.to be_possible }
-          end
-        end
       end
 
       context 'when it is placed in the seventh row' do
@@ -126,13 +180,33 @@ describe PawnMovement do
         end
 
         context 'when the movement is one steps towards top' do
-          let(:end_position) { [5, 0] }
-          it { is_expected.to be_possible }
+          context 'when the movement is not blocked by any piece' do
+            let(:end_position) { [5, 0] }
+            it { is_expected.to be_possible }
+          end
         end
 
         context 'when the movement is two steps towards top' do
           let(:end_position) { [4, 0] }
-          it { is_expected.to be_possible }
+          context 'when the movement is not blocked by any piece' do
+            it { is_expected.to be_possible }
+          end
+
+          context 'when the movement is blocked' do
+            before do
+              board.data[4][0] = Knight.new(color)
+            end
+
+            context 'when the blocking piece is of the same color' do
+              let(:color) { :white }
+              it { is_expected.not_to be_possible }
+            end
+
+            context 'when the blocking piece is of the opposite color' do
+              let(:color) { :black }
+              it { is_expected.not_to be_possible }
+            end
+          end
         end
       end
     end
