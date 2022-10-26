@@ -13,6 +13,8 @@ module BasicMovement
     possible? && !blocked?
   end
 
+  private
+
   def possible?
     @piece.basic_moves.each do |move|
       return true if reaches_position?(move)
@@ -23,8 +25,6 @@ module BasicMovement
   def blocked?
     blocked_on_transition? || blocked_on_arrival?
   end
-
-  private
 
   def reaches_position?(move)
     @initial_position[0] + move[0] == @end_position[0] &&
