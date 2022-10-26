@@ -45,7 +45,23 @@ describe BishopMovement do
           it { is_expected.to be_valid }
         end
 
-        context 'when it is blocked' do
+        context 'when it is blocked on transition' do
+          before do
+            board.data[2][2] = knight
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.not_to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
+
+        context 'when it is blocked on arrival' do
           before do
             board.data[4][4] = knight
           end
@@ -93,7 +109,7 @@ describe BishopMovement do
           it { is_expected.to be_valid }
         end
 
-        context 'when it is blocked' do
+        context 'when it is blocked on arrival' do
           before do
             board.data[4][6] = knight
           end
@@ -139,7 +155,23 @@ describe BishopMovement do
           it { is_expected.to be_valid }
         end
 
-        context 'when it is blocked' do
+        context 'when it is blocked on transition' do
+          before do
+            board.data[2][4] = knight
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.not_to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
+
+        context 'when it is blocked on arrival' do
           before do
             board.data[1][3] = knight
           end
@@ -162,7 +194,23 @@ describe BishopMovement do
           it { is_expected.to be_valid }
         end
 
-        context 'when it is blocked' do
+        context 'when it is blocked on transition' do
+          before do
+            board.data[2][6] = knight
+          end
+
+          context 'when the blocking piece is of the opposite color' do
+            let(:color) { :white }
+            it { is_expected.not_to be_valid }
+          end
+
+          context 'when the blocking piece is of the same color' do
+            let(:color) { :black }
+            it { is_expected.not_to be_valid }
+          end
+        end
+
+        context 'when it is blocked on arrival' do
           before do
             board.data[1][7] = knight
           end
