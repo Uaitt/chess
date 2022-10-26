@@ -86,8 +86,8 @@ describe PawnMovement do
         end
 
         context 'when the movement is two steps towards bottom' do
+          let(:end_position) { [3, 0] }
           context 'when the movement is not blocked by any piece' do
-            let(:end_position) { [3, 0] }
             it { is_expected.to be_possible }
           end
 

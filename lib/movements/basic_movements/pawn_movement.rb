@@ -20,14 +20,16 @@ class PawnMovement
   end
 
   def arrival_allows?(count)
-    return true if count.zero? || count == 1
+    return blocked? if count.zero? || count == 1
 
     !@board.data[@end_position[0]][@end_position[1]].nil? &&
       @board.data[@end_position[0]][@end_position[1]].color != @piece.color
   end
 
   def turn_allows?(count)
-    count.zero? ? !already_happened? : true
+    return true unless count.zero?
+
+    !already_happened?
   end
 
   def already_happened?
