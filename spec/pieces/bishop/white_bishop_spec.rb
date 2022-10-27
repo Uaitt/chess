@@ -18,4 +18,14 @@ describe WhiteBishop do
       end
     end
   end
+
+  describe '#basic_moves' do
+    it 'returns the right set of basic moves' do
+      bishop_moves = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7]] +
+                     [[-1, -1], [-2, -2], [-3, -3], [-4, -4], [-5, -5], [-6, -6], [-7, -7]] +
+                     [[1, -1], [2, -2], [3, -3], [4, -4], [5, -5], [6, -6], [7, -7]] +
+                     [[-1, 1], [-2, 2], [-3, 3], [-4, 4], [-5, 5], [-6, 6], [-7, 7]]
+      expect(white_bishop.basic_moves.sort).to eq(bishop_moves.sort)
+    end
+  end
 end
