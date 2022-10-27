@@ -8,13 +8,13 @@ describe WhiteBishop do
   describe '#file' do
     context 'when the white bishop is the only one created' do
       it 'returns 2' do
-        expect(white_bishop.file).to eq(2)
+        expect(white_bishop.initial_file).to eq(2)
       end
     end
 
     context 'when the white bishop is not the only one created' do
       it 'returns 5' do
-        expect(white_bishop.file).to eq(5)
+        expect(white_bishop.initial_file).to eq(5)
       end
     end
   end

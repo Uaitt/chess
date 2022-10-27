@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 require_relative '../black_piece'
-require_relative 'king_moves'
+require_relative 'king_basic_moves'
 
 # this class represents a black king in chess
 class BlackKing < BlackPiece
-  include KingMoves
+  include KingBasicMoves
 
-  def file
+  def initial_file
     3
   end
 end

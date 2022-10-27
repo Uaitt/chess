@@ -6,7 +6,7 @@ describe BlackKing do
   subject(:black_queen) { described_class.new }
   describe '#file' do
     it 'returns 3' do
-      expect(black_queen.file).to eq(3)
+      expect(black_queen.initial_file).to eq(3)
     end
   end
 

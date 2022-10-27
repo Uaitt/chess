@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # this class represents a bishop in chess
-module BishopMoves
+module BishopBasicMoves
   def basic_moves
     towards_bottom_right_corner_moves + towards_top_left_corner_moves +
       towards_bottom_left_corner_moves + toward_top_right_corner_moves

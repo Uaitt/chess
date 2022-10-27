@@ -7,13 +7,13 @@ describe WhiteKnight do
   describe '#file' do
     context 'when the white knight is the only one created' do
       it 'returns 1' do
-        expect(white_knight.file).to eq(1)
+        expect(white_knight.initial_file).to eq(1)
       end
     end
 
     context 'when the white knight is not the only one created' do
       it 'returns 6' do
-        expect(white_knight.file).to eq(6)
+        expect(white_knight.initial_file).to eq(6)
       end
     end
   end

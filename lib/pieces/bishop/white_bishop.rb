@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require_relative '../white_piece'
-require_relative 'bishop_moves'
+require_relative 'bishop_basic_moves'
 
 # this class represents a white bishop in chess
 class WhiteBishop < WhitePiece
-  include BishopMoves
+  include BishopBasicMoves
   @count = 0
 
   class << self
@@ -17,7 +17,7 @@ class WhiteBishop < WhitePiece
     WhiteBishop.count += 1
   end
 
-  def file
+  def initial_file
     WhiteBishop.count == 1 ? 2 : 5
   end
 end
