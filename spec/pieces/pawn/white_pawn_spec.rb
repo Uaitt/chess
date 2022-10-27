@@ -33,8 +33,8 @@ describe WhitePawn do
 
   describe '#basic_moves' do
     it 'returns the right set of basic moves' do
-      black_pawn_moves = [[2, 0], [1, 0], [1, 1], [1, -1]]
-      expect(black_pawn.basic_moves.sort).to eq(black_pawn_moves.sort)
+      white_pawn_moves = [[-2, 0], [-1, 0], [-1, 1], [-1, -1]]
+      expect(white_pawn.basic_moves.sort).to eq(white_pawn_moves.sort)
     end
   end
 end
