@@ -81,82 +81,60 @@ describe Board do
     end
 
     it 'places a white rook on the first square of the eighth row' do
-      expect(data[0][0].instance_of?(WhiteRook)).to eq(true)
+      expect(data[7][0].instance_of?(WhiteRook)).to eq(true)
     end
 
     it 'places a white knight on the second square of the eighth row' do
-      expect(data[0][1].instance_of?(WhiteKnight)).to eq(true)
+      expect(data[7][1].instance_of?(WhiteKnight)).to eq(true)
     end
 
     it 'places a white bishop on the third square of the eighth row' do
-      expect(data[0][2].instance_of?(WhiteBishop)).to eq(true)
+      expect(data[7][2].instance_of?(WhiteBishop)).to eq(true)
     end
 
     it 'places a white queen on the fourth square of the eighth row' do
-      expect(data[0][3].instance_of?(WhiteQueen)).to eq(true)
+      expect(data[7][3].instance_of?(WhiteQueen)).to eq(true)
     end
 
     it 'places a white king on the fifth square of the eighth row' do
-      expect(data[0][4].instance_of?(WhiteKing)).to eq(true)
+      expect(data[7][4].instance_of?(WhiteKing)).to eq(true)
     end
 
     it 'places a white bishop on the sixth square of the eighth row' do
-      expect(data[0][5].instance_of?(WhiteBishop)).to eq(true)
+      expect(data[7][5].instance_of?(WhiteBishop)).to eq(true)
     end
 
     it 'places a white knight on the seventh square of the eighth row' do
-      expect(data[0][6].instance_of?(WhiteKnight)).to eq(true)
+      expect(data[7][6].instance_of?(WhiteKnight)).to eq(true)
     end
 
     it 'places a white rook on the eighth square of the eighth row' do
-      expect(data[0][7].instance_of?(WhiteRook)).to eq(true)
-    end
-  end
-
-  describe '#move' do
-    let(:knight) { Knight.new(:black) }
-
-    context 'when given a knight and a position' do
-      let(:end_position) { [1, 2] }
-      let(:initial_position) { [0, 0] }
-      let(:data) { board.instance_variable_get(:@data) }
-      before do
-        data[initial_position[0]][initial_position[1]] = knight
-        board.move(knight, end_position)
-      end
-
-      it 'moves the knight to that position' do
-        expect(data[end_position[0]][end_position[1]]).to eq(knight)
-      end
-
-      it 'sets the previous position to nil' do
-        expect(data[initial_position[0]][initial_position[1]]).to eq(nil)
-      end
+      expect(data[7][7].instance_of?(WhiteRook)).to eq(true)
     end
   end
 
   describe '#current_position' do
-    let(:knight) { Knight.new(:black) }
+    let(:black_knight) { BlackKnight.new }
     let(:data) { board.instance_variable_get(:@data) }
     context 'when given a knight' do
       it 'returns the current position of the knight' do
-        data[0][0] = knight
-        expect(board.current_position(knight)).to eq([0, 0])
+        data[0][0] = black_knight
+        expect(board.current_position(black_knight)).to eq([0, 0])
       end
 
       it 'returns the current position of the knight' do
-        data[5][2] = knight
-        expect(board.current_position(knight)).to eq([5, 2])
+        data[5][2] = black_knight
+        expect(board.current_position(black_knight)).to eq([5, 2])
       end
     end
   end
 
-  describe '#get_piece' do
+  describe '#piece_at_position' do
     let(:data) { board.instance_variable_get(:@data) }
-    let(:knight) { Knight.new(:black) }
+    let(:black_knight) { BlackKnight.new }
     it 'returns the piece in the exact position' do
-      data[0][0] = knight
-      expect(board.get_piece([0, 0])).to eq(knight)
+      data[0][0] = black_knight
+      expect(board.piece_at_position([0, 0])).to eq(black_knight)
     end
   end
 end
