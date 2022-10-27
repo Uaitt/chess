@@ -19,6 +19,12 @@ describe WhiteBishop do
     end
   end
 
+  describe '#color' do
+    it 'returns white' do
+      expect(white_bishop.color).to eq(:white)
+    end
+  end
+
   describe '#basic_moves' do
     it 'returns the right set of basic moves' do
       bishop_moves = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7]] +

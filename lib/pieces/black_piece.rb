@@ -1,8 +1,8 @@
 # this class represents a white piece in chess
-class WhitePiece
+class BlackPiece
   attr_reader :color
 
   def initialize
-    @color = :white
+    @color = :black
   end
 end
