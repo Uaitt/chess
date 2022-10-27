@@ -3,7 +3,7 @@
 require_relative '../rook/rook_basic_moves'
 require_relative '../bishop/bishop_basic_moves'
 
-# this class represents a queen in chess
+# set of methods common to all queens in chess
 module QueenBasicMoves
   include RookBasicMoves
   include BishopBasicMoves

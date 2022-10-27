@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# this class represents a bishop in chess
+# set of methods common to all bishops in chess
 module BishopBasicMoves
   def basic_moves
     towards_bottom_right_corner_moves + towards_top_left_corner_moves +

@@ -2,7 +2,7 @@
 
 require_relative '../white_piece'
 
-# this class represents a black pawn
+# this class represents a black pawn in chess
 class WhitePawn < WhitePiece
   @count = 0
 

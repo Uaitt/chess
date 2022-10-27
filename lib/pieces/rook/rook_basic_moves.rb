@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# this class represents a rook in chess
+# set of methods common to all rooks in chess
 module RookBasicMoves
   def basic_moves
     towards_bottom + towards_top +
