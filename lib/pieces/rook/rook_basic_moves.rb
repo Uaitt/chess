@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 # this class represents a rook in chess
-module Rook
-  attr_reader :color
-
+module RookBasicMoves
   def basic_moves
     towards_bottom + towards_top +
       towards_right + towards_left

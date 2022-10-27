@@ -3,7 +3,7 @@
 require_relative '../white_piece'
 
 # this class represents a black pawn
-class WhitePawn < whitePiece
+class WhitePawn < WhitePiece
   @count = 0
 
   class << self
