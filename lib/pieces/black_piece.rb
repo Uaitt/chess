@@ -1,4 +1,6 @@
-# this class represents a white piece in chess
+# frozen_string_literal: true
+
+# this class represents a black piece in chess
 class BlackPiece
   attr_reader :color
 
