@@ -7,16 +7,7 @@ require_relative 'bishop_basic_moves'
 class WhiteBishop < WhitePiece
   include BishopBasicMoves
 
-  def self.initial_files
-    [2, 5]
-  end
-
-  def self.ranks
-    [7]
-  end
-
-  def initialize
-    super
-    WhiteBishop.count += 1
+  def self.starts_at?(rank, file)
+    rank == 7 && [2, 5].include?(file)
   end
 end

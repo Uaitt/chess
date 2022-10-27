@@ -7,16 +7,7 @@ require_relative 'rook_basic_moves'
 class WhiteRook < WhitePiece
   include RookBasicMoves
 
-  def self.initial_file
-    [0, 7]
-  end
-
-  def self.initial_rank
-    [0]
-  end
-
-  def initialize
-    super
-    WhiteRook.count += 1
+  def self.starts_at?(rank, file)
+    rank == 7 && [0, 7].include?(file)
   end
 end

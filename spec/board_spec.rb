@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../lib/board'
+require_relative '../lib/pieces/nil_piece'
 require_relative '../lib/pieces/bishop/black_bishop'
 require_relative '../lib/pieces/bishop/white_bishop'
 require_relative '../lib/pieces/king/black_king'

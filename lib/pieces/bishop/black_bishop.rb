@@ -7,16 +7,7 @@ require_relative 'bishop_basic_moves'
 class BlackBishop < BlackPiece
   include BishopBasicMoves
 
-  def self.initial_files
-    [2, 5]
-  end
-
-  def self.ranks
-    [0]
-  end
-
-  def initialize
-    super
-    BlackBishop.count += 1
+  def self.starts_at?(rank, file)
+    rank.zero? && [2, 5].include?(file)
   end
 end

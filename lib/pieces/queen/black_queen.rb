@@ -7,11 +7,7 @@ require_relative 'queen_basic_moves'
 class BlackQueen < BlackPiece
   include QueenBasicMoves
 
-  def self.initial_file
-    4
-  end
-
-  def self.initial_rank
-    0
+  def self.starts_at?(rank, file)
+    rank.zero? && file == 3
   end
 end

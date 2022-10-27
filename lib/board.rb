@@ -11,7 +11,7 @@ class Board
   end
 
   def set
-    @data.map.with_index do |row, rank|
+    @data.map!.with_index do |row, rank|
       row.map.with_index do |_, file|
         Piece.for(rank, file)
       end

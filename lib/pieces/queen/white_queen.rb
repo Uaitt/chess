@@ -7,11 +7,7 @@ require_relative 'queen_basic_moves'
 class WhiteQueen < WhitePiece
   include QueenBasicMoves
 
-  def self.initial_file
-    4
-  end
-
-  def self.initial_rank
-    7
+  def self.starts_at?(rank, file)
+    rank == 7 && file == 3
   end
 end

@@ -7,16 +7,7 @@ require_relative 'rook_basic_moves'
 class BlackRook < BlackPiece
   include RookBasicMoves
 
-  def self.initial_file
-    [0, 7]
-  end
-
-  def self.initial_rank
-    [0]
-  end
-
-  def initialize
-    super
-    BlackRook.count += 1
+  def self.starts_at?(rank, file)
+    rank.zero? && [0, 7].include?(file)
   end
 end

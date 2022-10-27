@@ -7,16 +7,7 @@ require_relative 'knight_basic_moves'
 class BlackKnight < BlackPiece
   include KnightBasicMoves
 
-  def initialize
-    super
-    BlackKnight.count += 1
-  end
-
-  def initial_file
-    [1, 6]
-  end
-
-  def initial_rank
-    [0]
+  def self.starts_at?(rank, file)
+    rank.zero? && [1, 6].include?(file)
   end
 end

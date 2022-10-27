@@ -7,11 +7,7 @@ require_relative 'king_basic_moves'
 class BlackKing < BlackPiece
   include KingBasicMoves
 
-  def self.initial_file
-    [3]
-  end
-
-  def self.initial_rank
-    [0]
+  def self.starts_at?(rank, file)
+    rank.zero? && file == 4
   end
 end

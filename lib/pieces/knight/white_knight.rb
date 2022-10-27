@@ -6,17 +6,8 @@ require_relative 'knight_basic_moves'
 # this class represents a white knight in chess
 class WhiteKnight < WhitePiece
   include KnightBasicMoves
-  @count = 0
 
-  class << self
-    attr_accessor :count
-  end
-
-  def initial_file
-    [1, 6]
-  end
-
-  def initial_rank
-    [7]
+  def self.starts_at?(rank, file)
+    rank == 7 && [1, 6].include?(file)
   end
 end
