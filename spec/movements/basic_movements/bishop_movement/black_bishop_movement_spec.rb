@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
-require_relative '../../../lib/movements/basic_movements/bishop_movement'
-require_relative '../../../lib/pieces/bishop'
-require_relative '../../../lib/piece'
+require_relative '../../../lib/movements/basic_movements/bishop_movement/black_bishop_movement'
+require_relative '../../../lib/pieces/bishop/black_bishop'
+require_relative '../../../lib/pieces/piece'
 require_relative '../../../lib/board'
 
-describe BishopMovement do
-  subject { described_class.new(board, bishop, end_position) }
-  let(:bishop) { Bishop.new(:black) }
-  let(:piece) { Piece.new(color) }
+describe BlackBishopMovement do
+  subject { described_class.new(board, black_bishop, end_position) }
+  let(:black_bishop) { BlackBishop.new }
+  let(:piece) { color_class.new }
   let(:board) { Board.new }
   describe '#valid?' do
     context 'when the bishop is placed in the top left corner' do
       before do
-        board.data[0][0] = bishop
+        board.data[0][0] = black_bishop
       end
 
       context 'when the movement is one step towards bottom right corner' do
@@ -28,12 +28,12 @@ describe BishopMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { WhitePiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -51,12 +51,12 @@ describe BishopMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -67,12 +67,12 @@ describe BishopMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { WhitePiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -101,7 +101,7 @@ describe BishopMovement do
 
     context 'when the bishop is placed in a random position' do
       before do
-        board.data[3][5] = bishop
+        board.data[3][5] = black_bishop
       end
       context 'when the movement is one step towards bottom right corner' do
         let(:end_position) { [4, 6] }
@@ -115,12 +115,12 @@ describe BishopMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { WhitePiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -138,12 +138,12 @@ describe BishopMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { WhitePiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -161,12 +161,12 @@ describe BishopMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -177,12 +177,12 @@ describe BishopMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { WhitePiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -200,12 +200,12 @@ describe BishopMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -216,12 +216,12 @@ describe BishopMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { WhitePiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -251,7 +251,7 @@ describe BishopMovement do
 
   describe '#direction' do
     before do
-      board.data[3][5] = bishop
+      board.data[3][5] = black_bishop
     end
 
     context 'when the movement is towards bottom right corner' do
