@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # this class represents a bishop in chess
-class BishopMoves
+module BishopMoves
   attr_reader :color
 
   def basic_moves
