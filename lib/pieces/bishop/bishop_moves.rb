@@ -2,8 +2,6 @@
 
 # this class represents a bishop in chess
 module BishopMoves
-  attr_reader :color
-
   def basic_moves
     towards_bottom_right_corner_moves + towards_top_left_corner_moves +
       towards_bottom_left_corner_moves + toward_top_right_corner_moves
