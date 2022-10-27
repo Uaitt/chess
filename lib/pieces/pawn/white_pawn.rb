@@ -4,19 +4,17 @@ require_relative '../white_piece'
 
 # this class represents a black pawn in chess
 class WhitePawn < WhitePiece
-  @count = 0
+  def self.initial_file
+    [0, 1, 2, 3, 4, 5, 6, 7]
+  end
 
-  class << self
-    attr_accessor :count
+  def self.initial_rank
+    [6]
   end
 
   def initialize
     super
     WhitePawn.count += 1
-  end
-
-  def initial_file
-    WhitePawn.count - 1
   end
 
   def basic_moves

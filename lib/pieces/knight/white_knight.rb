@@ -12,12 +12,11 @@ class WhiteKnight < WhitePiece
     attr_accessor :count
   end
 
-  def initialize
-    super
-    WhiteKnight.count += 1
+  def initial_file
+    [1, 6]
   end
 
-  def initial_file
-    WhiteKnight.count == 1 ? 1 : 6
+  def initial_rank
+    [7]
   end
 end

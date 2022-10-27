@@ -6,11 +6,6 @@ require_relative 'knight_basic_moves'
 # this class represents a black knight in chess
 class BlackKnight < BlackPiece
   include KnightBasicMoves
-  @count = 0
-
-  class << self
-    attr_accessor :count
-  end
 
   def initialize
     super
@@ -18,6 +13,10 @@ class BlackKnight < BlackPiece
   end
 
   def initial_file
-    BlackKnight.count == 1 ? 1 : 6
+    [1, 6]
+  end
+
+  def initial_rank
+    [0]
   end
 end

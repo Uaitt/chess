@@ -7,7 +7,11 @@ require_relative 'queen_basic_moves'
 class WhiteQueen < WhitePiece
   include QueenBasicMoves
 
-  def initial_file
+  def self.initial_file
     4
+  end
+
+  def self.initial_rank
+    7
   end
 end

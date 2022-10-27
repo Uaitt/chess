@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'pieces/piece'
+
 # this class represents the board in chess
 class Board
   attr_reader :data
@@ -9,8 +11,11 @@ class Board
   end
 
   def set
-    dispose_pieces(:black)
-    dispose_pieces(:white)
+    @data.map.with_index do |row, rank|
+      row.map.with_index do |_, file|
+        Piece.for(rank, file)
+      end
+    end
   end
 
   def move(piece, end_position) # to remove
@@ -33,6 +38,7 @@ class Board
 
   private
 
+=begin
   def dispose_pieces(color)
     dispose_main_pieces(color)
     dispose_pawns(color)
@@ -40,14 +46,14 @@ class Board
 
   def dispose_main_pieces(color)
     row = color == :black ? 0 : 7
-    @data[row].map!.with_index { |_, index| current_piece(index).new(color) } # remember to use Factory
+    @data[row].map!.with_index { |_, file| Piece.for(file) }
   end
 
   def dispose_pawns(color)
     row = color == :black ? 1 : 6
     @data[row].map! { Pawn.new(color) }
   end
-
+=end
   def current_piece(index)
     case index
     when 0, 7 then Rook

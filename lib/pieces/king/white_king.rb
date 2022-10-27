@@ -7,7 +7,11 @@ require_relative 'king_basic_moves'
 class WhiteKing < WhitePiece
   include KingBasicMoves
 
-  def initial_file
-    3
+  def self.initial_file
+    [3]
+  end
+
+  def self.initial_rank
+    [7]
   end
 end
