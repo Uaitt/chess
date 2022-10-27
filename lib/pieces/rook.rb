@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
 # this class represents a rook in chess
-class Rook
+module Rook
   attr_reader :color
-
-  def initialize(color)
-    @color = color
-  end
 
   def basic_moves
     towards_bottom + towards_top +
