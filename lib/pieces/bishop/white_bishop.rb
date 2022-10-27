@@ -14,5 +14,7 @@ class WhiteBishop < Piece
     WhiteBishop.count += 1
   end
 
-  def 
+  def file
+    WhiteBishop.count == 1 ? 2 : 5
+  end
 end

@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
 # this class represents a bishop in chess
-class Bishop
+class BishopMoves
   attr_reader :color
-
-  def initialize(color)
-    @color = color
-  end
 
   def basic_moves
     towards_bottom_right_corner_moves + towards_top_left_corner_moves +
