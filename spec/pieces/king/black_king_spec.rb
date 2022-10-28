@@ -14,19 +14,19 @@ describe BlackKing do
 
     context 'when given 0 and 3' do
       it 'returns false' do
-        expect(BlackKing.starts_at?(0, 3)).to eq(true)
+        expect(BlackKing.starts_at?(0, 3)).to eq(false)
       end
     end
 
     context 'when given 2 and 4' do
       it 'returns false' do
-        expect(BlackKing.starts_at?(2, 4)).to eq(true)
+        expect(BlackKing.starts_at?(2, 4)).to eq(false)
       end
     end
 
     context 'when given 3 and 3' do
       it 'returns false' do
-        expect(BlackKing.starts_at?(3, 3)).to eq(true)
+        expect(BlackKing.starts_at?(3, 3)).to eq(false)
       end
     end
   end

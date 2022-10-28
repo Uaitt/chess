@@ -18,6 +18,12 @@ describe BlackBishop do
       end
     end
 
+    context 'when given 0 and 3' do
+      it 'returns false' do
+        expect(BlackBishop.starts_at?(0, 3)).to eq(false)
+      end
+    end
+
     context 'when given 2 and 2' do
       it 'returns true' do
         expect(BlackBishop.starts_at?(2, 2)).to eq(false)
@@ -30,9 +36,9 @@ describe BlackBishop do
       end
     end
 
-    context 'when given 0 and 3' do
+    context 'when given 2 and 1' do
       it 'returns false' do
-        expect(BlackBishop.starts_at?(0, 3)).to eq(false)
+        expect(BlackBishop.starts_at?(1, 2)).to eq(false)
       end
     end
   end
