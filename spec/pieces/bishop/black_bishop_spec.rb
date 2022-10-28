@@ -5,16 +5,34 @@ require_relative '../../../lib/pieces/bishop/black_bishop'
 describe BlackBishop do
   subject(:black_bishop) { described_class.new }
 
-  describe '#file' do
-    context 'when the black bishop is the only one created' do
-      it 'returns 2' do
-        expect(black_bishop.initial_file).to eq(2)
+  describe '#starts_at?' do
+    context 'when given 0 and 2' do
+      it 'returns true' do
+        expect(BlackBishop.starts_at?(0, 2).to eq(true)
       end
     end
 
-    context 'when the black bishop is not the only one created' do
-      it 'returns 5' do
-        expect(black_bishop.initial_file).to eq(5)
+    context 'when given 0 and 5' do
+      it 'returns true' do
+        expect(BlackBishop.starts_at?(0, 5).to eq(true)
+      end
+    end
+
+    context 'when given 2 and 2' do
+      it 'returns true' do
+        expect(BlackBishop.starts_at?(2, 2).to eq(false)
+      end
+    end
+
+    context 'when given 5 and 5' do
+      it 'returns true' do
+        expect(BlackBishop.starts_at?(5, 5).to eq(false)
+      end
+    end
+
+    context 'when given 0 and 3' do
+      it 'returns false' do
+        expect(BlackBishop.starts_at?(0, 3).to eq(false)
       end
     end
   end
@@ -27,10 +45,10 @@ describe BlackBishop do
 
   describe '#basic_moves' do
     it 'returns the right set of basic moves' do
-      bishop_moves = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7]] +
-                     [[-1, -1], [-2, -2], [-3, -3], [-4, -4], [-5, -5], [-6, -6], [-7, -7]] +
-                     [[1, -1], [2, -2], [3, -3], [4, -4], [5, -5], [6, -6], [7, -7]] +
-                     [[-1, 1], [-2, 2], [-3, 3], [-4, 4], [-5, 5], [-6, 6], [-7, 7]]
+      bishop_moves = [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7],
+                      [-1, -1], [-2, -2], [-3, -3], [-4, -4], [-5, -5], [-6, -6], [-7, -7],
+                      [1, -1], [2, -2], [3, -3], [4, -4], [5, -5], [6, -6], [7, -7],
+                      [-1, 1], [-2, 2], [-3, 3], [-4, 4], [-5, 5], [-6, 6], [-7, 7]]
       expect(black_bishop.basic_moves.sort).to eq(bishop_moves.sort)
     end
   end

@@ -5,16 +5,34 @@ require_relative '../../../lib/pieces/bishop/white_bishop'
 describe WhiteBishop do
   subject(:white_bishop) { described_class.new }
 
-  describe '#file' do
-    context 'when the white bishop is the only one created' do
-      it 'returns 2' do
-        expect(white_bishop.initial_file).to eq(2)
+  describe '#starts_at?' do
+    context 'when given 7 and 2' do
+      it 'returns true' do
+        expect(WhiteBishop.starts_at?(7, 2).to eq(true)
       end
     end
 
-    context 'when the white bishop is not the only one created' do
-      it 'returns 5' do
-        expect(white_bishop.initial_file).to eq(5)
+    context 'when given 7 and 5' do
+      it 'returns true' do
+        expect(WhiteBishop.starts_at?(7, 5).to eq(true)
+      end
+    end
+
+    context 'when given 2 and 2' do
+      it 'returns true' do
+        expect(WhiteBishop.starts_at?(2, 2).to eq(false)
+      end
+    end
+
+    context 'when given 5 and 5' do
+      it 'returns true' do
+        expect(WhiteBishop.starts_at?(5, 5).to eq(false)
+      end
+    end
+
+    context 'when given 7 and 3' do
+      it 'returns false' do
+        expect(WhiteBishop.starts_at?(7, 3).to eq(false)
       end
     end
   end
