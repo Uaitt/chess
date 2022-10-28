@@ -5,34 +5,34 @@ require_relative '../../../lib/pieces/bishop/black_bishop'
 describe BlackBishop do
   subject(:black_bishop) { described_class.new }
 
-  describe '#starts_at?' do
+  describe '::starts_at?' do
     context 'when given 0 and 2' do
       it 'returns true' do
-        expect(BlackBishop.starts_at?(0, 2).to eq(true)
+        expect(BlackBishop.starts_at?(0, 2)).to eq(true)
       end
     end
 
     context 'when given 0 and 5' do
       it 'returns true' do
-        expect(BlackBishop.starts_at?(0, 5).to eq(true)
+        expect(BlackBishop.starts_at?(0, 5)).to eq(true)
       end
     end
 
     context 'when given 2 and 2' do
       it 'returns true' do
-        expect(BlackBishop.starts_at?(2, 2).to eq(false)
+        expect(BlackBishop.starts_at?(2, 2)).to eq(false)
       end
     end
 
     context 'when given 5 and 5' do
       it 'returns true' do
-        expect(BlackBishop.starts_at?(5, 5).to eq(false)
+        expect(BlackBishop.starts_at?(5, 5)).to eq(false)
       end
     end
 
     context 'when given 0 and 3' do
       it 'returns false' do
-        expect(BlackBishop.starts_at?(0, 3).to eq(false)
+        expect(BlackBishop.starts_at?(0, 3)).to eq(false)
       end
     end
   end
