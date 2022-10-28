@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
-require_relative '../../../../lib/movements/basic_movements/king_movement/black_king_movement'
-require_relative '../../../../lib/pieces/king/black_king'
-require_relative '../../../../lib/pieces/white_piece'
+require_relative '../../../../lib/movements/basic_movements/king/white_king_movement'
+require_relative '../../../../lib/pieces/king/white_king'
+require_relative '../../../../lib/pieces/black_piece'
 require_relative '../../../../lib/board'
 
-describe BlackKingMovement do
-  subject { described_class.new(board, black_king, end_position) }
-  let(:black_king) { BlackKing.new }
+describe WhiteKingMovement do
+  subject { described_class.new(board, white_king, end_position) }
+  let(:white_king) { WhiteKing.new }
   let(:piece) { color_class.new }
   let(:board) { Board.new }
   describe '#valid?' do
     context 'when the king is placed in the top left corner' do
       before do
-        board.data[0][0] = black_king
+        board.data[0][0] = white_king
       end
 
       context 'when the movement is one step towards bottom' do
@@ -28,12 +28,12 @@ describe BlackKingMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color_class) { WhitePiece }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color_class) { BlackPiece }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -51,12 +51,12 @@ describe BlackKingMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color_class) { WhitePiece }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color_class) { BlackPiece }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -74,12 +74,12 @@ describe BlackKingMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color_class) { WhitePiece }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color_class) { BlackPiece }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -108,7 +108,7 @@ describe BlackKingMovement do
 
     context 'when the king is placed in a random position' do
       before do
-        board.data[3][4] = black_king
+        board.data[3][4] = white_king
       end
 
       context 'when the movement is one step towards bottom' do
@@ -123,12 +123,12 @@ describe BlackKingMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color_class) { WhitePiece }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color_class) { BlackPiece }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -146,12 +146,12 @@ describe BlackKingMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color_class) { WhitePiece }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color_class) { BlackPiece }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -169,12 +169,12 @@ describe BlackKingMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color_class) { WhitePiece }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color_class) { BlackPiece }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -192,12 +192,12 @@ describe BlackKingMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color_class) { WhitePiece }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color_class) { BlackPiece }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -215,12 +215,12 @@ describe BlackKingMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color_class) { WhitePiece }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color_class) { BlackPiece }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -238,12 +238,12 @@ describe BlackKingMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color_class) { WhitePiece }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color_class) { BlackPiece }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -261,12 +261,12 @@ describe BlackKingMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color_class) { WhitePiece }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color_class) { BlackPiece }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -284,12 +284,12 @@ describe BlackKingMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color_class) { WhitePiece }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color_class) { BlackPiece }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -319,7 +319,7 @@ describe BlackKingMovement do
 
   describe '#direction' do
     before do
-      board.data[3][4] = black_king
+      board.data[3][4] = white_king
     end
 
     context 'when the movement is one step towards bottom' do

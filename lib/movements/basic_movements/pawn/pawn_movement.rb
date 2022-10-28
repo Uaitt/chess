@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require_relative 'basic_movement'
-require_relative 'rook_movement'
-require_relative 'bishop_movement'
+require_relative '../basic_movement'
+require_relative '../rook/rook_movement'
+require_relative '../bishop/bishop_movement'
 
 # this class represents a queen movement in chess
-class PawnMovement
+module PawnMovement
   include BasicMovement
 
   def valid?
@@ -20,7 +20,7 @@ class PawnMovement
       RookMovement
     else
       BishopMovement
-    end.new(@board, @piece, @end_position).direction
+    end.instance_method(:direction).bind(self).call
   end
 
   private

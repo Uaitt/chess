@@ -3,7 +3,9 @@
 require_relative '../basic_movement'
 
 # ...
-module BishopDirection
+module BishopMovement
+  include BasicMovement
+
   def direction
     direction = @end_position.zip(@initial_position).map { |finish, start| finish - start }
     factor = direction.max.abs

@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../basic_movement'
-require_relative 'bishop_direction'
+require_relative 'bishop_movement'
 
 # this class represents a basic white bishop movement in chess
 class WhiteBishopMovement
-  include BasicMovement
-  include BishopDirection
+  include BishopMovement
 end

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../../lib/movements/basic_movements/knight_movement/white_knight_movement'
+require_relative '../../../../lib/movements/basic_movements/knight/white_knight_movement'
 require_relative '../../../../lib/pieces/knight/white_knight'
 require_relative '../../../../lib/pieces/black_piece'
 require_relative '../../../../lib/board'
