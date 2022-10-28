@@ -4,24 +4,41 @@ require_relative '../../../lib/pieces/rook/black_rook'
 
 describe BlackRook do
   subject(:black_rook) { described_class.new }
-
-  describe '#file' do
-    context 'when the black bishop is the only one created' do
-      it 'returns 0' do
-        expect(black_rook.initial_file).to eq(0)
+  describe '::starts_at?' do
+    context 'when given 0 and 0' do
+      it 'returns true' do
+        expect(BlackRook.starts_at?(0, 0)).to eq(true)
       end
     end
 
-    context 'when the black bishop is not the only one created' do
-      it 'returns 7' do
-        expect(black_rook.initial_file).to eq(7)
+    context 'when given 0 and 7' do
+      it 'returns true' do
+        expect(BlackRook.starts_at?(0, 7)).to eq(true)
       end
     end
-  end
 
-  describe '#color' do
-    it 'returns black' do
-      expect(black_rook.color).to eq(:black)
+    context 'when given 0 and 4' do
+      it 'returns false' do
+        expect(BlackRook.starts_at?(0, 3)).to eq(false)
+      end
+    end
+
+    context 'when given 2 and 0' do
+      it 'returns true' do
+        expect(BlackRook.starts_at?(2, 0)).to eq(false)
+      end
+    end
+
+    context 'when given 5 and 0' do
+      it 'returns true' do
+        expect(BlackRook.starts_at?(5, 0)).to eq(false)
+      end
+    end
+
+    context 'when given 2 and 1' do
+      it 'returns false' do
+        expect(BlackRook.starts_at?(1, 2)).to eq(false)
+      end
     end
   end
 
