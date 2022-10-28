@@ -4,7 +4,7 @@ require_relative '../basic_movement'
 require_relative '../rook/rook_movement'
 require_relative '../bishop/bishop_movement'
 
-# this class represents a queen movement in chess
+# set of methods common to all pawn movements in chess
 module PawnMovement
   include BasicMovement
 

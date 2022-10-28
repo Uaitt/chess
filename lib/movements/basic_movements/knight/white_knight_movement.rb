@@ -2,7 +2,7 @@
 
 require_relative 'knight_movement'
 
-# this class represents a basic black knight movement in chess
+# this class represents a basic white knight movement in chess
 class WhiteKnightMovement
   include KnightMovement
 end

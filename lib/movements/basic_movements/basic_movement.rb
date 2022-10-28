@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# set of common methods for basic movements in chess
+# set of common methods to all basic movements in chess
 module BasicMovement
   def initialize(board, piece, end_position)
     @board = board

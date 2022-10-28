@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../basic_movement'
-# ...
+# set of methods common to all rook movements in chess
 module RookMovement
   include BasicMovement
 

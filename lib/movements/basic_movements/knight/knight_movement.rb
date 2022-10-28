@@ -2,7 +2,7 @@
 
 require_relative '../basic_movement'
 
-# ...
+# set of methods common to all knight movements in chess
 module KnightMovement
   include BasicMovement
 

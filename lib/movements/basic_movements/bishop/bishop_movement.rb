@@ -2,7 +2,7 @@
 
 require_relative '../basic_movement'
 
-# ...
+# set of methods common to all bishop movements in chess
 module BishopMovement
   include BasicMovement
 
