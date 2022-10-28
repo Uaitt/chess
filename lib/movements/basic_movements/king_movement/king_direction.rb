@@ -8,9 +8,9 @@ require_relative '../bishop_movement/bishop_direction'
 module KingDirection
   def direction
     if vertical_or_horizontal? #basic_direction module for abstract factory
-      RookMovement
+      RookDirection
     else
-      BishopMovement
-    end.new(@board, @piece, @end_position).direction
+      BishopDirection
+    end.instance_method(:direction).bind(self).call
   end
 end

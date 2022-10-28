@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require_relative '../../../../lib/movements/basic_movements/king_movement/black_king_movement'
-require_relative '../../../../lib/pieces/black_king'
-require_relative '../../../../lib/white_piece'
+require_relative '../../../../lib/pieces/king/black_king'
+require_relative '../../../../lib/pieces/white_piece'
 require_relative '../../../../lib/board'
 
 describe BlackKingMovement do
