@@ -4,20 +4,43 @@ require_relative '../../../lib/pieces/knight/white_knight'
 
 describe WhiteKnight do
   subject(:white_knight) { described_class.new }
-  describe '#file' do
-    context 'when the white knight is the only one created' do
-      it 'returns 1' do
-        expect(white_knight.initial_file).to eq(1)
+  describe '::starts_at?' do
+    context 'when given 7 and 1' do
+      it 'returns true' do
+        expect(WhiteKnight.starts_at?(7, 1)).to eq(true)
       end
     end
 
-    context 'when the white knight is not the only one created' do
-      it 'returns 6' do
-        expect(white_knight.initial_file).to eq(6)
+    context 'when given 7 and 6' do
+      it 'returns true' do
+        expect(WhiteKnight.starts_at?(7, 6)).to eq(true)
+      end
+    end
+
+    context 'when given 7 and 4' do
+      it 'returns false' do
+        expect(WhiteKnight.starts_at?(7, 3)).to eq(false)
+      end
+    end
+
+    context 'when given 2 and 1' do
+      it 'returns true' do
+        expect(WhiteKnight.starts_at?(2, 2)).to eq(false)
+      end
+    end
+
+    context 'when given 5 and 6' do
+      it 'returns true' do
+        expect(WhiteKnight.starts_at?(5, 5)).to eq(false)
+      end
+    end
+
+    context 'when given 2 and 3' do
+      it 'returns false' do
+        expect(WhiteKnight.starts_at?(1, 2)).to eq(false)
       end
     end
   end
-
   describe '#color' do
     it 'returns white' do
       expect(white_knight.color).to eq(:white)

@@ -4,16 +4,40 @@ require_relative '../../../lib/pieces/knight/black_knight'
 
 describe BlackKnight do
   subject(:black_knight) { described_class.new }
-  describe '#file' do
-    context 'when the black knight is the only one created' do
-      it 'returns 1' do
-        expect(black_knight.initial_file).to eq(1)
+  describe '::starts_at?' do
+    context 'when given 0 and 1' do
+      it 'returns true' do
+        expect(BlackKnight.starts_at?(0, 1)).to eq(true)
       end
     end
 
-    context 'when the black knight is not the only one created' do
-      it 'returns 6' do
-        expect(black_knight.initial_file).to eq(6)
+    context 'when given 0 and 6' do
+      it 'returns true' do
+        expect(BlackKnight.starts_at?(0, 6)).to eq(true)
+      end
+    end
+
+    context 'when given 0 and 4' do
+      it 'returns false' do
+        expect(BlackKnight.starts_at?(0, 3)).to eq(false)
+      end
+    end
+
+    context 'when given 2 and 1' do
+      it 'returns true' do
+        expect(BlackKnight.starts_at?(2, 2)).to eq(false)
+      end
+    end
+
+    context 'when given 5 and 6' do
+      it 'returns true' do
+        expect(BlackKnight.starts_at?(5, 5)).to eq(false)
+      end
+    end
+
+    context 'when given 2 and 3' do
+      it 'returns false' do
+        expect(BlackKnight.starts_at?(1, 2)).to eq(false)
       end
     end
   end
