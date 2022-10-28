@@ -4,15 +4,29 @@ require_relative '../../../lib/pieces/queen/white_queen'
 
 describe WhiteQueen do
   subject(:white_queen) { described_class.new }
-  describe '#initial_file' do
-    it 'returns 4' do
-      expect(white_queen.initial_file).to eq(4)
+  describe '::starts_at?' do
+    context 'when given 7 and 4' do
+      it 'returns true' do
+        expect(WhiteQueen.starts_at?(7, 3)).to eq(true)
+      end
     end
-  end
 
-  describe '#color' do
-    it 'returns white' do
-      expect(white_queen.color).to eq(:white)
+    context 'when given 7 and 1' do
+      it 'returns false' do
+        expect(WhiteQueen.starts_at?(7, 1)).to eq(false)
+      end
+    end
+
+    context 'when given 2 and 3' do
+      it 'returns false' do
+        expect(WhiteQueen.starts_at?(2, 3)).to eq(false)
+      end
+    end
+
+    context 'when given 6 and 5' do
+      it 'returns false' do
+        expect(WhiteQueen.starts_at?(3, 3)).to eq(false)
+      end
     end
   end
 
