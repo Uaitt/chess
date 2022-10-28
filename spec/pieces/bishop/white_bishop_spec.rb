@@ -23,7 +23,7 @@ describe WhiteBishop do
         expect(WhiteBishop.starts_at?(7, 3)).to eq(false)
       end
     end
-  
+
     context 'when given 2 and 2' do
       it 'returns true' do
         expect(WhiteBishop.starts_at?(2, 2)).to eq(false)
