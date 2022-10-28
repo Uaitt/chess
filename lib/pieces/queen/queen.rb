@@ -4,7 +4,7 @@ require_relative '../rook/rook'
 require_relative '../bishop/bishop'
 
 # set of methods common to all queens in chess
-module QueenBasicMoves
+module Queen
   include Rook
   include Bishop
 
