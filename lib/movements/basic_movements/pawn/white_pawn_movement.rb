@@ -3,6 +3,6 @@
 require_relative 'pawn_movement'
 
 # this class represents a basic white pawn movement in chess
-class WhitePawn
+class WhitePawnMovement
   include PawnMovement
 end
