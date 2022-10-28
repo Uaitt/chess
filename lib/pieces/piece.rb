@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# set of methods for piece creation in chess
+# set of methods common to all pieces in chess
 module Piece
   def self.for(rank, file)
     registry.find { |candidate| candidate.starts_at?(rank, file) }.new

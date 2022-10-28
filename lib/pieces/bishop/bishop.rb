@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # set of methods common to all bishops in chess
-module BishopBasicMoves
+module Bishop
   def basic_moves
     towards_bottom_right_corner_moves + towards_top_left_corner_moves +
       towards_bottom_left_corner_moves + toward_top_right_corner_moves

@@ -1,27 +1,27 @@
 # frozen_string_literal: true
 
 # set of methods common to all rooks in chess
-module RookBasicMoves
+module Rook
   def basic_moves
-    towards_bottom + towards_top +
-      towards_right + towards_left
+    towards_bottom_moves + towards_top_moves +
+      towards_right_moves + towards_left_moves
   end
 
   private
 
-  def towards_bottom
+  def towards_bottom_moves
     [[1, 0], [2, 0], [3, 0], [4, 0], [5, 0], [6, 0], [7, 0]]
   end
 
-  def towards_top
+  def towards_top_moves
     [[-1, 0], [-2, 0], [-3, 0], [-4, 0], [-5, 0], [-6, 0], [-7, 0]]
   end
 
-  def towards_right
+  def towards_right_moves
     [[0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6], [0, 7]]
   end
 
-  def towards_left
+  def towards_left_moves
     [[0, -1], [0, -2], [0, -3], [0, -4], [0, -5], [0, -6], [0, -7]]
   end
 end
