@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
-require_relative '../../../lib/movements/basic_movements/queen_movement'
-require_relative '../../../lib/pieces/queen'
-require_relative '../../../lib/piece'
-require_relative '../../../lib/board'
+require_relative '../../../../lib/movements/basic_movements/queen/white_queen_movement'
+require_relative '../../../../lib/pieces/queen/white_queen'
+require_relative '../../../../lib/pieces/black_piece'
+require_relative '../../../../lib/board'
 
-describe QueenMovement do
-  subject { described_class.new(board, queen, end_position) }
-  let(:queen) { Queen.new(:black) }
-  let(:piece) { Piece.new(color) }
+describe WhiteQueenMovement do
+  subject { described_class.new(board, white_queen, end_position) }
+  let(:white_queen) { WhiteQueen.new }
+  let(:piece) { color_class.new }
   let(:board) { Board.new }
   describe '#valid?' do
     context 'when the queen is placed at the top right corner' do
       before do
-        board.data[0][0] = queen
+        board.data[0][0] = white_queen
       end
 
       context 'when the movement is one step towards bottom' do
@@ -28,12 +28,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -51,12 +51,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -74,12 +74,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -97,12 +97,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -113,12 +113,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -147,7 +147,7 @@ describe QueenMovement do
 
     context 'when the queen is placed in a random position' do
       before do
-        board.data[3][4] = queen
+        board.data[3][4] = white_queen
       end
 
       context 'when the movement is one step towards bottom' do
@@ -162,12 +162,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -185,12 +185,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -208,12 +208,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -224,12 +224,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -247,12 +247,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -263,12 +263,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -286,12 +286,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -309,12 +309,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -332,12 +332,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -348,12 +348,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -371,12 +371,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.not_to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -387,12 +387,12 @@ describe QueenMovement do
           end
 
           context 'when the blocking piece is of the opposite color' do
-            let(:color) { :white }
+            let(:color_class) { BlackPiece }
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
-            let(:color) { :black }
+            let(:color_class) { WhitePiece }
             it { is_expected.not_to be_valid }
           end
         end
@@ -422,7 +422,7 @@ describe QueenMovement do
 
   describe '#direction' do
     before do
-      board.data[3][4] = queen
+      board.data[3][4] = white_queen
     end
 
     context 'when the movement is towards bottom' do
