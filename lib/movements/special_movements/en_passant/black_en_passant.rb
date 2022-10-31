@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# ...
+# this class represents a special black en passant movement in chess
 class BlackEnPassant
   def initialize(board, black_pawn, end_position, last_movement)
     @board = board
@@ -13,7 +13,7 @@ class BlackEnPassant
   end
 
   def valid?
-    right_rank? && next_to_white_pawn? && @last_movement.allows_en_passant?
+    right_rank? && next_to_white_pawn? && @last_movement.allowing_en_passant?
   end
 
   private
