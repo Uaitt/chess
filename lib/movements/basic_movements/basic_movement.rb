@@ -10,7 +10,12 @@ module BasicMovement
   end
 
   def valid?
-    possible? && !blocked?
+    possible? && !blocked? ## own color king not in check
+  end
+
+  def apply
+    @board.data[@initial_position[0]][@initial_position[1]] = nil
+    @board.data[@end_position[0]][@end_position[1]] = piece
   end
 
   private
