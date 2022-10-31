@@ -2,17 +2,18 @@
 
 # ...
 class BlackEnPassant
-  def initialize(board, black_pawn, end_position)
+  def initialize(board, black_pawn, end_position, last_movement)
     @board = board
     @black_pawn = black_pawn
     @initial_position = board.current_position(black_pawn)
     @left_piece = @board.data[@initial_position[0]][@initial_position[1] - 1]
     @right_piece = @board.data[@initial_position[0]][@initial_position[1] + 1]
     @end_position = end_position
+    @last_movement = last_movement
   end
 
   def valid?
-    right_rank? && next_to_white_pawn? && white_pawn_just_double_moved?
+    right_rank? && next_to_white_pawn? && @last_movement.allows_en_passant?
   end
 
   private
@@ -23,9 +24,6 @@ class BlackEnPassant
 
   def next_to_white_pawn?
     @left_piece.instance_of?(WhitePawn) || @right_piece.instance_of?(WhitePawn)
-  end
-
-  def white_pawn_just_double_moved?
   end
 
   def white_pawn

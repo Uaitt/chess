@@ -19,11 +19,18 @@ module BasicMovement
     @board.data[@end_position[0]][@end_position[1]] = piece
   end
 
+  def allows_en_passant?
+    @piece.instance_of?(WhitePawn) && @move == [2, 0]
+  end
+
   private
 
   def possible?
     @piece.basic_moves.each do |move|
-      return true if reaches_position?(move)
+      if reaches_position?(move)
+        @move = move
+        return true
+      end
     end
     false
   end
