@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'pry-byebug'
+
 require_relative '../basic_movement'
 require_relative '../rook/rook_movement'
 require_relative '../bishop/bishop_movement'

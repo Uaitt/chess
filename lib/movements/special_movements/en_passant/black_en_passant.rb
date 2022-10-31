@@ -25,8 +25,4 @@ class BlackEnPassant
   def next_to_white_pawn?
     @left_piece.instance_of?(WhitePawn) || @right_piece.instance_of?(WhitePawn)
   end
-
-  def white_pawn
-    @left_piece.instance_of?(WhitePawn) ? @left_piece : @right_piece
-  end
 end

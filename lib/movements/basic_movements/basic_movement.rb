@@ -26,10 +26,7 @@ module BasicMovement
 
   def possible?
     @piece.basic_moves.each do |move|
-      if reaches_position?(move)
-        @move = move
-        return true
-      end
+      return true if reaches_position?(move)
     end
     false
   end
