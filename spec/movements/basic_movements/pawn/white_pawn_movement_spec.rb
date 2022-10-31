@@ -151,4 +151,39 @@ describe WhitePawnMovement do
       end
     end
   end
+
+  describe '#apply' do
+    let(:end_position) { [1, 0] }
+    before do
+      board.data[0][0] = white_pawn
+      subject.apply
+    end
+    it 'places the pawn on the right position' do
+      expect(board.data[1][0]).to eq(white_pawn)
+    end
+
+    it 'removes the pawn from the initial position' do
+      expect(board.data[0][0]).to eq(nil)
+    end
+  end
+
+  describe '#allowing_en_passant?' do
+    before do
+      board.data[0][0] = white_pawn
+    end
+
+    context 'when the movement is a double leap' do
+      let(:end_position) { [2, 0] }
+      it 'returns true' do
+        expect(subject).to be_allowing_en_passant
+      end
+    end
+
+    context 'when the movement is not a double leap' do
+      let(:end_position) { [1, 1] }
+      it 'returns true' do
+        expect(subject).not_to be_allowing_en_passant
+      end
+    end
+  end
 end
