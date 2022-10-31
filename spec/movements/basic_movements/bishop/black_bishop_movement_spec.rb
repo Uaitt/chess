@@ -3,6 +3,7 @@
 require_relative '../../../../lib/movements/basic_movements/bishop/black_bishop_movement'
 require_relative '../../../../lib/pieces/bishop/black_bishop'
 require_relative '../../../../lib/pieces/white_piece'
+require_relative '../../../../lib/pieces/pawn/white_pawn'
 require_relative '../../../../lib/board'
 
 describe BlackBishopMovement do
@@ -246,6 +247,28 @@ describe BlackBishopMovement do
         let(:end_position) { [5, 6] }
         it { is_expected.not_to be_valid }
       end
+    end
+  end
+
+  describe '#apply' do
+    let(:end_position) { [2, 2] }
+    before do
+      board.data[0][0] = black_bishop
+      subject.apply
+    end
+    it 'places the bishop on the right position' do
+      expect(board.data[2][2]).to eq(black_bishop)
+    end
+
+    it 'removes the bishop from the initial position' do
+      expect(board.data[0][0]).to eq(nil)
+    end
+  end
+
+  describe '#allows_en_passant?' do
+    let(:end_position) { [2, 2] }
+    it 'returns false' do
+      expect(subject).not_to be_allowing_en_passant
     end
   end
 
