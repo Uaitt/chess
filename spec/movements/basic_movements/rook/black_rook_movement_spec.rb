@@ -272,6 +272,28 @@ describe BlackRookMovement do
     end
   end
 
+  describe '#apply' do
+    let(:end_position) { [3, 0] }
+    before do
+      board.data[0][0] = black_rook
+      subject.apply
+    end
+    it 'places the bishop on the right position' do
+      expect(board.data[3][0]).to eq(black_rook)
+    end
+
+    it 'removes the bishop from the initial position' do
+      expect(board.data[0][0]).to eq(nil)
+    end
+  end
+
+  describe '#allowing_en_passant?' do
+    let(:end_position) { [3, 0] }
+    it 'returns false' do
+      expect(subject).not_to be_allowing_en_passant
+    end
+  end
+
   describe '#direction' do
     before do
       board.data[3][3] = black_rook
