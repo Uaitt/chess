@@ -13,14 +13,13 @@ module BasicMovement
     possible? && !blocked? # own color king not in check
   end
 
-  # needs a test for every basic movement
   def apply
     @board.data[@initial_position[0]][@initial_position[1]] = nil
-    @board.data[@end_position[0]][@end_position[1]] = piece
+    @board.data[@end_position[0]][@end_position[1]] = @piece
   end
 
-  def allows_en_passant?
-    @piece.instance_of?(WhitePawn) && @move == [2, 0]
+  def allowing_en_passant?
+    false
   end
 
   private
