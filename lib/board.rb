@@ -25,8 +25,4 @@ class Board
       end
     end
   end
-
-  def piece_at_position(end_position)
-    @data[end_position[0]][end_position[1]]
-  end
 end

@@ -6,15 +6,22 @@ class BlackEnPassant
     @board = board
     @pawn = pawn
     @initial_position = board.current_position(pawn)
+    @left_piece = @board.data[@initial_position[0]][@initial_position[1] - 1]
+    @right_piece = @board.data[@initial_position[0]][@initial_position[1] + 1]
     @end_position = end_position
   end
 
   def valid?
-    @initial_position[0] == 4 && adjacent_pawn? && enemy_pawn_just_double_moved?
+    right_rank? && adjacent_white_pawn? && adjacent_white_pawn_just_double_moved?
   end
 
-  def adjacent_pawn?
-    @board.data[@initial_position[0]][@initial_position[1] + 1].instance_of?(WhitePawn) ||
-      @board.data[@initial_position[0]][@initial_position[1] - 1].instance_of?(WhitePawn)
+  private
+
+  def right_rank?
+    @initial_position[0] == 4
+  end
+
+  def adjacent_white_pawn?
+    @left_piece.instance_of?(WhitePawn) || @right_piece.instance_of?(WhitePawn)
   end
 end

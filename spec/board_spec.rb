@@ -128,13 +128,4 @@ describe Board do
       end
     end
   end
-
-  describe '#piece_at_position' do
-    let(:data) { board.instance_variable_get(:@data) }
-    let(:black_knight) { BlackKnight.new }
-    it 'returns the piece in the exact position' do
-      data[0][0] = black_knight
-      expect(board.piece_at_position([0, 0])).to eq(black_knight)
-    end
-  end
 end
