@@ -3,7 +3,6 @@
 require_relative '../../../../lib/movements/basic_movements/bishop/black_bishop_movement'
 require_relative '../../../../lib/pieces/bishop/black_bishop'
 require_relative '../../../../lib/pieces/white_piece'
-require_relative '../../../../lib/pieces/pawn/white_pawn'
 require_relative '../../../../lib/board'
 
 describe BlackBishopMovement do
@@ -265,7 +264,7 @@ describe BlackBishopMovement do
     end
   end
 
-  describe '#allows_en_passant?' do
+  describe '#allowing_en_passant?' do
     let(:end_position) { [2, 2] }
     it 'returns false' do
       expect(subject).not_to be_allowing_en_passant
