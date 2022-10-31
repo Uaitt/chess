@@ -420,6 +420,28 @@ describe BlackQueenMovement do
     end
   end
 
+  describe '#apply' do
+    let(:end_position) { [3, 3] }
+    before do
+      board.data[0][0] = black_queen
+      subject.apply
+    end
+    it 'places the bishop on the right position' do
+      expect(board.data[3][3]).to eq(black_queen)
+    end
+
+    it 'removes the bishop from the initial position' do
+      expect(board.data[0][0]).to eq(nil)
+    end
+  end
+
+  describe '#allowing_en_passant?' do
+    let(:end_position) { [3, 3] }
+    it 'returns false' do
+      expect(subject).not_to be_allowing_en_passant
+    end
+  end
+
   describe '#direction' do
     before do
       board.data[3][4] = black_queen
