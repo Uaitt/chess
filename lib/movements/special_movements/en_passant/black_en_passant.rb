@@ -13,7 +13,7 @@ class BlackEnPassant
   end
 
   def valid?
-    right_rank? && next_to_white_pawn? && @last_movement.allowing_en_passant?
+    right_rank? && next_to_white_pawn? && @last_movement.double_moved?(white_pawn) # to implement
   end
 
   private
@@ -24,5 +24,9 @@ class BlackEnPassant
 
   def next_to_white_pawn?
     @left_piece.instance_of?(WhitePawn) || @right_piece.instance_of?(WhitePawn)
+  end
+
+  def white_pawn
+    @left_piece.instance_of?(WhitePawn) ? @left_piece : @right_piece
   end
 end
