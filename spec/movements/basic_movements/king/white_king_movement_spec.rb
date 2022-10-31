@@ -317,6 +317,28 @@ describe WhiteKingMovement do
     end
   end
 
+  describe '#apply' do
+    let(:end_position) { [1, 1] }
+    before do
+      board.data[0][0] = white_king
+      subject.apply
+    end
+    it 'places the bishop on the right position' do
+      expect(board.data[1][1]).to eq(white_king)
+    end
+
+    it 'removes the bishop from the initial position' do
+      expect(board.data[0][0]).to eq(nil)
+    end
+  end
+
+  describe '#allowing_en_passant?' do
+    let(:end_position) { [1, 1] }
+    it 'returns false' do
+      expect(subject).not_to be_allowing_en_passant
+    end
+  end
+
   describe '#direction' do
     before do
       board.data[3][4] = white_king
