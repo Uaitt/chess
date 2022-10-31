@@ -10,9 +10,10 @@ module BasicMovement
   end
 
   def valid?
-    possible? && !blocked? ## own color king not in check
+    possible? && !blocked? # own color king not in check
   end
 
+  # needs a test for every basic movement
   def apply
     @board.data[@initial_position[0]][@initial_position[1]] = nil
     @board.data[@end_position[0]][@end_position[1]] = piece
