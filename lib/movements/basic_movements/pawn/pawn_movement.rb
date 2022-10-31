@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry-byebug'
 require_relative '../basic_movement'
 require_relative '../rook/rook_movement'
 require_relative '../bishop/bishop_movement'
@@ -21,6 +21,11 @@ module PawnMovement
     else
       BishopMovement
     end.instance_method(:direction).bind(self).call
+  end
+
+  def allowing_en_passant?
+    move = @end_position.zip(@initial_position).map { |finish, start| finish - start }
+    [[2, 0], [-2, 0]].include?(move)
   end
 
   private
