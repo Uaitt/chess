@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry-byebug'
 # set of common methods to all basic movements in chess
 module BasicMovement
   def initialize(board, piece, end_position)
@@ -18,8 +18,8 @@ module BasicMovement
     @board.data[@end_position[0]][@end_position[1]] = @piece
   end
 
-  def double_moved?(_)
-    false
+  def allows_en_passant?(piece)
+    @piece == piece && [[2, 0], [-2, 0]].include?(current_move)
   end
 
   private
@@ -57,5 +57,9 @@ module BasicMovement
 
   def vertical_or_horizontal?
     @end_position.zip(@initial_position).map { |finish, start| finish - start }.include?(0)
+  end
+
+  def current_move
+    @end_position.zip(@initial_position).map { |finish, start| finish - start }
   end
 end

@@ -23,11 +23,6 @@ module PawnMovement
     end.instance_method(:direction).bind(self).call
   end
 
-  def allowing_en_passant?
-    move = @end_position.zip(@initial_position).map { |finish, start| finish - start }
-    [[2, 0], [-2, 0]].include?(move)
-  end
-
   private
 
   def environment_allows?(count)
