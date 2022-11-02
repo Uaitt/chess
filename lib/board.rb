@@ -35,6 +35,6 @@ class Board
   end
 
   def able_to_capture?(piece, king)
-    piece.color != king.color && basic_movement.for(piece, board).valid?
+    piece.color != king.color && BasicMovement.for(piece, board).valid?
   end
 end
