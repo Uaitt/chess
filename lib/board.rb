@@ -1,6 +1,7 @@
 # frozen_string_literal: true
-
+require 'pry-byebug'
 require_relative 'pieces/piece'
+require_relative 'movements/basic_movements/basic_movement'
 
 # this class represents the board in chess
 class Board
@@ -35,6 +36,6 @@ class Board
   end
 
   def able_to_capture?(piece, king)
-    piece.color != king.color && BasicMovement.for(piece, board, current_position(king)).valid?
+    piece.color != king.color && BasicMovement.for(self, piece, current_position(king)).valid?
   end
 end
