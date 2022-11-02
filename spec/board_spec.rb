@@ -14,6 +14,18 @@ require_relative '../lib/pieces/queen/black_queen'
 require_relative '../lib/pieces/queen/white_queen'
 require_relative '../lib/pieces/rook/black_rook'
 require_relative '../lib/pieces/rook/white_rook'
+require_relative '../lib/movements/basic_movements/bishop/black_bishop_movement'
+require_relative '../lib/movements/basic_movements/bishop/white_bishop_movement'
+require_relative '../lib/movements/basic_movements/king/black_king_movement'
+require_relative '../lib/movements/basic_movements/king/white_king_movement'
+require_relative '../lib/movements/basic_movements/knight/black_knight_movement'
+require_relative '../lib/movements/basic_movements/knight/white_knight_movement'
+require_relative '../lib/movements/basic_movements/pawn/black_pawn_movement'
+require_relative '../lib/movements/basic_movements/pawn/white_pawn_movement'
+require_relative '../lib/movements/basic_movements/queen/black_queen_movement'
+require_relative '../lib/movements/basic_movements/queen/white_queen_movement'
+require_relative '../lib/movements/basic_movements/rook/black_rook_movement'
+require_relative '../lib/movements/basic_movements/rook/white_rook_movement'
 
 describe Board do
   subject(:board) { described_class.new }
@@ -131,6 +143,7 @@ describe Board do
 
   describe '#checked?' do
     before do
+      board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
       board.data[0][0] = king
     end
 
