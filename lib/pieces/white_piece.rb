@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require_relative 'piece'
+
 # this class represents a white piece in chess
 class WhitePiece
-  attr_reader :color
+  include Piece
 
   def initialize
     @color = :white

@@ -2,6 +2,8 @@
 
 # set of methods common to all pieces in chess
 module Piece
+  attr_reader :color
+
   class << self
     def for(rank, file)
       registry.find { |candidate| candidate.starts_at?(rank, file) }.new
