@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'pry-byebug'
+
 # set of common methods to all basic movements in chess
 module BasicMovement
   def initialize(board, piece, end_position)
