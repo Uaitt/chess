@@ -265,10 +265,10 @@ describe BlackBishopMovement do
     end
   end
 
-  describe '#double_moved?' do
+  describe '#allows_en_passant?' do
     let(:end_position) { [2, 2] }
     it 'returns false' do
-      expect(subject.double_moved?(BlackPawn.new)).to eq(false)
+      expect(subject.allows_en_passant?(BlackPawn.new)).to eq(false)
     end
   end
 

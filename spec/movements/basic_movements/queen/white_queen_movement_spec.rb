@@ -436,10 +436,10 @@ describe WhiteQueenMovement do
     end
   end
 
-  describe '#allowing_en_passant?' do
+  describe '#allows_en_passant?' do
     let(:end_position) { [3, 3] }
     it 'returns false' do
-      expect(subject.double_moved?(WhitePawn.new)).to eq(false)
+      expect(subject.allows_en_passant?(WhitePawn.new)).to eq(false)
     end
   end
 
