@@ -10,8 +10,15 @@ module Piece
     private
 
     def registry
-      [BlackBishop, BlackKing, BlackKnight, BlackPawn, BlackQueen, BlackRook,
-       WhiteBishop, WhiteKing, WhiteKnight, WhitePawn, WhiteQueen, WhiteRook, NilPiece]
+      black_registry + white_registry + [NilPiece]
+    end
+
+    def black_registry
+      [BlackBishop, BlackKing, BlackKnight, BlackPawn, BlackQueen, BlackRook]
+    end
+
+    def white_registry
+      [WhiteBishop, WhiteKing, WhiteKnight, WhitePawn, WhiteQueen, WhiteRook]
     end
   end
 end
