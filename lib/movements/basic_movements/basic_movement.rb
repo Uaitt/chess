@@ -4,12 +4,26 @@ require_relative 'nil_basic_movement'
 
 # set of common methods to all basic movements in chess
 module BasicMovement
-  def self.for(board, piece, king_position)
-    registry.find { |movement| movement.handles?(piece) }.new(board, piece, king_position)
-  end
+  class << self
+    def for(board, piece, king_position)
+      registry.find { |movement| movement.handles?(piece) }.new(board, piece, king_position)
+    end
 
-  def self.registry
-    black_registry + white_registry + [NilBasicMovement]
+    private
+
+    def registry
+      black_registry + white_registry + [NilBasicMovement]
+    end
+
+    def black_registry
+      [BlackBishopMovement, BlackKingMovement, BlackKnightMovement,
+       BlackPawnMovement, BlackQueenMovement, BlackRookMovement]
+    end
+
+    def white_registry
+      [WhiteBishopMovement, WhiteKingMovement, WhiteKnightMovement,
+       WhitePawnMovement, WhiteQueenMovement, WhiteRookMovement]
+    end
   end
 
   def initialize(board, piece, end_position)
@@ -33,14 +47,6 @@ module BasicMovement
   end
 
   private
-
-  def self.black_registry
-    [BlackBishopMovement, BlackKingMovement, BlackKnightMovement, BlackPawnMovement, BlackQueenMovement, BlackRookMovement ]
-  end
-
-  def self.white_registry
-    [WhiteBishopMovement, WhiteKingMovement, WhiteKnightMovement, WhitePawnMovement, WhiteQueenMovement, WhiteRookMovement ]
-  end
 
   def possible?
     @piece.basic_moves.each do |move|
