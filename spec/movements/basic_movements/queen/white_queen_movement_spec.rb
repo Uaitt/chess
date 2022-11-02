@@ -2,6 +2,7 @@
 
 require_relative '../../../../lib/movements/basic_movements/queen/white_queen_movement'
 require_relative '../../../../lib/pieces/queen/white_queen'
+require_relative '../../../../lib/pieces/pawn/white_pawn'
 require_relative '../../../../lib/pieces/black_piece'
 require_relative '../../../../lib/board'
 
@@ -438,7 +439,7 @@ describe WhiteQueenMovement do
   describe '#allowing_en_passant?' do
     let(:end_position) { [3, 3] }
     it 'returns false' do
-      expect(subject).not_to be_allowing_en_passant
+      expect(subject.double_moved?(WhitePawn.new)).to eq(false)
     end
   end
 

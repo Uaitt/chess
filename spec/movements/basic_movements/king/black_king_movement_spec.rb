@@ -2,6 +2,7 @@
 
 require_relative '../../../../lib/movements/basic_movements/king/black_king_movement'
 require_relative '../../../../lib/pieces/king/black_king'
+require_relative '../../../../lib/pieces/pawn/black_pawn'
 require_relative '../../../../lib/pieces/white_piece'
 require_relative '../../../../lib/board'
 
@@ -332,10 +333,10 @@ describe BlackKingMovement do
     end
   end
 
-  describe '#allowing_en_passant?' do
+  describe '#double_moved?' do
     let(:end_position) { [1, 1] }
     it 'returns false' do
-      expect(subject).not_to be_allowing_en_passant
+      expect(subject.double_moved?(BlackPawn.new)).to eq(false)
     end
   end
 

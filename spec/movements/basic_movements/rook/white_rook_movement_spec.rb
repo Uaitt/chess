@@ -287,10 +287,10 @@ describe WhiteRookMovement do
     end
   end
 
-  describe '#allowing_en_passant?' do
+  describe '#double_moved?' do
     let(:end_position) { [3, 0] }
     it 'returns false' do
-      expect(subject).not_to be_allowing_en_passant
+      expect(subject.double_moved?(WhitePawn.new)).to eq(false)
     end
   end
 

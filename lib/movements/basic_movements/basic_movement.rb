@@ -18,7 +18,7 @@ module BasicMovement
     @board.data[@end_position[0]][@end_position[1]] = @piece
   end
 
-  def allowing_en_passant?
+  def double_moved?(_)
     false
   end
 

@@ -2,6 +2,7 @@
 
 require_relative '../../../../lib/movements/basic_movements/bishop/black_bishop_movement'
 require_relative '../../../../lib/pieces/bishop/black_bishop'
+require_relative '../../../../lib/pieces/pawn/black_pawn'
 require_relative '../../../../lib/pieces/white_piece'
 require_relative '../../../../lib/board'
 
@@ -264,10 +265,10 @@ describe BlackBishopMovement do
     end
   end
 
-  describe '#allowing_en_passant?' do
+  describe '#double_moved?' do
     let(:end_position) { [2, 2] }
     it 'returns false' do
-      expect(subject).not_to be_allowing_en_passant
+      expect(subject.double_moved?(BlackPawn.new)).to eq(false)
     end
   end
 

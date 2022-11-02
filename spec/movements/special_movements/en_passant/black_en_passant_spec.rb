@@ -24,7 +24,7 @@ describe BlackEnPassant do
           board.data[4][1] = white_pawn
         end
 
-        context 'when the last movement was that pawn double leap' do
+        context 'when the last movement was that white pawn double leap' do
           let(:last_movement) { WhitePawnMovement.new(last_board, white_pawn, [4, 1]) }
           before do
             last_board.data[6][1] = white_pawn
@@ -35,7 +35,7 @@ describe BlackEnPassant do
           end
         end
 
-        context 'when the last movement was that pawn double leap' do
+        context 'when the last movement was not that pawn double leap' do
           let(:last_movement) { WhitePawnMovement.new(last_board, white_pawn, [4, 1]) }
           before do
             last_board.data[5][1] = white_pawn
@@ -48,6 +48,7 @@ describe BlackEnPassant do
       end
 
       context 'when a pawn is not placed in an adjacent square' do
+        let(:last_movement) { nil }
         it 'returns false' do
           expect(black_en_passant).not_to be_valid
         end
@@ -55,11 +56,11 @@ describe BlackEnPassant do
     end
 
     context 'when our pawn is not on fourth row' do
+      let(:last_movement) { nil }
       let(:end_position) { [4, 1] }
       before do
         board.data[3][0] = black_pawn
       end
-
       it 'returns false' do
         expect(black_en_passant).not_to be_valid
       end
