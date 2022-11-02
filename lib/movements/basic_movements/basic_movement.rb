@@ -18,8 +18,8 @@ module BasicMovement
     @board.data[@end_position[0]][@end_position[1]] = @piece
   end
 
-  def allows_en_passant?(piece)
-    @piece == piece && [[2, 0], [-2, 0]].include?(current_move)
+  def allows_en_passant?(pawn)
+    @piece == pawn && [[2, 0], [-2, 0]].include?(current_move)
   end
 
   private
