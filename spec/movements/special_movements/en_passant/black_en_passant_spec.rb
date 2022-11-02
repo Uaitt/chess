@@ -66,4 +66,26 @@ describe BlackEnPassant do
       end
     end
   end
+
+  describe '#apply' do
+    let(:last_movement) { nil }
+    let(:end_position) { [5, 1] }
+    before do
+      board.data[4][0] = black_pawn
+      board.data[4][1] = white_pawn
+      black_en_passant.apply
+    end
+
+    it 'removes the enemy pawn' do
+      expect(board.data[4][1]).to eq(nil)
+    end
+
+    it 'moves the black pawn to the right position' do
+      expect(board.data[5][1]).to eq(black_pawn)
+    end
+
+    it 'removes the black pawn from the original position' do
+      expect(board.data[4][0]).to eq(nil)
+    end
+  end
 end
