@@ -25,4 +25,16 @@ class Board
       end
     end
   end
+
+  def checked?(king)
+    @data.any? do |row|
+      row.any? do |piece|
+        able_to_capture?(piece, king)
+      end
+    end
+  end
+
+  def able_to_capture?(piece, king)
+    piece.color != king.color && basic_movement.for(piece, board).valid?
+  end
 end

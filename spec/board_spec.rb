@@ -128,4 +128,35 @@ describe Board do
       end
     end
   end
+
+  describe '#checked?' do
+    before do
+      board.data[0][0] = king
+    end
+
+    context 'when the king is black' do
+      let(:king) { BlackKing.new }
+      let(:rook) { WhiteRook.new }
+
+      context 'when the king is in check' do
+        before do
+          board.data[1][0] = rook
+        end
+
+        it 'returns true' do
+          expect(board).to be_checked(king)
+        end
+      end
+
+      context 'when the king is not in check' do
+        before do
+          board.data[1][1] = rook
+        end
+
+        it 'returns false' do
+          expect(board).not_to be_checked(king)
+        end
+      end
+    end
+  end
 end
