@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative 'nil_basic_movement'
-
 # set of common methods to all basic movements in chess
 module BasicMovement
   class << self
@@ -12,7 +10,7 @@ module BasicMovement
     private
 
     def registry
-      black_registry + white_registry + [NilBasicMovement]
+      black_registry + white_registry + [NilMovement]
     end
 
     def black_registry

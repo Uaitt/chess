@@ -27,6 +27,8 @@ require_relative '../lib/movements/basic_movements/queen/black_queen_movement'
 require_relative '../lib/movements/basic_movements/queen/white_queen_movement'
 require_relative '../lib/movements/basic_movements/rook/black_rook_movement'
 require_relative '../lib/movements/basic_movements/rook/white_rook_movement'
+require_relative '../lib/movements/basic_movements/nil_movement'
+
 
 describe Board do
   subject(:board) { described_class.new }

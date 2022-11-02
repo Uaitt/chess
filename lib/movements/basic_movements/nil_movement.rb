@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # this class represents a non existing movement in chess
-class NilBasicMovement
+class NilMovement
   class << self
     def handles?(_)
       true
