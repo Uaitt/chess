@@ -3,7 +3,7 @@
 # set of common methods to all basic movements in chess
 module BasicMovement
   def self.for(piece, board, king_position)
-    registry.find { |movement| movement.handles?(piece) }.new(piece, board, king_position)
+    registry.find { |movement| movement.handles?(piece) }.new(piece, board, king_position) # add included hook
   end
 
   def initialize(board, piece, end_position)
