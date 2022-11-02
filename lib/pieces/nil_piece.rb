@@ -7,8 +7,4 @@ class NilPiece
   def self.starts_at?(_, _)
     true
   end
-
-  def initialize
-    @color = nil
-  end
 end
