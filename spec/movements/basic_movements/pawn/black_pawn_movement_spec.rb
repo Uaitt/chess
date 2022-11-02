@@ -168,22 +168,31 @@ describe BlackPawnMovement do
     end
   end
 
-  describe '#allowing_en_passant?' do
+  describe '#allows_en_passant?' do
     before do
       board.data[0][0] = black_pawn
     end
 
     context 'when the movement is a double leap' do
       let(:end_position) { [2, 0] }
-      it 'returns true' do
-        expect(subject).to be_allowing_en_passant
+      context 'when it moves that pawn' do
+        it 'returns true' do
+          expect(subject.allows_en_passant?(black_pawn)).to eq(true)
+        end
+      end
+
+      context 'when it does not move that pawn' do
+        it 'returns false' do
+          black_pawn = BlackPawn.new
+          expect(subject.allows_en_passant?(black_pawn)).to eq(false)
+        end
       end
     end
 
     context 'when the movement is not a double leap' do
       let(:end_position) { [1, 0] }
-      it 'returns true' do
-        expect(subject).not_to be_allowing_en_passant
+      it 'returns false' do
+        expect(subject.allows_en_passant?(black_pawn)).to eq(false)
       end
     end
   end
