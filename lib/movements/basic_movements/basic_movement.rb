@@ -32,7 +32,7 @@ module BasicMovement
   end
 
   def valid?
-    possible? && !blocked? # own color king not in check
+    possible? && !blocked?
   end
 
   def apply
