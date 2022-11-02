@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry-byebug'
 # set of common methods to all basic movements in chess
 module BasicMovement
   class << self
@@ -65,7 +65,7 @@ module BasicMovement
   def blocked_on_transition?
     @current_position = @initial_position.zip(direction).map(&:sum)
     until @current_position == @end_position
-      return true unless @board.data[@current_position[0]][@current_position[1]].nil?
+      return true unless @board.data[@current_position[0]][@current_position[1]].instance_of?(NilPiece)
 
       @current_position = @current_position.zip(direction).map(&:sum)
     end
@@ -73,7 +73,7 @@ module BasicMovement
   end
 
   def blocked_on_arrival?
-    !@board.data[@end_position[0]][@end_position[1]].nil? &&
+    !@board.data[@end_position[0]][@end_position[1]].nil? && # remove and fix the specs
       @board.data[@end_position[0]][@end_position[1]].color == @piece.color
   end
 

@@ -29,7 +29,6 @@ require_relative '../lib/movements/basic_movements/rook/black_rook_movement'
 require_relative '../lib/movements/basic_movements/rook/white_rook_movement'
 require_relative '../lib/movements/basic_movements/nil_movement'
 
-
 describe Board do
   subject(:board) { described_class.new }
 
@@ -153,14 +152,27 @@ describe Board do
     context 'when the king is black' do
       let(:king) { BlackKing.new }
       let(:rook) { WhiteRook.new }
+      let(:bishop) { WhiteBishop.new }
 
       context 'when the king is in check' do
-        before do
-          board.data[1][0] = rook
+        context 'when checked by a rook' do
+          before do
+            board.data[1][0] = rook
+          end
+
+          xit 'returns true' do
+            expect(board).to be_checked(king)
+          end
         end
 
-        it 'returns true' do
-          expect(board).to be_checked(king)
+        context 'when checked by a bishop' do
+          before do
+            board.data[2][2] = bishop
+          end
+
+          it 'returns true' do
+            expect(board).to be_checked(king)
+          end
         end
       end
 
