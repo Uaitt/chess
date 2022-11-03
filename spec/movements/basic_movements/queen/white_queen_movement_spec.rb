@@ -4,6 +4,7 @@ require_relative '../../../../lib/movements/basic_movements/queen/white_queen_mo
 require_relative '../../../../lib/pieces/queen/white_queen'
 require_relative '../../../../lib/pieces/pawn/white_pawn'
 require_relative '../../../../lib/pieces/black_piece'
+require_relative '../../../../lib/pieces/nil_piece'
 require_relative '../../../../lib/board'
 
 describe WhiteQueenMovement do
@@ -11,6 +12,9 @@ describe WhiteQueenMovement do
   let(:white_queen) { WhiteQueen.new }
   let(:piece) { color_class.new }
   let(:board) { Board.new }
+  before do
+    board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
+  end
   describe '#valid?' do
     context 'when the queen is placed at the top right corner' do
       before do
