@@ -25,8 +25,6 @@ class Board
   end
 
   def checked?(king)
-    return false if current_position(king.opposite_color).nil? # change in mated(king.opposite_color)?
-
     @data.any? do |row|
       row.any? do |piece|
         BasicMovement.for(self, piece, current_position(king)).valid?
