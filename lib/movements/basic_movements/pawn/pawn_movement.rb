@@ -42,7 +42,7 @@ module PawnMovement
   end
 
   def blocked_diagonally?
-    !@board.data[@end_position[0]][@end_position[1]].nil? &&
+    !@board.data[@end_position[0]][@end_position[1]].instance_of?(NilPiece) &&
       @board.data[@end_position[0]][@end_position[1]].color != @piece.color
   end
 
@@ -51,6 +51,6 @@ module PawnMovement
   end
 
   def blocked_on_arrival?
-    !@board.data[@end_position[0]][@end_position[1]].nil?
+    !@board.data[@end_position[0]][@end_position[1]].instance_of?(NilPiece)
   end
 end
