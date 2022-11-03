@@ -153,6 +153,7 @@ describe Board do
       let(:king) { BlackKing.new }
       let(:rook) { WhiteRook.new }
       let(:bishop) { WhiteBishop.new }
+      let(:pawn) { WhitePawn.new }
 
       context 'when the king is in check' do
         context 'when checked by a rook' do
@@ -160,7 +161,7 @@ describe Board do
             board.data[1][0] = rook
           end
 
-          xit 'returns true' do
+          it 'returns true' do
             expect(board).to be_checked(king)
           end
         end
@@ -174,11 +175,22 @@ describe Board do
             expect(board).to be_checked(king)
           end
         end
+
+        context 'when checked by a pawn' do
+          before do
+            board.data[1][1] = pawn
+          end
+
+          it 'returns true' do
+            expect(board).to be_checked(king)
+          end
+        end
       end
 
       context 'when the king is not in check' do
         before do
           board.data[1][1] = rook
+          board.data[1][0] = bishop
         end
 
         it 'returns false' do
