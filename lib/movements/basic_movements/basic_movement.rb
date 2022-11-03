@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry-byebug'
 # set of common methods to all basic movements in chess
 module BasicMovement
   class << self
@@ -35,8 +35,15 @@ module BasicMovement
     possible? && !blocked?
   end
 
+  def checks_own_king?
+    @board = @board.dup
+    @board.data = @board.data.map(&:clone)
+    apply
+    @board.checked?(@piece)
+  end
+
   def apply
-    @board.data[@initial_position[0]][@initial_position[1]] = nil
+    @board.data[@initial_position[0]][@initial_position[1]] = NilPiece.new
     @board.data[@end_position[0]][@end_position[1]] = @piece
   end
 

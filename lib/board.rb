@@ -31,4 +31,25 @@ class Board
       end
     end
   end
+
+  def mated?(king)
+    king.basic_moves.all? do |move|
+      if valid?(new_position(move, king))
+        BasicMovement.for(self, king, new_position(move, king)).checks_own_king?
+      else
+        true
+      end
+    end
+  end
+
+  private
+
+  def new_position(move, king)
+    move.zip(current_position(king)).map(&:sum)
+  end
+
+  def valid?(new_position)
+    new_position[0] >= 0 && new_position[0] <= 7 &&
+      new_position[1] >= 0 && new_position[1] <= 7
+  end
 end

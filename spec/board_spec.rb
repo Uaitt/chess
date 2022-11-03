@@ -203,7 +203,7 @@ describe Board do
     let(:queen) { WhiteQueen.new }
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
-      board.data[7][0] = king
+      board.data[0][7] = king
     end
 
     context 'when the king is mated' do
