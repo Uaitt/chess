@@ -4,7 +4,7 @@ require_relative '../../../lib/pieces/pawn/white_pawn'
 
 describe WhitePawn do
   subject(:white_pawn) { described_class.new }
-  describe '::starts_at' do
+  describe '::starts_at?' do
     context 'when given 6 and a number between 0 and 7' do
       it 'returns true' do
         (1..7).all? { |number| WhitePawn.starts_at?(6, number) }
