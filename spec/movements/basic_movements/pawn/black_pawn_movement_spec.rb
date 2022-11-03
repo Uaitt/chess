@@ -3,6 +3,7 @@
 require_relative '../../../../lib/movements/basic_movements/pawn/black_pawn_movement'
 require_relative '../../../../lib/pieces/pawn/black_pawn'
 require_relative '../../../../lib/pieces/white_piece'
+require_relative '../../../../lib/pieces/nil_piece'
 require_relative '../../../../lib/board'
 
 describe BlackPawnMovement do
@@ -10,6 +11,9 @@ describe BlackPawnMovement do
   let(:black_pawn) { BlackPawn.new }
   let(:piece) { color_class.new }
   let(:board) { Board.new }
+  before do
+    board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
+  end
   describe '#valid?' do
     context 'when it is placed in the top left corner' do
       before do
