@@ -29,14 +29,8 @@ class Board
 
     @data.any? do |row|
       row.any? do |piece|
-        able_to_capture?(piece, king)
+        BasicMovement.for(self, piece, current_position(king)).valid?
       end
     end
-  end
-
-  private
-
-  def able_to_capture?(piece, king)
-    piece.color != king.color && BasicMovement.for(self, piece, current_position(king)).valid?
   end
 end
