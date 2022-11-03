@@ -4,6 +4,7 @@ require_relative '../../../../lib/movements/basic_movements/knight/white_knight_
 require_relative '../../../../lib/pieces/knight/white_knight'
 require_relative '../../../../lib/pieces/pawn/white_pawn'
 require_relative '../../../../lib/pieces/black_piece'
+require_relative '../../../../lib/pieces/nil_piece'
 require_relative '../../../../lib/board'
 
 describe WhiteKnightMovement do
@@ -11,6 +12,9 @@ describe WhiteKnightMovement do
   let(:white_knight) { WhiteKnight.new }
   let(:piece) { color_class.new }
   let(:board) { Board.new }
+  before do
+    board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
+  end
   describe '#valid?' do
     context 'when the knight is placed in the top left corner' do
       before do
