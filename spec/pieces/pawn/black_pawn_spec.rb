@@ -4,23 +4,10 @@ require_relative '../../../lib/pieces/pawn/black_pawn'
 
 describe BlackPawn do
   subject(:black_pawn) { described_class.new }
-  describe '#initial_file' do
-    context 'when the black pawn is the only one created' do
-      it 'returns 0' do
-        expect(black_pawn.initial_file).to eq(0)
-      end
-    end
-
-    context 'when the black pawn is the second one being created' do
-      it 'returns 1' do
-        expect(black_pawn.initial_file).to eq(1)
-      end
-    end
-
-    context 'when the black pawn is the fourth one created' do
-      it 'returns 3' do
-        described_class.new
-        expect(black_pawn.initial_file).to eq(3)
+  describe '::starts_at?' do
+    context 'when given 1 and a number between 0 and 7' do
+      it 'returns true' do
+        (1..7).all? { |number| BlackPawn.starts_at?(0, number) }
       end
     end
   end
