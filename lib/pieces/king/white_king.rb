@@ -10,8 +10,4 @@ class WhiteKing < WhitePiece
   def self.starts_at?(rank, file)
     rank == 7 && file == 4
   end
-
-  def opposite_color
-    BlackKing.new
-  end
 end
