@@ -60,8 +60,8 @@ module BasicMovement
   def checks_own_king?
     @temporary_board = @board.dup
     @temporary_board.data = @board.data.dup
-    @temporary_board.data[@end_position[0]][@end_position[1]] = piece
-    @temporary_board.checked?(King.for(piece.color))
+    @temporary_board.data[@end_position[0]][@end_position[1]] = @piece
+    @temporary_board.checked?(King.for(@piece.color))
   end
 
   def reaches_position?(move)

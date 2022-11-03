@@ -2,7 +2,7 @@
 
 # this class represents the board in chess
 class Board
-  attr_reader :data
+  attr_accessor :data
 
   def initialize
     @data = Array.new(8) { Array.new(8, nil) }
@@ -25,6 +25,8 @@ class Board
   end
 
   def checked?(king)
+    return false if current_position(king.opposite_color).nil?
+
     @data.any? do |row|
       row.any? do |piece|
         able_to_capture?(piece, king)

@@ -7,6 +7,7 @@ require_relative '../bishop/bishop_movement'
 # set of methods common to all king movements in chess
 module KingMovement
   include BasicMovement
+
   def direction
     if vertical_or_horizontal?
       RookMovement
