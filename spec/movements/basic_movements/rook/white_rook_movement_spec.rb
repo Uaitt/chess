@@ -2,7 +2,9 @@
 
 require_relative '../../../../lib/movements/basic_movements/rook/white_rook_movement'
 require_relative '../../../../lib/pieces/rook/white_rook'
+require_relative '../../../../lib/pieces/pawn/white_pawn'
 require_relative '../../../../lib/pieces/black_piece'
+require_relative '../../../../lib/pieces/nil_piece'
 require_relative '../../../../lib/board'
 
 describe WhiteRookMovement do
@@ -10,6 +12,9 @@ describe WhiteRookMovement do
   let(:white_rook) { WhiteRook.new }
   let(:piece) { color_class.new }
   let(:board) { Board.new }
+  before do
+    board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
+  end
   describe '#valid?' do
     context 'when the rook is placed on the top left corner' do
       before do
