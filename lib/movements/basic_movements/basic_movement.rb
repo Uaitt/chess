@@ -73,7 +73,7 @@ module BasicMovement
   end
 
   def blocked_on_arrival?
-    !@board.data[@end_position[0]][@end_position[1]].nil? && # remove and fix the specs
+    !@board.data[@end_position[0]][@end_position[1]].instance_of?(NilPiece) &&
       @board.data[@end_position[0]][@end_position[1]].color == @piece.color
   end
 

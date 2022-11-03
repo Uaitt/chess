@@ -4,6 +4,7 @@ require_relative '../../../../lib/movements/basic_movements/bishop/white_bishop_
 require_relative '../../../../lib/pieces/bishop/white_bishop'
 require_relative '../../../../lib/pieces/pawn/white_pawn'
 require_relative '../../../../lib/pieces/black_piece'
+require_relative '../../../../lib/pieces/nil_piece'
 require_relative '../../../../lib/board'
 
 describe WhiteBishopMovement do
@@ -11,6 +12,9 @@ describe WhiteBishopMovement do
   let(:white_bishop) { WhiteBishop.new }
   let(:piece) { color_class.new }
   let(:board) { Board.new }
+  before do
+    board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
+  end
   describe '#valid?' do
     context 'when the bishop is placed in the top left corner' do
       before do
