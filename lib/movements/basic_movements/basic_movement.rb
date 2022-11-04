@@ -36,10 +36,17 @@ module BasicMovement
   end
 
   def checks_own_king?
+    return true if !valid_position?(@end_position)
+
     @board = @board.dup
     @board.data = @board.data.map(&:clone)
     apply
     @board.checked?(@piece.color)
+  end
+
+  def valid_position?(position)
+    position[0] >= 0 && position[0] <= 7 &&
+      position[1] >= 0 && position[1] <= 7
   end
 
   def apply
