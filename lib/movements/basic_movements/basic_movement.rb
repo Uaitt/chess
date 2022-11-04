@@ -36,10 +36,9 @@ module BasicMovement
   end
 
   def checks_own_king?
-    return true if !valid_position?(@end_position)
+    return true unless valid_position?(@end_position)
 
-    @board = @board.dup
-    @board.data = @board.data.map(&:clone)
+    clone_board
     apply
     @board.checked?(@piece.color)
   end
@@ -97,5 +96,10 @@ module BasicMovement
 
   def current_move
     @end_position.zip(@initial_position).map { |finish, start| finish - start }
+  end
+
+  def clone_board
+    @board = @board.dup
+    @board.data = @board.data.map(&:clone)
   end
 end
