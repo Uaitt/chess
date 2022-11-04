@@ -38,7 +38,7 @@ class Board
   private
 
   def new_position(move, king)
-    move.zip(current_position(king)).map(&:sum)
+    move.zip(current_position(king)).map { |finish, start| finish + start }
   end
 
   def king_of_color(color)
