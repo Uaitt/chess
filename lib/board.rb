@@ -24,15 +24,16 @@ class Board
     end
   end
 
-  def checked?(king)
+  def checked?(color)
     @data.any? do |row|
       row.any? do |piece|
-        BasicMovement.for(self, piece, current_position(king)).valid?
+        BasicMovement.for(self, piece, current_position(king_of_color(color))).valid?
       end
     end
   end
 
-  def mated?(king)
+  def mated?(color)
+    king = king_of_color(color)
     king.basic_moves.all? do |move|
       if valid?(new_position(move, king))
         BasicMovement.for(self, king, new_position(move, king)).checks_own_king?
@@ -51,5 +52,11 @@ class Board
   def valid?(new_position)
     new_position[0] >= 0 && new_position[0] <= 7 &&
       new_position[1] >= 0 && new_position[1] <= 7
+  end
+
+  def king_of_color(color)
+    @data.each do |row|
+      row.each { |piece| return piece if piece.color == color && piece.class.include?(King) }
+    end
   end
 end

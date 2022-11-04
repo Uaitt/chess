@@ -160,7 +160,7 @@ describe Board do
         end
 
         it 'returns true' do
-          expect(board).to be_checked(king)
+          expect(board).to be_checked(:black)
         end
       end
 
@@ -170,7 +170,7 @@ describe Board do
         end
 
         it 'returns true' do
-          expect(board).to be_checked(king)
+          expect(board).to be_checked(:black)
         end
       end
 
@@ -180,7 +180,7 @@ describe Board do
         end
 
         it 'returns true' do
-          expect(board).to be_checked(king)
+          expect(board).to be_checked(:black)
         end
       end
     end
@@ -192,7 +192,7 @@ describe Board do
       end
 
       it 'returns false' do
-        expect(board).not_to be_checked(king)
+        expect(board).not_to be_checked(:black)
       end
     end
   end
@@ -213,13 +213,13 @@ describe Board do
       end
 
       it 'returns true' do
-        expect(board).to be_mated(king)
+        expect(board).to be_mated(:black)
       end
     end
 
     context 'when the king is not mated' do
       it 'returns false' do
-        expect(board).not_to be_mated(king)
+        expect(board).not_to be_mated(:black)
       end
     end
   end

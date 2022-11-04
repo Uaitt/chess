@@ -39,7 +39,7 @@ module BasicMovement
     @board = @board.dup
     @board.data = @board.data.map(&:clone)
     apply
-    @board.checked?(@piece)
+    @board.checked?(@piece.color)
   end
 
   def apply
