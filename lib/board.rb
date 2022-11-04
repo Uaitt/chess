@@ -5,7 +5,7 @@ class Board
   attr_accessor :data
 
   def initialize
-    @data = Array.new(8) { Array.new(8, nil) }
+    @data = Array.new(8) { Array.new(8) }
   end
 
   def set
@@ -37,8 +37,8 @@ class Board
 
   private
 
-  def new_position(move, king)
-    move.zip(current_position(king)).map { |finish, start| finish + start }
+  def new_position(move, piece)
+    move.zip(current_position(piece)).map { |finish, start| finish + start }
   end
 
   def king_of_color(color)
