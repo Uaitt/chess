@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../../../lib/movements/basic_movements/pawn/black_pawn_movement'
-require_relative '../../../../lib/pieces/pawn/black_pawn'
-require_relative '../../../../lib/pieces/white_piece'
-require_relative '../../../../lib/pieces/nil_piece'
-require_relative '../../../../lib/board'
+require 'require_all'
+
+require_all 'lib'
 
 describe BlackPawnMovement do
   subject { described_class.new(board, black_pawn, end_position) }
@@ -153,6 +151,35 @@ describe BlackPawnMovement do
             it { is_expected.not_to be_valid }
           end
         end
+      end
+    end
+  end
+
+  describe '#checks_own_king?' do
+    before do
+      board.data[0][0] = BlackKing.new
+      board.data[0][1] = black_pawn
+      board.data[1][0] = WhiteRook.new
+    end
+    context 'when it puts its own king in check' do
+      let(:end_position) { [1, 1] }
+      it 'returns true' do
+        expect(subject.checks_own_king?).to eq(true)
+      end
+
+      it 'does not apply the movement' do
+        expect(board.data[1][1]).to be_instance_of(NilPiece)
+      end
+    end
+
+    context 'when it does not put its own king in check' do
+      let(:end_position) { [1, 0] }
+      it 'returns false' do
+        expect(subject.checks_own_king?).to eq(false)
+      end
+
+      it 'does not apply the movement' do
+        expect(board.data[1][0]).to be_instance_of(WhiteRook)
       end
     end
   end
