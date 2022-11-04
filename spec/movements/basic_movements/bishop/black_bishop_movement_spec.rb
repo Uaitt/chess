@@ -1,25 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../../../lib/movements/basic_movements/bishop/black_bishop_movement'
-require_relative '../../../../lib/movements/basic_movements/bishop/white_bishop_movement'
-require_relative '../../../../lib/movements/basic_movements/king/black_king_movement'
-require_relative '../../../../lib/movements/basic_movements/king/white_king_movement'
-require_relative '../../../../lib/movements/basic_movements/knight/black_knight_movement'
-require_relative '../../../../lib/movements/basic_movements/knight/white_knight_movement'
-require_relative '../../../../lib/movements/basic_movements/pawn/black_pawn_movement'
-require_relative '../../../../lib/movements/basic_movements/pawn/white_pawn_movement'
-require_relative '../../../../lib/movements/basic_movements/queen/black_queen_movement'
-require_relative '../../../../lib/movements/basic_movements/queen/white_queen_movement'
-require_relative '../../../../lib/movements/basic_movements/rook/black_rook_movement'
-require_relative '../../../../lib/movements/basic_movements/rook/white_rook_movement'
-require_relative '../../../../lib/movements/basic_movements/nil_movement'
-require_relative '../../../../lib/pieces/king/black_king'
-require_relative '../../../../lib/pieces/bishop/black_bishop'
-require_relative '../../../../lib/pieces/bishop/white_bishop'
-require_relative '../../../../lib/pieces/pawn/black_pawn'
-require_relative '../../../../lib/pieces/white_piece'
-require_relative '../../../../lib/pieces/nil_piece'
-require_relative '../../../../lib/board'
+require 'require_all'
+
+require_all 'lib'
 
 describe BlackBishopMovement do
   subject { described_class.new(board, black_bishop, end_position) }

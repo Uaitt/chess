@@ -1,0 +1,12 @@
+GEM
+  specs:
+    require_all (3.0.0)
+
+PLATFORMS
+  x86_64-linux
+
+DEPENDENCIES
+  require_all
+
+BUNDLED WITH
+   2.3.7

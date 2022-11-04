@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../../../lib/movements/basic_movements/king/white_king_movement'
-require_relative '../../../../lib/pieces/king/white_king'
-require_relative '../../../../lib/pieces/pawn/white_pawn'
-require_relative '../../../../lib/pieces/black_piece'
-require_relative '../../../../lib/pieces/nil_piece'
-require_relative '../../../../lib/board'
+require 'require_all'
+
+require_all 'lib'
 
 describe WhiteKingMovement do
   subject { described_class.new(board, white_king, end_position) }
@@ -318,6 +315,34 @@ describe WhiteKingMovement do
       context 'when the movement is one step towards top and two towards right' do
         let(:end_position) { [2, 6] }
         it { is_expected.not_to be_valid }
+      end
+    end
+  end
+
+  describe '#checks_own_king?' do
+    before do
+      board.data[1][0] = white_king
+      board.data[1][1] = BlackBishop.new
+    end
+    context 'when it puts its own king in check' do
+      let(:end_position) { [0, 0] }
+      it 'returns true' do
+        expect(subject.checks_own_king?).to eq(true)
+      end
+
+      it 'does not apply the movement' do
+        expect(board.data[0][0]).to be_instance_of(NilPiece)
+      end
+    end
+
+    context 'when it does not put its own king in check' do
+      let(:end_position) { [1, 1] }
+      it 'returns false' do
+        expect(subject.checks_own_king?).to eq(false)
+      end
+
+      it 'does not apply the movement' do
+        expect(board.data[1][1]).to be_instance_of(BlackBishop)
       end
     end
   end
