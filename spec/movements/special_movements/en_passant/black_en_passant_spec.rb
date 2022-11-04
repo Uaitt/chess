@@ -4,6 +4,7 @@ require_relative '../../../../lib/movements/special_movements/en_passant/black_e
 require_relative '../../../../lib/movements/basic_movements/pawn/white_pawn_movement'
 require_relative '../../../../lib/pieces/pawn/black_pawn'
 require_relative '../../../../lib/pieces/pawn/white_pawn'
+require_relative '../../../../lib/pieces/nil_piece'
 require_relative '../../../../lib/board'
 
 describe BlackEnPassant do
@@ -77,7 +78,7 @@ describe BlackEnPassant do
     end
 
     it 'removes the enemy pawn' do
-      expect(board.data[4][1]).to eq(nil)
+      expect(board.data[4][1]).to be_instance_of(NilPiece)
     end
 
     it 'moves the black pawn to the right position' do
@@ -85,7 +86,7 @@ describe BlackEnPassant do
     end
 
     it 'removes the black pawn from the original position' do
-      expect(board.data[4][0]).to eq(nil)
+      expect(board.data[4][0]).to be_instance_of(NilPiece)
     end
   end
 end

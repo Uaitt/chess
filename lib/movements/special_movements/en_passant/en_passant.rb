@@ -17,8 +17,8 @@ module EnPassant
   end
 
   def apply
-    @board.data[enemy_position[0]][enemy_position[1]] = nil
-    @board.data[@initial_position[0]][@initial_position[1]] = nil
+    @board.data[enemy_position[0]][enemy_position[1]] = NilPiece.new
+    @board.data[@initial_position[0]][@initial_position[1]] = NilPiece.new
     @board.data[@end_position[0]][@end_position[1]] = @pawn
   end
 
