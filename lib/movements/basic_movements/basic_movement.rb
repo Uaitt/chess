@@ -43,11 +43,6 @@ module BasicMovement
     @board.checked?(@piece.color)
   end
 
-  def valid_position?(position)
-    position[0] >= 0 && position[0] <= 7 &&
-      position[1] >= 0 && position[1] <= 7
-  end
-
   def apply
     @board.data[@initial_position[0]][@initial_position[1]] = NilPiece.new
     @board.data[@end_position[0]][@end_position[1]] = @piece
@@ -96,6 +91,11 @@ module BasicMovement
 
   def current_move
     @end_position.zip(@initial_position).map { |finish, start| finish - start }
+  end
+
+  def valid_position?(position)
+    position[0] >= 0 && position[0] <= 7 &&
+      position[1] >= 0 && position[1] <= 7
   end
 
   def clone_board

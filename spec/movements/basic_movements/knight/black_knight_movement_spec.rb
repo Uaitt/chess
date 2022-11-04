@@ -470,7 +470,7 @@ describe BlackKnightMovement do
     end
 
     it 'removes the bishop from the initial position' do
-      expect(board.data[0][0]).to eq(nil)
+      expect(board.data[0][0]).to be_instance_of(NilPiece)
     end
   end
 
