@@ -35,7 +35,7 @@ module BasicMovement
     possible? && !blocked?
   end
 
-  def checks_own_king?
+  def checks_own_king? # to move into its own module
     return true unless valid_position?(@end_position)
 
     clone_board
