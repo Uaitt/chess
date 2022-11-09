@@ -8,6 +8,7 @@ describe BlackCastling do
   subject(:subject) { described_class.new(board, black_king, end_position) }
   let(:board) { Board.new }
   let(:black_king) { BlackKing.new }
+  let(:black_rook) { BlackRook.new }
   describe '#valid?' do
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
@@ -20,6 +21,54 @@ describe BlackCastling do
           board.data[0][4] = black_king
         end
 
+        context 'when the rook was never moved' do
+          before do
+            board.data[0][0] = black_rook
+          end
+
+          context 'when the king is not currently in check' do
+            context 'when the king crosses over no square attacked by an enemy piece' do
+              context 'when all the separating squares are empty' do
+                context 'when the movement does not put the king in check' do
+                  xit { is_expected.to be_valid }
+                end
+
+                context 'when the movement does put the king in check' do
+                  before do
+                    board.data[1][2] = WhiteRook.new
+                  end
+
+                  xit { is_expected.not_to be_valid }
+                end
+              end
+
+              context 'when one separating square is not empty' do
+                before do
+                  board.data[0][1] = BlackKnight.new
+                end
+
+                it { is_expected.not_to be_valid }
+              end
+            end
+
+            context 'when the king moves over a square attacked by an enemy piece' do
+              before do
+                board.data[1][3] = WhiteRook.new
+              end
+
+              it { is_expected.not_to be_valid }
+            end
+          end
+
+          context 'when the king is currently in check' do
+            before do
+              board.data[0][4] = WhiteRook.new
+            end
+
+            it { is_expected.not_to be_valid }
+          end
+        end
+
         context 'when the rook has already moved' do
           before do
             board.data[0][0] = NilPiece.new
@@ -27,29 +76,12 @@ describe BlackCastling do
 
           it { is_expected.not_to be_valid }
         end
-
-        context 'when the rook was never moved' do
-          before do
-            board.data[0][0] = BlackRook.new
-          end
-
-          context 'when the king is not in check' do
-            ###
-          end
-
-          context 'when the king is currently in check' do
-            before do
-              board.data[0][5] = WhiteRook.new
-            end
-
-            it { is_expected.not_to be_valid }
-          end
-        end
       end
 
       context 'when the king has already moved' do
         before do
           board.data[0][0] = black_king
+          black_king.movements = 4
         end
 
         it { is_expected.not_to be_valid }
