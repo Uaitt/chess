@@ -87,9 +87,6 @@ describe BlackLongCastling do
     end
   end
 
-  context 'when moving to the right' do
-  end
-
   context 'when moving to a wrong square' do
     context 'when moving towards left' do
       let(:end_position) { [0, 1] }
