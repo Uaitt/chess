@@ -12,6 +12,7 @@ describe BlackCastling do
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
     end
+
     context 'when moving to the left' do
       let(:end_position) { [0, 2] }
       context 'when the king was never moved' do
@@ -21,7 +22,7 @@ describe BlackCastling do
 
         context 'when the rook has already moved' do
           before do
-            board.data[1][0] = BlackRook.new
+            board.data[0][0] = NilPiece.new
           end
 
           it { is_expected.not_to be_valid }
