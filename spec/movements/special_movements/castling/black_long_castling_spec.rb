@@ -102,7 +102,6 @@ describe BlackLongCastling do
     end
   end
 
-
   describe '#apply' do
     before do
       board.data[0][4] = black_king
