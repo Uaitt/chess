@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'pry-byebug'
+
 # ...
 module Castling
   def initialize(board, black_king, end_position)
