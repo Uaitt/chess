@@ -204,29 +204,52 @@ describe Board do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
     end
 
-    context 'when the king is not in check' do
-      context 'when the king crosses over no square attacked by an enemy piece' do
+    context 'when castling is made by black towards left' do
+      let(:king_path) { [[0, 2], [0, 3]] }
+      let(:separating_squares) { [[0, 1], [0, 2], [0, 3]] }
+      before do
+        board.data[0][4] = BlackKing.new
+        board.data[0][0] = BlackRook.new
       end
 
-      context 'when the king moves over a square attacked by an enemy piece' do
+      context 'when the king is not in check' do
+        context 'when the king crosses over no square attacked by an enemy piece' do
+          context 'when all the separating squares are empty' do
+            it 'returns true' do
+              expect(board).to be_allowing_castling(:black, separating_squares, king_path)
+            end
+          end
+
+          context 'when one separating square is not empty' do
+            before do
+              board.data[0][1] = BlackKnight.new
+            end
+
+            it 'returns false' do
+              expect(board).not_to be_allowing_castling(:black, separating_squares, king_path)
+            end
+          end
+        end
+
+        context 'when the king moves over a square attacked by an enemy piece' do
+          before do
+            board.data[1][2] = WhiteRook.new
+          end
+
+          it 'returns false' do
+            expect(board).not_to be_allowing_castling(:black, separating_squares, king_path)
+          end
+        end
+      end
+
+      context 'when the king is in check' do
         before do
-          board.data[1][2] = WhiteRook.new
+          board.data[0][5] = WhiteRook.new
         end
 
         it 'returns false' do
-          expect(board).not_to be_allowing_castling(:black, [[0, 1], [0, 2], [0, 3]])
+          expect(board).not_to be_allowing_castling(:black, separating_squares, king_path)
         end
-      end
-    end
-
-    context 'when the king is in check' do
-      before do
-        board.data[0][4] = BlackKing.new
-        board.data[0][5] = WhiteRook.new
-      end
-
-      it 'returns false' do
-        expect(board).not_to be_allowing_castling(:black, [[0, 1], [0, 2], [0, 3]])
       end
     end
   end
