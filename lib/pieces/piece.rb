@@ -2,7 +2,12 @@
 
 # set of methods common to all pieces in chess
 module Piece
+  attr_accessor :movements
   attr_reader :color
+
+  def initialize
+    @movements = 0
+  end
 
   class << self
     def for(rank, file)

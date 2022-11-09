@@ -7,6 +7,7 @@ class WhitePiece
   include Piece
 
   def initialize
+    super
     @color = :white
   end
 end

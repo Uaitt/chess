@@ -7,6 +7,7 @@ class BlackPiece
   include Piece
 
   def initialize
+    super
     @color = :black
   end
 end
