@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # this class represents the board in chess
-class Board
+class Board # you can place a @last movement attribute to this board when applying the movement
   attr_accessor :data
 
   def initialize
@@ -35,6 +35,11 @@ class Board
     king.basic_moves.all? { |move| BasicMovement.for(self, king, new_position(move, king)).checks_own_king? }
   end
 
+  def allowing_castling?(color, separating_squares, king_path)
+    !checked?(color) && !opponent_can_attack(color, king_path) &&
+      separating_squares.all? { |position| @data[position[0]][position[1]].instance_of?(NilPiece) }
+  end
+
   private
 
   def new_position(move, piece)
@@ -44,6 +49,17 @@ class Board
   def king_of_color(color)
     @data.each do |row|
       row.each { |piece| return piece if piece.color == color && piece.class.include?(King) }
+    end
+  end
+
+  def opponent_can_attack(color, king_path)
+    @data.any? do |row|
+      row.any? do |piece|
+        piece.color != color && king_path.any? do |position|
+          movement = BasicMovement.for(self, piece, position)
+          movement.valid? && !movement.checks_own_king?
+        end
+      end
     end
   end
 end
