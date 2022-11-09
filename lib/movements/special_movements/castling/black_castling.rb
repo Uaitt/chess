@@ -4,15 +4,14 @@
 class BlackCastling
   def initialize(board, black_king, end_position)
     @board = board
-    @black_king = black_king # the first piece to be moved has to be the king for castling
+    @black_king = black_king
     @end_position = end_position
-    @piece = @board.data[0][file]
   end
 
   def valid?
     valid_position? && !king_already_moved? && !rook_already_moved? &&
       !@board.checked?(:black) && @board.allows_castling?(:black) &&
-        !checks_own_king? && empty_squares?
+      !checks_own_king? && empty_squares?
   end
 
   private
