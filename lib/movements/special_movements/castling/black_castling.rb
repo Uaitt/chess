@@ -10,7 +10,8 @@ class BlackCastling
   end
 
   def valid?
-    valid_position? && valid_pieces? && @board.allows_castling?(:black, separating_squares) && !checks_own_king?
+    valid_position? && valid_pieces? && !checks_own_king? &&
+      @board.allows_castling?(:black, separating_squares, king_path)
   end
 
   private
@@ -33,5 +34,9 @@ class BlackCastling
 
   def separating_squares
     file.zero? ? [[0, 1], [0, 2], [0, 3]] : [[0, 5], [0, 6]]
+  end
+
+  def king_path
+    separating_squares.length == 3 ? separating_squares[1..] : separating_squares
   end
 end
