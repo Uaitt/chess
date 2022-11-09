@@ -36,7 +36,7 @@ class Board # you can place a @last movement attribute to this board when applyi
   end
 
   def allowing_castling?(color, separating_positions, king_path)
-    !checked?(color) && !opponent_can_attack(color, king_path) &&
+    !checked?(color) && !opponent_can_occupy_crossed_path(color, king_path) &&
       separating_positions.all? { |position| @data[position[0]][position[1]].instance_of?(NilPiece) }
   end
 
@@ -52,7 +52,7 @@ class Board # you can place a @last movement attribute to this board when applyi
     end
   end
 
-  def opponent_can_attack(color, king_path)
+  def opponent_can_occupy_crossed_path(color, king_path)
     @data.any? do |row|
       row.any? do |piece|
         piece.color != color && king_path.any? do |position|
