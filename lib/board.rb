@@ -35,9 +35,9 @@ class Board # you can place a @last movement attribute to this board when applyi
     king.basic_moves.all? { |move| BasicMovement.for(self, king, new_position(move, king)).checks_own_king? }
   end
 
-  def allowing_castling?(color, separating_squares, king_path)
+  def allowing_castling?(color, separating_positions, king_path)
     !checked?(color) && !opponent_can_attack(color, king_path) &&
-      separating_squares.all? { |position| @data[position[0]][position[1]].instance_of?(NilPiece) }
+      separating_positions.all? { |position| @data[position[0]][position[1]].instance_of?(NilPiece) }
   end
 
   private
