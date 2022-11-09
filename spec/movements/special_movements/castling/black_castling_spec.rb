@@ -34,6 +34,7 @@ describe BlackCastling do
           end
 
           context 'when the king is not in check' do
+            ###
           end
 
           context 'when the king is currently in check' do

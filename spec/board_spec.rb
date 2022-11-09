@@ -1,33 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../lib/board'
-require_relative '../lib/pieces/piece'
-require_relative '../lib/pieces/nil_piece'
-require_relative '../lib/pieces/bishop/black_bishop'
-require_relative '../lib/pieces/bishop/white_bishop'
-require_relative '../lib/pieces/king/black_king'
-require_relative '../lib/pieces/king/white_king'
-require_relative '../lib/pieces/knight/black_knight'
-require_relative '../lib/pieces/knight/white_knight'
-require_relative '../lib/pieces/pawn/black_pawn'
-require_relative '../lib/pieces/pawn/white_pawn'
-require_relative '../lib/pieces/queen/black_queen'
-require_relative '../lib/pieces/queen/white_queen'
-require_relative '../lib/pieces/rook/black_rook'
-require_relative '../lib/pieces/rook/white_rook'
-require_relative '../lib/movements/basic_movements/bishop/black_bishop_movement'
-require_relative '../lib/movements/basic_movements/bishop/white_bishop_movement'
-require_relative '../lib/movements/basic_movements/king/black_king_movement'
-require_relative '../lib/movements/basic_movements/king/white_king_movement'
-require_relative '../lib/movements/basic_movements/knight/black_knight_movement'
-require_relative '../lib/movements/basic_movements/knight/white_knight_movement'
-require_relative '../lib/movements/basic_movements/pawn/black_pawn_movement'
-require_relative '../lib/movements/basic_movements/pawn/white_pawn_movement'
-require_relative '../lib/movements/basic_movements/queen/black_queen_movement'
-require_relative '../lib/movements/basic_movements/queen/white_queen_movement'
-require_relative '../lib/movements/basic_movements/rook/black_rook_movement'
-require_relative '../lib/movements/basic_movements/rook/white_rook_movement'
-require_relative '../lib/movements/basic_movements/nil_movement'
+require 'require_all'
+
+require_all 'lib'
 
 describe Board do
   subject(:board) { described_class.new }
@@ -220,6 +195,38 @@ describe Board do
     context 'when the king is not mated' do
       it 'returns false' do
         expect(board).not_to be_mated(king.color)
+      end
+    end
+  end
+
+  describe '#allowing_castling?' do
+    before do
+      board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
+    end
+
+    context 'when the king is not in check' do
+      context 'when the king crosses over no square attacked by an enemy piece' do
+      end
+
+      context 'when the king moves over a square attacked by an enemy piece' do
+        before do
+          board.data[1][2] = WhiteRook.new
+        end
+
+        it 'returns false' do
+          expect(board).not_to be_allowing_castling(:black, [[0, 1], [0, 2], [0, 3]])
+        end
+      end
+    end
+
+    context 'when the king is in check' do
+      before do
+        board.data[0][4] = BlackKing.new
+        board.data[0][5] = WhiteRook.new
+      end
+
+      it 'returns false' do
+        expect(board).not_to be_allowing_castling(:black, [[0, 1], [0, 2], [0, 3]])
       end
     end
   end
