@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry-byebug'
 # this class represents a special black castling movement in chess
 class BlackCastling
   def initialize(board, black_king, end_position)
@@ -15,12 +15,12 @@ class BlackCastling
   end
 
   def apply
+    @black_king.movements += 1
+    piece.movements += 1
     @board.data[@end_position[0]][@end_position[1]] = @black_king
     @board.data[@initial_position[0]][@initial_position[1]] = NilPiece.new
-    @black_king.movements += 1
     @board.data[new_rook_position[0]][new_rook_position[1]] = piece
     @board.data[rook_position[0]][rook_position[1]] = NilPiece.new
-    piece.movements += 1
   end
 
   private

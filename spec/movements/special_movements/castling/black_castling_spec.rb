@@ -103,4 +103,38 @@ describe BlackCastling do
       end
     end
   end
+
+  describe '#apply' do
+    let(:end_position) { [0, 2] }
+
+    before do
+      board.data[0][4] = black_king
+      board.data[0][0] = black_rook
+      subject.apply
+    end
+
+    it 'places the black king on the right position' do
+      expect(board.data[0][2]).to eq(black_king)
+    end
+
+    it 'removes the black king from the initial position' do
+      expect(board.data[0][4]).to be_instance_of(NilPiece)
+    end
+
+    it 'set the number of movements of black king to one' do
+      expect(black_king.movements).to eq(1)
+    end
+
+    it 'places the black rook on the right position' do
+      expect(board.data[0][3]).to eq(black_rook)
+    end
+
+    it 'removes the black rook from the initial position' do
+      expect(board.data[0][4]).to be_instance_of(NilPiece)
+    end
+
+    it 'set the number of movements of black rook to one' do
+      expect(black_rook.movements).to eq(1)
+    end
+  end
 end
