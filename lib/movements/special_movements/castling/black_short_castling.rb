@@ -16,6 +16,10 @@ class BlackShortCastling
     7
   end
 
+  def rook_class
+    BlackRook
+  end
+
   def separating_positions
     [[0, 5], [0, 6]]
   end

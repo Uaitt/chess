@@ -16,6 +16,10 @@ class WhiteLongCastling
     0
   end
 
+  def rook_class
+    WhiteRook
+  end
+
   def separating_positions
     [[7, 1], [7, 2], [7, 3]]
   end

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry-byebug'
 # ...
 module Castling
   def initialize(board, black_king, end_position)
@@ -42,11 +42,11 @@ module Castling
   end
 
   def valid_end_position?
-    @end_position == [0, 2] || @end_position == [0, 6]
+    @end_position == [rank, 2] || @end_position == [rank, 6]
   end
 
   def valid_pieces?
-    @black_king.movements.zero? && @rook.instance_of?(BlackRook) && @rook.movements.zero?
+    @black_king.movements.zero? && @rook.instance_of?(rook_class) && @rook.movements.zero?
   end
 
   def rook_position
