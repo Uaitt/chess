@@ -13,7 +13,7 @@ class BlackLongCastling
   end
 
   def file
-    @end_position[1] == 2 ? 0 : 7
+    0
   end
 
   def separating_positions

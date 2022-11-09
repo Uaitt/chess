@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry-byebug'
 # ...
 module Castling
   def initialize(board, black_king, end_position)
@@ -7,6 +7,7 @@ module Castling
     @black_king = black_king
     @initial_position = @board.current_position(@black_king)
     @end_position = end_position
+    @rook = @board.data[rank][file]
   end
 
   def valid?
@@ -45,20 +46,16 @@ module Castling
   end
 
   def valid_pieces?
-    @black_king.movements.zero? && piece.instance_of?(BlackRook) && piece.movements.zero?
-  end
-
-  def piece
-    @board.data[rank][file]
+    @black_king.movements.zero? && @rook.instance_of?(BlackRook) && @rook.movements.zero?
   end
 
   def rook_position
-    @board.current_position(piece)
+    @board.current_position(@rook)
   end
 
   def increment_movements
     @black_king.movements += 1
-    piece.movements += 1
+    @rook.movements += 1
   end
 
   def move_king
@@ -67,7 +64,7 @@ module Castling
   end
 
   def move_rook
-    @board.data[new_rook_position[0]][new_rook_position[1]] = piece
     @board.data[rook_position[0]][rook_position[1]] = NilPiece.new
+    @board.data[new_rook_position[0]][new_rook_position[1]] = @rook
   end
 end
