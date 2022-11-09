@@ -9,7 +9,8 @@ class BlackCastling
   end
 
   def valid?
-    valid_position? && valid_pieces?
+    valid_position? && valid_pieces? &&
+      @board.allows_castling?(:black) && !checks_own_king?
   end
 
   private
