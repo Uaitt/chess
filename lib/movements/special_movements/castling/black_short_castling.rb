@@ -1,7 +1,9 @@
 # frozen_string_literal: true
-require 'pry-byebug'
+
+require_relative 'castling'
+
 # this class represents a special black castling movement in chess
-class BlackCastling
+class BlackShortCastling
   def initialize(board, black_king, end_position)
     @board = board
     @black_king = black_king
@@ -20,7 +22,7 @@ class BlackCastling
     move_rook
   end
 
-  def checks_own_king? # to move into its own module
+  def checks_own_king?
     return true unless in_bound?(@end_position)
 
     clone_board

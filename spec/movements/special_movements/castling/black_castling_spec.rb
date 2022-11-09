@@ -30,7 +30,7 @@ describe BlackCastling do
             context 'when the king crosses over no square attacked by an enemy piece' do
               context 'when all the separating squares are empty' do
                 context 'when the movement does not put the king in check' do
-                  xit { is_expected.to be_valid }
+                  it { is_expected.to be_valid }
                 end
 
                 context 'when the movement does put the king in check' do
@@ -38,7 +38,7 @@ describe BlackCastling do
                     board.data[1][2] = WhiteRook.new
                   end
 
-                  xit { is_expected.not_to be_valid }
+                  it { is_expected.not_to be_valid }
                 end
               end
 
