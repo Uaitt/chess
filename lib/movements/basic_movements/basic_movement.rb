@@ -44,6 +44,7 @@ module BasicMovement
   end
 
   def apply
+    @piece.movements += 1 # to test
     @board.data[@initial_position[0]][@initial_position[1]] = NilPiece.new
     @board.data[@end_position[0]][@end_position[1]] = @piece
   end
