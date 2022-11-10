@@ -57,7 +57,7 @@ describe Board do
     end
 
     it 'places a black rook on the eighth square of the first row' do
-      expect(board.data[0][7].instance_of?(BlackRook)).to eq(true)
+      expect(board.data[0][7]).to be_instance_of(BlackRook)
     end
 
     it 'places eight black pawns on the second row' do
@@ -102,113 +102,113 @@ describe Board do
   end
 
   describe '#current_position' do
-    let(:black_knight) { BlackKnight.new }
-    let(:data) { board.instance_variable_get(:@data) }
-    context 'when given a knight' do
-      it 'returns the current position of the knight' do
-        data[0][0] = black_knight
-        expect(board.current_position(black_knight)).to eq([0, 0])
-      end
+    let(:black_piece) { BlackPiece.new }
+    it 'returns the current position of the knight' do
+      board.data[0][0] = black_piece
+      expect(board.current_position(black_piece)).to eq([0, 0])
+    end
 
-      it 'returns the current position of the knight' do
-        data[5][2] = black_knight
-        expect(board.current_position(black_knight)).to eq([5, 2])
-      end
+    it 'returns the current position of the knight' do
+      board.data[5][2] = black_piece
+      expect(board.current_position(black_piece)).to eq([5, 2])
     end
   end
 
   describe '#checked?' do
-    let(:king) { BlackKing.new }
-    let(:rook) { WhiteRook.new }
-    let(:bishop) { WhiteBishop.new }
-    let(:pawn) { WhitePawn.new }
+    let(:black_king) { BlackKing.new }
+    let(:white_rook) { WhiteRook.new }
+    let(:white_bishop) { WhiteBishop.new }
+    let(:white_pawn) { WhitePawn.new }
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
-      board.data[0][0] = king
+      board.data[0][0] = black_king
     end
 
     context 'when the king is in check' do
       context 'when checked by a rook' do
         before do
-          board.data[1][0] = rook
+          board.data[1][0] = white_rook
         end
 
         it 'returns true' do
-          expect(board).to be_checked(king.color)
+          expect(board).to be_checked(black_king.color)
         end
       end
 
       context 'when checked by a bishop' do
         before do
-          board.data[2][2] = bishop
+          board.data[2][2] = white_bishop
         end
 
         it 'returns true' do
-          expect(board).to be_checked(king.color)
+          expect(board).to be_checked(black_king.color)
         end
       end
 
       context 'when checked by a pawn' do
         before do
-          board.data[1][1] = pawn
+          board.data[1][1] = white_pawn
         end
 
         it 'returns true' do
-          expect(board).to be_checked(king.color)
+          expect(board).to be_checked(black_king.color)
         end
       end
     end
 
     context 'when the king is not in check' do
       before do
-        board.data[1][1] = rook
-        board.data[1][0] = bishop
+        board.data[1][1] = white_rook
+        board.data[1][0] = white_bishop
       end
 
       it 'returns false' do
-        expect(board).not_to be_checked(king.color)
+        expect(board).not_to be_checked(black_king.color)
       end
     end
   end
 
   describe '#mated?' do
-    let(:king) { BlackKing.new }
-    let(:rook) { WhiteRook.new }
-    let(:queen) { WhiteQueen.new }
+    let(:black_king) { BlackKing.new }
+    let(:white_rook) { WhiteRook.new }
+    let(:white_queen) { WhiteQueen.new }
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
-      board.data[0][7] = king
+      board.data[0][7] = black_king
     end
 
     context 'when the king is mated' do
       before do
-        board.data[0][4] = rook
-        board.data[2][7] = queen
+        board.data[0][4] = white_rook
+        board.data[2][7] = white_queen
       end
 
       it 'returns true' do
-        expect(board).to be_mated(king.color)
+        expect(board).to be_mated(black_king.color)
       end
     end
 
     context 'when the king is not mated' do
       it 'returns false' do
-        expect(board).not_to be_mated(king.color)
+        expect(board).not_to be_mated(black_king.color)
       end
     end
   end
 
   describe '#allowing_castling?' do
+    let(:black_king) { BlackKing.new }
+    let(:black_rook) { BlackRook.new }
+    let(:white_rook) { WhiteRook.new }
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
     end
 
-    context 'when castling is made by black towards left' do
+    context 'when it is black long castling' do
       let(:king_path) { [[0, 2], [0, 3]] }
       let(:separating_squares) { [[0, 1], [0, 2], [0, 3]] }
       before do
-        board.data[0][4] = BlackKing.new
-        board.data[0][0] = BlackRook.new
+        board.data[0][4] = black_king
+        board.data[0][0] = black_rook
       end
 
       context 'when the king is not in check' do
@@ -221,7 +221,7 @@ describe Board do
 
           context 'when one separating square is not empty' do
             before do
-              board.data[0][1] = BlackKnight.new
+              board.data[0][1] = black_king
             end
 
             it 'returns false' do
@@ -232,7 +232,7 @@ describe Board do
 
         context 'when the king moves over a square attacked by an enemy piece' do
           before do
-            board.data[1][2] = WhiteRook.new
+            board.data[1][2] = white_rook
           end
 
           it 'returns false' do
@@ -243,7 +243,7 @@ describe Board do
 
       context 'when the king is in check' do
         before do
-          board.data[0][5] = WhiteRook.new
+          board.data[0][5] = white_rook
         end
 
         it 'returns false' do
