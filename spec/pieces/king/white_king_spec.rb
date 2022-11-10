@@ -30,6 +30,12 @@ describe WhiteKing do
     end
   end
 
+  describe '#white' do
+    it 'returns white' do
+      expect(white_king).to be_of_color(:white)
+    end
+  end
+
   describe '#basic_moves' do
     it 'returns the right set of basic moves' do
       king_moves = [[1, 0], [-1, 0], [0, 1], [0, -1],
