@@ -7,7 +7,9 @@ require_relative 'rook_movement'
 class WhiteRookMovement
   include RookMovement
 
-  def self.handles?(piece)
-    piece.instance_of?(WhiteRook)
+  class << self
+    def moving?(piece)
+      piece.instance_of?(WhiteRook)
+    end
   end
 end
