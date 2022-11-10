@@ -7,7 +7,9 @@ require_relative 'queen'
 class BlackQueen < BlackPiece
   include Queen
 
-  def self.starts_at?(rank, file)
-    rank.zero? && file == 3
+  class << self
+    def starting_at?(rank, file)
+      rank.zero? && file == 3
+    end
   end
 end
