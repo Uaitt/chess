@@ -6,7 +6,9 @@ require_relative 'piece'
 class NilPiece
   include Piece
 
-  def self.starts_at?(_, _)
-    true
+  class << self
+    def starting_at?(_, _)
+      true
+    end
   end
 end
