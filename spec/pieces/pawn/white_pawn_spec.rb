@@ -5,16 +5,46 @@ require_relative '../../../lib/pieces/pawn/white_pawn'
 describe WhitePawn do
   subject(:white_pawn) { described_class.new }
   describe '::starts_at?' do
-    context 'when given 6 and a number between 0 and 7' do
+    context 'when given 6 and 0' do
       it 'returns true' do
-        (1..7).all? { |number| WhitePawn.starts_at?(6, number) }
+        expect(WhitePawn).to be_starting_at(6, 0)
+      end
+    end
+
+    context 'when given 6 and 1' do
+      it 'returns true' do
+        expect(WhitePawn).to be_starting_at(6, 1)
+      end
+    end
+
+    context 'when given 6 and 7' do
+      it 'returns true' do
+        expect(WhitePawn).to be_starting_at(6, 7)
+      end
+    end
+
+    context 'when given 2 and 0' do
+      it 'returns false' do
+        expect(WhitePawn).not_to be_starting_at(2, 0)
+      end
+    end
+
+    context 'when given 3 and 3' do
+      it 'returns false' do
+        expect(WhitePawn).not_to be_starting_at(3, 3)
+      end
+    end
+
+    context 'when given 1 and 0' do
+      it 'returns false' do
+        expect(WhitePawn).not_to be_starting_at(1, 0)
       end
     end
   end
 
   describe '#color' do
     it 'returns white' do
-      expect(white_pawn.color).to eq(:white)
+      expect(white_pawn).to be_of_color(:white)
     end
   end
 
