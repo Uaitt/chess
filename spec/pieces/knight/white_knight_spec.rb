@@ -7,43 +7,44 @@ describe WhiteKnight do
   describe '::starts_at?' do
     context 'when given 7 and 1' do
       it 'returns true' do
-        expect(WhiteKnight.starts_at?(7, 1)).to eq(true)
+        expect(WhiteKnight).to be_starting_at(7, 1)
       end
     end
 
     context 'when given 7 and 6' do
       it 'returns true' do
-        expect(WhiteKnight.starts_at?(7, 6)).to eq(true)
+        expect(WhiteKnight).to be_starting_at(7, 6)
       end
     end
 
     context 'when given 7 and 4' do
       it 'returns false' do
-        expect(WhiteKnight.starts_at?(7, 3)).to eq(false)
+        expect(WhiteKnight).not_to be_starting_at(7, 4)
       end
     end
 
     context 'when given 2 and 1' do
-      it 'returns true' do
-        expect(WhiteKnight.starts_at?(2, 2)).to eq(false)
+      it 'returns false' do
+        expect(WhiteKnight).not_to be_starting_at(2, 1)
       end
     end
 
     context 'when given 5 and 6' do
-      it 'returns true' do
-        expect(WhiteKnight.starts_at?(5, 5)).to eq(false)
+      it 'returns false' do
+        expect(WhiteKnight).not_to be_starting_at(5, 6)
       end
     end
 
     context 'when given 2 and 3' do
       it 'returns false' do
-        expect(WhiteKnight.starts_at?(1, 2)).to eq(false)
+        expect(WhiteKnight).not_to be_starting_at(2, 3)
       end
     end
   end
+
   describe '#color' do
     it 'returns white' do
-      expect(white_knight.color).to eq(:white)
+      expect(white_knight).to be_of_color(:white)
     end
   end
 
