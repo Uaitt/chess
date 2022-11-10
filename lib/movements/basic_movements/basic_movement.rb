@@ -28,23 +28,8 @@ module BasicMovement
     end
   end
 
-  def initialize(board, piece, end_position) # to move
-    @board = board
-    @piece = piece
-    @initial_position = @board.current_position(piece)
-    @end_position = end_position
-  end
-
   def valid?
     possible? && !blocked?
-  end
-
-  def checks_own_king? # to move
-    return true unless in_bound?
-
-    clone_board
-    apply
-    @board.checked?(@piece.color)
   end
 
   def apply
@@ -101,10 +86,5 @@ module BasicMovement
   def in_bound?
     @end_position[0] >= 0 && @end_position[0] <= 7 &&
       @end_position[1] >= 0 && @end_position[1] <= 7
-  end
-
-  def clone_board
-    @board = @board.dup
-    @board.data = @board.data.map(&:clone)
   end
 end
