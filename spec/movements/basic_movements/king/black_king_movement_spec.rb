@@ -26,9 +26,9 @@ describe BlackKingMovement do
       end
     end
 
-    context 'when given a BlackPiece' do
+    context 'when given a WhitePiece' do
       it 'returns false' do
-        expect(BlackKingMovement).not_to be_moving(BlackPiece)
+        expect(BlackKingMovement).not_to be_moving(WhitePiece.new)
       end
     end
   end

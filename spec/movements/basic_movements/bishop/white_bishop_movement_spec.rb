@@ -26,9 +26,9 @@ describe WhiteBishopMovement do
       end
     end
 
-    context 'when given a WhitePiece' do
+    context 'when given a BlackPiece' do
       it 'returns false' do
-        expect(WhiteBishopMovement).not_to be_moving(WhitePiece.new)
+        expect(WhiteBishopMovement).not_to be_moving(BlackPiece.new)
       end
     end
   end
