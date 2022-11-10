@@ -19,6 +19,7 @@ module Castling
     increment_movements
     move_king
     move_rook
+    @board.last_movement = self
   end
 
   def checks_own_king?

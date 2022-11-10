@@ -25,11 +25,11 @@ class Board
   end
 
   def piece_at(position)
-    @data[position[0]][position[1]]
+    @data[position[0]][position[1]] # need test
   end
 
   def place_piece(piece, position)
-    @data[position[0]][position[1]] = piece
+    @data[position[0]][position[1]] = piece # need test
   end
 
   def checked?(color)
@@ -42,6 +42,10 @@ class Board
   def mated?(color)
     king = king_of_color(color)
     king.basic_moves.all? { |move| BasicMovement.for(self, king, new_position(move, king)).checks_own_king? }
+  end
+
+  def allowing_en_passant?(pawn)
+    @last_movement.piece == pawn && [[2, 0], [-2, 0]].include?(@last_movement.move)
   end
 
   def allowing_castling?(color, separating_positions, king_path)
