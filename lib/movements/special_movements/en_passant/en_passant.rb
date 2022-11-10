@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
+require_relative '../../movement'
+
 # set of methods common to all en passant in chess
 module EnPassant
+  include Movement
+
   def initialize(board, piece, end_position)
-    @board = board
-    @piece = piece
-    @initial_position = board.current_position(@piece)
-    @end_position = end_position
+    super
     @left_piece = @board.data[@initial_position[0]][@initial_position[1] - 1]
     @right_piece = @board.data[@initial_position[0]][@initial_position[1] + 1]
     @last_movement = @board.last_movement
