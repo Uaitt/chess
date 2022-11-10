@@ -23,6 +23,10 @@ module Castling
     @board.place_piece(@second_piece, new_rook_position)
   end
 
+  def double_moving?(_)
+    false
+  end
+
   private
 
   def valid_end_position?

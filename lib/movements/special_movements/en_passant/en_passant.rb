@@ -22,6 +22,10 @@ module EnPassant
     @board.place_piece(NilPiece.new, enemy_pawn_position)
   end
 
+  def double_moving?(_)
+    false
+  end
+
   private
 
   def left_position
