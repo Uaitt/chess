@@ -75,8 +75,12 @@ module BasicMovement
       @board.piece_at(@end_position).color == @piece.color
   end
 
-  def vertical_or_horizontal?
-    @end_position.zip(@initial_position).map { |finish, start| finish - start }.include?(0)
+  def rook_or_bishop_movement
+    if @end_position.zip(@initial_position).map { |finish, start| finish - start }.include?(0)
+      RookMovement
+    else
+      BishopMovement
+    end
   end
 
   def current_move

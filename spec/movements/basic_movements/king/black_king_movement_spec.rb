@@ -12,6 +12,27 @@ describe BlackKingMovement do
   before do
     board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
   end
+
+  describe '::moving?' do
+    context 'when given a BlackKing' do
+      it 'returns true' do
+        expect(BlackKingMovement).to be_moving(BlackKing.new)
+      end
+    end
+
+    context 'when given a WhiteKing' do
+      it 'returns false' do
+        expect(BlackKingMovement).not_to be_moving(WhiteKing.new)
+      end
+    end
+
+    context 'when given a BlackPiece' do
+      it 'returns false' do
+        expect(BlackKingMovement).not_to be_moving(BlackPiece)
+      end
+    end
+  end
+
   describe '#valid?' do
     context 'when the king is placed in the top left corner' do
       before do

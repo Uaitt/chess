@@ -9,10 +9,6 @@ module KingMovement
   include BasicMovement
 
   def direction
-    if vertical_or_horizontal?
-      RookMovement
-    else
-      BishopMovement
-    end.instance_method(:direction).bind(self).call
+    rook_or_bishop_movement.instance_method(:direction).bind(self).call
   end
 end
