@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+require_relative '../movement'
+
 # set of common methods to all basic movements in chess
 module BasicMovement
+  include Movement
+
   class << self
     def for(board, piece, end_position)
       registry.find { |movement| movement.handles?(piece) }.new(board, piece, end_position)
