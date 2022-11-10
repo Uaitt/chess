@@ -30,7 +30,7 @@ describe WhiteKing do
     end
   end
 
-  describe '#white' do
+  describe '#color' do
     it 'returns white' do
       expect(white_king).to be_of_color(:white)
     end
