@@ -7,25 +7,25 @@ describe WhiteKing do
   describe '::starts_at?' do
     context 'when given 7 and 4' do
       it 'returns true' do
-        expect(WhiteKing.starts_at?(7, 4)).to eq(true)
+        expect(WhiteKing).to be_starting_at(7, 4)
       end
     end
 
     context 'when given 7 and 3' do
       it 'returns false' do
-        expect(WhiteKing.starts_at?(7, 3)).to eq(false)
+        expect(WhiteKing).not_to be_starting_at(7, 3)
       end
     end
 
     context 'when given 2 and 4' do
       it 'returns false' do
-        expect(WhiteKing.starts_at?(2, 4)).to eq(false)
+        expect(WhiteKing).not_to be_starting_at(2, 4)
       end
     end
 
     context 'when given 3 and 3' do
       it 'returns false' do
-        expect(WhiteKing.starts_at?(3, 3)).to eq(false)
+        expect(WhiteKing).not_to be_starting_at(3, 3)
       end
     end
   end
