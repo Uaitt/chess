@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry-byebug'
 # this class represents the board in chess
 class Board
   attr_accessor :data, :last_movement

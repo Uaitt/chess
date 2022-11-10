@@ -9,10 +9,11 @@ module EnPassant
     @end_position = end_position
     @left_piece = @board.data[@initial_position[0]][@initial_position[1] - 1]
     @right_piece = @board.data[@initial_position[0]][@initial_position[1] + 1]
+    @last_movement = @board.last_movement
   end
 
   def valid?
-    right_rank? && next_to_enemy_pawn? && @board.allowing_en_passant?(enemy_pawn)
+    right_rank? && next_to_enemy_pawn? && @last_movement.double_moving?(enemy_pawn)
   end
 
   def apply

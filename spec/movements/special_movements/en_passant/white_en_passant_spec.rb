@@ -8,10 +8,9 @@ require_relative '../../../../lib/pieces/nil_piece'
 require_relative '../../../../lib/board'
 
 describe WhiteEnPassant do
-  let(:white_en_passant) { described_class.new(board, white_pawn, end_position, last_movement) }
+  let(:white_en_passant) { described_class.new(board, white_pawn, end_position) }
   let(:white_pawn) { WhitePawn.new }
   let(:board) { Board.new }
-  let(:last_board) { Board.new }
   let(:black_pawn) { BlackPawn.new }
   describe '#valid?' do
     context 'when the white pawn is on third row row' do
@@ -21,14 +20,10 @@ describe WhiteEnPassant do
       end
 
       context 'when a pawn of the opposite color is placed in an adjacent square' do
-        before do
-          board.data[3][1] = black_pawn
-        end
-
         context 'when the last movement was that black pawn double leap' do
-          let(:last_movement) { BlackPawnMovement.new(last_board, black_pawn, [3, 1]) }
           before do
-            last_board.data[1][1] = black_pawn
+            board.data[1][1] = black_pawn
+            BlackPawnMovement.new(board, black_pawn, [3, 1]).apply
           end
 
           it 'returns true' do
@@ -37,9 +32,9 @@ describe WhiteEnPassant do
         end
 
         context 'when the last movement was not that pawn double leap' do
-          let(:last_movement) { BlackPawnMovement.new(last_board, black_pawn, [3, 1]) }
           before do
-            last_board.data[2][1] = black_pawn
+            board.data[2][1] = black_pawn
+            BlackPawnMovement.new(board, black_pawn, [3, 1]).apply
           end
 
           it 'returns false' do
@@ -49,7 +44,6 @@ describe WhiteEnPassant do
       end
 
       context 'when a pawn is not placed in an adjacent square' do
-        let(:last_movement) { nil }
         it 'returns false' do
           expect(white_en_passant).not_to be_valid
         end
@@ -57,7 +51,6 @@ describe WhiteEnPassant do
     end
 
     context 'when our pawn is not on third row' do
-      let(:last_movement) { nil }
       let(:end_position) { [4, 1] }
       before do
         board.data[4][0] = white_pawn
@@ -69,7 +62,6 @@ describe WhiteEnPassant do
   end
 
   describe '#apply' do
-    let(:last_movement) { nil }
     let(:end_position) { [2, 1] }
     before do
       board.data[3][0] = white_pawn
