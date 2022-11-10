@@ -7,7 +7,9 @@ require_relative 'knight_movement'
 class BlackKnightMovement
   include KnightMovement
 
-  def self.handles?(piece)
-    piece.instance_of?(BlackKnight)
+  class << self
+    def moving?(piece)
+      piece.instance_of?(BlackKnight)
+    end
   end
 end
