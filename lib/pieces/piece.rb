@@ -9,9 +9,9 @@ module Piece
     @movements = 0
   end
 
-  class << self
+  class << self # add test
     def for(rank, file)
-      registry.find { |candidate| candidate.starts_at?(rank, file) }.new
+      registry.find { |candidate| candidate.starting_at?(rank, file) }.new
     end
 
     private
