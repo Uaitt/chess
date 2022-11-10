@@ -8,44 +8,44 @@ describe BlackBishop do
   describe '::starts_at?' do
     context 'when given 0 and 2' do
       it 'returns true' do
-        expect(BlackBishop.starts_at?(0, 2)).to eq(true)
+        expect(BlackBishop).to be_starting_at(0, 2)
       end
     end
 
     context 'when given 0 and 5' do
       it 'returns true' do
-        expect(BlackBishop.starts_at?(0, 5)).to eq(true)
+        expect(BlackBishop).to be_starting_at(0, 5)
       end
     end
 
     context 'when given 0 and 3' do
       it 'returns false' do
-        expect(BlackBishop.starts_at?(0, 3)).to eq(false)
+        expect(BlackBishop).not_to be_starting_at(0, 3)
       end
     end
 
     context 'when given 2 and 2' do
-      it 'returns true' do
-        expect(BlackBishop.starts_at?(2, 2)).to eq(false)
+      it 'returns false' do
+        expect(BlackBishop).not_to be_starting_at(2, 2)
       end
     end
 
     context 'when given 5 and 5' do
-      it 'returns true' do
-        expect(BlackBishop.starts_at?(5, 5)).to eq(false)
+      it 'returns false' do
+        expect(BlackBishop).not_to be_starting_at(5, 5)
       end
     end
 
     context 'when given 2 and 1' do
       it 'returns false' do
-        expect(BlackBishop.starts_at?(1, 2)).to eq(false)
+        expect(BlackBishop).not_to be_starting_at(2, 1)
       end
     end
   end
 
   describe '#color' do
     it 'returns black' do
-      expect(black_bishop.color).to eq(:black)
+      expect(black_bishop).to be_of_color(:black)
     end
   end
 

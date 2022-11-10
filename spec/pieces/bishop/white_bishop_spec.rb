@@ -8,44 +8,44 @@ describe WhiteBishop do
   describe '::starts_at?' do
     context 'when given 7 and 2' do
       it 'returns true' do
-        expect(WhiteBishop.starts_at?(7, 2)).to eq(true)
+        expect(WhiteBishop).to be_starting_at(7, 2)
       end
     end
 
     context 'when given 7 and 5' do
       it 'returns true' do
-        expect(WhiteBishop.starts_at?(7, 5)).to eq(true)
+        expect(WhiteBishop).to be_starting_at(7, 5)
       end
     end
 
     context 'when given 7 and 3' do
       it 'returns false' do
-        expect(WhiteBishop.starts_at?(7, 3)).to eq(false)
+        expect(WhiteBishop).not_to be_starting_at(7, 3)
       end
     end
 
     context 'when given 2 and 2' do
       it 'returns true' do
-        expect(WhiteBishop.starts_at?(2, 2)).to eq(false)
+        expect(WhiteBishop).not_to be_starting_at(2, 2)
       end
     end
 
     context 'when given 5 and 5' do
       it 'returns true' do
-        expect(WhiteBishop.starts_at?(5, 5)).to eq(false)
+        expect(WhiteBishop).not_to be_starting_at(5, 5)
       end
     end
 
     context 'when given 2 and 1' do
       it 'returns false' do
-        expect(WhiteBishop.starts_at?(2, 1)).to eq(false)
+        expect(WhiteBishop).not_to be_starting_at(2, 1)
       end
     end
   end
 
   describe '#color' do
     it 'returns white' do
-      expect(white_bishop.color).to eq(:white)
+      expect(white_bishop).to be_of_color(:white)
     end
   end
 
