@@ -17,18 +17,13 @@ module Castling
   end
 
   def apply
-    increment_movements
-    move_king
-    move_rook
-    @board.last_movement = self
+    super
+    @second_piece.movements += 1
+    @board.place_piece(NilPiece.new, rook_position)
+    @board.place_piece(@second_piece, new_rook_position)
   end
 
   private
-
-  def clone_board
-    @board = @board.dup
-    @board.data = @board.data.map(&:clone)
-  end
 
   def valid_end_position?
     @end_position == [rank, 2] || @end_position == [rank, 6]
@@ -40,20 +35,5 @@ module Castling
 
   def rook_position
     @board.current_position(@second_piece)
-  end
-
-  def increment_movements
-    @piece.movements += 1
-    @second_piece.movements += 1
-  end
-
-  def move_king
-    @board.data[@end_position[0]][@end_position[1]] = @piece
-    @board.data[@initial_position[0]][@initial_position[1]] = NilPiece.new
-  end
-
-  def move_rook
-    @board.data[rook_position[0]][rook_position[1]] = NilPiece.new
-    @board.data[new_rook_position[0]][new_rook_position[1]] = @second_piece
   end
 end
