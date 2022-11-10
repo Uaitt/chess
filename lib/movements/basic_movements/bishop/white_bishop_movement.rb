@@ -7,7 +7,9 @@ require_relative 'bishop_movement'
 class WhiteBishopMovement
   include BishopMovement
 
-  def self.handles?(piece)
-    piece.instance_of?(WhiteBishop)
+  class << self
+    def moving?(piece)
+      piece.instance_of?(WhiteBishop)
+    end
   end
 end

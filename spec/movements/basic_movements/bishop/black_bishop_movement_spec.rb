@@ -12,6 +12,27 @@ describe BlackBishopMovement do
   before do
     board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
   end
+
+  describe '::moving?' do
+    context 'when given a BlackBishop' do
+      it 'returns true' do
+        expect(BlackBishopMovement).to be_moving(BlackBishop.new)
+      end
+    end
+
+    context 'when given a WhiteBishop' do
+      it 'returns false' do
+        expect(BlackBishopMovement).not_to be_moving(WhiteBishop.new)
+      end
+    end
+
+    context 'when given a BlackPiece' do
+      it 'returns false' do
+        expect(BlackBishopMovement).not_to be_moving(BlackPiece.new)
+      end
+    end
+  end
+
   describe '#valid?' do
     context 'when the bishop is placed in the top left corner' do
       before do
@@ -251,7 +272,7 @@ describe BlackBishopMovement do
     end
   end
 
-  describe '#checks_own_king?' do
+  describe '#checking_own_king?' do
     before do
       board.data[0][0] = BlackKing.new
       board.data[1][1] = black_bishop
