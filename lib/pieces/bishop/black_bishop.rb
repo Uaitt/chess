@@ -7,7 +7,9 @@ require_relative 'bishop'
 class BlackBishop < BlackPiece
   include Bishop
 
-  def self.starting_at?(rank, file)
-    rank.zero? && [2, 5].include?(file)
+  class << self
+    def starting_at?(rank, file)
+      rank.zero? && [2, 5].include?(file)
+    end
   end
 end
