@@ -7,44 +7,44 @@ describe WhiteRook do
   describe '::starts_at?' do
     context 'when given 7 and 0' do
       it 'returns true' do
-        expect(WhiteRook.starts_at?(7, 0)).to eq(true)
+        expect(WhiteRook).to be_starting_at(7, 0)
       end
     end
 
     context 'when given 7 and 7' do
       it 'returns true' do
-        expect(WhiteRook.starts_at?(7, 7)).to eq(true)
+        expect(WhiteRook).to be_starting_at(7, 7)
       end
     end
 
     context 'when given 7 and 4' do
       it 'returns false' do
-        expect(WhiteRook.starts_at?(7, 3)).to eq(false)
+        expect(WhiteRook).not_to be_starting_at(7, 4)
       end
     end
 
     context 'when given 2 and 0' do
       it 'returns true' do
-        expect(WhiteRook.starts_at?(2, 0)).to eq(false)
+        expect(WhiteRook).not_to be_starting_at(2, 0)
       end
     end
 
     context 'when given 5 and 0' do
       it 'returns true' do
-        expect(WhiteRook.starts_at?(5, 0)).to eq(false)
+        expect(WhiteRook).not_to be_starting_at(5, 0)
       end
     end
 
     context 'when given 2 and 1' do
       it 'returns false' do
-        expect(WhiteRook.starts_at?(1, 2)).to eq(false)
+        expect(WhiteRook).not_to be_starting_at(2, 1)
       end
     end
   end
 
   describe '#color' do
-    it 'returns black' do
-      expect(white_rook.color).to eq(:white)
+    it 'returns white' do
+      expect(white_rook).to be_of_color(:white)
     end
   end
 

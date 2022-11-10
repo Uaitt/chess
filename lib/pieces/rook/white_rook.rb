@@ -7,7 +7,9 @@ require_relative 'rook'
 class WhiteRook < WhitePiece
   include Rook
 
-  def self.starts_at?(rank, file)
-    rank == 7 && [0, 7].include?(file)
+  class << self
+    def starting_at?(rank, file)
+      rank == 7 && [0, 7].include?(file)
+    end
   end
 end
