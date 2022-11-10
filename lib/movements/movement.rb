@@ -30,4 +30,9 @@ module Movement
     @board = @board.dup
     @board.data = @board.data.map(&:clone)
   end
+
+  def in_bound?
+    @end_position[0] >= 0 && @end_position[0] <= 7 &&
+      @end_position[1] >= 0 && @end_position[1] <= 7
+  end
 end
