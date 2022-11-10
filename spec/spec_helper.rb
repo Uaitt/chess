@@ -93,4 +93,10 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+
+  RSpec::Matchers.define :be_of_color do |expected|
+    match do |actual|
+      actual.color == expected
+    end
+  end
 end
