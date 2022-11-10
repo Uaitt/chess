@@ -24,6 +24,10 @@ class Board
     end
   end
 
+  def piece_at(position)
+    @data[position[0]][position[1]]
+  end
+
   def checked?(color)
     king = king_of_color(color)
     @data.any? do |row|
