@@ -3,8 +3,8 @@
 # set of common methods to all basic movements in chess
 module BasicMovement
   class << self
-    def for(board, piece, king_position)
-      registry.find { |movement| movement.handles?(piece) }.new(board, piece, king_position)
+    def for(board, piece, end_position)
+      registry.find { |movement| movement.handles?(piece) }.new(board, piece, end_position)
     end
 
     private
@@ -24,7 +24,7 @@ module BasicMovement
     end
   end
 
-  def initialize(board, piece, end_position)
+  def initialize(board, piece, end_position) # to move
     @board = board
     @piece = piece
     @initial_position = @board.current_position(piece)
@@ -35,7 +35,7 @@ module BasicMovement
     possible? && !blocked?
   end
 
-  def checks_own_king? # to move into its own module
+  def checks_own_king? # to move
     return true unless valid_position?(@end_position)
 
     clone_board
@@ -45,8 +45,8 @@ module BasicMovement
 
   def apply
     @piece.movements += 1 # to test
-    @board.data[@initial_position[0]][@initial_position[1]] = NilPiece.new
-    @board.data[@end_position[0]][@end_position[1]] = @piece
+    @board.place_piece(NilPiece.new, @initial_position)
+    @board.place_piece(@piece, @end_position)
   end
 
   def allows_en_passant?(pawn)
@@ -74,7 +74,7 @@ module BasicMovement
   def blocked_on_transition?
     @current_position = @initial_position.zip(direction).map(&:sum)
     until @current_position == @end_position
-      return true unless @board.data[@current_position[0]][@current_position[1]].instance_of?(NilPiece)
+      return true unless @board.piece_at(@current_position).instance_of?(NilPiece)
 
       @current_position = @current_position.zip(direction).map(&:sum)
     end

@@ -28,6 +28,10 @@ class Board
     @data[position[0]][position[1]]
   end
 
+  def place_piece(piece, position)
+    @data[position[0]][position[1]] = piece
+  end
+
   def checked?(color)
     king = king_of_color(color)
     @data.any? do |row|
