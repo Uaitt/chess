@@ -14,7 +14,8 @@ module EnPassant
   end
 
   def valid?
-    right_rank? && next_to_enemy_pawn? && @last_movement.double_moving?(enemy_pawn)
+    valid_end_position? && right_rank? &&
+      next_to_enemy_pawn? && @last_movement.double_moving?(enemy_pawn)
   end
 
   def apply

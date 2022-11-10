@@ -8,6 +8,11 @@ class BlackEnPassant
 
   private
 
+  def valid_end_position?
+    @end_position[0] == 5 &&
+      @end_position[1] == @initial_position[1] + 1 || @end_position[1] == @initial_position[1] - 1
+  end
+
   def right_rank?
     @initial_position[0] == 4
   end
