@@ -7,7 +7,9 @@ require_relative 'queen_movement'
 class WhiteQueenMovement
   include QueenMovement
 
-  def self.handles?(piece)
-    piece.instance_of?(WhiteQueen)
+  class << self
+    def moving?(piece)
+      piece.instance_of?(WhiteQueen)
+    end
   end
 end
