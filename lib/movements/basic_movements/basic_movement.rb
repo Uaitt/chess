@@ -36,7 +36,7 @@ module BasicMovement
   end
 
   def checks_own_king? # to move
-    return true unless valid_position?(@end_position)
+    return true unless in_bound?
 
     clone_board
     apply
@@ -49,7 +49,7 @@ module BasicMovement
     @board.place_piece(@piece, @end_position)
   end
 
-  def allows_en_passant?(pawn)
+  def allows_en_passant?(pawn) # to remove
     @piece == pawn && [[2, 0], [-2, 0]].include?(current_move)
   end
 
@@ -72,18 +72,18 @@ module BasicMovement
   end
 
   def blocked_on_transition?
-    @current_position = @initial_position.zip(direction).map(&:sum)
+    @current_position = @initial_position.zip(direction).map { |finish, start| finish + start }
     until @current_position == @end_position
       return true unless @board.piece_at(@current_position).instance_of?(NilPiece)
 
-      @current_position = @current_position.zip(direction).map(&:sum)
+      @current_position = @current_position.zip(direction).map { |finish, start| finish + start }
     end
     false
   end
 
   def blocked_on_arrival?
-    !@board.data[@end_position[0]][@end_position[1]].instance_of?(NilPiece) &&
-      @board.data[@end_position[0]][@end_position[1]].color == @piece.color
+    !@board.piece_at(@end_position).instance_of?(NilPiece) &&
+      @board.piece_at(@end_position).color == @piece.color
   end
 
   def vertical_or_horizontal?
@@ -94,9 +94,9 @@ module BasicMovement
     @end_position.zip(@initial_position).map { |finish, start| finish - start }
   end
 
-  def valid_position?(position)
-    position[0] >= 0 && position[0] <= 7 &&
-      position[1] >= 0 && position[1] <= 7
+  def in_bound?
+    @end_position[0] >= 0 && @end_position[0] <= 7 &&
+      @end_position[1] >= 0 && @end_position[1] <= 7
   end
 
   def clone_board
