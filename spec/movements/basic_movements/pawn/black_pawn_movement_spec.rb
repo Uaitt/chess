@@ -12,6 +12,27 @@ describe BlackPawnMovement do
   before do
     board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
   end
+
+  describe '::moving?' do
+    context 'when given a BlackPawn' do
+      it 'returns true' do
+        expect(BlackPawnMovement).to be_moving(BlackPawn.new)
+      end
+    end
+
+    context 'when given a WhitePawn' do
+      it 'returns false' do
+        expect(BlackPawnMovement).not_to be_moving(WhitePawn.new)
+      end
+    end
+
+    context 'when given a WhitePiece' do
+      it 'returns false' do
+        expect(BlackPawnMovement).not_to be_moving(WhitePiece.new)
+      end
+    end
+  end
+
   describe '#valid?' do
     context 'when it is placed in the top left corner' do
       before do

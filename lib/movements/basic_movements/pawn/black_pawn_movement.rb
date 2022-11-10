@@ -7,7 +7,9 @@ require_relative 'pawn_movement'
 class BlackPawnMovement
   include PawnMovement
 
-  def self.handles?(piece)
-    piece.instance_of?(BlackPawn)
+  class << self
+    def moving?(piece)
+      piece.instance_of?(BlackPawn)
+    end
   end
 end

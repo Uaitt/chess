@@ -16,11 +16,7 @@ module PawnMovement
   end
 
   def direction
-    if vertical_or_horizontal?
-      RookMovement
-    else
-      BishopMovement
-    end.instance_method(:direction).bind(self).call
+    rook_or_bishop_movement.instance_method(:direction).bind(self).call
   end
 
   private
@@ -42,8 +38,8 @@ module PawnMovement
   end
 
   def blocked_diagonally?
-    !@board.data[@end_position[0]][@end_position[1]].instance_of?(NilPiece) &&
-      @board.data[@end_position[0]][@end_position[1]].color != @piece.color
+    !@board.piece_at(@end_position).instance_of?(NilPiece) &&
+      @board.piece_at(@end_position).color != @piece.color
   end
 
   def already_happened?
