@@ -39,7 +39,7 @@ module BasicMovement
     @board.last_movement = self
   end
 
-  def allows_en_passant?(pawn) # to remove
+  def double_moving?(pawn)
     @piece == pawn && [[2, 0], [-2, 0]].include?(current_move)
   end
 

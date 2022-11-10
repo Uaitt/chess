@@ -44,10 +44,6 @@ class Board
     king.basic_moves.all? { |move| BasicMovement.for(self, king, new_position(move, king)).checks_own_king? }
   end
 
-  def allowing_en_passant?(pawn)
-    @last_movement.piece == pawn && [[2, 0], [-2, 0]].include?(@last_movement.move)
-  end
-
   def allowing_castling?(color, separating_positions, king_path)
     !checked?(color) && !opponent_can_attack_crossed_path(color, king_path) &&
       separating_positions.all? { |position| @data[position[0]][position[1]].instance_of?(NilPiece) }

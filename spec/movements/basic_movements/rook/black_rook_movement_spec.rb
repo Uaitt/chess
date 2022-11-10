@@ -339,10 +339,10 @@ describe BlackRookMovement do
     end
   end
 
-  describe '#allows_en_passant?' do
+  describe '#double_moving?' do
     let(:end_position) { [3, 0] }
     it 'returns false' do
-      expect(subject.allows_en_passant?(BlackPawn.new)).to eq(false)
+      expect(subject).not_to be_double_moving(BlackPawn.new)
     end
   end
 
