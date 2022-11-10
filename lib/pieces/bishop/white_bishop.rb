@@ -7,7 +7,7 @@ require_relative 'bishop'
 class WhiteBishop < WhitePiece
   include Bishop
 
-  def self.starts_at?(rank, file)
+  def self.starting_at?(rank, file)
     rank == 7 && [2, 5].include?(file)
   end
 end
