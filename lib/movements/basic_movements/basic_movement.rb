@@ -32,13 +32,6 @@ module BasicMovement
     possible? && !blocked?
   end
 
-  def apply
-    @piece.movements += 1 # to test
-    @board.place_piece(NilPiece.new, @initial_position)
-    @board.place_piece(@piece, @end_position)
-    @board.last_movement = self
-  end
-
   def double_moving?(pawn)
     @piece == pawn && [[2, 0], [-2, 0]].include?(current_move)
   end

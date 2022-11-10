@@ -8,8 +8,8 @@ module EnPassant
 
   def initialize(board, piece, end_position)
     super
-    @left_piece = @board.data[@initial_position[0]][@initial_position[1] - 1]
-    @right_piece = @board.data[@initial_position[0]][@initial_position[1] + 1]
+    @left_piece = @board.piece_at(left_position)
+    @right_piece = @board.piece_at(right_position)
     @last_movement = @board.last_movement
   end
 
@@ -18,16 +18,21 @@ module EnPassant
   end
 
   def apply
-    @piece.movements += 1
-    @board.data[enemy_position[0]][enemy_position[1]] = NilPiece.new
-    @board.data[@initial_position[0]][@initial_position[1]] = NilPiece.new
-    @board.data[@end_position[0]][@end_position[1]] = @piece
-    @board.last_movement = self
+    super
+    @board.place_piece(NilPiece.new, enemy_pawn_position)
   end
 
   private
 
-  def enemy_position
+  def left_position
+    [@initial_position[0], @initial_position[1] - 1]
+  end
+
+  def right_position
+    [@initial_position[0], @initial_position[1] + 1]
+  end
+
+  def enemy_pawn_position
     @board.current_position(enemy_pawn)
   end
 end
