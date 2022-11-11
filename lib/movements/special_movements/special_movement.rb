@@ -8,7 +8,7 @@ module SpecialMovement
 
   class << self
     def for(board, piece, end_position)
-      registry.find { |movement| movement.moving?(piece) }.new(board, piece, end_position)
+      registry.find { |movement| movement.moving?(piece, end_position) }.new(board, piece, end_position)
     end
 
     private

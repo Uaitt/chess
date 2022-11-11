@@ -7,7 +7,7 @@ class BlackEnPassant
   include EnPassant
 
   class << self
-    def moving?(piece)
+    def moving?(piece, _)
       piece.instance_of?(BlackPawn)
     end
   end

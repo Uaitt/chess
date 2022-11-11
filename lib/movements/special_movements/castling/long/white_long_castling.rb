@@ -7,8 +7,8 @@ class WhiteLongCastling
   include Castling
 
   class << self
-    def moving?(piece)
-      piece.instance_of?(WhiteKing)
+    def moving?(piece, end_position)
+      piece.instance_of?(WhiteKing) && end_position == [7, 2]
     end
   end
 
