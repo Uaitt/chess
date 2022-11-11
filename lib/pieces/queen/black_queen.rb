@@ -12,4 +12,9 @@ class BlackQueen < BlackPiece
       rank.zero? && file == 3
     end
   end
+
+  def initialize
+    super
+    @symbol = "\u265B"
+  end
 end

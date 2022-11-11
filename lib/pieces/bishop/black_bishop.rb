@@ -12,4 +12,9 @@ class BlackBishop < BlackPiece
       rank.zero? && [2, 5].include?(file)
     end
   end
+
+  def initialize
+    super
+    @symbol = "\u265D"
+  end
 end

@@ -12,4 +12,9 @@ class BlackRook < BlackPiece
       rank.zero? && [0, 7].include?(file)
     end
   end
+
+  def initialize
+    super
+    @symbol = "\u265D"
+  end
 end

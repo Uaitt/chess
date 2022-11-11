@@ -10,6 +10,11 @@ class WhitePawn < WhitePiece
     end
   end
 
+  def initialize
+    super
+    @symbol = "\u2659"
+  end
+
   def basic_moves
     [[-2, 0], [-1, 0], [-1, 1], [-1, -1]]
   end

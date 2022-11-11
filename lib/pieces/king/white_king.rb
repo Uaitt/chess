@@ -12,4 +12,9 @@ class WhiteKing < WhitePiece
       rank == 7 && file == 4
     end
   end
+
+  def initialize
+    super
+    @symbol = "\u2654"
+  end
 end

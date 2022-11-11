@@ -12,4 +12,9 @@ class WhiteKnight < WhitePiece
       rank == 7 && [1, 6].include?(file)
     end
   end
+
+  def initialize
+    super
+    @symbol = "\u2658"
+  end
 end
