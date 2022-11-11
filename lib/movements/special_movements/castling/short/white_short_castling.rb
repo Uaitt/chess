@@ -6,6 +6,12 @@ require_relative '../castling'
 class WhiteShortCastling
   include Castling
 
+  class << self
+    def moving?(piece)
+      piece.instance_of?(WhiteKing)
+    end
+  end
+
   private
 
   def rank

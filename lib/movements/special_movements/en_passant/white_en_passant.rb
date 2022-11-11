@@ -6,6 +6,12 @@ require_relative 'en_passant'
 class WhiteEnPassant
   include EnPassant
 
+  class << self
+    def moving?(piece)
+      piece.instance_of?(WhitePawn)
+    end
+  end
+
   private
 
   def valid_end_position?
