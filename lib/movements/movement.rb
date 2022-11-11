@@ -2,6 +2,18 @@
 
 # set of common methods to all movements in chess
 module Movement
+  class << self
+    def for(board, piece, end_position)
+      movement = BasicMovement.for(board, piece, end_position)
+      return movement if movement.valid?
+
+      movement = SpecialMovement.for(board, piece, end_position)
+      return movement if movement.valid?
+
+      NilMovement.new(board, piece, end_position)
+    end
+  end
+
   def initialize(board, piece, end_position)
     @board = board
     @piece = piece
