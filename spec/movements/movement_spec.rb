@@ -195,6 +195,117 @@ describe Movement do
       end
     end
 
-    # test for white pieces
+    context 'when given a WhiteRook' do
+      let(:piece) { WhiteRook.new }
+      before do
+        board.data[0][0] = piece
+      end
+
+      context 'when given a valid position' do
+        let(:end_position) { [2, 0] }
+        it 'returns a WhiteRookMovement' do
+          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhiteRookMovement)
+        end
+      end
+
+      context 'when given an invalid position' do
+        let(:end_position) { [2, 2] }
+        it 'returns a NilMovement' do
+          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+        end
+      end
+    end
+
+    context 'when given a WhiteKnight movement' do
+      let(:piece) { WhiteKnight.new }
+      before do
+        board.data[0][0] = piece
+      end
+
+      context 'when given a valid position' do
+        let(:end_position) { [1, 2] }
+        it 'returns a WhiteKnightMovement' do
+          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhiteKnightMovement)
+        end
+      end
+
+      context 'when given an invalid position' do
+        let(:end_position) { [1, 1] }
+        it 'returns a NilMovement' do
+          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+        end
+      end
+    end
+
+    context 'when given a WhiteBishop' do
+      let(:piece) { WhiteBishop.new }
+      before do
+        board.data[0][0] = piece
+      end
+
+      context 'when given a valid position' do
+        let(:end_position) { [1, 1] }
+        it 'returns a WhiteBishopMovement' do
+          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhiteBishopMovement)
+        end
+      end
+
+      context 'when given an invalid position' do
+        let(:end_position) { [1, 0] }
+        it 'returns a NilMovement' do
+          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+        end
+      end
+    end
+
+    context 'when given a WhiteQueen' do
+      before do
+        board.data[0][0] = piece
+      end
+
+      let(:piece) { WhiteQueen.new }
+      context 'when given a valid position' do
+        let(:end_position) { [1, 1] }
+        it 'returns a WhiteQueenMovement' do
+          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhiteQueenMovement)
+        end
+      end
+
+      context 'when given an invalid position' do
+        let(:end_position) { [1, 2] }
+        it 'returns a NilMovement' do
+          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+        end
+      end
+    end
+
+    context 'when given a WhiteKing' do
+      let(:piece) { WhiteKing.new }
+      before do
+        board.data[0][0] = piece
+      end
+
+      context 'when given a valid position' do
+        let(:end_position) { [1, 1] }
+        it 'returns a WhiteKingMovement' do
+          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhiteKingMovement)
+        end
+      end
+
+      context 'when given an invalid position' do
+        let(:end_position) { [1, 2] }
+        it 'returns a NilMovement' do
+          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+        end
+      end
+    end
+
+    context 'when given a NilPiece' do
+      let(:piece) { NilPiece }
+      let(:end_position) { [2, 3] }
+      it 'returns a NilMovement' do
+        expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+      end
+    end
   end
 end
