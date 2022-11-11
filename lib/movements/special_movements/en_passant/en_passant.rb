@@ -30,11 +30,15 @@ module EnPassant
   private
 
   def left_position
-    [@initial_position[0], @initial_position[1] - 1] # check for > -1
+    return @initial_position if @initial_position[1].zero?
+
+    [@initial_position[0], @initial_position[1] - 1]
   end
 
   def right_position
-    [@initial_position[0], @initial_position[1] + 1] # check for < 8
+    return @initial_position if @initial_position[1] == 7
+
+    [@initial_position[0], @initial_position[1] + 1]
   end
 
   def enemy_pawn_position
