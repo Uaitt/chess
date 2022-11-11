@@ -8,7 +8,7 @@ class WhiteKnightMovement
   include KnightMovement
 
   class << self
-    def moving?(piece)
+    def moving?(piece, _)
       piece.instance_of?(WhiteKnight)
     end
   end

@@ -8,7 +8,7 @@ class BlackKingMovement
   include KingMovement
 
   class << self
-    def moving?(piece)
+    def moving?(piece, _)
       piece.instance_of?(BlackKing)
     end
   end

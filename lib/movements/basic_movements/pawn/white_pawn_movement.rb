@@ -8,7 +8,7 @@ class WhitePawnMovement
   include PawnMovement
 
   class << self
-    def moving?(piece)
+    def moving?(piece, _)
       piece.instance_of?(WhitePawn)
     end
   end

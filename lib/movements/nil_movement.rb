@@ -3,7 +3,7 @@
 # this class represents a non existing movement in chess
 class NilMovement
   class << self
-    def moving?(_)
+    def moving?(_, _)
       true
     end
   end
