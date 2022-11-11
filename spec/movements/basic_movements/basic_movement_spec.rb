@@ -91,5 +91,12 @@ describe BasicMovement do
         expect(BasicMovement.for(board, piece, end_position)).to be_instance_of(WhiteKingMovement)
       end
     end
+
+    context 'when given a NilPiece' do
+      let(:piece) { NilPiece.new }
+      it 'returns a NilMovement' do
+        expect(BasicMovement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+      end
+    end
   end
 end
