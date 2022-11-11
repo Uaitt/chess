@@ -14,21 +14,22 @@ describe BlackBishopMovement do
   end
 
   describe '::moving?' do
+    let(:end_position) { [] }
     context 'when given a BlackBishop' do
       it 'returns true' do
-        expect(BlackBishopMovement).to be_moving(BlackBishop.new)
+        expect(BlackBishopMovement).to be_moving(BlackBishop.new, end_position)
       end
     end
 
     context 'when given a WhiteBishop' do
       it 'returns false' do
-        expect(BlackBishopMovement).not_to be_moving(WhiteBishop.new)
+        expect(BlackBishopMovement).not_to be_moving(WhiteBishop.new, end_position)
       end
     end
 
     context 'when given a WhitePiece' do
       it 'returns false' do
-        expect(BlackBishopMovement).not_to be_moving(WhitePiece.new)
+        expect(BlackBishopMovement).not_to be_moving(WhitePiece.new, end_position)
       end
     end
   end

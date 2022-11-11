@@ -14,21 +14,22 @@ describe BlackPawnMovement do
   end
 
   describe '::moving?' do
+    let(:end_position) { [] }
     context 'when given a BlackPawn' do
       it 'returns true' do
-        expect(BlackPawnMovement).to be_moving(BlackPawn.new)
+        expect(BlackPawnMovement).to be_moving(BlackPawn.new, end_position)
       end
     end
 
     context 'when given a WhitePawn' do
       it 'returns false' do
-        expect(BlackPawnMovement).not_to be_moving(WhitePawn.new)
+        expect(BlackPawnMovement).not_to be_moving(WhitePawn.new, end_position)
       end
     end
 
     context 'when given a WhitePiece' do
       it 'returns false' do
-        expect(BlackPawnMovement).not_to be_moving(WhitePiece.new)
+        expect(BlackPawnMovement).not_to be_moving(WhitePiece.new, end_position)
       end
     end
   end

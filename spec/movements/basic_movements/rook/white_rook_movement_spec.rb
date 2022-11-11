@@ -14,21 +14,22 @@ describe WhiteRookMovement do
   end
 
   describe '::moving?' do
+    let(:end_position) { [] }
     context 'when given a WhiteRook' do
       it 'returns true' do
-        expect(WhiteRookMovement).to be_moving(WhiteRook.new)
+        expect(WhiteRookMovement).to be_moving(WhiteRook.new, end_position)
       end
     end
 
     context 'when given a BlackRook' do
       it 'returns false' do
-        expect(WhiteRookMovement).not_to be_moving(BlackRook.new)
+        expect(WhiteRookMovement).not_to be_moving(BlackRook.new, end_position)
       end
     end
 
     context 'when given a BlackPiece' do
       it 'returns false' do
-        expect(WhiteRookMovement).not_to be_moving(BlackPiece.new)
+        expect(WhiteRookMovement).not_to be_moving(BlackPiece.new, end_position)
       end
     end
   end

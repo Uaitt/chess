@@ -14,21 +14,22 @@ describe WhiteKingMovement do
   end
 
   describe '::moving?' do
+    let(:end_position) { [] }
     context 'when given a WhiteKing' do
       it 'returns true' do
-        expect(WhiteKingMovement).to be_moving(WhiteKing.new)
+        expect(WhiteKingMovement).to be_moving(WhiteKing.new, end_position)
       end
     end
 
     context 'when given a BlackKing' do
       it 'returns false' do
-        expect(WhiteKingMovement).not_to be_moving(BlackKing.new)
+        expect(WhiteKingMovement).not_to be_moving(BlackKing.new, end_position)
       end
     end
 
     context 'when given a BlackPiece' do
       it 'returns false' do
-        expect(WhiteKingMovement).not_to be_moving(BlackPiece.new)
+        expect(WhiteKingMovement).not_to be_moving(BlackPiece.new, end_position)
       end
     end
   end
