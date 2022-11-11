@@ -194,5 +194,7 @@ describe Movement do
         end
       end
     end
+
+    # test for white pieces
   end
 end
