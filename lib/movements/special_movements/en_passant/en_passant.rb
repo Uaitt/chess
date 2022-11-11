@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative '../../movement'
+require_relative '../special_movement'
 
 # set of methods common to all en passant in chess
 module EnPassant
-  include Movement
+  include SpecialMovement
 
   def initialize(board, piece, end_position)
     super
