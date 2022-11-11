@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require_relative 'castling'
+require_relative '../castling'
 
 # this class represents a special black castling movement in chess
-class BlackShortCastling
+class WhiteShortCastling
   include Castling
 
   private
 
   def rank
-    0
+    7
   end
 
   def file
@@ -17,11 +17,11 @@ class BlackShortCastling
   end
 
   def rook_class
-    BlackRook
+    WhiteRook
   end
 
   def separating_positions
-    [[0, 5], [0, 6]]
+    [[7, 5], [7, 6]]
   end
 
   def king_path
@@ -29,6 +29,6 @@ class BlackShortCastling
   end
 
   def new_rook_position
-    [0, 5]
+    [7, 5]
   end
 end

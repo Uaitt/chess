@@ -21,7 +21,7 @@ module Movement
     @piece.movements += 1 # to test
     @board.place_piece(NilPiece.new, @initial_position)
     @board.place_piece(@piece, @end_position)
-    @board.last_movement = self
+    @board.last_movement = self # to test
   end
 
   private

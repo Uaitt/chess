@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative 'castling'
+require_relative '../castling'
 
 # this class represents a special black castling movement in chess
 class WhiteLongCastling
