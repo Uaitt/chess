@@ -4,11 +4,10 @@
 module Movement
   class << self
     def for(board, piece, end_position)
-      movement = BasicMovement.for(board, piece, end_position)
-      return movement if movement.valid?
-
-      movement = SpecialMovement.for(board, piece, end_position)
-      return movement if movement.valid?
+      [BasicMovement, SpecialMovement].each do |movement_namespace|
+        movement = movement_namespace.for(board, piece, end_position)
+        return movement if movement.valid?
+      end
 
       NilMovement.new(board, piece, end_position)
     end
