@@ -55,11 +55,24 @@ class Chess
 
   def play_single_match
     loop do
-      play_single_turn
+      play_single_round
       break if @board.mated? || @saved
 
       @round += 1
     end
     @saved ? saved_game_output : winner_greeting
+  end
+
+  def play_single_round
+    playing_player.play_round
+    checked_alarm if @board.checked?
+  end
+
+  def playing_player
+    @round.even? ? @white_player : @black_player
+  end
+
+  def still_player
+    @round.even? ? @black_player : @white_player
   end
 end
