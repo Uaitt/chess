@@ -25,11 +25,11 @@ class Board
   end
 
   def piece_at(position)
-    @data[position[0]][position[1]] # need test
+    @data[position[0]][position[1]]
   end
 
   def place_piece(piece, position)
-    @data[position[0]][position[1]] = piece # need test
+    @data[position[0]][position[1]] = piece
   end
 
   def checked?(color)
