@@ -114,6 +114,34 @@ describe Board do
     end
   end
 
+  describe '#piece_at' do
+    it 'returns the piece at the right position' do
+      black_piece = BlackPiece.new
+      board.data[0][0] = black_piece
+      expect(board.piece_at([0, 0])).to eq(black_piece)
+    end
+
+    it 'returns the piece at the right position' do
+      white_piece = WhitePiece.new
+      board.data[6][7] = white_piece
+      expect(board.piece_at([6, 7])).to eq(white_piece)
+    end
+  end
+
+  describe '#place_piece' do
+    it 'places the piece at the given position' do
+      black_piece = BlackPiece.new
+      board.place_piece(black_piece, [3, 2])
+      expect(board.data[3][2]).to eq(black_piece)
+    end
+
+    it 'places the piece at the given position' do
+      white_piece = WhitePiece.new
+      board.place_piece(white_piece, [6, 1])
+      expect(board.data[6][1]).to eq(white_piece)
+    end
+  end
+
   describe '#checked?' do
     let(:black_king) { BlackKing.new }
     let(:white_rook) { WhiteRook.new }
