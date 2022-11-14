@@ -16,6 +16,14 @@ class Board
     end
   end
 
+  def show
+    @data.each_with_index do |row, index|
+      print 8 - index
+      show_row(row, index)
+    end
+    puts 'a b c c d f g h'
+  end
+
   def current_position(piece)
     @data.each_with_index do |row, row_index|
       row.each_with_index do |square, column_index|
@@ -71,4 +79,16 @@ class Board
       end
     end
   end
+
+  # black background : "\e[40m#{self}\e[0m"
+  # brown background : "\e[43m#{self}\e[0m"
+  def show_row(row, index)
+    row.each do |piece|
+      print "\e[#{color}m#{piece.symbol}\e[0m"
+    end
+    puts ""
+  end
+
+  def color
+    
 end

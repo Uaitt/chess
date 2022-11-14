@@ -64,6 +64,7 @@ class Chess
   end
 
   def play_single_round
+    @board.show # to implement
     playing_player.play_round
     checked_alarm if @board.checked?(still_player.color)
   end
