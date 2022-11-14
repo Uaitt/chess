@@ -52,4 +52,14 @@ class Chess
     end
     final_greeting
   end
+
+  def play_single_match
+    loop do
+      play_single_turn
+      break if @board.mated? || @saved
+
+      @round += 1
+    end
+    @saved ? saved_game_output : winner_greeting
+  end
 end
