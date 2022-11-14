@@ -3,7 +3,7 @@
 # set of methods common to all pieces in chess
 module Piece
   attr_accessor :movements
-  attr_reader :color
+  attr_reader :color, :symbol
 
   def initialize
     @movements = 0

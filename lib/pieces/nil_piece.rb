@@ -11,4 +11,8 @@ class NilPiece
       true
     end
   end
+
+  def symbol
+    ' '
+  end
 end

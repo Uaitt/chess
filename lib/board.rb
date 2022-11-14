@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry-byebug'
 # this class represents the board in chess
 class Board
   attr_accessor :data, :last_movement
@@ -18,10 +18,10 @@ class Board
 
   def show
     @data.each_with_index do |row, index|
-      print 8 - index
+      print "#{8 - index} "
       show_row(row, index)
     end
-    puts 'a b c c d f g h'
+    puts '  a b c c d f g h'
   end
 
   def current_position(piece)

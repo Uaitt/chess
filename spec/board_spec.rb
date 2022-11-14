@@ -252,4 +252,12 @@ describe Board do
       end
     end
   end
+
+  describe '#show' do
+    it 'does this' do
+      puts 'hi'
+      board.set
+      board.show
+    end
+  end
 end
