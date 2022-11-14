@@ -16,4 +16,14 @@ module Displayable
   def ask_for_name
     puts "Enter the name of the #{order} player"
   end
+
+  def finished_match_output
+    puts 'The game has ended'
+    puts 'Type \'new\' if you want to play a new game, anything else if you want to quit'
+  end
+
+  def final_greeting
+    puts 'Thanks for playing!'
+    puts 'We hope you enjoyed the game, see you soon!'
+  end
 end
