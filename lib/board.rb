@@ -16,16 +16,6 @@ class Board
     end
   end
 
-  def show
-    puts '    a    b    c    d    e    f    g    h'.colorize(color: :white)
-    @data.each_with_index do |row, index|
-      print "#{8 - index} ".colorize(color: :white)
-      show_row(row, index)
-      puts "#{8 - index} ".colorize(color: :white)
-    end
-    puts '    a    b    c    d    e    f    g    h'.colorize(color: :white)
-  end
-
   def current_position(piece)
     @data.each_with_index do |row, row_index|
       row.each_with_index do |square, column_index|
@@ -57,6 +47,16 @@ class Board
   def allowing_castling?(color, separating_positions, king_path)
     !checked?(color) && !opponent_can_attack_crossed_path(color, king_path) &&
       separating_positions.all? { |position| @data[position[0]][position[1]].instance_of?(NilPiece) }
+  end
+
+  def show
+    puts '    a    b    c    d    e    f    g    h'.colorize(color: :white)
+    @data.each_with_index do |row, index|
+      print "#{8 - index} ".colorize(color: :white)
+      show_row(row, index)
+      puts "#{8 - index} ".colorize(color: :white)
+    end
+    puts '    a    b    c    d    e    f    g    h'.colorize(color: :white)
   end
 
   private
