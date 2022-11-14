@@ -17,6 +17,10 @@ module Displayable
     puts "Enter the name of the #{order} player"
   end
 
+  def saved_match_output
+    puts 'The game has been successfully been saved'
+  end
+
   def finished_match_output
     puts 'The game has ended'
     puts 'Type \'new\' if you want to play a new game, anything else if you want to quit'
@@ -25,10 +29,6 @@ module Displayable
   def final_greeting
     puts 'Thanks for playing!'
     puts 'We hope you enjoyed the game, see you soon!'
-  end
-
-  def saved_match_output
-    puts 'The game has been successfully been saved'
   end
 
   def winner_greeting

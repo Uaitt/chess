@@ -22,7 +22,6 @@ class Chess
   def setup
     players_instruction
     add_players
-    @board.set
   end
 
   def add_players
@@ -46,30 +45,31 @@ class Chess
 
   def play
     loop do
-      play_single_match
+      single_match
       @saved ? saved_match_output : finished_match_output
       break if @saved || gets.chomp != 'new'
     end
     final_greeting
   end
 
-  def play_single_match
+  def single_match
+    @board.set
     loop do
-      play_single_round
-      break if @board.mated?(still_player.color) || playing_player.wants_to_save?
+      single_round
+      break if @board.mated?(still_player.color) || current_player.wants_to_save?
 
       @round += 1
     end
-    playing_player.wants_to_save? ? save_game : winner_greeting
+    current_player.wants_to_save? ? save_game : winner_greeting
   end
 
-  def play_single_round
-    @board.show # to implement
-    playing_player.play_round
+  def single_round
+    @board.show
+    current_player.play_round
     checked_alarm if @board.checked?(still_player.color)
   end
 
-  def playing_player
+  def current_player
     @round.even? ? @white_player : @black_player
   end
 
