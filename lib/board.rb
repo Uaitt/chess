@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'pry-byebug'
+require 'colorize'
 # this class represents the board in chess
 class Board
   attr_accessor :data, :last_movement
@@ -17,11 +17,13 @@ class Board
   end
 
   def show
+    puts '    a    b    c    d    e    f    g    h'.colorize(color: :white)
     @data.each_with_index do |row, index|
-      print "#{8 - index} "
+      print "#{8 - index} ".colorize(color: :white)
       show_row(row, index)
+      puts "#{8 - index} ".colorize(color: :white)
     end
-    puts '  a b c c d f g h'
+    puts '    a    b    c    d    e    f    g    h'.colorize(color: :white)
   end
 
   def current_position(piece)
@@ -82,16 +84,21 @@ class Board
 
   def show_row(row, index_row)
     row.each_with_index do |piece, index_column|
-      print "\e[#{color(index_row, index_column)}m#{piece.symbol}\e[0m"
+      print "  #{piece.symbol}  ".colorize(color: color(index_row),
+                                           background: background_color(index_row, index_column))
     end
-    puts ''
+    print ' '
   end
 
-  def color(index_row, index_column)
-    brown_cell(index_row, index_column) ? 43 : 47
+  def color(index_row)
+    index_row.zero? || index_row == 1 ? :black : :white
   end
 
-  def brown_cell(index_row, index_column)
+  def background_color(index_row, index_column)
+    yellow_cell(index_row, index_column) ? :light_blue : :blue
+  end
+
+  def yellow_cell(index_row, index_column)
     (index_row.even? && index_column.even?) || (index_row.odd? && index_column.odd?)
   end
 end
