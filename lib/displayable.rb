@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# ...
+# set of methods that display messages to the players
 module Displayable
   def initial_instructions
     puts 'Welcome to CLI Chess!'
