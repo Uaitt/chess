@@ -80,15 +80,18 @@ class Board
     end
   end
 
-  # black background : "\e[40m#{self}\e[0m"
-  # brown background : "\e[43m#{self}\e[0m"
-  def show_row(row, index)
-    row.each do |piece|
-      print "\e[#{color}m#{piece.symbol}\e[0m"
+  def show_row(row, index_row)
+    row.each_with_index do |piece, index_column|
+      print "\e[#{color(index_row, index_column)}m#{piece.symbol}\e[0m"
     end
-    puts ""
+    puts ''
   end
 
-  def color
-    
+  def color(index_row, index_column)
+    brown_cell(index_row, index_column) ? 43 : 47
+  end
+
+  def brown_cell(index_row, index_column)
+    (index_row.even? && index_column.even?) || (index_row.odd? && index_column.odd?)
+  end
 end
