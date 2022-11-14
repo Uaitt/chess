@@ -26,4 +26,16 @@ module Displayable
     puts 'Thanks for playing!'
     puts 'We hope you enjoyed the game, see you soon!'
   end
+
+  def saved_game_output
+    puts 'The game has been successfully been saved'
+  end
+
+  def winner_greeting
+    puts "Congratulation #{winner_name} for winning the game!"
+  end
+
+  def winner_name
+    @round.even? ? @white_player.name : @black_player.name
+  end
 end
