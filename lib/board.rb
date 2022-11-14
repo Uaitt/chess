@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'colorize'
+
 # this class represents the board in chess
 class Board
   attr_accessor :data, :last_movement
@@ -84,8 +84,8 @@ class Board
 
   def show_row(row, index_row)
     row.each_with_index do |piece, index_column|
-      print "  #{piece.symbol}  ".colorize(color: color(index_row),
-                                           background: background_color(index_row, index_column))
+      print "  #{piece.symbol}  ".colorize(background: background_color(index_row, index_column),
+                                           color: color(index_row))
     end
     print ' '
   end
@@ -95,10 +95,10 @@ class Board
   end
 
   def background_color(index_row, index_column)
-    yellow_cell(index_row, index_column) ? :light_blue : :blue
+    light_cell(index_row, index_column) ? :light_blue : :blue
   end
 
-  def yellow_cell(index_row, index_column)
+  def light_cell(index_row, index_column)
     (index_row.even? && index_column.even?) || (index_row.odd? && index_column.odd?)
   end
 end
