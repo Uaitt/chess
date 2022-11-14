@@ -15,6 +15,6 @@ class WhiteQueen < WhitePiece
 
   def initialize
     super
-    @symbol = "\u2655"
+    @symbol = "\u265B"
   end
 end

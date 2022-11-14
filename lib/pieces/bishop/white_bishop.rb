@@ -15,6 +15,6 @@ class WhiteBishop < WhitePiece
 
   def initialize
     super
-    @symbol = "\u2657"
+    @symbol = "\u265D"
   end
 end

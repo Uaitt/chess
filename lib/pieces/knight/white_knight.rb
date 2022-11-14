@@ -15,6 +15,6 @@ class WhiteKnight < WhitePiece
 
   def initialize
     super
-    @symbol = "\u2658"
+    @symbol = "\u265E"
   end
 end

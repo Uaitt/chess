@@ -12,7 +12,7 @@ class WhitePawn < WhitePiece
 
   def initialize
     super
-    @symbol = "\u2659"
+    @symbol = "\u265F"
   end
 
   def basic_moves
