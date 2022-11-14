@@ -13,7 +13,7 @@ class Chess
 
   def start
     initial_instructions
-    gets.chomp == 'new' ? setup : restore # to do later
+    gets.chomp == 'new' ? setup : restore
     play
   end
 
@@ -56,11 +56,11 @@ class Chess
   def play_single_match
     loop do
       play_single_round
-      break if @board.mated?(still_player.color) || @wants_to_save
+      break if @board.mated?(still_player.color) || playing_player.wants_to_save?
 
       @round += 1
     end
-    @wants_to_save ? save_game : winner_greeting
+    playing_player.wants_to_save? ? save_game : winner_greeting
   end
 
   def play_single_round
