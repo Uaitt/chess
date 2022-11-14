@@ -43,4 +43,13 @@ class Chess
   def add_computer
     @black_player = ComputerPlayer.new
   end
+
+  def play
+    loop do
+      play_single_match
+      finished_match_output
+      break if gets.chomp != 'new'
+    end
+    final_greeting
+  end
 end
