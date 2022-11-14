@@ -27,7 +27,7 @@ module Displayable
     puts 'We hope you enjoyed the game, see you soon!'
   end
 
-  def saved_game_output
+  def saved_match_output
     puts 'The game has been successfully been saved'
   end
 

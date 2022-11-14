@@ -47,8 +47,8 @@ class Chess
   def play
     loop do
       play_single_match
-      finished_match_output
-      break if gets.chomp != 'new'
+      @saved ? saved_match_output : finished_match_output
+      break if @saved || gets.chomp != 'new'
     end
     final_greeting
   end
@@ -56,11 +56,11 @@ class Chess
   def play_single_match
     loop do
       play_single_round
-      break if @board.mated?(still_player.color) || @saved
+      break if @board.mated?(still_player.color) || @wants_to_save
 
       @round += 1
     end
-    @saved ? saved_game_output : winner_greeting
+    @wants_to_save ? save_game : winner_greeting
   end
 
   def play_single_round
