@@ -38,4 +38,8 @@ module Displayable
   def winner_name
     @round.even? ? @white_player.name : @black_player.name
   end
+
+  def checked_alarm
+    puts "#{still_player.color}'s king is currently in check!"
+  end
 end
