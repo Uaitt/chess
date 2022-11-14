@@ -8,4 +8,8 @@ module Displayable
     puts 'Be aware that first player color will be white, second player color will be black'
     puts "Type \'yes\' if you want to play Human vs Human, anything else if you want to challenge a Computer"
   end
+
+  def ask_name
+    puts "Enter the name of the #{order} player"
+  end
 end
