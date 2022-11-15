@@ -14,6 +14,8 @@ module HumanPlayer
   def play_round
     initial_instructions
     input_start_coordinates
+    return if wants_to_save?
+
     input_end_coordinates
     @movement.apply
   end
@@ -24,7 +26,7 @@ module HumanPlayer
     loop do
       ask_for_start_coordinates
       @start_coordinates = Coordinates.new(gets.chomp)
-      break if @start_coordinates.valid? && selected_existing_piece?
+      break if wants_to_save? || (@start_coordinates.valid? && selected_existing_piece?)
 
       invalid_coordinates
     end
@@ -38,6 +40,10 @@ module HumanPlayer
 
       invalid_coordinates
     end
+  end
+
+  def wants_to_save?
+    @start_coordinates.data == 'save'
   end
 
   def selected_existing_piece?
