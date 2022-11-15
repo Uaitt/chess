@@ -18,9 +18,9 @@ module EnPassant
       next_to_enemy_pawn? && @last_movement.double_moving?(enemy_pawn)
   end
 
-  def apply
+  def apply(board)
     super
-    @board.place_piece(NilPiece.new, enemy_pawn_position)
+    board.place_piece(NilPiece.new, enemy_pawn_position)
   end
 
   def double_moving?(_)

@@ -19,7 +19,7 @@ module HumanPlayer
     return if wants_to_save?
 
     input_end_coordinates
-    @movement.apply
+    @movement.apply(@board)
   end
 
   def wants_to_save?
