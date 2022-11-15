@@ -55,6 +55,6 @@ module HumanPlayer
 
   def selected_valid_movement?
     @movement = Movement.for(@board, @piece, @end_coordinates.convert)
-    @movement.valid?
+    @movement.valid? && !movement.checks_own_king?
   end
 end
