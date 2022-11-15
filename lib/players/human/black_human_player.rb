@@ -3,7 +3,7 @@
 require_relative 'human_player'
 
 # this class represents a human player that controls the black pieces
-class WhiteHumanPlayer
+class BlackHumanPlayer
   include HumanPlayer
 
   def initialize(name, board)
