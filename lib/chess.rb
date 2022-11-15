@@ -8,7 +8,7 @@ class Chess
 
   def initialize
     @board = Board.new
-    # @serializer = Serializer.new
+    #@serializer = Serializer.new
   end
 
   def start
@@ -24,6 +24,9 @@ class Chess
     add_players
   end
 
+  def restore
+  end
+
   def add_players
     user_choice = gets.chomp
     add_human(:first)
@@ -31,11 +34,11 @@ class Chess
   end
 
   def add_human(order)
-    ask_for_name
+    ask_for_name(order)
     if order == :first
-      @white_player = WhiteHumanPlayer.new(gets.chomp)
+      @white_player = WhiteHumanPlayer.new(gets.chomp, self)
     else
-      @black_player = BlackHumanPlayer.new(gets.chomp)
+      @black_player = BlackHumanPlayer.new(gets.chomp, self)
     end
   end
 
@@ -67,6 +70,9 @@ class Chess
     @board.show
     current_player.play_round
     checked_alarm if @board.checked?(still_player.color)
+  end
+
+  def save_game
   end
 
   def current_player

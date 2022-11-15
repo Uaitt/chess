@@ -13,7 +13,7 @@ module Display
     puts 'Type \'human\' if you want to play Human vs Human, anything else if you want to challenge a Computer'
   end
 
-  def ask_for_name
+  def ask_for_name(order)
     puts "Enter the name of the #{order} player"
   end
 
