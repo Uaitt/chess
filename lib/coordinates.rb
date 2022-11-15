@@ -2,6 +2,8 @@
 
 # this class represents a pair of coordinates in the chess board
 class Coordinates
+  attr_reader :data
+
   def initialize(data)
     @data = data
   end
