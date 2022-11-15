@@ -14,7 +14,7 @@ describe Movement do
     context 'when given a BlackRook' do
       let(:piece) { BlackRook.new }
       before do
-        board.data[0][0] = piece
+        board.place_piece(piece, [0, 0])
       end
 
       context 'when given a valid position' do
@@ -35,7 +35,7 @@ describe Movement do
     context 'when given a BlackKnight movement' do
       let(:piece) { BlackKnight.new }
       before do
-        board.data[0][0] = piece
+        board.place_piece(piece, [0, 0])
       end
 
       context 'when given a valid position' do
@@ -56,7 +56,7 @@ describe Movement do
     context 'when given a BlackBishop' do
       let(:piece) { BlackBishop.new }
       before do
-        board.data[0][0] = piece
+        board.place_piece(piece, [0, 0])
       end
 
       context 'when given a valid position' do
@@ -76,7 +76,7 @@ describe Movement do
 
     context 'when given a BlackQueen' do
       before do
-        board.data[0][0] = piece
+        board.place_piece(piece, [0, 0])
       end
 
       let(:piece) { BlackQueen.new }
@@ -97,7 +97,7 @@ describe Movement do
 
     context 'when given a BlackKing' do
       before do
-        board.data[0][0] = piece
+        board.place_piece(piece, [0, 0])
       end
 
       let(:piece) { BlackKing.new }
@@ -121,7 +121,7 @@ describe Movement do
       context 'when given a valid basic position' do
         let(:end_position) { [1, 0] }
         before do
-          board.data[0][0] = piece
+          board.place_piece(piece, [0, 0])
         end
 
         it 'returns a BlackPawnMovement' do
@@ -145,7 +145,7 @@ describe Movement do
 
       context 'when given an invalid position' do
         before do
-          board.data[0][0] = piece
+          board.place_piece(piece, [0, 0])
         end
 
         let(:end_position) { [1, 2] }
@@ -160,8 +160,8 @@ describe Movement do
       context 'when given a valid basic position' do
         let(:end_position) { [1, 1] }
         before do
-          board.data[1][1] = BlackPiece.new
-          board.data[2][2] = piece
+          board.place_piece(BlackPiece.new, [1, 1])
+          board.place_piece(piece, [2, 2])
         end
 
         it 'returns a WhitePawnMovement' do
@@ -173,8 +173,8 @@ describe Movement do
         let(:end_position) { [2, 1] }
         let(:black_pawn) { BlackPawn.new }
         before do
-          board.data[3][0] = piece
-          board.data[1][1] = black_pawn
+          board.place_piece(piece, [3, 0])
+          board.place_piece(black_pawn, [1, 1])
           WhitePawnMovement.new(board, black_pawn, [3, 1]).apply(board)
         end
 
@@ -185,7 +185,7 @@ describe Movement do
 
       context 'when given an invalid position' do
         before do
-          board.data[2][2] = piece
+          board.place_piece(piece, [2, 2])
         end
 
         let(:end_position) { [1, 0] }
@@ -198,7 +198,7 @@ describe Movement do
     context 'when given a WhiteRook' do
       let(:piece) { WhiteRook.new }
       before do
-        board.data[0][0] = piece
+        board.place_piece(piece, [0, 0])
       end
 
       context 'when given a valid position' do
@@ -219,7 +219,7 @@ describe Movement do
     context 'when given a WhiteKnight movement' do
       let(:piece) { WhiteKnight.new }
       before do
-        board.data[0][0] = piece
+        board.place_piece(piece, [0, 0])
       end
 
       context 'when given a valid position' do
@@ -240,7 +240,7 @@ describe Movement do
     context 'when given a WhiteBishop' do
       let(:piece) { WhiteBishop.new }
       before do
-        board.data[0][0] = piece
+        board.place_piece(piece, [0, 0])
       end
 
       context 'when given a valid position' do
@@ -260,7 +260,7 @@ describe Movement do
 
     context 'when given a WhiteQueen' do
       before do
-        board.data[0][0] = piece
+        board.place_piece(piece, [0, 0])
       end
 
       let(:piece) { WhiteQueen.new }
@@ -282,7 +282,7 @@ describe Movement do
     context 'when given a WhiteKing' do
       let(:piece) { WhiteKing.new }
       before do
-        board.data[0][0] = piece
+        board.place_piece(piece, [0, 0])
       end
 
       context 'when given a valid position' do

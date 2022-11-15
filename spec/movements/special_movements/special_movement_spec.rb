@@ -11,7 +11,7 @@ describe SpecialMovement do
       let(:end_position) { [5, 1] }
       let(:piece) { BlackPawn.new }
       before do
-        board.data[4][0] = piece
+        board.place_piece(piece, [4, 0])
       end
 
       it 'returns a BlackEnPassant' do
@@ -23,7 +23,7 @@ describe SpecialMovement do
       let(:end_position) { [2, 1] }
       let(:piece) { WhitePawn.new }
       before do
-        board.data[3][0] = piece
+        board.place_piece(piece, [3, 0])
       end
 
       it 'returns a BlackEnPassant' do
