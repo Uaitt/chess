@@ -51,5 +51,16 @@ describe BlackHumanPlayer do
         end
       end
     end
+
+    context 'when the player enters \'save\'' do
+      before do
+        allow(black_human_player).to receive(:gets).and_return('save')
+      end
+
+      it 'does not ask for an end position and returns' do
+        expect(black_human_player).to receive(:gets).once
+        black_human_player.play_round
+      end
+    end
   end
 end
