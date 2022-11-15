@@ -29,35 +29,35 @@ describe Board do
     end
 
     it 'places a black rook on the first square of the first row' do
-      expect(board.data[0][0]).to be_instance_of(BlackRook)
+      expect(board.piece_at([0, 0])).to be_instance_of(BlackRook)
     end
 
     it 'places a black knight on the second square of the first row' do
-      expect(board.data[0][1]).to be_instance_of(BlackKnight)
+      expect(board.piece_at([0, 1])).to be_instance_of(BlackKnight)
     end
 
     it 'places a black bishop on the third square of the first row' do
-      expect(board.data[0][2]).to be_instance_of(BlackBishop)
+      expect(board.piece_at([0, 2])).to be_instance_of(BlackBishop)
     end
 
     it 'places a black queen on the fourth square of the first row' do
-      expect(board.data[0][3]).to be_instance_of(BlackQueen)
+      expect(board.piece_at([0, 3])).to be_instance_of(BlackQueen)
     end
 
     it 'places a black king on the fifth square of the first row' do
-      expect(board.data[0][4]).to be_instance_of(BlackKing)
+      expect(board.piece_at([0, 4])).to be_instance_of(BlackKing)
     end
 
     it 'places a black bishop on the sixth square of the first row' do
-      expect(board.data[0][5]).to be_instance_of(BlackBishop)
+      expect(board.piece_at([0, 5])).to be_instance_of(BlackBishop)
     end
 
     it 'places a black knight on the seventh square of the first row' do
-      expect(board.data[0][6]).to be_instance_of(BlackKnight)
+      expect(board.piece_at([0, 6])).to be_instance_of(BlackKnight)
     end
 
     it 'places a black rook on the eighth square of the first row' do
-      expect(board.data[0][7]).to be_instance_of(BlackRook)
+      expect(board.piece_at([0, 7])).to be_instance_of(BlackRook)
     end
 
     it 'places eight black pawns on the second row' do
@@ -69,47 +69,47 @@ describe Board do
     end
 
     it 'places a white rook on the first square of the eighth row' do
-      expect(board.data[7][0]).to be_instance_of(WhiteRook)
+      expect(board.piece_at([7, 0])).to be_instance_of(WhiteRook)
     end
 
     it 'places a white knight on the second square of the eighth row' do
-      expect(board.data[7][1]).to be_instance_of(WhiteKnight)
+      expect(board.piece_at([7, 1])).to be_instance_of(WhiteKnight)
     end
 
     it 'places a white bishop on the third square of the eighth row' do
-      expect(board.data[7][2]).to be_instance_of(WhiteBishop)
+      expect(board.piece_at([7, 2])).to be_instance_of(WhiteBishop)
     end
 
     it 'places a white queen on the fourth square of the eighth row' do
-      expect(board.data[7][3]).to be_instance_of(WhiteQueen)
+      expect(board.piece_at([7, 3])).to be_instance_of(WhiteQueen)
     end
 
     it 'places a white king on the fifth square of the eighth row' do
-      expect(board.data[7][4]).to be_instance_of(WhiteKing)
+      expect(board.piece_at([7, 4])).to be_instance_of(WhiteKing)
     end
 
     it 'places a white bishop on the sixth square of the eighth row' do
-      expect(board.data[7][5]).to be_instance_of(WhiteBishop)
+      expect(board.piece_at([7, 5])).to be_instance_of(WhiteBishop)
     end
 
     it 'places a white knight on the seventh square of the eighth row' do
-      expect(board.data[7][6]).to be_instance_of(WhiteKnight)
+      expect(board.piece_at([7, 6])).to be_instance_of(WhiteKnight)
     end
 
     it 'places a white rook on the eighth square of the eighth row' do
-      expect(board.data[7][7]).to be_instance_of(WhiteRook)
+      expect(board.piece_at([7, 7])).to be_instance_of(WhiteRook)
     end
   end
 
   describe '#current_position' do
     let(:black_piece) { BlackPiece.new }
     it 'returns the current position of the knight' do
-      board.data[0][0] = black_piece
+      board.place_piece(black_piece, [0, 0])
       expect(board.current_position(black_piece)).to eq([0, 0])
     end
 
     it 'returns the current position of the knight' do
-      board.data[5][2] = black_piece
+      board.place_piece(black_piece, [5, 2])
       expect(board.current_position(black_piece)).to eq([5, 2])
     end
   end
@@ -117,13 +117,13 @@ describe Board do
   describe '#piece_at' do
     it 'returns the piece at the right position' do
       black_piece = BlackPiece.new
-      board.data[0][0] = black_piece
+      board.place_piece(black_piece, [0, 0])
       expect(board.piece_at([0, 0])).to eq(black_piece)
     end
 
     it 'returns the piece at the right position' do
       white_piece = WhitePiece.new
-      board.data[6][7] = white_piece
+      board.place_piece(white_piece, [6, 7])
       expect(board.piece_at([6, 7])).to eq(white_piece)
     end
   end
@@ -132,13 +132,13 @@ describe Board do
     it 'places the piece at the given position' do
       black_piece = BlackPiece.new
       board.place_piece(black_piece, [3, 2])
-      expect(board.data[3][2]).to eq(black_piece)
+      expect(board.piece_at([3, 2])).to eq(black_piece)
     end
 
     it 'places the piece at the given position' do
       white_piece = WhitePiece.new
       board.place_piece(white_piece, [6, 1])
-      expect(board.data[6][1]).to eq(white_piece)
+      expect(board.piece_at([6, 1])).to eq(white_piece)
     end
   end
 
@@ -175,13 +175,13 @@ describe Board do
     let(:white_pawn) { WhitePawn.new }
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
-      board.data[0][0] = black_king
+      board.place_piece(black_king, [0, 0])
     end
 
     context 'when the king is in check' do
       context 'when checked by a rook' do
         before do
-          board.data[1][0] = white_rook
+          board.place_piece(white_rook, [1, 0])
         end
 
         it 'returns true' do
@@ -191,7 +191,7 @@ describe Board do
 
       context 'when checked by a bishop' do
         before do
-          board.data[2][2] = white_bishop
+          board.place_piece(white_bishop, [2, 2])
         end
 
         it 'returns true' do
@@ -201,7 +201,7 @@ describe Board do
 
       context 'when checked by a pawn' do
         before do
-          board.data[1][1] = white_pawn
+          board.place_piece(white_pawn, [1, 1])
         end
 
         it 'returns true' do
@@ -212,8 +212,8 @@ describe Board do
 
     context 'when the king is not in check' do
       before do
-        board.data[1][1] = white_rook
-        board.data[1][0] = white_bishop
+        board.place_piece(white_rook, [1, 1])
+        board.place_piece(white_bishop, [1, 0])
       end
 
       it 'returns false' do
@@ -228,13 +228,13 @@ describe Board do
     let(:white_queen) { WhiteQueen.new }
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
-      board.data[0][7] = black_king
+      board.place_piece(black_king, [0, 7])
     end
 
     context 'when the king is mated' do
       before do
-        board.data[0][4] = white_rook
-        board.data[2][7] = white_queen
+        board.place_piece(white_rook, [0, 4])
+        board.place_piece(white_queen, [2, 7])
       end
 
       it 'returns true' do
@@ -261,8 +261,8 @@ describe Board do
       let(:king_path) { [[0, 2], [0, 3]] }
       let(:separating_squares) { [[0, 1], [0, 2], [0, 3]] }
       before do
-        board.data[0][4] = black_king
-        board.data[0][0] = black_rook
+        board.place_piece(black_king, [0, 4])
+        board.place_piece(black_rook, [0, 0])
       end
 
       context 'when the king is not in check' do
@@ -275,7 +275,7 @@ describe Board do
 
           context 'when one separating square is not empty' do
             before do
-              board.data[0][1] = black_king
+              board.place_piece(black_king, [0, 1])
             end
 
             it 'returns false' do
@@ -286,7 +286,7 @@ describe Board do
 
         context 'when the king moves over a square attacked by an enemy piece' do
           before do
-            board.data[1][2] = white_rook
+            board.place_piece(white_rook, [1, 2])
           end
 
           it 'returns false' do
@@ -297,7 +297,7 @@ describe Board do
 
       context 'when the king is in check' do
         before do
-          board.data[0][5] = white_rook
+          board.place_piece(white_rook, [0, 5])
         end
 
         it 'returns false' do
