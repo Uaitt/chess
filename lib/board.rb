@@ -32,10 +32,11 @@ class Board
     @data[position[0]][position[1]] = piece
   end
 
-  def at_least_a_valid_movement?
+  def at_least_a_valid_movement?(moving_piece)
     @data.any? do |row| # TO TEST
       row.any? do |piece|
-        Movement.for(self, @piece, current_position(piece)).valid?
+        movement = Movement.for(self, moving_piece, current_position(piece))
+        movement.valid? && !movement.checks_own_king?
       end
     end
   end
