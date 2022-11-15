@@ -2,7 +2,7 @@
 
 # set of common methods to all movements in chess
 module Movement
-  attr_reader :board
+
   class << self
     def for(board, piece, end_position)
       [BasicMovement, SpecialMovement].each do |movement_namespace|
@@ -24,10 +24,9 @@ module Movement
   def checks_own_king?
     return true unless in_bound?
 
-    @temporary_board = @board.dup
-    @temporary_board.data = @board.data.map(&:clone)
-    apply(@temporary_board)
-    @temporary_board.checked?(@piece.color)
+    duplicate_board
+    apply(@duplicated_board)
+    @duplicated_board.checked?(@piece.color)
   end
 
   def apply(board)
@@ -38,6 +37,11 @@ module Movement
   end
 
   private
+
+  def duplicate_board
+    @duplicated_board = @board.dup
+    @duplicated_board.data = @board.data.map(&:clone)
+  end
 
   def in_bound?
     @end_position[0] >= 0 && @end_position[0] <= 7 &&
