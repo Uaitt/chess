@@ -42,7 +42,7 @@ describe BlackHumanPlayer do
     context 'when the player enters an invalid start coordinate' do
       context 'when the player enters a valid start coordinate and a valid end coordinate' do
         before do
-          allow(black_human_player).to receive(:gets).and_return('a9', 'a7', 'a6')
+          allow(black_human_player).to receive(:gets).and_return('a2', 'a7', 'a6')
         end
 
         it 'applies the right movement' do
