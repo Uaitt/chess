@@ -40,10 +40,12 @@ class WhiteHumanPlayer
   end
 
   def selected_existing_piece?
-    @piece = (@board.piece_at(@start_coordinates.convert).class != NilPiece)
+    @piece = @board.piece_at(@start_coordinates.convert)
+    @piece.class != NilPiece
   end
 
   def selected_valid_movement?
-    @movement = Movement.for(@board, @piece, @end_coordinates.convert).valid?
+    @movement = Movement.for(@board, @piece, @end_coordinates.convert)
+    @movement.valid?
   end
 end
