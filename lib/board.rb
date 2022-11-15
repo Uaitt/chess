@@ -86,13 +86,13 @@ class Board
   def show_row(row, index_row)
     row.each_with_index do |piece, index_column|
       print "  #{piece.symbol}  ".colorize(background: background_color(index_row, index_column),
-                                           color: color(index_row))
+                                           color: color(piece))
     end
     print ' '
   end
 
-  def color(index_row)
-    index_row.zero? || index_row == 1 ? :black : :white
+  def color(piece)
+    piece.color == :black ? :black : :white
   end
 
   def background_color(index_row, index_column)
