@@ -33,9 +33,9 @@ class Chess
   def add_human(order)
     ask_for_name
     if order == :first
-      @white_player = WhitePlayer.new(gets.chomp)
+      @white_player = WhiteHumanPlayer.new(gets.chomp)
     else
-      @black_player = BlackPlayer.new(gets.chomp)
+      @black_player = BlackHumanPlayer.new(gets.chomp)
     end
   end
 
