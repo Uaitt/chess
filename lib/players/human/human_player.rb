@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
-require_relative 'player_display'
+require_relative '../player_display'
 
-# this class represents a human player that controls the white pieces
-class WhiteHumanPlayer
+# set of methods common to all human players in chess
+module HumanPlayer
   include PlayerDisplay
 
   def initialize(name, board)
     @name = name
     @board = board
-    @color = :white
   end
 
   def play_round
