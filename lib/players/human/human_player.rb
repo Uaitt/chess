@@ -6,6 +6,8 @@ require_relative '../../display'
 module HumanPlayer
   include Display
 
+  attr_reader :color
+
   def initialize(name, board)
     @name = name
     @board = board
@@ -20,13 +22,17 @@ module HumanPlayer
     @movement.apply
   end
 
+  def wants_to_save?
+    @start_coordinates.data == 'save'
+  end
+
   private
 
   def input_start_coordinates
     loop do
       ask_for_start_coordinates
       @start_coordinates = Coordinates.new(gets.chomp)
-      break if wants_to_save? || (@start_coordinates.valid? && selected_existing_piece?)
+      break if wants_to_save? || (@start_coordinates.valid? && selected_valid_piece?)
 
       invalid_coordinates
     end
@@ -42,13 +48,9 @@ module HumanPlayer
     end
   end
 
-  def wants_to_save?
-    @start_coordinates.data == 'save'
-  end
-
-  def selected_existing_piece?
+  def selected_valid_piece?
     @piece = @board.piece_at(@start_coordinates.convert)
-    @piece.class != NilPiece
+    @piece.class != NilPiece && @piece.color == color
   end
 
   def selected_valid_movement?
