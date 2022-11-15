@@ -32,6 +32,14 @@ class Board
     @data[position[0]][position[1]] = piece
   end
 
+  def at_least_a_valid_movement?
+    @data.any? do |row|
+      row.any? do |piece|
+        Movement.for(self, @piece, current_position(piece)).valid?
+      end
+    end
+  end
+
   def checked?(color)
     king = king_of_color(color)
     @data.any? do |row|

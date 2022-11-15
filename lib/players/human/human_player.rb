@@ -50,7 +50,7 @@ module HumanPlayer
 
   def selected_valid_piece?
     @piece = @board.piece_at(@start_coordinates.convert)
-    @piece.class != NilPiece && @piece.color == color
+    @piece.class != NilPiece && @piece.color == color && @board.at_least_a_valid_movement?(@piece)
   end
 
   def selected_valid_movement?

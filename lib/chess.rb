@@ -36,9 +36,9 @@ class Chess
   def add_human(order)
     ask_for_name(order)
     if order == :first
-      @white_player = WhiteHumanPlayer.new(gets.chomp, self)
+      @white_player = WhiteHumanPlayer.new(gets.chomp, @board)
     else
-      @black_player = BlackHumanPlayer.new(gets.chomp, self)
+      @black_player = BlackHumanPlayer.new(gets.chomp, @board)
     end
   end
 
@@ -57,6 +57,7 @@ class Chess
 
   def single_match
     @board.set
+    @round = 0
     loop do
       single_round
       break if @board.mated?(still_player.color) || current_player.wants_to_save?
