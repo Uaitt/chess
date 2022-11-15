@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# set of methods that display messages to the players
-module Displayable
+# set of methods that display messages in chess
+module ChessDisplay
   def initial_instructions
     puts 'Welcome to CLI Chess!'
     puts 'This game can be played Human vs Human or Human vs Computer'
