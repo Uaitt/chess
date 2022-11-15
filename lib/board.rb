@@ -50,6 +50,7 @@ class Board
   end
 
   def show
+    system 'clear'
     puts '    a    b    c    d    e    f    g    h'.colorize(color: :white)
     @data.each_with_index do |row, index|
       print "#{8 - index} ".colorize(color: :white)
