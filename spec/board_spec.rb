@@ -142,6 +142,32 @@ describe Board do
     end
   end
 
+  describe '#at_least_a_valid_movement?' do
+    let(:white_rook) { WhiteRook.new }
+    let(:white_piece) { WhitePiece.new }
+    before do
+      board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
+      board.place_piece(white_rook, [0, 0])
+    end
+
+    context 'when the piece has at least one valid movement' do
+      it 'returns true' do
+        expect(board.at_least_a_valid_movement?(white_rook)).to eq(true)
+      end
+    end
+
+    context 'when the piece does not have one valid movement' do
+      before do
+        board.place_piece(white_piece, [1, 0])
+        board.place_piece(white_piece, [0, 1])
+      end
+
+      it 'returns false' do
+        expect(board.at_least_a_valid_movement?(white_rook)).to eq(false)
+      end
+    end
+  end
+
   describe '#checked?' do
     let(:black_king) { BlackKing.new }
     let(:white_rook) { WhiteRook.new }
