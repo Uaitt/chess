@@ -135,7 +135,7 @@ describe Movement do
         before do
           board.data[4][0] = piece
           board.data[6][1] = white_pawn
-          WhitePawnMovement.new(board, white_pawn, [4, 1]).apply
+          WhitePawnMovement.new(board, white_pawn, [4, 1]).apply(board)
         end
 
         it 'returns a BlackEnPassant' do
@@ -175,7 +175,7 @@ describe Movement do
         before do
           board.data[3][0] = piece
           board.data[1][1] = black_pawn
-          WhitePawnMovement.new(board, black_pawn, [3, 1]).apply
+          WhitePawnMovement.new(board, black_pawn, [3, 1]).apply(board)
         end
 
         it 'returns a WhiteEnPassant' do

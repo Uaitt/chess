@@ -209,7 +209,7 @@ describe WhitePawnMovement do
     let(:end_position) { [1, 0] }
     before do
       board.data[0][0] = white_pawn
-      subject.apply
+      subject.apply(board)
     end
     it 'places the pawn on the right position' do
       expect(board.data[1][0]).to eq(white_pawn)

@@ -103,7 +103,7 @@ describe BlackLongCastling do
     before do
       board.data[0][4] = black_king
       board.data[0][0] = black_rook
-      subject.apply
+      subject.apply(board)
     end
 
     it 'places the black king on the right position' do

@@ -329,7 +329,7 @@ describe BlackRookMovement do
     let(:end_position) { [3, 0] }
     before do
       board.data[0][0] = black_rook
-      subject.apply
+      subject.apply(board)
     end
     it 'places the bishop on the right position' do
       expect(board.data[3][0]).to eq(black_rook)

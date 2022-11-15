@@ -477,7 +477,7 @@ describe BlackQueenMovement do
     let(:end_position) { [3, 3] }
     before do
       board.data[0][0] = black_queen
-      subject.apply
+      subject.apply(board)
     end
     it 'places the bishop on the right position' do
       expect(board.data[3][3]).to eq(black_queen)

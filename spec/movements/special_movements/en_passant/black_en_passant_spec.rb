@@ -23,7 +23,7 @@ describe BlackEnPassant do
         context 'when the last movement was that white pawn double leap' do
           before do
             board.data[6][1] = white_pawn
-            WhitePawnMovement.new(board, white_pawn, [4, 1]).apply
+            WhitePawnMovement.new(board, white_pawn, [4, 1]).apply(board)
           end
 
           it 'returns true' do
@@ -34,7 +34,7 @@ describe BlackEnPassant do
         context 'when the last movement was not that pawn double leap' do
           before do
             board.data[5][1] = white_pawn
-            WhitePawnMovement.new(board, white_pawn, [4, 1]).apply
+            WhitePawnMovement.new(board, white_pawn, [4, 1]).apply(board)
           end
 
           it 'returns false' do
@@ -66,7 +66,7 @@ describe BlackEnPassant do
     before do
       board.data[4][0] = black_pawn
       board.data[4][1] = white_pawn
-      black_en_passant.apply
+      black_en_passant.apply(board)
     end
 
     it 'removes the enemy pawn' do
