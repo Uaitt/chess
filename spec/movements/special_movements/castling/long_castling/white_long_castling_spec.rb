@@ -17,12 +17,12 @@ describe WhiteLongCastling do
 
     context 'when the king was never moved' do
       before do
-        board.data[7][4] = white_king
+        board.place_piece(white_king, [7, 4])
       end
 
       context 'when the rook was never moved' do
         before do
-          board.data[7][0] = white_rook
+          board.place_piece(white_rook, [7, 0])
         end
 
         context 'when the king is not currently in check' do
@@ -34,7 +34,7 @@ describe WhiteLongCastling do
 
               context 'when the movement does put the king in check' do
                 before do
-                  board.data[6][2] = BlackRook.new
+                  board.place_piece(BlackRook.new, [6, 2])
                 end
 
                 it { is_expected.not_to be_valid }
@@ -43,7 +43,7 @@ describe WhiteLongCastling do
 
             context 'when one separating square is not empty' do
               before do
-                board.data[7][1] = WhiteKnight.new
+                board.place_piece(WhiteKnight.new, [7, 1])
               end
 
               it { is_expected.not_to be_valid }
@@ -52,7 +52,7 @@ describe WhiteLongCastling do
 
           context 'when the king moves over a square attacked by an enemy piece' do
             before do
-              board.data[6][3] = BlackRook.new
+              board.place_piece(BlackRook.new, [6, 3])
             end
 
             it { is_expected.not_to be_valid }
@@ -61,7 +61,7 @@ describe WhiteLongCastling do
 
         context 'when the king is currently in check' do
           before do
-            board.data[6][4] = BlackRook.new
+            board.place_piece(BlackRook.new, [6, 4])
           end
 
           it { is_expected.not_to be_valid }
@@ -70,7 +70,7 @@ describe WhiteLongCastling do
 
       context 'when the rook has already moved' do
         before do
-          board.data[7][0] = NilPiece.new
+          board.place_piece(NilPiece.new, [7, 0])
         end
 
         it { is_expected.not_to be_valid }
@@ -79,7 +79,7 @@ describe WhiteLongCastling do
 
     context 'when the king has already moved' do
       before do
-        board.data[7][0] = white_king
+        board.place_piece(white_king, [7, 0])
         white_king.movements = 4
       end
 
@@ -101,17 +101,17 @@ describe WhiteLongCastling do
 
   describe '#apply' do
     before do
-      board.data[7][4] = white_king
-      board.data[7][0] = white_rook
+      board.place_piece(white_king, [7, 4])
+      board.place_piece(white_rook, [7, 0])
       subject.apply(board)
     end
 
     it 'places the black king on the right position' do
-      expect(board.data[7][2]).to eq(white_king)
+      expect(board.piece_at([7, 2])).to eq(white_king)
     end
 
     it 'removes the black king from the initial position' do
-      expect(board.data[7][4]).to be_instance_of(NilPiece)
+      expect(board.piece_at([7, 4])).to be_instance_of(NilPiece)
     end
 
     it 'set the number of movements of black king to one' do
@@ -119,11 +119,11 @@ describe WhiteLongCastling do
     end
 
     it 'places the black rook on the right position' do
-      expect(board.data[7][3]).to eq(white_rook)
+      expect(board.piece_at([7, 3])).to eq(white_rook)
     end
 
     it 'removes the black rook from the initial position' do
-      expect(board.data[7][4]).to be_instance_of(NilPiece)
+      expect(board.piece_at([7, 4])).to be_instance_of(NilPiece)
     end
 
     it 'set the number of movements of black rook to one' do

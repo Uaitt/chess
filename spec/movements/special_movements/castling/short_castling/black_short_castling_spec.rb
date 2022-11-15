@@ -17,12 +17,12 @@ describe BlackShortCastling do
 
     context 'when the king was never moved' do
       before do
-        board.data[0][4] = black_king
+        board.place_piece(black_king, [0, 4])
       end
 
       context 'when the rook was never moved' do
         before do
-          board.data[0][7] = black_rook
+          board.place_piece(black_rook, [0, 7])
         end
 
         context 'when the king is not currently in check' do
@@ -34,7 +34,7 @@ describe BlackShortCastling do
 
               context 'when the movement does put the king in check' do
                 before do
-                  board.data[1][6] = WhiteRook.new
+                  board.place_piece(WhiteRook.new, [1, 6])
                 end
 
                 it { is_expected.not_to be_valid }
@@ -43,7 +43,7 @@ describe BlackShortCastling do
 
             context 'when one separating square is not empty' do
               before do
-                board.data[0][5] = BlackKnight.new
+                board.place_piece(BlackKnight.new, [0, 5])
               end
 
               it { is_expected.not_to be_valid }
@@ -52,7 +52,7 @@ describe BlackShortCastling do
 
           context 'when the king moves over a square attacked by an enemy piece' do
             before do
-              board.data[1][5] = WhiteRook.new
+              board.place_piece(WhiteRook.new, [1, 5])
             end
 
             it { is_expected.not_to be_valid }
@@ -61,7 +61,7 @@ describe BlackShortCastling do
 
         context 'when the king is currently in check' do
           before do
-            board.data[0][4] = WhiteRook.new
+            board.place_piece(WhiteRook.new, [0, 4])
           end
 
           it { is_expected.not_to be_valid }
@@ -70,7 +70,7 @@ describe BlackShortCastling do
 
       context 'when the rook has already moved' do
         before do
-          board.data[0][7] = NilPiece.new
+          board.place_piece(NilPiece.new, [0, 7])
         end
 
         it { is_expected.not_to be_valid }
@@ -79,7 +79,7 @@ describe BlackShortCastling do
 
     context 'when the king has already moved' do
       before do
-        board.data[0][0] = black_king
+        board.place_piece(black_king, [0, 0])
         black_king.movements = 4
       end
 
@@ -101,17 +101,17 @@ describe BlackShortCastling do
 
   describe '#apply' do
     before do
-      board.data[0][4] = black_king
-      board.data[0][7] = black_rook
+      board.place_piece(black_king, [0, 4])
+      board.place_piece(black_rook, [0, 7])
       subject.apply(board)
     end
 
     it 'places the black king on the right position' do
-      expect(board.data[0][6]).to eq(black_king)
+      expect(board.piece_at([0, 6])).to eq(black_king)
     end
 
     it 'removes the black king from the initial position' do
-      expect(board.data[0][4]).to be_instance_of(NilPiece)
+      expect(board.piece_at([0, 4])).to be_instance_of(NilPiece)
     end
 
     it 'set the number of movements of black king to one' do
@@ -119,11 +119,11 @@ describe BlackShortCastling do
     end
 
     it 'places the black rook on the right position' do
-      expect(board.data[0][5]).to eq(black_rook)
+      expect(board.piece_at([0, 5])).to eq(black_rook)
     end
 
     it 'removes the black rook from the initial position' do
-      expect(board.data[0][7]).to be_instance_of(NilPiece)
+      expect(board.piece_at([0, 7])).to be_instance_of(NilPiece)
     end
 
     it 'set the number of movements of black rook to one' do
