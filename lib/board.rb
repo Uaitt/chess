@@ -33,7 +33,7 @@ class Board
   end
 
   def at_least_a_valid_movement?(moving_piece)
-    @data.any? do |row| # TO TEST
+    @data.any? do |row|
       row.any? do |piece|
         movement = Movement.for(self, moving_piece, current_position(piece))
         movement.valid? && !movement.checks_own_king?
