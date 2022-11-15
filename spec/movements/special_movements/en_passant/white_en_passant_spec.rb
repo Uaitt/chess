@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
-require_relative '../../../../lib/movements/special_movements/en_passant/white_en_passant'
-require_relative '../../../../lib/movements/basic_movements/pawn/black_pawn_movement'
-require_relative '../../../../lib/pieces/pawn/white_pawn'
-require_relative '../../../../lib/pieces/pawn/black_pawn'
-require_relative '../../../../lib/pieces/nil_piece'
-require_relative '../../../../lib/board'
+require 'require_all'
+
+require_all 'lib'
 
 describe WhiteEnPassant do
   let(:white_en_passant) { described_class.new(board, white_pawn, end_position) }
