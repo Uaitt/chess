@@ -2,7 +2,6 @@
 
 # set of common methods to all movements in chess
 module Movement
-
   class << self
     def for(board, piece, end_position)
       [BasicMovement, SpecialMovement].each do |movement_namespace|

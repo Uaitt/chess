@@ -16,8 +16,8 @@ describe WhiteHumanPlayer do
       allow(white_human_player).to receive(:puts)
     end
 
-    context 'when the player enters a valid start coordinate' do
-      context 'when the player enters a valid end coordinate' do
+    context 'when the player enters a valid start coordinate straight away' do
+      context 'when the player enters a valid end coordinate straight away' do
         before do
           allow(white_human_player).to receive(:gets).and_return('a2', 'a4')
         end
@@ -27,9 +27,20 @@ describe WhiteHumanPlayer do
         end
       end
 
-      context 'when the player enters an invalid end coordinate, and a valid end coordinate' do
+      context 'when the player first enters an out of bound end coordinate, but then a valid end coordinate' do
         before do
-          allow(white_human_player).to receive(:gets).and_return('b1', 'c2', 'c3')
+          allow(white_human_player).to receive(:gets).and_return('b0', 'b1', 'c3')
+        end
+
+        it 'applies the right movement' do
+          white_human_player.play_round
+          expect(board.piece_at([5, 2])).to be_instance_of(WhiteKnight)
+        end
+      end
+
+      context 'when the player first enters an opponent piece end coordinate, but then a valid end coordinate' do
+        before do
+          allow(white_human_player).to receive(:gets).and_return('b8', 'b1', 'c3')
         end
 
         it 'applies the right movement' do
@@ -39,8 +50,8 @@ describe WhiteHumanPlayer do
       end
     end
 
-    context 'when the player enters an invalid start coordinate' do
-      context 'when the player enters a valid start coordinate and a valid end coordinate' do
+    context 'when the player first enters an invalid start coordinate' do
+      context 'when the player then enters a valid start coordinate and a valid end coordinate' do
         before do
           allow(white_human_player).to receive(:gets).and_return('a7', 'a2', 'a3')
         end
