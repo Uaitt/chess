@@ -37,7 +37,7 @@ describe BlackBishopMovement do
   describe '#valid?' do
     context 'when the bishop is placed in the top left corner' do
       before do
-        board.data[0][0] = black_bishop
+        board.place_piece(black_bishop, [0, 0])
       end
 
       context 'when the movement is one step towards bottom right corner' do
@@ -48,7 +48,7 @@ describe BlackBishopMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[1][1] = piece
+            board.place_piece(piece, [1, 1])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -71,7 +71,7 @@ describe BlackBishopMovement do
 
         context 'when it is blocked on transition' do
           before do
-            board.data[2][2] = piece
+            board.place_piece(piece, [2, 2])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -87,7 +87,7 @@ describe BlackBishopMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[4][4] = piece
+            board.place_piece(piece, [4, 4])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -125,7 +125,7 @@ describe BlackBishopMovement do
 
     context 'when the bishop is placed in a random position' do
       before do
-        board.data[3][5] = black_bishop
+        board.place_piece(black_bishop, [3, 5])
       end
       context 'when the movement is one step towards bottom right corner' do
         let(:end_position) { [4, 6] }
@@ -135,7 +135,7 @@ describe BlackBishopMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[4][6] = piece
+            board.place_piece(piece, [4, 6])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -158,7 +158,7 @@ describe BlackBishopMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[4][4] = piece
+            board.place_piece(piece, [4, 4])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -181,7 +181,7 @@ describe BlackBishopMovement do
 
         context 'when it is blocked on transition' do
           before do
-            board.data[2][4] = piece
+            board.place_piece(piece, [2, 4])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -197,7 +197,7 @@ describe BlackBishopMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[1][3] = piece
+            board.place_piece(piece, [1, 3])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -220,7 +220,7 @@ describe BlackBishopMovement do
 
         context 'when it is blocked on transition' do
           before do
-            board.data[2][6] = piece
+            board.place_piece(piece, [2, 6])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -236,7 +236,7 @@ describe BlackBishopMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[1][7] = piece
+            board.place_piece(piece, [1, 7])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -275,9 +275,9 @@ describe BlackBishopMovement do
 
   describe '#checking_own_king?' do
     before do
-      board.data[0][0] = BlackKing.new
-      board.data[1][1] = black_bishop
-      board.data[2][2] = WhiteBishop.new
+      board.place_piece(BlackKing.new, [0, 0])
+      board.place_piece(black_bishop, [1, 1])
+      board.place_piece(WhiteBishop.new, [2, 2])
     end
     context 'when it puts its own king in check' do
       let(:end_position) { [0, 2] }
@@ -286,7 +286,7 @@ describe BlackBishopMovement do
       end
 
       it 'does not apply the movement' do
-        expect(board.data[0][2]).to be_instance_of(NilPiece)
+        expect(board.piece_at([0, 2])).to be_instance_of(NilPiece)
       end
     end
 
@@ -297,7 +297,7 @@ describe BlackBishopMovement do
       end
 
       it 'does not apply the movement' do
-        expect(board.data[2][2]).to be_instance_of(WhiteBishop)
+        expect(board.piece_at([2, 2])).to be_instance_of(WhiteBishop)
       end
     end
   end
@@ -305,15 +305,15 @@ describe BlackBishopMovement do
   describe '#apply' do
     let(:end_position) { [2, 2] }
     before do
-      board.data[0][0] = black_bishop
+      board.place_piece(black_bishop, [0, 0])
       subject.apply(board)
     end
     it 'places the bishop on the right position' do
-      expect(board.data[2][2]).to eq(black_bishop)
+      expect(board.piece_at([2, 2])).to eq(black_bishop)
     end
 
     it 'removes the bishop from the initial position' do
-      expect(board.data[0][0]).to be_instance_of(NilPiece)
+      expect(board.piece_at([0, 0])).to be_instance_of(NilPiece)
     end
   end
 
@@ -326,7 +326,7 @@ describe BlackBishopMovement do
 
   describe '#direction' do
     before do
-      board.data[3][5] = black_bishop
+      board.place_piece(black_bishop, [3, 5])
     end
 
     context 'when the movement is towards bottom right corner' do
