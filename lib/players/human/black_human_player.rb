@@ -2,7 +2,7 @@
 
 require_relative 'human_player'
 
-# this class represents a human player that controls the black pieces
+# this class represents a human player that controls the black pieces in chess
 class BlackHumanPlayer
   include HumanPlayer
 
