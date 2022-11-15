@@ -15,6 +15,6 @@ class WhiteRook < WhitePiece
 
   def initialize
     super
-    @symbol = "\u265D"
+    @symbol = "\u265C"
   end
 end
