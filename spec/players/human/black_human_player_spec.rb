@@ -29,7 +29,7 @@ describe BlackHumanPlayer do
 
       context 'when the player enters an invalid end coordinate, and a valid end coordinate' do
         before do
-          allow(black_human_player).to receive(:gets).and_return('b8', 'c7', 'c6')
+          allow(black_human_player).to receive(:gets).and_return('b9', 'b8', 'c6')
         end
 
         it 'applies the right movement' do
@@ -39,10 +39,10 @@ describe BlackHumanPlayer do
       end
     end
 
-    context 'when the player enters an invalid start coordinate' do
+    context 'when the player enters an out of bound start coordinate' do
       context 'when the player enters a valid start coordinate and a valid end coordinate' do
         before do
-          allow(black_human_player).to receive(:gets).and_return('a2', 'a7', 'a6')
+          allow(black_human_player).to receive(:gets).and_return('a9', 'a7', 'a6')
         end
 
         it 'applies the right movement' do
