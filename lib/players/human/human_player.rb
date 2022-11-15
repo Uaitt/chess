@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative '../player_display'
+require_relative '../../display'
 
 # set of methods common to all human players in chess
 module HumanPlayer
-  include PlayerDisplay
+  include Display
 
   def initialize(name, board)
     @name = name
@@ -12,7 +12,7 @@ module HumanPlayer
   end
 
   def play_round
-    initial_instructions
+    round_instructions
     input_start_coordinates
     return if wants_to_save?
 

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative 'chess_display'
+require_relative 'display'
 
 # this class represents the game of chess
 class Chess
-  include ChessDisplay
+  include Display
 
   def initialize
     @board = Board.new
