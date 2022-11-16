@@ -53,6 +53,19 @@ class Board
     king.basic_moves.all? { |move| BasicMovement.for(self, king, new_position(move, king)).checks_own_king? }
   end
 
+  def stalemated?(color)
+    !checked?(color) && no_legal_moves?(color)
+  end
+
+  def no_legal_moves?(color)
+    pieces_of_color(color).all? do |piece|
+      positions.all? do |position|
+        movement = Movement.for(self, piece, position)
+        !movement.valid? || movement.checks_own_king?
+      end
+    end
+  end
+
   def allowing_castling?(color, separating_positions, king_path)
     !checked?(color) && !opponent_can_attack_crossed_path(color, king_path) &&
       separating_positions.all? { |position| @data[position[0]][position[1]].instance_of?(NilPiece) }
@@ -71,6 +84,10 @@ class Board
 
   private
 
+  def positions
+    [0, 1, 2, 3, 4, 5, 6, 7].product([0, 1, 2, 3, 4, 5, 6, 7])
+  end
+
   def new_position(move, piece)
     move.zip(current_position(piece)).map { |finish, start| finish + start }
   end
@@ -79,6 +96,14 @@ class Board
     @data.each do |row|
       row.each { |piece| return piece if piece.color == color && piece.class.include?(King) }
     end
+  end
+
+  def pieces_of_color(color)
+    @data.map do |row|
+      row.select do |piece|
+        piece.color == color
+      end
+    end.flatten
   end
 
   def opponent_can_attack_crossed_path(color, king_path)
