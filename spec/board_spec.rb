@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'require_all'
-
+require 'pry-byebug'
 require_all 'lib'
 
 describe Board do
@@ -245,6 +245,59 @@ describe Board do
     context 'when the king is not mated' do
       it 'returns false' do
         expect(board).not_to be_mated(black_king.color)
+      end
+    end
+  end
+
+  describe '#stalemated' do
+    let(:black_king) { BlackKing.new }
+    let(:white_rook) { WhiteRook.new }
+    let(:white_queen) { WhiteQueen.new }
+    let(:white_king) { WhiteKing.new }
+    before do
+      board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
+      board.place_piece(black_king, [0, 7])
+    end
+
+    context 'when the player has no legal moves and is not in check' do
+      before do
+        board.place_piece(white_king, [2, 7])
+        board.place_piece(white_rook, [2, 6])
+      end
+
+      it 'returns true' do
+        expect(board).to be_stalemated(black_king.color)
+      end
+    end
+
+    context 'when the player has a legal move and is not in check' do
+      before do
+        board.data[3][3] = white_rook
+      end
+
+      it 'returns false' do
+        expect(board).not_to be_stalemated(:black)
+      end
+    end
+
+    context 'when the player has a legal move and is in check' do
+      before do
+        board.place_piece(white_rook, [0, 6])
+      end
+
+      it 'returns false' do
+        expect(board).not_to be_stalemated(:black)
+      end
+    end
+
+    context 'when the player has no legal moves and is in check' do
+      before do
+        board.place_piece(white_rook, [0, 4])
+        board.place_piece(white_queen, [2, 7])
+      end
+
+      it 'returns false' do
+        expect(board).not_to be_stalemated(:black)
       end
     end
   end
