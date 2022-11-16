@@ -25,6 +25,9 @@ class Chess
     add_players
   end
 
+  def restore
+  end
+
   def add_players
     user_choice = gets.chomp
     add_human(:first)
@@ -74,6 +77,7 @@ class Chess
   def save
     Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
     File.open(file_name, 'w') { |file| file.write(to_yaml) }
+    @saved = true
   end
 
   def current_player
