@@ -15,7 +15,7 @@ class Chess
 
   def start
     initial_instructions
-    gets.chomp == 'new' ? setup : restore
+    gets.chomp == 'new' ? setup : try_to_restore
     play
   end
 
@@ -26,15 +26,21 @@ class Chess
     add_players
   end
 
+  def try_to_restore
+    unless Dir.exist?('saved_games')
+      no_saved_games_warning
+      setup
+    end
+
+    restore
+  end
+
   def restore
-    return no_saved_games_warning unless Dir.exist?('saved_games')
-
     restore_instructions
-    output_saved_games
-
     file_path = input_path
+
     from_yaml(File.read(file_path))
-    delete_file
+    delete_file(file_path)
   end
 
   def add_players

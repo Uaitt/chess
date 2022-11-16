@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# ...
+# set of methods used to save the chess game
 module Serialize
   def to_yaml
     YAML.dump(to_h)
@@ -42,7 +42,7 @@ module Serialize
     end
   end
 
-  def delete_file
+  def delete_file(file_path)
     File.delete(file_path)
     Dir.delete('saved_games') if Dir.children('saved_games').length.zero?
   end

@@ -60,14 +60,15 @@ module Display
   end
 
   def no_saved_games_warning
-    puts 'SOMETHING WENT WRONG: No game has been saved.'
+    puts 'No game has been saved. You are going to play a new one!'
   end
 
   def restore_instructions
     puts 'Select one game that you want to restore'
+    saved_games
   end
 
-  def output_saved_games
+  def saved_games
     Dir['saved_games/*'].each do |file|
       output = file[12...]
       puts output
