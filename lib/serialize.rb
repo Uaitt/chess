@@ -3,11 +3,11 @@
 # set of methods used to save the chess game
 module Serialize
   def to_yaml
-    YAML.dump(to_h)
+    Marshal.dump(to_h)
   end
 
   def from_yaml(string)
-    variables_hash = YAML.unsafe_load(string)
+    variables_hash = Marshal.load(string)
     variables_hash.each_key do |key|
       instance_variable_set(key, variables_hash[key])
     end
