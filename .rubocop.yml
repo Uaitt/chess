@@ -1,3 +1,6 @@
 BlockLength:
   Exclude:
   - './spec/**/*.rb'
+
+Security/MarshalLoad:
+  - './lib/serializer.rb'
