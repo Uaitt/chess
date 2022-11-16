@@ -40,7 +40,7 @@ class Chess
     restore_instructions
     file_path = input_path
 
-    from_yaml(File.read(file_path))
+    from_marshal(File.read(file_path))
     delete(file_path)
   end
 
@@ -90,7 +90,7 @@ class Chess
 
   def save
     Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
-    File.open(file_name, 'w') { |file| file.write(to_yaml) }
+    File.open(file_name, 'w') { |file| file.write(to_marshal) }
     @saved = true
   end
 

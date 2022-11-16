@@ -2,11 +2,11 @@
 
 # set of methods used to save the chess game
 module Serialize
-  def to_yaml
+  def to_marshal
     Marshal.dump(to_h)
   end
 
-  def from_yaml(string)
+  def from_marshal(string)
     variables_hash = Marshal.load(string)
     variables_hash.each_key do |key|
       instance_variable_set(key, variables_hash[key])
