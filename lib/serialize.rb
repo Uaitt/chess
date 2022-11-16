@@ -22,4 +22,14 @@ module Serialize
     end
     variables_hash
   end
+
+  def file_name
+    puts 'Enter a name that will help recognize this save: '
+    loop do
+      name = "#{gets.chomp}.\nSaved on#{Date.today.strftime('%d_%b_%Y').downcase}"
+      return name unless File.exist?(name)
+
+      puts 'A saved game with the same name already exists, please enter a different one'
+    end
+  end
 end
