@@ -3,4 +3,5 @@ BlockLength:
   - './spec/**/*.rb'
 
 Security/MarshalLoad:
-  - './lib/serializer.rb'
+  Exclude:
+  - './lib/serialize.rb'
