@@ -3,11 +3,13 @@
 # ...
 module Serialize
   def to_yaml
+    binding.pry
     YAML.dump(to_h)
   end
 
   def from_yaml(string)
-    variables_hash = YAML.safe_load(string)
+    binding.pry
+    variables_hash = YAML.unsafe_load(string)
     variables_hash.each_key do |key|
       instance_variable_set(key, variables_hash[key])
     end
@@ -23,10 +25,19 @@ module Serialize
     variables_hash
   end
 
+  def input_path
+    loop do
+      name = "saved_games/#{gets.chomp}"
+      return name if File.exist?(name)
+
+      puts 'Non existing saved game, enter a new one'
+    end
+  end
+
   def file_name
     puts 'Enter a name that will help recognize this save: '
     loop do
-      name = "#{gets.chomp}.\nSaved on#{Date.today.strftime('%d_%b_%Y').downcase}"
+      name = "saved_games/#{gets.chomp} #{Date.today.strftime('%d_%b_%Y').downcase}.txt"
       return name unless File.exist?(name)
 
       puts 'A saved game with the same name already exists, please enter a different one'
