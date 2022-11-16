@@ -69,10 +69,7 @@ module Display
   end
 
   def saved_games
-    Dir['saved_games/*'].each do |file|
-      output = file[12...]
-      puts output
-    end
+    Dir['saved_games/*'].each { |file| puts file.delete_prefix('saved_games/').delete_suffix('.txt') }
   end
 
   def invalid_saved_game_warning

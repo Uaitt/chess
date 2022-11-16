@@ -25,7 +25,7 @@ module Serialize
 
   def input_path
     loop do
-      name = "saved_games/#{gets.chomp}"
+      name = "saved_games/#{gets.chomp}.txt"
       return name if File.exist?(name)
 
       invalid_saved_game_warning
