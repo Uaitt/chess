@@ -42,7 +42,7 @@ module Serialize
     end
   end
 
-  def delete_file(file_path)
+  def delete(file_path)
     File.delete(file_path)
     Dir.delete('saved_games') if Dir.children('saved_games').length.zero?
   end

@@ -43,7 +43,7 @@ class Chess
     file_path = input_path
 
     from_yaml(File.read(file_path))
-    delete_file(file_path)
+    delete(file_path)
   end
 
   def add_players
