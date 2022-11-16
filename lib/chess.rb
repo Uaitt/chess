@@ -8,7 +8,7 @@ class Chess
 
   def initialize
     @board = Board.new
-    #@serializer = Serializer.new
+    @serializer = Serializer.new
   end
 
   def start
@@ -25,6 +25,7 @@ class Chess
   end
 
   def restore
+    @serializer.restore
   end
 
   def add_players
@@ -64,7 +65,7 @@ class Chess
 
       @round += 1
     end
-    current_player.wants_to_save? ? save_game : winner_greeting
+    current_player.wants_to_save? ? save : winner_greeting
   end
 
   def single_round
@@ -73,7 +74,8 @@ class Chess
     checked_alarm if @board.checked?(still_player.color)
   end
 
-  def save_game
+  def save
+    @serializer.save
   end
 
   def current_player
