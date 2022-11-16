@@ -60,7 +60,7 @@ module Display
   end
 
   def no_saved_games_warning
-    puts 'No game has been saved, let\s play one.'
+    puts 'SOMETHING WENT WRONG: No game has been saved.'
   end
 
   def restore_instructions

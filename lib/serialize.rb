@@ -28,16 +28,22 @@ module Serialize
       name = "saved_games/#{gets.chomp}"
       return name if File.exist?(name)
 
+      invalid_saved_game_warning
     end
   end
 
   def file_name
-
+    file_name_instructions
     loop do
       name = "saved_games/#{gets.chomp} #{Date.today.strftime('%d_%b_%Y').downcase}.txt"
       return name unless File.exist?(name)
 
       same_name_saved_game_warning
     end
+  end
+
+  def delete_file
+    File.delete(file_path)
+    Dir.delete('saved_games') if Dir.children('saved_games').length.zero?
   end
 end
