@@ -24,6 +24,8 @@ class Chess
   def setup
     players_instruction
     add_players
+    @round = 0
+    @board.set
   end
 
   def try_to_restore
@@ -72,7 +74,6 @@ class Chess
   end
 
   def single_match
-    @round = 0
     loop do
       single_round
       break if @board.mated?(still_player.color) || current_player.wants_to_save?
