@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
+require_relative 'serialize'
 require_relative 'display'
 
 # this class represents the game of chess
 class Chess
+  include Serialize
   include Display
 
   def initialize
     @board = Board.new
-    @serializer = Serializer.new
   end
 
   def start
@@ -22,10 +23,6 @@ class Chess
   def setup
     players_instruction
     add_players
-  end
-
-  def restore
-    @serializer.restore
   end
 
   def add_players
@@ -75,7 +72,8 @@ class Chess
   end
 
   def save
-    @serializer.save
+    Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
+    File.open(file_name, 'w') { |file| file.write(to_yaml) }
   end
 
   def current_player
