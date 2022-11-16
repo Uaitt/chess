@@ -28,17 +28,16 @@ module Serialize
       name = "saved_games/#{gets.chomp}"
       return name if File.exist?(name)
 
-      puts 'Non existing saved game, enter a new one'
     end
   end
 
   def file_name
-    puts 'Enter a name that will help recognize this save: '
+
     loop do
       name = "saved_games/#{gets.chomp} #{Date.today.strftime('%d_%b_%Y').downcase}.txt"
       return name unless File.exist?(name)
 
-      puts 'A saved game with the same name already exists, please enter a different one'
+      same_name_saved_game_warning
     end
   end
 end

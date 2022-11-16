@@ -27,16 +27,14 @@ class Chess
   end
 
   def restore
-    return puts 'No game has been saved, let\s play one.' unless Dir.exist?('saved_games')
+    return no_saved_games_warning unless Dir.exist?('saved_games')
 
-    puts 'Select one game that you want to restore'
-    Dir['saved_games/*'].each do |file|
-      output = file[12...]
-      puts output
-    end
+    restore_instructions
+    output_saved_games
+
     file_path = input_path
     from_yaml(File.read(file_path))
-    File.delete(file_path)
+    File.delete(file_path) # delete the directory
   end
 
   def add_players

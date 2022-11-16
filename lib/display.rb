@@ -58,4 +58,31 @@ module Display
   def invalid_coordinates
     puts 'Invalid coordinates, try again!'
   end
+
+  def no_saved_games_warning
+    puts 'No game has been saved, let\s play one.'
+  end
+
+  def restore_instructions
+    puts 'Select one game that you want to restore'
+  end
+
+  def output_saved_games
+    Dir['saved_games/*'].each do |file|
+      output = file[12...]
+      puts output
+    end
+  end
+
+  def invalid_saved_game_warning
+    puts 'Non existing saved game, enter a new one'
+  end
+
+  def file_name_instructions
+    puts 'Enter a name that will help recognize this save: '
+  end
+
+  def same_name_saved_game_warning
+    puts 'A saved game with the same name already exists, please enter a different one'
+  end
 end
