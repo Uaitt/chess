@@ -10,6 +10,7 @@ class Chess
 
   def initialize
     @board = Board.new
+    @board.set
   end
 
   def start
@@ -26,7 +27,7 @@ class Chess
   end
 
   def restore
-    return puts 'No game has been saved' unless Dir.exist?('saved_games')
+    return puts 'No game has been saved, let\s play one.' unless Dir.exist?('saved_games')
 
     puts 'Select one game that you want to restore'
     Dir['saved_games/*'].each do |file|
@@ -67,7 +68,6 @@ class Chess
   end
 
   def single_match
-    @board.set
     @round = 0
     loop do
       single_round
