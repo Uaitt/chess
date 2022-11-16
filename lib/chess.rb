@@ -32,6 +32,7 @@ class Chess
     unless Dir.exist?('saved_games')
       no_saved_games_warning
       setup
+      return
     end
 
     restore
