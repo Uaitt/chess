@@ -76,14 +76,14 @@ module Display
   end
 
   def invalid_saved_game_warning
-    puts 'Non existing saved game, enter a new one'
+    puts 'Non existing saved game, enter a new one:'
   end
 
   def file_name_instructions
-    puts 'Enter a name that will help recognize this save: '
+    puts 'Enter a name that will help recognize this save:'
   end
 
   def same_name_saved_game_warning
-    puts 'A saved game with the same name already exists, please enter a different one'
+    puts 'A saved game with the same name already exists, please enter a different one:'
   end
 end
