@@ -38,10 +38,10 @@ class Chess
 
   def restore
     restore_instructions
-    file_path = input_path
+    saved_game = input_path
 
-    from_marshal(File.read(file_path))
-    delete(file_path)
+    from_marshal(File.read(saved_game))
+    delete(saved_game)
   end
 
   def add_players

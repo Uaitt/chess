@@ -72,12 +72,12 @@ module Display
     Dir['saved_games/*'].each { |file| puts file.delete_prefix('saved_games/').delete_suffix('.txt') }
   end
 
-  def invalid_saved_game_warning
+  def non_existing_saved_game_warning
     puts 'Non existing saved game, enter a new one:'
   end
 
-  def file_name_instructions
-    puts 'Enter a name that will help recognize this save:'
+  def save_game_instructions
+    puts 'Enter a name that will help recognize this saved game:'
   end
 
   def same_name_saved_game_warning
