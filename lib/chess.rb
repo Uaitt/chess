@@ -10,7 +10,6 @@ class Chess
 
   def initialize
     @board = Board.new
-    @board.set
   end
 
   def start
@@ -29,13 +28,12 @@ class Chess
   end
 
   def try_to_restore
-    unless Dir.exist?('saved_games')
+    if Dir.exist?('saved_games')
+      restore
+    else
       no_saved_games_warning
       setup
-      return
     end
-
-    restore
   end
 
   def restore
