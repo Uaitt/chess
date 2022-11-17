@@ -34,17 +34,18 @@ module HumanPlayer
       @start_coordinates = Coordinates.new(gets.chomp)
       break if wants_to_save? || (@start_coordinates.valid? && selected_valid_piece?)
 
-      invalid_start_coordinates
+      invalid_coordinates(:start)
     end
   end
 
   def input_end_coordinates
+    new_line
     loop do
       ask_for_end_coordinates
       @end_coordinates = Coordinates.new(gets.chomp)
       break if @end_coordinates.valid? && selected_valid_movement?
 
-      invalid_coordinates
+      invalid_coordinates(:end)
     end
   end
 
