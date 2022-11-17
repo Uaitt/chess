@@ -19,6 +19,11 @@ module PawnMovement
     rook_or_bishop_movement.instance_method(:direction).bind(self).call
   end
 
+  def apply(board)
+    super
+    promote_pawn if allowing_promotion?
+  end
+
   private
 
   def environment_allows?(count)
@@ -48,5 +53,21 @@ module PawnMovement
 
   def blocked_on_arrival?
     !@board.data[@end_position[0]][@end_position[1]].instance_of?(NilPiece)
+  end
+
+  def promote_pawn
+    promote_piece
+    @board.place_piece(@promoted_piece_class.new, @end_position)
+  end
+
+  def promote_piece
+    puts 'Your pawn can be promoted, choose the new piece'
+    loop do
+      input = gets.chomp.split.map(&:capitalize).join('').gsub(/\s+/, '')
+      @promoted_piece_class = Module.const_get(input)
+      break if correct_class?
+
+      puts 'You can\'t choose this piece'
+    end
   end
 end

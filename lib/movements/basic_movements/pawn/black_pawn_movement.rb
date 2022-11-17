@@ -12,4 +12,13 @@ class BlackPawnMovement
       piece.instance_of?(BlackPawn)
     end
   end
+
+  def allowing_promotion?
+    @end_position[0] == 7
+  end
+
+  def correct_class?
+    @promoted_piece_class == BlackQueen || @promoted_piece_class == BlackRook ||
+      @promoted_piece_class == BlackBishop || @promoted_piece_class == BlackKnight
+  end
 end
