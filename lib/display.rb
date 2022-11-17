@@ -3,32 +3,51 @@
 # set of methods that display messages to the players in chess
 module Display
   def initial_instructions
+    puts ''
     puts 'Welcome to CLI Chess!'
-    puts 'This game can be played Human vs Human or Human vs Computer'
-    puts 'Type \'new\' if you want to play a game from scratch, anything else if you want to load a saved game'
+    puts ''
+    print "Type '#{'new'.colorize(color: :light_blue)}' if you want to play a game from scratch,\n"
+    puts "'#{'anything else'.colorize(color: :light_blue)}' if you want to load a saved game"
+    puts ''
   end
 
   def players_instruction
-    puts 'Be aware that first player color will be white, second player color will be black'
-    puts 'Type \'human\' if you want to play Human vs Human, anything else if you want to challenge a Computer'
+    puts ''
+    print "#{'Be aware'.colorize(color: :yellow)} that first player color will be white,\n"
+    puts 'second player color will be black'
+    puts ''
+    print "Type '#{'human'.colorize(color: :light_blue)}' if you want to play Human vs Human,\n"
+    puts  "'#{'anything else'.colorize(color: :light_blue)}' if you want to challenge a Computer"
+    puts ''
   end
 
   def ask_for_name(order)
+    puts ''
     puts "Enter the name of the #{order} player"
-  end
-
-  def saved_match_output
-    puts 'The game has been successfully been saved'
+    puts ''
   end
 
   def finished_match_output
+    @saved ? saved_match_output : won_or_tie_match_output
+  end
+
+  def saved_match_output
+    puts ''
+    puts 'The game has successfully been saved'
+  end
+
+  def won_or_tie_match_output
+    puts ''
     puts 'The game has ended'
-    puts 'Type \'new\' if you want to play a new game, anything else if you want to quit'
+    print "Type '#{'new'.colorize(color: :light_blue)}' if you want to play a new game,\n"
+    puts  "'#{'anything else'.colorize(color: :light_blue)}' if you want to quit"
   end
 
   def final_greeting
+    puts ''
     puts 'Thanks for playing!'
     puts 'We hope you enjoyed the game, see you soon!'
+    puts ''
   end
 
   def winner_greeting

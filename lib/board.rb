@@ -55,15 +55,6 @@ class Board
     !checked?(color) && no_legal_moves?(color)
   end
 
-  def no_legal_moves?(color)
-    pieces_of_color(color).all? do |piece|
-      positions.all? do |position|
-        movement = Movement.for(self, piece, position)
-        !movement.valid? || movement.checks_own_king?
-      end
-    end
-  end
-
   def allowing_castling?(color, separating_positions, king_path)
     !checked?(color) && !opponent_can_attack_crossed_path(color, king_path) &&
       separating_positions.all? { |position| @data[position[0]][position[1]].instance_of?(NilPiece) }
@@ -93,6 +84,15 @@ class Board
   def king_of_color(color)
     @data.each do |row|
       row.each { |piece| return piece if piece.color == color && piece.class.include?(King) }
+    end
+  end
+
+  def no_legal_moves?(color)
+    pieces_of_color(color).all? do |piece|
+      positions.all? do |position|
+        movement = Movement.for(self, piece, position)
+        !movement.valid? || movement.checks_own_king?
+      end
     end
   end
 
