@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
+require_relative 'display/chess_display'
 require_relative 'serialize'
-require_relative 'display'
 
 # this class represents the game of chess
 class Chess
+  include ChessDisplay
   include Serialize
-  include Display
 
   def initialize
     @board = Board.new
@@ -75,11 +75,11 @@ class Chess
   def single_match
     loop do
       single_round
-      break if finished_game?
+      break if match_ended?
 
       @round += 1
     end
-    current_player.wants_to_save? ? save : winner_greeting
+    save if current_player.wants_to_save?
   end
 
   def single_round
@@ -88,7 +88,7 @@ class Chess
     checked_alarm if @board.checked?(still_player.color)
   end
 
-  def finished_game?
+  def match_ended?
     current_player.wants_to_save? || @board.mated?(still_player.color) || @board.stalemated?(still_player.color)
   end
 

@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative '../../display'
+require_relative '../../display/player_display'
 
 # set of methods common to all human players in chess
 module HumanPlayer
-  include Display
+  include PlayerDisplay
 
   attr_reader :color
 
@@ -34,7 +34,7 @@ module HumanPlayer
       @start_coordinates = Coordinates.new(gets.chomp)
       break if wants_to_save? || (@start_coordinates.valid? && selected_valid_piece?)
 
-      invalid_coordinates
+      invalid_start_coordinates
     end
   end
 

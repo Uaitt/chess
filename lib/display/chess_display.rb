@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# set of methods that display messages to the players in chess
-module Display
+# set of methods that display messages during a chess game
+module ChessDisplay
   def initial_instructions
     puts ''
     puts 'Welcome to CLI Chess!'
@@ -37,21 +37,31 @@ module Display
   end
 
   def won_or_tie_match_output
+    @board.mated?(still_player.color) ? winner_greeting : tie_game_output
     puts ''
     puts 'The game has ended'
-    print "Type '#{'new'.colorize(color: :light_blue)}' if you want to play a new game,\n"
-    puts  "'#{'anything else'.colorize(color: :light_blue)}' if you want to quit"
+    puts ''
+    ask_for_new_match
   end
 
   def final_greeting
     puts ''
-    puts 'Thanks for playing!'
+    puts 'Thanks for playing'
     puts 'We hope you enjoyed the game, see you soon!'
     puts ''
   end
 
   def winner_greeting
-    puts "Congratulation #{winner_name} for winning the game!"
+    puts "#{'Congratulation'.colorize(color: :green)} #{winner_name.colorize(color: :green)} for winning the game!"
+  end
+
+  def tie_game_output
+    puts 'Game resulted in a tie, how unlucky!'
+  end
+
+  def ask_for_new_match
+    print "Type '#{'new'.colorize(color: :light_blue)}' if you want to play a new game,\n"
+    puts  "'#{'anything else'.colorize(color: :light_blue)}' if you want to quit"
   end
 
   def winner_name
@@ -59,23 +69,7 @@ module Display
   end
 
   def checked_alarm
-    puts "#{still_player.color}'s king is currently in check!"
-  end
-
-  def round_instructions
-    puts "Please #{@name} enter your move (or 'save' if you want to save the game)"
-  end
-
-  def ask_for_start_coordinates
-    puts 'Enter the coordinates of the piece you want to move'
-  end
-
-  def ask_for_end_coordinates
-    puts 'Enter the coordinates of the square where you want to move your selected piece'
-  end
-
-  def invalid_coordinates
-    puts 'Invalid coordinates, try again!'
+    puts "#{'WARNING'.colorize(color: :light_red)} #{still_player.color}'s king is currently in check!"
   end
 
   def no_saved_games_warning
