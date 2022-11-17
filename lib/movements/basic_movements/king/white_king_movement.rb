@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../../pieces/king/white_king'
 require_relative 'king_movement'
 
 # this class represents a basic white king movement in chess

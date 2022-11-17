@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../../pieces/knight/black_knight'
 require_relative 'knight_movement'
 
 # this class represents a basic black knight movement in chess

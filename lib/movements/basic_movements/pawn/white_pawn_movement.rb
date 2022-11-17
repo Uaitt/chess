@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../../pieces/pawn/white_pawn'
 require_relative 'pawn_movement'
 
 # this class represents a basic white pawn movement in chess
@@ -18,6 +17,6 @@ class WhitePawnMovement
   end
 
   def available_class?(input)
-    ['WhiteQueen', 'WhiteRook', 'WhiteBishop', 'WhiteKnight'].include?(input)
+    %w[WhiteQueen WhiteRook WhiteBishop WhiteKnight].include?(input)
   end
 end

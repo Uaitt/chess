@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../../../pieces/rook/white_rook'
 require_relative 'rook_movement'
 
 # this class represents a basic white rook movement in chess
