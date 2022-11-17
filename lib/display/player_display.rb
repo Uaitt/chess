@@ -24,9 +24,12 @@ module PlayerDisplay
 
   def invalid_coordinates(order)
     puts ''
-    print "#{'Invalid coordinates!'.colorize(color: :light_red)} "
-    puts order == :start ? cause_of_invalid_start_coordinates : cause_of_invalid_end_coordinates
+    puts "#{'Invalid coordinates!'.colorize(color: :light_red)} #{cause_of_invalid_coordinates(order)}"
     puts ''
+  end
+
+  def cause_of_invalid_coordinates(order)
+    order == :start ? cause_of_invalid_start_coordinates : cause_of_invalid_end_coordinates
   end
 
   def cause_of_invalid_start_coordinates
