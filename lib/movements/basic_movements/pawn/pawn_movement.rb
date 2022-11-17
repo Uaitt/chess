@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
+require_relative '../../../display/player_display'
 require_relative '../basic_movement'
-require_relative '../rook/rook_movement'
-require_relative '../bishop/bishop_movement'
 
 # set of methods common to all pawn movements in chess
 module PawnMovement
   include BasicMovement
+  include PlayerDisplay
 
   def valid?
     @piece.basic_moves.each_with_index do |move, count|
@@ -56,18 +56,17 @@ module PawnMovement
   end
 
   def promote_pawn
-    promote_piece
-    @board.place_piece(@promoted_piece_class.new, @end_position)
+    promoted_piece_class = select_class
+    @board.place_piece(promoted_piece_class.new, @end_position)
   end
 
-  def promote_piece
-    puts 'Your pawn can be promoted, choose the new piece' # encapsulate in their own module
+  def select_class
+    promotion_instructions
     loop do
       input = gets.chomp.split.map(&:capitalize).join('').gsub(/\s+/, '')
-      @promoted_piece_class = Module.const_get(input)
-      break if available_class?
+      return Module.const_get(input) if available_class?(input)
 
-      puts 'You can\'t choose this piece'
+      invalid_promotion_warning
     end
   end
 end

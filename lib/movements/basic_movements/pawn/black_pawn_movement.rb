@@ -17,8 +17,7 @@ class BlackPawnMovement
     @end_position[0] == 7
   end
 
-  def available_class?
-    @promoted_piece_class == BlackQueen || @promoted_piece_class == BlackRook ||
-      @promoted_piece_class == BlackBishop || @promoted_piece_class == BlackKnight
+  def available_class?(input)
+    ['BlackQueen', 'BlackRook', 'BlackBishop', 'BlackKnight'].include?(input)
   end
 end

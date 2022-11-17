@@ -49,4 +49,17 @@ module PlayerDisplay
 
     return 'This movement would put your king in check!' if @movement.checks_own_king?
   end
+
+  def promotion_instructions
+    puts 'Your pawn can be promoted, choose the new piece between'
+    puts ''
+    puts "#{@piece.color} queen\n\n#{@piece.color} rook\n\n#{@piece.color} bishop\n\n#{@piece.color} knight"
+    puts ''
+  end
+
+  def invalid_promotion_warning
+    puts ''
+    puts "#{'Invalid piece!'.colorize(color: :light_red)}! Please choose a valid piece!"
+    puts ''
+  end
 end
