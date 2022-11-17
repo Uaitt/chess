@@ -64,6 +64,17 @@ class Board
       separating_positions.all? { |position| @data[position[0]][position[1]].instance_of?(NilPiece) }
   end
 
+  def valid_movements(color)
+    movements = []
+    pieces_of_color(color).each do |piece|
+      positions.each do |position|
+        movement = Movement.for(self, piece, position)
+        movements.push(movement) if movement.valid? && !movement.checks_own_king?
+      end
+    end
+    movements
+  end
+
   private
 
   def positions
