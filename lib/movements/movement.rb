@@ -24,12 +24,12 @@ module Movement
     return true unless in_bound?
 
     duplicate_board
-    apply(@duplicated_board)
+    fake_apply
     @duplicated_board.checked?(@piece.color)
   end
 
   def apply(board)
-    @piece.movements += 1 # to test
+    @piece.movements += 1
     board.place_piece(NilPiece.new, @initial_position)
     board.place_piece(@piece, @end_position)
     board.last_movement = self # to test
@@ -37,9 +37,14 @@ module Movement
 
   private
 
+  def fake_apply
+    @duplicated_board.place_piece(NilPiece.new, @initial_position)
+    @duplicated_board.place_piece(@piece, @end_position)
+  end
+
   def duplicate_board
     @duplicated_board = @board.dup
-    @duplicated_board.data = @board.data.map(&:clone)
+    @duplicated_board.data = @board.data.map(&:dup)
   end
 
   def in_bound?

@@ -44,4 +44,9 @@ module EnPassant
   def enemy_pawn_position
     @board.current_position(enemy_pawn)
   end
+
+  def fake_apply
+    super
+    @duplicated.place_piece(NilPiece.new, enemy_pawn_position)
+  end
 end

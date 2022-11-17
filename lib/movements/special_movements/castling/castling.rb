@@ -40,4 +40,10 @@ module Castling
   def rook_position
     @board.current_position(@second_piece)
   end
+
+  def fake_apply
+    super
+    @duplicated_board.place_piece(NilPiece.new, rook_position)
+    @duplicated_board.place_piece(@second_piece, new_rook_position)
+  end
 end
