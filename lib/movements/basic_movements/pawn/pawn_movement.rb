@@ -61,11 +61,11 @@ module PawnMovement
   end
 
   def promote_piece
-    puts 'Your pawn can be promoted, choose the new piece'
+    puts 'Your pawn can be promoted, choose the new piece' # encapsulate in their own module
     loop do
       input = gets.chomp.split.map(&:capitalize).join('').gsub(/\s+/, '')
       @promoted_piece_class = Module.const_get(input)
-      break if correct_class?
+      break if available_class?
 
       puts 'You can\'t choose this piece'
     end

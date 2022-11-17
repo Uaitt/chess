@@ -17,7 +17,7 @@ class WhitePawnMovement
     @end_position[0].zero?
   end
 
-  def correct_class?
+  def available_class?
     @promoted_piece_class == WhiteQueen || @promoted_piece_class == WhiteRook ||
       @promoted_piece_class == WhiteBishop || @promoted_piece_class == WhiteKnight
   end

@@ -17,7 +17,7 @@ class BlackPawnMovement
     @end_position[0] == 7
   end
 
-  def correct_class?
+  def available_class?
     @promoted_piece_class == BlackQueen || @promoted_piece_class == BlackRook ||
       @promoted_piece_class == BlackBishop || @promoted_piece_class == BlackKnight
   end
