@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require 'require_all'
-require 'pry-byebug'
+
 require_all 'lib'
 
 describe Board do
@@ -356,6 +356,26 @@ describe Board do
         it 'returns false' do
           expect(board).not_to be_allowing_castling(:black, separating_squares, king_path)
         end
+      end
+    end
+  end
+
+  describe '#valid_movements' do
+    before do
+      board.set
+    end
+
+    context 'when the board was just set' do
+      it 'returns an array of 20 valid movements' do
+        expect(board.valid_movements(:black).length).to eq(20)
+      end
+
+      it 'returns an array whose first four movements are knight movements' do
+        expect(board.valid_movements(:black)[0..3]).to all(be_instance_of(BlackKnightMovement))
+      end
+
+      it 'returns an array whose items from four to twenty are black pawn movements' do
+        expect(board.valid_movements(:black)[4..]).to all(be_instance_of(BlackPawnMovement))
       end
     end
   end
