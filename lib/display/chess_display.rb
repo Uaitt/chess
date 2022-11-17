@@ -13,7 +13,7 @@ module ChessDisplay
 
   def players_instruction
     puts ''
-    print "#{'Be aware'.colorize(color: :yellow)} that first player color will be white,\n"
+    print "#{'Be aware'.colorize(color: :light_red)} that first player color will be white,\n"
     puts 'second player color will be black'
     puts ''
     print "Type '#{'human'.colorize(color: :light_blue)}' if you want to play Human vs Human,\n"
@@ -33,7 +33,7 @@ module ChessDisplay
 
   def saved_match_output
     puts ''
-    puts 'The game has successfully been saved'
+    puts 'The game has successfully been saved'.colorize(color: :green)
   end
 
   def won_or_tie_match_output
@@ -73,27 +73,39 @@ module ChessDisplay
   end
 
   def no_saved_games_warning
-    puts 'No game has been saved. You are going to play a new one!'
+    puts ''
+    puts "#{'No game has been saved'.colorize(color: :light_red)}. You are going to play a new one!"
   end
 
   def restore_instructions
-    puts 'Select one game that you want to restore'
+    puts ''
+    puts 'Select one game that you want to restore (full name needed)'
+    puts ''
     saved_games
   end
 
   def saved_games
-    Dir['saved_games/*'].each { |file| puts file.delete_prefix('saved_games/').delete_suffix('.txt') }
+    Dir['saved_games/*'].each do |file|
+      puts file.delete_prefix('saved_games/').delete_suffix('.txt')
+      puts ''
+    end
   end
 
   def non_existing_saved_game_warning
-    puts 'Non existing saved game, enter a new one:'
+    puts ''
+    puts "#{'Non existing saved game!'.colorize(color: :light_red)} Enter an existing one "
+    puts ''
   end
 
   def save_game_instructions
-    puts 'Enter a name that will help recognize this saved game:'
+    puts ''
+    puts 'Enter a name that will help recognize this saved game'
+    puts ''
   end
 
   def same_name_saved_game_warning
-    puts 'A saved game with the same name already exists, please enter a different one:'
+    puts ''
+    puts "#{'A saved game with the same name already exists'.colorize(color: :light_red)}, please enter a different one"
+    puts ''
   end
 end
