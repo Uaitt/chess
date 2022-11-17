@@ -206,17 +206,37 @@ describe WhitePawnMovement do
   end
 
   describe '#apply' do
-    let(:end_position) { [1, 0] }
-    before do
-      board.data[0][0] = white_pawn
-      subject.apply(board)
-    end
-    it 'places the pawn on the right position' do
-      expect(board.data[1][0]).to eq(white_pawn)
+    context 'when the pawn is on rank number 7' do
+      let(:end_position) { [0, 0] }
+      before do
+        board.place_piece(white_pawn, [1, 0])
+        allow(subject).to receive(:gets).and_return('white rook')
+        allow(subject).to receive(:puts)
+        subject.apply(board)
+      end
+
+      it 'promotes the pawn to the input piece' do
+        expect(board.piece_at([0, 0])).to be_instance_of(WhiteRook)
+      end
+
+      it 'removes the pawn from the initial position' do
+        expect(board.data[1][0]).to be_instance_of(NilPiece)
+      end
     end
 
-    it 'removes the pawn from the initial position' do
-      expect(board.data[0][0]).to be_instance_of(NilPiece)
+    context 'when the pawn is not on rank number 7' do
+      let(:end_position) { [1, 0] }
+      before do
+        board.data[0][0] = white_pawn
+        subject.apply(board)
+      end
+      it 'places the pawn on the right position' do
+        expect(board.data[1][0]).to eq(white_pawn)
+      end
+
+      it 'removes the pawn from the initial position' do
+        expect(board.data[0][0]).to be_instance_of(NilPiece)
+      end
     end
   end
 

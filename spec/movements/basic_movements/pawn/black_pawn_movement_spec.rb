@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'colorize'
 require 'require_all'
 
 require_all 'lib'
@@ -207,17 +208,38 @@ describe BlackPawnMovement do
   end
 
   describe '#apply' do
-    let(:end_position) { [1, 0] }
-    before do
-      board.data[0][0] = black_pawn
-      subject.apply(board)
-    end
-    it 'places the pawn on the right position' do
-      expect(board.data[1][0]).to eq(black_pawn)
+    context 'when the pawn is on rank number 2' do
+      let(:end_position) { [7, 0] }
+      before do
+        board.data[6][0] = black_pawn
+        allow(subject).to receive(:gets).and_return('black queen')
+        allow(subject).to receive(:puts)
+        subject.apply(board)
+      end
+
+      it 'promotes the pawn to the input piece' do
+        expect(board.piece_at([7, 0])).to be_instance_of(BlackQueen)
+      end
+
+      it 'removes the pawn from the initial position' do
+        expect(board.data[6][0]).to be_instance_of(NilPiece)
+      end
     end
 
-    it 'removes the pawn from the initial position' do
-      expect(board.data[0][0]).to be_instance_of(NilPiece)
+    context 'when the pawn is not on rank number 2' do
+      let(:end_position) { [1, 0] }
+      before do
+        board.data[0][0] = black_pawn
+        subject.apply(board)
+      end
+
+      it 'places the pawn on the right position' do
+        expect(board.data[1][0]).to eq(black_pawn)
+      end
+
+      it 'removes the pawn from the initial position' do
+        expect(board.data[0][0]).to be_instance_of(NilPiece)
+      end
     end
   end
 

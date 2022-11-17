@@ -2,7 +2,7 @@
 
 require_relative '../../../display/player_display'
 require_relative '../basic_movement'
-
+require 'pry-byebug'
 # set of methods common to all pawn movements in chess
 module PawnMovement
   include BasicMovement
