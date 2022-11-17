@@ -60,7 +60,7 @@ class Chess
   end
 
   def add_computer
-    @black_player = ComputerPlayer.new
+    @black_player = ComputerPlayer.new(@board)
   end
 
   def play
