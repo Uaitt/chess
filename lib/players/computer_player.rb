@@ -6,6 +6,8 @@ require_relative '../display/player_display'
 class ComputerPlayer
   include PlayerDisplay
 
+  attr_reader :color
+
   def initialize(board)
     @color = :black
     @board = board
@@ -15,5 +17,9 @@ class ComputerPlayer
     round_statement
     selected_movement = @board.valid_movements(:black).sample
     selected_movement.apply(@board)
+  end
+
+  def wants_to_save?
+    false
   end
 end
