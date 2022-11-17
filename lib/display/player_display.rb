@@ -62,4 +62,11 @@ module PlayerDisplay
     puts "#{'Invalid piece!'.colorize(color: :light_red)}! Please choose a valid piece!"
     puts ''
   end
+
+  def round_statement
+    puts 'The computer is choosing which move to make'
+    puts ''
+    sleep(1.5)
+    puts ''
+  end
 end
