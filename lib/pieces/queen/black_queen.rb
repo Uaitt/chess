@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../black_piece'
 require_relative 'queen'
+require_relative '../black_piece'
 
 # this class represents a black queen in chess
 class BlackQueen < BlackPiece

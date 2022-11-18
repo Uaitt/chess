@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../white_piece'
 require_relative 'bishop'
+require_relative '../white_piece'
 
 # this class represents a white bishop in chess
 class WhiteBishop < WhitePiece

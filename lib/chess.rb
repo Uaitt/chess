@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative 'display/chess_display'
 require_relative 'serialize'
+require_relative 'display/chess_display'
 
 # this class represents the game of chess
 class Chess
