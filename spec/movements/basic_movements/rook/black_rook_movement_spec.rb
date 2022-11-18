@@ -37,7 +37,7 @@ describe BlackRookMovement do
   describe '#valid?' do
     context 'when the rook is placed on the top left corner' do
       before do
-        board.data[0][0] = black_rook
+        board.place_piece(black_rook, [0, 0])
       end
 
       context 'when the movement is one step towards bottom' do
@@ -48,7 +48,7 @@ describe BlackRookMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[1][0] = piece
+            board.place_piece(piece, [1, 0])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -71,7 +71,7 @@ describe BlackRookMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[0][1] = piece
+            board.place_piece(piece, [0, 1])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -94,7 +94,7 @@ describe BlackRookMovement do
 
         context 'when it is blocked on transition' do
           before do
-            board.data[2][0] = piece
+            board.place_piece(piece, [2, 0])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -110,7 +110,7 @@ describe BlackRookMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[3][0] = piece
+            board.place_piece(piece, [3, 0])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -148,7 +148,7 @@ describe BlackRookMovement do
 
     context 'when the bishop is placed in a random position' do
       before do
-        board.data[3][5] = black_rook
+        board.place_piece(black_rook, [3, 5])
       end
       context 'when the movement is one step towards bottom' do
         let(:end_position) { [4, 5] }
@@ -158,7 +158,7 @@ describe BlackRookMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[4][5] = piece
+            board.place_piece(piece, [4, 5])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -181,7 +181,7 @@ describe BlackRookMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[2][5] = piece
+            board.place_piece(piece, [2, 5])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -204,7 +204,7 @@ describe BlackRookMovement do
 
         context 'when it is blocked on transition' do
           before do
-            board.data[3][6] = piece
+            board.place_piece(piece, [3, 6])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -220,7 +220,7 @@ describe BlackRookMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[3][7] = piece
+            board.place_piece(piece, [3, 7])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -243,7 +243,7 @@ describe BlackRookMovement do
 
         context 'when it is blocked on transition' do
           before do
-            board.data[3][4] = piece
+            board.place_piece(piece, [3, 4])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -259,7 +259,7 @@ describe BlackRookMovement do
 
         context 'when it is blocked on arrival' do
           before do
-            board.data[3][3] = piece
+            board.place_piece(piece, [3, 3])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -298,9 +298,9 @@ describe BlackRookMovement do
 
   describe '#checks_own_king?' do
     before do
-      board.data[0][0] = BlackKing.new
-      board.data[1][0] = black_rook
-      board.data[2][0] = WhiteRook.new
+      board.place_piece(BlackKing.new, [0, 0])
+      board.place_piece(black_rook, [1, 0])
+      board.place_piece(WhiteRook.new, [2, 0])
     end
     context 'when it puts its own king in check' do
       let(:end_position) { [1, 1] }
@@ -309,7 +309,7 @@ describe BlackRookMovement do
       end
 
       it 'does not apply the movement' do
-        expect(board.data[1][1]).to be_instance_of(NilPiece)
+        expect(board.piece_at([1, 1])).to be_instance_of(NilPiece)
       end
     end
 
@@ -320,7 +320,7 @@ describe BlackRookMovement do
       end
 
       it 'does not apply the movement' do
-        expect(board.data[2][0]).to be_instance_of(WhiteRook)
+        expect(board.piece_at([2, 0])).to be_instance_of(WhiteRook)
       end
     end
   end
@@ -328,15 +328,15 @@ describe BlackRookMovement do
   describe '#apply' do
     let(:end_position) { [3, 0] }
     before do
-      board.data[0][0] = black_rook
+      board.place_piece(black_rook, [0, 0])
       subject.apply
     end
     it 'places the bishop on the right position' do
-      expect(board.data[3][0]).to eq(black_rook)
+      expect(board.piece_at([3, 0])).to eq(black_rook)
     end
 
     it 'removes the bishop from the initial position' do
-      expect(board.data[0][0]).to be_instance_of(NilPiece)
+      expect(board.piece_at([0, 0])).to be_instance_of(NilPiece)
     end
   end
 
@@ -349,7 +349,7 @@ describe BlackRookMovement do
 
   describe '#direction' do
     before do
-      board.data[3][3] = black_rook
+      board.place_piece(black_rook, [3, 3])
     end
 
     context 'when the movement is from top to bottom' do

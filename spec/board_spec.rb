@@ -272,7 +272,7 @@ describe Board do
 
     context 'when the player has a legal move and is not in check' do
       before do
-        board.data[3][3] = white_rook
+        board.place_piece(white_rook, [3, 3])
       end
 
       it 'returns false' do

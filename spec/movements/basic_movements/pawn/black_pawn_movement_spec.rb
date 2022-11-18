@@ -38,7 +38,7 @@ describe BlackPawnMovement do
   describe '#valid?' do
     context 'when it is placed in the top left corner' do
       before do
-        board.data[0][0] = black_pawn
+        board.place_piece(black_pawn, [0, 0])
       end
 
       context 'when the movement is one step towards bottom' do
@@ -49,7 +49,7 @@ describe BlackPawnMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[1][0] = piece
+            board.place_piece(piece, [1, 0])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -73,7 +73,7 @@ describe BlackPawnMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[1][1] = piece
+            board.place_piece(piece, [1, 1])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -111,7 +111,7 @@ describe BlackPawnMovement do
 
     context 'when it is placed in the second row' do
       before do
-        board.data[1][0] = black_pawn
+        board.place_piece(black_pawn, [1, 0])
       end
 
       context 'when the movement is one step towards bottom' do
@@ -122,7 +122,7 @@ describe BlackPawnMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[2][0] = piece
+            board.place_piece(piece, [2, 0])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -145,7 +145,7 @@ describe BlackPawnMovement do
 
         context 'when the movement is blocked on transition' do
           before do
-            board.data[2][0] = piece
+            board.place_piece(piece, [2, 0])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -161,7 +161,7 @@ describe BlackPawnMovement do
 
         context 'when the movement is blocked on arrival' do
           before do
-            board.data[3][0] = piece
+            board.place_piece(piece, [3, 0])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -180,9 +180,9 @@ describe BlackPawnMovement do
 
   describe '#checks_own_king?' do
     before do
-      board.data[0][0] = BlackKing.new
-      board.data[0][1] = black_pawn
-      board.data[1][0] = WhiteRook.new
+      board.place_piece(BlackKing.new, [0, 0])
+      board.place_piece(black_pawn, [0, 1])
+      board.place_piece(WhiteRook.new, [1, 0])
     end
     context 'when it puts its own king in check' do
       let(:end_position) { [1, 1] }
@@ -191,7 +191,7 @@ describe BlackPawnMovement do
       end
 
       it 'does not apply the movement' do
-        expect(board.data[1][1]).to be_instance_of(NilPiece)
+        expect(board.piece_at([1, 1])).to be_instance_of(NilPiece)
       end
     end
 
@@ -202,7 +202,7 @@ describe BlackPawnMovement do
       end
 
       it 'does not apply the movement' do
-        expect(board.data[1][0]).to be_instance_of(WhiteRook)
+        expect(board.piece_at([1, 0])).to be_instance_of(WhiteRook)
       end
     end
   end
@@ -211,7 +211,7 @@ describe BlackPawnMovement do
     context 'when the pawn is on rank number 2' do
       let(:end_position) { [7, 0] }
       before do
-        board.data[6][0] = black_pawn
+        board.place_piece(black_pawn, [6, 0])
         allow(subject).to receive(:gets).and_return('black queen')
         allow(subject).to receive(:puts)
         subject.apply
@@ -222,30 +222,30 @@ describe BlackPawnMovement do
       end
 
       it 'removes the pawn from the initial position' do
-        expect(board.data[6][0]).to be_instance_of(NilPiece)
+        expect(board.piece_at([6, 0])).to be_instance_of(NilPiece)
       end
     end
 
     context 'when the pawn is not on rank number 2' do
       let(:end_position) { [1, 0] }
       before do
-        board.data[0][0] = black_pawn
+        board.place_piece(black_pawn, [0, 0])
         subject.apply
       end
 
       it 'places the pawn on the right position' do
-        expect(board.data[1][0]).to eq(black_pawn)
+        expect(board.piece_at([1, 0])).to eq(black_pawn)
       end
 
       it 'removes the pawn from the initial position' do
-        expect(board.data[0][0]).to be_instance_of(NilPiece)
+        expect(board.piece_at([0, 0])).to be_instance_of(NilPiece)
       end
     end
   end
 
   describe '#double_moving?' do
     before do
-      board.data[0][0] = black_pawn
+      board.place_piece(black_pawn, [0, 0])
     end
 
     context 'when the movement is a double leap' do

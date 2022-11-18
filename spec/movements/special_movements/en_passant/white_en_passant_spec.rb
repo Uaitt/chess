@@ -7,8 +7,8 @@ require_all 'lib'
 describe WhiteEnPassant do
   let(:white_en_passant) { described_class.new(board, white_pawn, end_position) }
   let(:white_pawn) { WhitePawn.new }
-  let(:board) { Board.new }
   let(:black_pawn) { BlackPawn.new }
+  let(:board) { Board.new }
   describe '#valid?' do
     context 'when the white pawn is on third row row' do
       let(:end_position) { [2, 1] }

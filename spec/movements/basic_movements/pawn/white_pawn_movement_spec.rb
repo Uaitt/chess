@@ -37,7 +37,7 @@ describe WhitePawnMovement do
   describe '#valid?' do
     context 'when it is placed in a random position' do
       before do
-        board.data[3][4] = white_pawn
+        board.place_piece(white_pawn, [3, 4])
       end
 
       context 'when the movement is one step towards top' do
@@ -48,7 +48,7 @@ describe WhitePawnMovement do
 
         context 'when the movement is blocked' do
           before do
-            board.data[2][4] = piece
+            board.place_piece(piece, [2, 4])
           end
           context 'when the blocking piece is of the  color' do
             let(:color_class) { BlackPiece }
@@ -71,7 +71,7 @@ describe WhitePawnMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[2][5] = piece
+            board.place_piece(piece, [2, 5])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -109,7 +109,7 @@ describe WhitePawnMovement do
 
     context 'when it is placed in the seventh row' do
       before do
-        board.data[6][0] = white_pawn
+        board.place_piece(white_pawn, [6, 0])
       end
 
       context 'when the movement is one steps towards top' do
@@ -120,7 +120,7 @@ describe WhitePawnMovement do
 
         context 'when it is blocked' do
           before do
-            board.data[5][0] = piece
+            board.place_piece(piece, [5, 0])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -143,7 +143,7 @@ describe WhitePawnMovement do
 
         context 'when the movement is blocked on transition' do
           before do
-            board.data[5][0] = piece
+            board.place_piece(piece, [5, 0])
           end
 
           context 'when the blocking piece is of the opposite color' do
@@ -159,7 +159,7 @@ describe WhitePawnMovement do
 
         context 'when the movement is blocked on arrival' do
           before do
-            board.data[4][0] = piece
+            board.place_piece(piece, [4, 0])
           end
 
           context 'when the blocking piece is of the same color' do
@@ -178,9 +178,9 @@ describe WhitePawnMovement do
 
   describe '#checks_own_king?' do
     before do
-      board.data[0][0] = WhiteKing.new
-      board.data[0][1] = white_pawn
-      board.data[1][0] = BlackRook.new
+      board.place_piece(WhiteKing.new, [0, 0])
+      board.place_piece(white_pawn, [0, 1])
+      board.place_piece(BlackRook.new, [1, 0])
     end
     context 'when it puts its own king in check' do
       let(:end_position) { [1, 1] }
@@ -189,7 +189,7 @@ describe WhitePawnMovement do
       end
 
       it 'does not apply the movement' do
-        expect(board.data[1][1]).to be_instance_of(NilPiece)
+        expect(board.piece_at([1, 1])).to be_instance_of(NilPiece)
       end
     end
 
@@ -200,7 +200,7 @@ describe WhitePawnMovement do
       end
 
       it 'does not apply the movement' do
-        expect(board.data[1][0]).to be_instance_of(BlackRook)
+        expect(board.piece_at([1, 0])).to be_instance_of(BlackRook)
       end
     end
   end
@@ -220,29 +220,29 @@ describe WhitePawnMovement do
       end
 
       it 'removes the pawn from the initial position' do
-        expect(board.data[1][0]).to be_instance_of(NilPiece)
+        expect(board.piece_at([1, 0])).to be_instance_of(NilPiece)
       end
     end
 
     context 'when the pawn is not on rank number 7' do
       let(:end_position) { [1, 0] }
       before do
-        board.data[0][0] = white_pawn
+        board.place_piece(white_pawn, [0, 0])
         subject.apply
       end
       it 'places the pawn on the right position' do
-        expect(board.data[1][0]).to eq(white_pawn)
+        expect(board.piece_at([1, 0])).to eq(white_pawn)
       end
 
       it 'removes the pawn from the initial position' do
-        expect(board.data[0][0]).to be_instance_of(NilPiece)
+        expect(board.piece_at([0, 0])).to be_instance_of(NilPiece)
       end
     end
   end
 
   describe '#double_moving?' do
     before do
-      board.data[0][0] = white_pawn
+      board.place_piece(white_pawn, [0, 0])
     end
 
     context 'when the movement is a double leap' do

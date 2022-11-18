@@ -7,9 +7,9 @@ require_all 'lib'
 describe BlackShortCastling do
   subject(:subject) { described_class.new(board, black_king, end_position) }
   let(:end_position)  { [0, 6] }
-  let(:board) { Board.new }
   let(:black_king) { BlackKing.new }
   let(:black_rook) { BlackRook.new }
+  let(:board) { Board.new }
   describe '#valid?' do
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })

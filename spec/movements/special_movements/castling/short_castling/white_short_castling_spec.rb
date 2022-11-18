@@ -7,9 +7,9 @@ require_all 'lib'
 describe WhiteShortCastling do
   subject(:subject) { described_class.new(board, white_king, end_position) }
   let(:end_position)  { [7, 6] }
-  let(:board) { Board.new }
   let(:white_king) { WhiteKing.new }
   let(:white_rook) { WhiteRook.new }
+  let(:board) { Board.new }
   describe '#valid?' do
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })

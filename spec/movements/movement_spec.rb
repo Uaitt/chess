@@ -133,8 +133,8 @@ describe Movement do
         let(:end_position) { [5, 1] }
         let(:white_pawn) { WhitePawn.new }
         before do
-          board.data[4][0] = piece
-          board.data[6][1] = white_pawn
+          board.place_piece(piece, [4, 0])
+          board.place_piece(white_pawn, [6, 1])
           WhitePawnMovement.new(board, white_pawn, [4, 1]).apply
         end
 
