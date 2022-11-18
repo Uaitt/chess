@@ -52,7 +52,11 @@ module ChessDisplay
   end
 
   def winner_greeting
-    puts "#{'Congratulation'.colorize(color: :green)} #{winner_name.colorize(color: :green)} for winning the game!"
+    if winner.type == :human
+      puts "#{'Congratulation'.colorize(color: :green)} #{winner_name.name.colorize(color: :green)} for winning!"
+    else
+      puts 'You just lost to a computer, loser!'
+    end
   end
 
   def tie_game_output
@@ -64,8 +68,8 @@ module ChessDisplay
     puts  "'#{'anything else'.colorize(color: :light_blue)}' if you want to quit"
   end
 
-  def winner_name
-    @round.even? ? @white_player.name : @black_player.name
+  def winner
+    @round.even? ? @white_player : @black_player
   end
 
   def checked_alarm

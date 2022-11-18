@@ -6,10 +6,11 @@ require_relative '../display/player_display'
 class ComputerPlayer
   include PlayerDisplay
 
-  attr_reader :color
+  attr_reader :color, :type
 
   def initialize(board)
     @color = :black
+    @type = :computer
     @board = board
   end
 
