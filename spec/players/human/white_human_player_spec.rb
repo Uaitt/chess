@@ -76,4 +76,3 @@ describe WhiteHumanPlayer do
     end
   end
 end
-
