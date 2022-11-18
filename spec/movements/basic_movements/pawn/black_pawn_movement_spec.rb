@@ -271,5 +271,38 @@ describe BlackPawnMovement do
       end
     end
   end
-  # add tests for direction
+
+  describe '#direction' do
+    before do
+      board.place_piece(black_pawn, [1, 1])
+    end
+
+    context 'when the movement is towards bottom' do
+      let(:end_position) { [2, 1] }
+      it 'returns [1, 0]' do
+        expect(subject.direction).to eq([1, 0])
+      end
+    end
+
+    context 'when the movement is a double leap towards bottom' do
+      let(:end_position) { [3, 1] }
+      it 'returns [1, 0]' do
+        expect(subject.direction).to eq([1, 0])
+      end
+    end
+
+    context 'when the movement is towards bottom right corner' do
+      let(:end_position) { [2, 2] }
+      it 'returns [1, 1]' do
+        expect(subject.direction).to eq([1, 1])
+      end
+    end
+
+    context 'when the movement is towards bottom left corner' do
+      let(:end_position) { [2, 0] }
+      it 'returns [1, 1]' do
+        expect(subject.direction).to eq([1, -1])
+      end
+    end
+  end
 end

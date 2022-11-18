@@ -268,4 +268,38 @@ describe WhitePawnMovement do
       end
     end
   end
+
+  describe '#direction' do
+    before do
+      board.place_piece(white_pawn, [6, 1])
+    end
+
+    context 'when the movement is towards top' do
+      let(:end_position) { [5, 1] }
+      it 'returns [-1, 0]' do
+        expect(subject.direction).to eq([-1, 0])
+      end
+    end
+
+    context 'when the movement is a double leap towards top' do
+      let(:end_position) { [4, 1] }
+      it 'returns [-1, 0]' do
+        expect(subject.direction).to eq([-1, 0])
+      end
+    end
+
+    context 'when the movement is towards top right corner' do
+      let(:end_position) { [5, 2] }
+      it 'returns [1, 1]' do
+        expect(subject.direction).to eq([-1, 1])
+      end
+    end
+
+    context 'when the movement is towards top left corner' do
+      let(:end_position) { [5, 0] }
+      it 'returns [1, 1]' do
+        expect(subject.direction).to eq([-1, -1])
+      end
+    end
+  end
 end
