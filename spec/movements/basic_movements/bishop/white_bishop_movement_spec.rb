@@ -306,7 +306,7 @@ describe WhiteBishopMovement do
     let(:end_position) { [2, 2] }
     before do
       board.place_piece(white_bishop, [0, 0])
-      subject.apply(board)
+      subject.apply
     end
     it 'places the bishop on the right position' do
       expect(board.piece_at([2, 2])).to eq(white_bishop)

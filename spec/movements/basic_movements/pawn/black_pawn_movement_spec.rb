@@ -214,7 +214,7 @@ describe BlackPawnMovement do
         board.data[6][0] = black_pawn
         allow(subject).to receive(:gets).and_return('black queen')
         allow(subject).to receive(:puts)
-        subject.apply(board)
+        subject.apply
       end
 
       it 'promotes the pawn to the input piece' do
@@ -230,7 +230,7 @@ describe BlackPawnMovement do
       let(:end_position) { [1, 0] }
       before do
         board.data[0][0] = black_pawn
-        subject.apply(board)
+        subject.apply
       end
 
       it 'places the pawn on the right position' do

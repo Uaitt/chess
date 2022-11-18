@@ -511,7 +511,7 @@ describe BlackKnightMovement do
     let(:end_position) { [1, 2] }
     before do
       board.data[0][0] = black_knight
-      subject.apply(board)
+      subject.apply
     end
     it 'places the bishop on the right position' do
       expect(board.data[1][2]).to eq(black_knight)

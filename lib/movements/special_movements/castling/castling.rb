@@ -16,11 +16,11 @@ module Castling
       @board.allowing_castling?(@piece.color, separating_positions, king_path) && !checks_own_king?
   end
 
-  def apply(board)
+  def apply
     super
     @second_piece.movements += 1
-    board.place_piece(NilPiece.new, rook_position)
-    board.place_piece(@second_piece, new_rook_position)
+    @board.place_piece(NilPiece.new, rook_position)
+    @board.place_piece(@second_piece, new_rook_position)
   end
 
   def double_moving?(_)

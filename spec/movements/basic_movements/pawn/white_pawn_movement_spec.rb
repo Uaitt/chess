@@ -212,7 +212,7 @@ describe WhitePawnMovement do
         board.place_piece(white_pawn, [1, 0])
         allow(subject).to receive(:gets).and_return('white rook')
         allow(subject).to receive(:puts)
-        subject.apply(board)
+        subject.apply
       end
 
       it 'promotes the pawn to the input piece' do
@@ -228,7 +228,7 @@ describe WhitePawnMovement do
       let(:end_position) { [1, 0] }
       before do
         board.data[0][0] = white_pawn
-        subject.apply(board)
+        subject.apply
       end
       it 'places the pawn on the right position' do
         expect(board.data[1][0]).to eq(white_pawn)

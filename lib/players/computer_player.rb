@@ -17,7 +17,7 @@ class ComputerPlayer
   def play_round
     round_statement
     selected_movement = @board.valid_movements(:black).sample
-    selected_movement.apply(@board)
+    selected_movement.apply
   end
 
   def wants_to_save?

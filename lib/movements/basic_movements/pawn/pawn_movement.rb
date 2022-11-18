@@ -19,7 +19,7 @@ module PawnMovement
     rook_or_bishop_movement.instance_method(:direction).bind(self).call
   end
 
-  def apply(board)
+  def apply
     super
     promote_pawn if allowing_promotion?
   end
