@@ -69,6 +69,7 @@ module PlayerDisplay
   def round_statement
     puts ''
     puts "\t\t #{@color} turn".capitalize
+    checked_alarm if @board.checked?(@color)
     puts ''
     puts 'The computer is choosing which move to make'
     puts ''
