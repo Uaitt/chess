@@ -1,7 +1,7 @@
 # chess
 Ruby implementation of a chess board game.
 
-## overview
+## Overview
 [Chess](https://en.wikipedia.org/wiki/Chess) is a board game played by two players. The game is played in an 8x8
 [chessboard](https://en.wikipedia.org/wiki/Chessboard). Each player controls, at the start, 16 pieces: one king, one
 queen, two rooks, two bishops, two knights, and eight pawns. Player who moves first is assigned the color white.
@@ -12,7 +12,7 @@ no way for it to escape.
 
 This game can be either played Human vs Human, or Human vs AI Computer.
 
-## usage
+## Usage
 To play the game, first [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
 this repository on your local machine.
 
@@ -32,12 +32,12 @@ Launch the application
 $ ruby main.rb
 ```
 
-Follow the instruction in the terminal to play the game
+Follow the instruction in the terminal to setup the environment
 
-## tests
+## Tests
 The Spec folder contains ~1000 tests that provide support for the application.
 
-To execute the whole test suite, execute
+To launch the whole test suite, execute
 ```
 $ rspec
 ```
