@@ -72,10 +72,6 @@ module ChessDisplay
     @round.even? ? @white_player : @black_player
   end
 
-  def checked_alarm
-    puts "#{'WARNING'.colorize(color: :light_red)} #{still_player.color}'s king is currently in check!"
-  end
-
   def no_saved_games_warning
     puts ''
     puts "#{'No game has been saved'.colorize(color: :light_red)}. You are going to play a new one!"

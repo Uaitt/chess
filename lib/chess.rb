@@ -85,7 +85,6 @@ class Chess
   def single_round
     @board.show
     current_player.play_round
-    checked_alarm if @board.checked?(still_player.color)
   end
 
   def match_ended?
