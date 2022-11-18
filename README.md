@@ -1,5 +1,5 @@
 # chess
-Ruby implementation of a chess board game.
+Chess board game written in Ruby and tested with Rspec.
 
 ## Overview
 [Chess](https://en.wikipedia.org/wiki/Chess) is a board game played by two players. The game is played in an 8x8
