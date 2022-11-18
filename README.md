@@ -3,8 +3,7 @@ Chess board game written in Ruby and tested with Rspec.
 
 ## Overview
 [Chess](https://en.wikipedia.org/wiki/Chess) is a board game played by two players. The game is played in an 8x8
-[chessboard](https://en.wikipedia.org/wiki/Chessboard). Each player controls, at the start, 16 pieces: one king, one
-queen, two rooks, two bishops, two knights, and eight pawns. Player who moves first is assigned the color white.
+[chessboard](https://en.wikipedia.org/wiki/Chessboard). At the start, each player controls 16 pieces: one [king](https://en.wikipedia.org/wiki/King_(chess)), one [queen](https://en.wikipedia.org/wiki/Queen_(chess)), two [rooks](https://en.wikipedia.org/wiki/Rook_(chess)), two [bishops](https://en.wikipedia.org/wiki/Bishop_(chess)), two [knights](https://en.wikipedia.org/wiki/Knight_(chess)), and eight [pawns](https://en.wikipedia.org/wiki/Pawn_(chess)). The player who moves first is assigned the color white.
 
 The goal of the game is to [checkmate](https://en.wikipedia.org/wiki/Checkmate) the opponent king's,  a situation that
 occurs when the king is under immediate attack (in [check](https://en.wikipedia.org/wiki/Check_(chess))) and there is
