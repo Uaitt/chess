@@ -4,6 +4,7 @@
 module PlayerDisplay
   def round_instructions
     puts ''
+    puts "\t\t #{@color} turn".capitalize
     checked_alarm if @board.checked?(@color)
     puts ''
     puts "Please #{@name} enter your move (or '#{'save'.colorize(color: :light_blue)}' if you want to save the game)"
@@ -66,6 +67,9 @@ module PlayerDisplay
   end
 
   def round_statement
+    puts ''
+    puts "\t\t #{@color} turn".capitalize
+    puts ''
     puts 'The computer is choosing which move to make'
     puts ''
     sleep(1.5)
@@ -73,6 +77,7 @@ module PlayerDisplay
   end
 
   def checked_alarm
+    puts ''
     puts "WARNING #{@color}'s king is currently in check!".colorize(color: :light_red)
   end
 end
