@@ -36,12 +36,12 @@ Follow the instruction in the terminal to setup the environment
 ## Tests
 The [spec](https://github.com/Uaitt/chess/tree/main/spec) folder contains ~1000 tests that provide support for the application.
 
-To launch the whole test suite, execute
+You can launch the whole test suite
 ```
 $ rspec
 ```
 
-Or if you want to launch the tests for just one class, run
+Or launch the tests only for one class
 ```
 $ rspec spec/path/class_spec.rb
 ```
