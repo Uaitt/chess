@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'date'
+require 'colorize'
+require 'require_all'
+
+require_all 'lib'
+
+Chess.new.start
