@@ -21,7 +21,7 @@ module Serialize
 
   def input_path
     loop do
-      file_name = "saved_games/#{gets.chomp}.txt"
+      file_name = "saved_games/#{gets(chomp: true)}.txt"
       return file_name if File.exist?(file_name)
 
       non_existing_saved_game_warning
@@ -31,7 +31,7 @@ module Serialize
   def file_name
     save_game_instructions
     loop do
-      name = "saved_games/#{gets.chomp}_#{Date.today.strftime('%d_%b_%Y').downcase}.txt"
+      name = "saved_games/#{gets(chomp: true)}_#{Date.today.strftime('%d_%b_%Y').downcase}.txt"
       return name unless File.exist?(name)
 
       same_name_saved_game_warning

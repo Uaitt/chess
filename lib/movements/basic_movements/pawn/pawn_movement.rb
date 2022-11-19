@@ -63,7 +63,7 @@ module PawnMovement
   def select_class
     promotion_instructions
     loop do
-      input = gets.chomp.split.map(&:capitalize).join('').gsub(/\s+/, '')
+      input = gets(chomp: true).split.map(&:capitalize).join('').gsub(/\s+/, '')
       return Module.const_get(input) if available_class?(input)
 
       invalid_promotion_warning

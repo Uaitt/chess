@@ -32,7 +32,7 @@ module HumanPlayer
   def input_start_coordinates
     loop do
       ask_for_start_coordinates
-      @start_coordinates = Coordinates.new(gets.chomp)
+      @start_coordinates = Coordinates.new(gets(chomp: true))
       break if wants_to_save? || (@start_coordinates.valid? && selected_valid_piece?)
 
       invalid_coordinates(:start)
@@ -43,7 +43,7 @@ module HumanPlayer
     new_line
     loop do
       ask_for_end_coordinates
-      @end_coordinates = Coordinates.new(gets.chomp)
+      @end_coordinates = Coordinates.new(gets(chomp: true))
       break if @end_coordinates.valid? && selected_valid_movement?
 
       invalid_coordinates(:end)

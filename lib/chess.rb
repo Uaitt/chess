@@ -14,7 +14,7 @@ class Chess
 
   def start
     initial_instructions
-    gets.chomp == 'new' ? setup : try_to_restore
+    gets(chomp: true) == 'new' ? setup : try_to_restore
     play
   end
 
@@ -45,7 +45,7 @@ class Chess
   end
 
   def add_players
-    user_choice = gets.chomp
+    user_choice = gets(chomp: true)
     add_human(:first)
     user_choice == 'human' ? add_human(:second) : add_computer
   end
@@ -53,9 +53,9 @@ class Chess
   def add_human(order)
     ask_for_name(order)
     if order == :first
-      @white_player = WhiteHumanPlayer.new(gets.chomp, @board)
+      @white_player = WhiteHumanPlayer.new(gets(chomp: true), @board)
     else
-      @black_player = BlackHumanPlayer.new(gets.chomp, @board)
+      @black_player = BlackHumanPlayer.new(gets(chomp: true), @board)
     end
   end
 
@@ -67,7 +67,7 @@ class Chess
     loop do
       single_match
       finished_match_output
-      break if @saved || gets.chomp != 'new'
+      break if @saved || gets(chomp: true) != 'new'
     end
     final_greeting
   end
