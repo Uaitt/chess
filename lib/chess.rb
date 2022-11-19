@@ -93,7 +93,7 @@ class Chess
 
   def save
     Dir.mkdir('saved_games') unless Dir.exist?('saved_games')
-    File.open(file_name, 'w') { |file| file.write(to_marshal) }
+    File.write(file_name, to_marshal)
     @saved = true
   end
 
