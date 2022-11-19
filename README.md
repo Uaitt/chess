@@ -18,7 +18,7 @@ this repository on your local machine.
 Move to the project directory
 
 ```
-$ cd chess
+$ cd chess/
 ```
 
 Install the gem dependencies listed in Gemfile
@@ -26,9 +26,15 @@ Install the gem dependencies listed in Gemfile
 $ bundle install
 ```
 
+Move to the executable directory
+
+```
+cd bin/
+```
+
 Launch the application
 ```
-$ ruby main.rb
+$ chess
 ```
 
 Follow the instruction in the terminal to setup the environment
