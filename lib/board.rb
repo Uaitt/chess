@@ -101,11 +101,11 @@ class Board
   end
 
   def pieces_of_color(color)
-    @data.map do |row|
+    @data.flat_map do |row|
       row.select do |piece|
         piece.color == color
       end
-    end.flatten
+    end
   end
 
   def opponent_can_attack_crossed_path(color, king_path)
