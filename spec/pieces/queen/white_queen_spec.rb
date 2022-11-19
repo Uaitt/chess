@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../../../lib/pieces/queen/white_queen'
+require_relative '../../../lib/chess/pieces/queen/white_queen'
 
 describe WhiteQueen do
   subject(:white_queen) { described_class.new }

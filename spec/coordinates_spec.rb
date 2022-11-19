@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../lib/coordinates'
+require_relative '../lib/chess/coordinates'
 
 describe Coordinates do
   subject(:coordinates) { described_class.new(input) }
