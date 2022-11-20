@@ -34,7 +34,7 @@ cd bin/
 
 Launch the application
 ```
-$ chess
+$ ./chess
 ```
 
 Follow the instruction in the terminal to setup the environment
