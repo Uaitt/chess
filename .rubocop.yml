@@ -4,4 +4,4 @@ BlockLength:
 
 Security/MarshalLoad:
   Exclude:
-  - './lib/serialize.rb'
+  - './lib/chess/serialize.rb'
