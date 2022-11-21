@@ -3,6 +3,7 @@
 # set of methods that display messages during a chess game
 module ChessDisplay
   def initial_instructions
+    system 'clear'
     puts ''
     puts 'Welcome to CLI Chess!'
     puts ''
