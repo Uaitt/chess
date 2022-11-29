@@ -37,7 +37,7 @@ Launch the application
 $ ./chess
 ```
 
-Follow the instruction in the terminal to setup the environment
+Follow the instruction in the terminal to setup the environment.
 
 ## Tests
 The [spec](https://github.com/Uaitt/chess/tree/main/spec) folder contains ~1000 tests that provide support for the application.
