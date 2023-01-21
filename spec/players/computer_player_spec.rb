@@ -3,7 +3,7 @@
 require 'colorize'
 require 'require_all'
 
-require_all 'lib'
+require_all "#{__dir__}/../../lib/"
 
 describe ComputerPlayer do
   subject(:computer_player) { described_class.new(board) }

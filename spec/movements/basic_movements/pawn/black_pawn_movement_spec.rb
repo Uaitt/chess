@@ -3,7 +3,7 @@
 require 'colorize'
 require 'require_all'
 
-require_all 'lib'
+require_all "#{__dir__}/../../../../lib/"
 
 describe BlackPawnMovement do
   subject { described_class.new(board, black_pawn, end_position) }

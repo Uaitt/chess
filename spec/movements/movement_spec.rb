@@ -2,7 +2,7 @@
 
 require 'require_all'
 
-require_all 'lib'
+require_all "#{__dir__}/../../lib/"
 
 describe Movement do
   let(:board) { Board.new }

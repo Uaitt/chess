@@ -2,7 +2,7 @@
 
 require 'require_all'
 
-require_all 'lib'
+require_all "#{__dir__}/../../../../lib/"
 
 describe BlackRookMovement do
   subject { described_class.new(board, black_rook, end_position) }

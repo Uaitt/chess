@@ -2,7 +2,7 @@
 
 require 'require_all'
 
-require_all 'lib'
+require_all "#{__dir__}/../../../lib/"
 
 describe BasicMovement do
   let(:board) { Board.new }

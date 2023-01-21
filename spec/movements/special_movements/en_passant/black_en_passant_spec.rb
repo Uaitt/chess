@@ -2,7 +2,7 @@
 
 require 'require_all'
 
-require_all 'lib'
+require_all "#{__dir__}/../../../../lib/"
 
 describe BlackEnPassant do
   let(:black_en_passant) { described_class.new(board, black_pawn, end_position) }
