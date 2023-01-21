@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative '../../spec_helper'
 require_relative '../../../lib/chess/pieces/queen/black_queen'
 
 describe BlackQueen do
