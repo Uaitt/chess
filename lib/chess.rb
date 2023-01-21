@@ -14,7 +14,9 @@ class Chess
 
   def start
     initial_instructions
-    gets(chomp: true) == 'new' ? setup : try_to_restore
+    player_decision = gets(chomp: true)
+    system 'clear'
+    player_decision == 'new' ? setup : try_to_restore
     play
   end
 

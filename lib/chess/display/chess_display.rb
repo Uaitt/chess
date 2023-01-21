@@ -23,6 +23,7 @@ module ChessDisplay
   end
 
   def ask_for_name(order)
+    system 'clear'
     puts ''
     puts "Enter the name of the #{order} player"
     puts ''

@@ -37,10 +37,11 @@ module HumanPlayer
 
       invalid_coordinates(:start)
     end
+    @board.show
+    round_instructions
   end
 
   def input_end_coordinates
-    new_line
     loop do
       ask_for_end_coordinates
       @end_coordinates = Coordinates.new(gets(chomp: true))

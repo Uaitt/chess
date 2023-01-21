@@ -4,7 +4,7 @@
 module PlayerDisplay
   def round_instructions
     puts ''
-    puts "\t\t #{@color} turn".capitalize
+    puts "\t\t #{@color.capitalize} Turn"
     checked_alarm if @board.checked?(@color)
     puts ''
     puts "Please #{@name} enter your move (or '#{'save'.colorize(color: :light_blue)}' if you want to save the game)"
@@ -16,17 +16,16 @@ module PlayerDisplay
     puts ''
   end
 
-  def new_line
-    puts ''
-  end
-
   def ask_for_end_coordinates
+    puts "You are moving #{@start_coordinates.data}"
+    puts ''
     puts 'Enter the coordinates of the square where you want to move your selected piece'
     puts ''
   end
 
   def invalid_coordinates(order)
-    puts ''
+    @board.show
+    round_instructions
     puts "#{'Invalid coordinates!'.colorize(color: :light_red)} #{cause_of_invalid_coordinates(order)}"
     puts ''
   end
