@@ -7,7 +7,7 @@ This is a CLI interface for a chess board game. The game can be either played Hu
 In order to run this project, be sure to have Ruby installed on your local machine. If you don't have it already, look at
 [this guide](https://www.ruby-lang.org/en/documentation/installation/) to set it up.
 
-The project uses the Rspec framework for testing. If you want to run the tests for this project, you must have Rspec installed locally.
+The project uses the Rspec framework for testing. If you want to run the tests for this application, you must have Rspec installed locally.
 Look at their [documentation](https://github.com/rspec/rspec-rails) for more help.
 
 ## Usage
@@ -33,16 +33,19 @@ $ bin/chess
 Follow the instruction in the terminal to setup the environment.
 
 ## Tests
-The [spec](https://github.com/Uaitt/chess/tree/main/spec) folder contains ~1000 tests that provide support for the application.
+The [spec/](https://github.com/Uaitt/chess/tree/main/spec) folder contains ~1000 tests that provide support for the application.
 
-Before running the tests, please be sure to be at the root of the project directory.
+It's recommended to run the tests at the root of the project directory, in order to get a more expressive output thanks to
+the `.rspec` file. You can still, if you want, move into the `spec/` folder and launch the specs from one of the nested directories.
 
-You can launch the whole test suite
+Assuming that you follow the advice of putting yourself at the project directory,
+
+you can launch the whole test suite
 ```
 $ rspec
 ```
 
-Or launch the tests only for one class
+rr launch the tests only for one class
 ```
 $ rspec spec/path/class_spec.rb
 ```
