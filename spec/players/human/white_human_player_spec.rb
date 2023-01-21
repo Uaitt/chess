@@ -15,6 +15,7 @@ describe WhiteHumanPlayer do
   context '#play_round' do
     before do
       allow(white_human_player).to receive(:puts)
+      allow(board).to receive(:show)
     end
 
     context 'when the player enters a valid start coordinate straight away' do
