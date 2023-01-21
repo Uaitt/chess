@@ -38,7 +38,7 @@ The [spec/](https://github.com/Uaitt/chess/tree/main/spec) folder contains ~1000
 It's recommended to run the tests at the root of the project directory, in order to get a more expressive output thanks to
 the `.rspec` file. You can still, if you want, move into the `spec/` folder and launch the specs from one of its nested directories.
 
-Assuming that you are at the project directory,
+Assuming that you are at the root of the project directory,
 
 you can launch the whole test suite
 ```
