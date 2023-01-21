@@ -2,7 +2,6 @@
 
 require 'require_all'
 
-
 require_all "#{__dir__}/../lib/"
 
 describe Board do
