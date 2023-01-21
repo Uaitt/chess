@@ -8,7 +8,7 @@ In order to run this project, be sure to have Ruby installed on your local machi
 [this guide](https://www.ruby-lang.org/en/documentation/installation/) to set it up.
 
 The project uses the Rspec framework for testing. If you want to run the tests for this application, you must have Rspec installed locally.
-Look at their [documentation](https://github.com/rspec/rspec-rails) for more help.
+Look at the [Rspec documentation](https://github.com/rspec/rspec-metagem) for more help.
 
 ## Usage
 To play the game, first [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
@@ -36,9 +36,9 @@ Follow the instruction in the terminal to setup the environment.
 The [spec/](https://github.com/Uaitt/chess/tree/main/spec) folder contains ~1000 tests that provide support for the application.
 
 It's recommended to run the tests at the root of the project directory, in order to get a more expressive output thanks to
-the `.rspec` file. You can still, if you want, move into the `spec/` folder and launch the specs from one of the nested directories.
+the `.rspec` file. You can still, if you want, move into the `spec/` folder and launch the specs from one of its nested directories.
 
-Assuming that you follow the advice of putting yourself at the project directory,
+Assuming that you are at the project directory,
 
 you can launch the whole test suite
 ```
