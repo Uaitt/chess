@@ -2,14 +2,13 @@
 Chess board game written in Ruby and tested with RSpec.
 
 ## Overview
-[Chess](https://en.wikipedia.org/wiki/Chess) is a board game played by two players. The game is played in an 8x8
-[chessboard](https://en.wikipedia.org/wiki/Chessboard). At the start, each player controls 16 pieces: one [king](https://en.wikipedia.org/wiki/King_(chess)), one [queen](https://en.wikipedia.org/wiki/Queen_(chess)), two [rooks](https://en.wikipedia.org/wiki/Rook_(chess)), two [bishops](https://en.wikipedia.org/wiki/Bishop_(chess)), two [knights](https://en.wikipedia.org/wiki/Knight_(chess)), and eight [pawns](https://en.wikipedia.org/wiki/Pawn_(chess)). The player who moves first is assigned the color white.
+This is a CLI interface for a chess board game. The game can be either played Human vs Human, or Human vs Computer.
 
-The goal of the game is to [checkmate](https://en.wikipedia.org/wiki/Checkmate) the opponent king's,  a situation that
-occurs when the king is under immediate attack (in [check](https://en.wikipedia.org/wiki/Check_(chess))) and there is
-no way for it to escape.
+In order to run this project, be sure to have Ruby installed on your local machine. If you don't have it already, look at
+[this guide](https://www.ruby-lang.org/en/documentation/installation/) to set it up.
 
-This game can be either played Human vs Human, or Human vs AI Computer.
+The project uses the Rspec framework for testing. If you want to run the tests for this project, you must have Rspec installed locally.
+Look at their [documentation](https://github.com/rspec/rspec-rails) for more help.
 
 ## Usage
 To play the game, first [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
@@ -26,15 +25,9 @@ Install the gem dependencies listed in Gemfile
 $ bundle install
 ```
 
-Move to the executable directory
-
-```
-cd bin/
-```
-
 Launch the application
 ```
-$ ./chess
+$ bin/chess
 ```
 
 Follow the instruction in the terminal to setup the environment.
@@ -54,7 +47,7 @@ Or launch the tests only for one class
 $ rspec spec/path/class_spec.rb
 ```
 
-## Built with
+## Dependencies
 1. Ruby 3.1.2
 2. Rspec 3.11
    * rspec-core 3.11.0
