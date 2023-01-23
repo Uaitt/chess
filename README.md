@@ -7,7 +7,7 @@ This is a command line interface for a chess board game. The game can be either 
 In order to run this project, be sure to have Ruby installed on your local machine. If you don't have it already, go through
 [this guide](https://www.ruby-lang.org/en/documentation/installation/) to set it up.
 
-The project uses the Rspec framework for testing. If you are not familiar with this testing framework and want to know more, take a look at the [Rspec documentation](https://rspec.info/).
+The project uses Rspec for testing. If you are not familiar with this testing framework and want to know more, take a look at the [Rspec documentation](https://rspec.info/).
 
 ## Usage
 To play the game, first [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
@@ -44,7 +44,7 @@ $ rspec
 
 Or launch the tests only for one class
 ```
-$ rspec spec/path/class_spec.rb
+$ rspec spec/path/to/class_spec.rb
 ```
 
 ## Dependencies
