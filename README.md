@@ -46,11 +46,3 @@ Or launch the tests only for one class
 ```
 $ rspec spec/path/to/class_spec.rb
 ```
-
-## Dependencies
-1. Ruby 3.1.2
-2. Rspec 3.11
-   * rspec-core 3.11.0
-   * rspec-expectations 3.11.1
-   * rspec-mocks 3.11.1
-   * rspec-support 3.11.1
