@@ -223,7 +223,10 @@ describe Board do
   end
 
   describe '#mated?' do
+    let(:black_bishop) { BlackBishop.new }
+    let(:black_queen) { BlackQueen.new }
     let(:black_king) { BlackKing.new }
+    let(:black_pawn) { BlackPawn.new }
     let(:white_rook) { WhiteRook.new }
     let(:white_queen) { WhiteQueen.new }
     before do
@@ -235,6 +238,21 @@ describe Board do
       before do
         board.place_piece(white_rook, [0, 4])
         board.place_piece(white_queen, [2, 7])
+      end
+
+      it 'returns true' do
+        expect(board).to be_mated(black_king.color)
+      end
+    end
+
+    context 'when the king is mated' do
+      before do
+        board.place_piece(black_queen, [0, 3])
+        board.place_piece(black_king, [0, 4])
+        board.place_piece(black_bishop, [0, 5])
+        board.place_piece(black_pawn, [1, 3])
+        board.place_piece(black_pawn, [1, 4])
+        board.place_piece(white_queen, [3, 7])
       end
 
       it 'returns true' do
