@@ -265,6 +265,16 @@ describe Board do
         expect(board).not_to be_mated(black_king.color)
       end
     end
+
+    context 'when the king is not mated' do
+      before do
+        board.set
+      end
+
+      it 'returns false' do
+        expect(board).not_to be_mated(black_king.color)
+      end
+    end
   end
 
   describe '#stalemated' do
