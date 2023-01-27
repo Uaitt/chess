@@ -6,7 +6,7 @@ require_relative '../../display/player_display'
 module HumanPlayer
   include PlayerDisplay
 
-  attr_reader :color, :type
+  attr_reader :color, :type, :name
 
   def initialize(name, board)
     @name = name
