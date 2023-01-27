@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'pry-byebug'
 require_relative 'display/board_display'
 
 # this class represents the board in chess
@@ -52,7 +52,15 @@ class Board
 
   def mated?(color)
     king = king_of_color(color)
-    king.basic_moves.all? { |move| BasicMovement.for(self, king, new_position(move, king)).checks_own_king? }
+    return false if king.basic_moves.all? do |move|
+      new_position = new_position(move, king)
+      !(0..7).include?(new_position[0]) || !(0..7).include?(new_position[1]) || !BasicMovement.for(self, king, new_position).valid?
+    end
+
+    king.basic_moves.all? do |move|
+      movement = BasicMovement.for(self, king, new_position(move, king))
+      movement.checks_own_king? || !BasicMovement.for(self, king, new_position(move, king)).valid?
+    end
   end
 
   def stalemated?(color)
