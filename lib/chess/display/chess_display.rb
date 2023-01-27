@@ -55,7 +55,7 @@ module ChessDisplay
 
   def winner_greeting
     if winner.type == :human
-      puts "#{'Congratulation'.colorize(color: :green)} #{winner_name.name.colorize(color: :green)} for winning!"
+      puts "#{'Congratulation'.colorize(color: :green)} #{winner.name.colorize(color: :green)} for winning!"
     else
       puts 'You just lost to a computer, loser!'
     end
