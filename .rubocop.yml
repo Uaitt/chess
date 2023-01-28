@@ -1,7 +1,11 @@
 require: rubocop-rspec
 
 AllCops:
+  TargetRubyVersion: 2.7
   NewCops: enable
+  Exclude:
+  - 'spec/spec_helper.rb'
+  - 'bin/chess'
 
 Metrics/BlockLength:
   Exclude:
@@ -9,8 +13,4 @@ Metrics/BlockLength:
 
 Security/MarshalLoad:
   Exclude:
-  - './lib/chess/serialize.rb'
-
-Style/FrozenStringLiteralComment:
-  Exclude:
-  - './spec/spec_helper'
+  - 'lib/chess/serialize.rb'
