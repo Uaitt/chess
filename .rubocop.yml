@@ -1,7 +1,16 @@
-BlockLength:
+require: rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+Metrics/BlockLength:
   Exclude:
   - './spec/**/*.rb'
 
 Security/MarshalLoad:
   Exclude:
   - './lib/chess/serialize.rb'
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+  - './spec/spec_helper'
