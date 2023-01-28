@@ -30,6 +30,7 @@ module ChessDisplay
   end
 
   def finished_match_output
+    @board.show
     @saved ? saved_match_output : won_or_tie_match_output
   end
 
@@ -54,8 +55,10 @@ module ChessDisplay
   end
 
   def winner_greeting
+    puts ''
     if winner.type == :human
-      puts "#{'Congratulation'.colorize(color: :green)} #{winner.name.colorize(color: :green)} for winning!"
+      print "#{winner.color} has checkmated #{loser.color}! #{'Congratulation'.colorize(color: :green)}"
+      puts " #{winner.name.colorize(color: :green)} for winning!"
     else
       puts 'You just lost to a computer, loser!'
     end
@@ -72,6 +75,10 @@ module ChessDisplay
 
   def winner
     @round.even? ? @white_player : @black_player
+  end
+
+  def loser
+    @round.even? ? @black_player : @white_player
   end
 
   def no_saved_games_warning
