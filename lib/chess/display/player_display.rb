@@ -4,10 +4,10 @@
 module PlayerDisplay
   def round_instructions
     puts ''
-    puts "\t\t #{@color.capitalize} Turn"
+    puts "\t\t #{@color.capitalize} Turn".colorize(color: :light_blue, mode: :bold)
     checked_alarm if @board.checked?(@color)
     puts ''
-    puts "Please #{@name} enter your move (or '#{'save'.colorize(color: :light_blue)}' if you want to save the game)"
+    puts "Please #{@name} enter your move (or '#{'save'.colorize(color: :light_blue, mode: :bold)}' if you want to save the game)"
     puts ''
   end
 
@@ -26,7 +26,7 @@ module PlayerDisplay
   def invalid_coordinates(order)
     @board.show
     round_instructions
-    puts "#{'Invalid coordinates!'.colorize(color: :light_red)} #{cause_of_invalid_coordinates(order)}"
+    puts "#{'Invalid coordinates!'.colorize(color: :light_red, mode: :bold)} #{cause_of_invalid_coordinates(order)}"
     puts ''
   end
 
@@ -61,13 +61,13 @@ module PlayerDisplay
 
   def invalid_promotion_warning
     puts ''
-    puts "#{'Invalid piece!'.colorize(color: :light_red)}! Please choose a valid piece!"
+    puts "#{'Invalid piece!'.colorize(color: :light_red, mode: :bold)}! Please choose a valid piece!"
     puts ''
   end
 
   def round_statement
     puts ''
-    puts "\t\t #{@color} turn".capitalize
+    puts "\t\t #{@color.capitalize} Turn".colorize(color: :light_blue, mode: :bold)
     checked_alarm if @board.checked?(@color)
     puts ''
     puts 'The computer is choosing which move to make'
@@ -78,6 +78,6 @@ module PlayerDisplay
 
   def checked_alarm
     puts ''
-    puts "WARNING #{@color}'s king is currently in check!".colorize(color: :light_red)
+    puts "WARNING #{@color}'s king is currently in check!".colorize(color: :light_red, mode: :bold)
   end
 end
