@@ -9,25 +9,25 @@ describe WhiteQueen do
   describe '::starts_at?' do
     context 'when given 7 and 3' do
       it 'returns true' do
-        expect(WhiteQueen).to be_starting_at(7, 3)
+        expect(described_class).to be_starting_at(7, 3)
       end
     end
 
     context 'when given 7 and 1' do
       it 'returns false' do
-        expect(WhiteQueen).not_to be_starting_at(7, 1)
+        expect(described_class).not_to be_starting_at(7, 1)
       end
     end
 
     context 'when given 2 and 3' do
       it 'returns false' do
-        expect(WhiteQueen).not_to be_starting_at(2, 3)
+        expect(described_class).not_to be_starting_at(2, 3)
       end
     end
 
     context 'when given 6 and 5' do
       it 'returns false' do
-        expect(WhiteQueen).not_to be_starting_at(6, 5)
+        expect(described_class).not_to be_starting_at(6, 5)
       end
     end
   end

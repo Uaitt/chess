@@ -104,25 +104,25 @@ describe Board do
   describe '#current_position' do
     let(:black_piece) { BlackPiece.new }
 
-    it 'returns the current position of the knight' do
+    it 'returns the current position of the knight when placed in [0, 0]' do
       board.place_piece(black_piece, [0, 0])
       expect(board.current_position(black_piece)).to eq([0, 0])
     end
 
-    it 'returns the current position of the knight' do
+    it 'returns the current position of the knight when placed in [5, 2]' do
       board.place_piece(black_piece, [5, 2])
       expect(board.current_position(black_piece)).to eq([5, 2])
     end
   end
 
   describe '#piece_at' do
-    it 'returns the piece at the right position' do
+    it 'returns the piece at the right position when given [0, 0]' do
       black_piece = BlackPiece.new
       board.place_piece(black_piece, [0, 0])
       expect(board.piece_at([0, 0])).to eq(black_piece)
     end
 
-    it 'returns the piece at the right position' do
+    it 'returns the piece at the right position when given [6,7 ]' do
       white_piece = WhitePiece.new
       board.place_piece(white_piece, [6, 7])
       expect(board.piece_at([6, 7])).to eq(white_piece)
@@ -130,13 +130,13 @@ describe Board do
   end
 
   describe '#place_piece' do
-    it 'places the piece at the given position' do
+    it 'correctly places the piece at the [3, 2]' do
       black_piece = BlackPiece.new
       board.place_piece(black_piece, [3, 2])
       expect(board.piece_at([3, 2])).to eq(black_piece)
     end
 
-    it 'places the piece at the given position' do
+    it 'correctly places the piece at [6, 1]' do
       white_piece = WhitePiece.new
       board.place_piece(white_piece, [6, 1])
       expect(board.piece_at([6, 1])).to eq(white_piece)
@@ -154,7 +154,7 @@ describe Board do
 
     context 'when the piece has at least one valid movement' do
       it 'returns true' do
-        expect(board.at_least_a_valid_movement?(white_rook)).to eq(true)
+        expect(board.at_least_a_valid_movement?(white_rook)).to be(true)
       end
     end
 
@@ -165,7 +165,7 @@ describe Board do
       end
 
       it 'returns false' do
-        expect(board.at_least_a_valid_movement?(white_rook)).to eq(false)
+        expect(board.at_least_a_valid_movement?(white_rook)).to be(false)
       end
     end
   end
@@ -181,35 +181,33 @@ describe Board do
       board.place_piece(black_king, [0, 0])
     end
 
-    context 'when the king is in check' do
-      context 'when checked by a rook' do
-        before do
-          board.place_piece(white_rook, [1, 0])
-        end
-
-        it 'returns true' do
-          expect(board).to be_checked(black_king.color)
-        end
+    context 'when the king is checked by a rook' do
+      before do
+        board.place_piece(white_rook, [1, 0])
       end
 
-      context 'when checked by a bishop' do
-        before do
-          board.place_piece(white_bishop, [2, 2])
-        end
+      it 'returns true' do
+        expect(board).to be_checked(black_king.color)
+      end
+    end
 
-        it 'returns true' do
-          expect(board).to be_checked(black_king.color)
-        end
+    context 'when the king is checked by a bishop' do
+      before do
+        board.place_piece(white_bishop, [2, 2])
       end
 
-      context 'when checked by a pawn' do
-        before do
-          board.place_piece(white_pawn, [1, 1])
-        end
+      it 'returns true' do
+        expect(board).to be_checked(black_king.color)
+      end
+    end
 
-        it 'returns true' do
-          expect(board).to be_checked(black_king.color)
-        end
+    context 'when the king is checked by a pawn' do
+      before do
+        board.place_piece(white_pawn, [1, 1])
+      end
+
+      it 'returns true' do
+        expect(board).to be_checked(black_king.color)
       end
     end
 
@@ -226,11 +224,7 @@ describe Board do
   end
 
   describe '#mated?' do
-    let(:black_bishop) { BlackBishop.new }
-    let(:black_queen) { BlackQueen.new }
     let(:black_king) { BlackKing.new }
-    let(:black_pawn) { BlackPawn.new }
-    let(:white_rook) { WhiteRook.new }
     let(:white_queen) { WhiteQueen.new }
 
     before do
@@ -238,7 +232,9 @@ describe Board do
       board.place_piece(black_king, [0, 7])
     end
 
-    context 'when the king is mated' do
+    context 'when the king is mated at [0, 7]' do
+      let(:white_rook) { WhiteRook.new }
+
       before do
         board.place_piece(white_rook, [0, 4])
         board.place_piece(white_queen, [2, 7])
@@ -249,7 +245,11 @@ describe Board do
       end
     end
 
-    context 'when the king is mated' do
+    context 'when the king is mated at the starting position' do
+      let(:black_bishop) { BlackBishop.new }
+      let(:black_queen) { BlackQueen.new }
+      let(:black_pawn) { BlackPawn.new }
+
       before do
         board.place_piece(black_queen, [0, 3])
         board.place_piece(black_king, [0, 4])
@@ -264,13 +264,13 @@ describe Board do
       end
     end
 
-    context 'when the king is not mated' do
+    context 'when the king is not mated when the board is not set' do
       it 'returns false' do
         expect(board).not_to be_mated(black_king.color)
       end
     end
 
-    context 'when the king is not mated' do
+    context 'when the king is not mated when the board is set' do
       before do
         board.set
       end
@@ -339,42 +339,26 @@ describe Board do
     let(:black_king) { BlackKing.new }
     let(:black_rook) { BlackRook.new }
     let(:white_rook) { WhiteRook.new }
+    let(:king_path) { [[0, 2], [0, 3]] }
+    let(:separating_squares) { [[0, 1], [0, 2], [0, 3]] }
 
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
+      board.place_piece(black_king, [0, 4])
+      board.place_piece(black_rook, [0, 0])
     end
 
-    context 'when it is black long castling' do
-      let(:king_path) { [[0, 2], [0, 3]] }
-      let(:separating_squares) { [[0, 1], [0, 2], [0, 3]] }
-
-      before do
-        board.place_piece(black_king, [0, 4])
-        board.place_piece(black_rook, [0, 0])
-      end
-
-      context 'when the king is not in check' do
-        context 'when the king crosses over no square attacked by an enemy piece' do
-          context 'when all the separating squares are empty' do
-            it 'returns true' do
-              expect(board).to be_allowing_castling(:black, separating_squares, king_path)
-            end
-          end
-
-          context 'when one separating square is not empty' do
-            before do
-              board.place_piece(black_king, [0, 1])
-            end
-
-            it 'returns false' do
-              expect(board).not_to be_allowing_castling(:black, separating_squares, king_path)
-            end
+    context 'when the king is not in check' do
+      context 'when the king crosses over no square attacked by an enemy piece' do
+        context 'when all the separating squares are empty' do
+          it 'returns true' do
+            expect(board).to be_allowing_castling(:black, separating_squares, king_path)
           end
         end
 
-        context 'when the king moves over a square attacked by an enemy piece' do
+        context 'when one separating square is not empty' do
           before do
-            board.place_piece(white_rook, [1, 2])
+            board.place_piece(black_king, [0, 1])
           end
 
           it 'returns false' do
@@ -383,14 +367,24 @@ describe Board do
         end
       end
 
-      context 'when the king is in check' do
+      context 'when the king moves over a square attacked by an enemy piece' do
         before do
-          board.place_piece(white_rook, [0, 5])
+          board.place_piece(white_rook, [1, 2])
         end
 
         it 'returns false' do
           expect(board).not_to be_allowing_castling(:black, separating_squares, king_path)
         end
+      end
+    end
+
+    context 'when the king is in check' do
+      before do
+        board.place_piece(white_rook, [0, 5])
+      end
+
+      it 'returns false' do
+        expect(board).not_to be_allowing_castling(:black, separating_squares, king_path)
       end
     end
   end

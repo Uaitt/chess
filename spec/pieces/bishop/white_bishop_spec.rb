@@ -9,37 +9,37 @@ describe WhiteBishop do
   describe '::starts_at?' do
     context 'when given 7 and 2' do
       it 'returns true' do
-        expect(WhiteBishop).to be_starting_at(7, 2)
+        expect(described_class).to be_starting_at(7, 2)
       end
     end
 
     context 'when given 7 and 5' do
       it 'returns true' do
-        expect(WhiteBishop).to be_starting_at(7, 5)
+        expect(described_class).to be_starting_at(7, 5)
       end
     end
 
     context 'when given 7 and 3' do
       it 'returns false' do
-        expect(WhiteBishop).not_to be_starting_at(7, 3)
+        expect(described_class).not_to be_starting_at(7, 3)
       end
     end
 
     context 'when given 2 and 2' do
       it 'returns true' do
-        expect(WhiteBishop).not_to be_starting_at(2, 2)
+        expect(described_class).not_to be_starting_at(2, 2)
       end
     end
 
     context 'when given 5 and 5' do
       it 'returns true' do
-        expect(WhiteBishop).not_to be_starting_at(5, 5)
+        expect(described_class).not_to be_starting_at(5, 5)
       end
     end
 
     context 'when given 2 and 1' do
       it 'returns false' do
-        expect(WhiteBishop).not_to be_starting_at(2, 1)
+        expect(described_class).not_to be_starting_at(2, 1)
       end
     end
   end

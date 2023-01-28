@@ -9,37 +9,37 @@ describe WhitePawn do
   describe '::starts_at?' do
     context 'when given 6 and 0' do
       it 'returns true' do
-        expect(WhitePawn).to be_starting_at(6, 0)
+        expect(described_class).to be_starting_at(6, 0)
       end
     end
 
     context 'when given 6 and 1' do
       it 'returns true' do
-        expect(WhitePawn).to be_starting_at(6, 1)
+        expect(described_class).to be_starting_at(6, 1)
       end
     end
 
     context 'when given 6 and 7' do
       it 'returns true' do
-        expect(WhitePawn).to be_starting_at(6, 7)
+        expect(described_class).to be_starting_at(6, 7)
       end
     end
 
     context 'when given 2 and 0' do
       it 'returns false' do
-        expect(WhitePawn).not_to be_starting_at(2, 0)
+        expect(described_class).not_to be_starting_at(2, 0)
       end
     end
 
     context 'when given 3 and 3' do
       it 'returns false' do
-        expect(WhitePawn).not_to be_starting_at(3, 3)
+        expect(described_class).not_to be_starting_at(3, 3)
       end
     end
 
     context 'when given 1 and 0' do
       it 'returns false' do
-        expect(WhitePawn).not_to be_starting_at(1, 0)
+        expect(described_class).not_to be_starting_at(1, 0)
       end
     end
   end

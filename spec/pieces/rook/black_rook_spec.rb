@@ -9,37 +9,37 @@ describe BlackRook do
   describe '::starts_at?' do
     context 'when given 0 and 0' do
       it 'returns true' do
-        expect(BlackRook).to be_starting_at(0, 0)
+        expect(described_class).to be_starting_at(0, 0)
       end
     end
 
     context 'when given 0 and 7' do
       it 'returns true' do
-        expect(BlackRook).to be_starting_at(0, 7)
+        expect(described_class).to be_starting_at(0, 7)
       end
     end
 
     context 'when given 0 and 4' do
       it 'returns false' do
-        expect(BlackRook).not_to be_starting_at(0, 4)
+        expect(described_class).not_to be_starting_at(0, 4)
       end
     end
 
     context 'when given 2 and 0' do
       it 'returns false' do
-        expect(BlackRook).not_to be_starting_at(2, 0)
+        expect(described_class).not_to be_starting_at(2, 0)
       end
     end
 
     context 'when given 5 and 0' do
       it 'returns false' do
-        expect(BlackRook).not_to be_starting_at(5, 0)
+        expect(described_class).not_to be_starting_at(5, 0)
       end
     end
 
     context 'when given 2 and 1' do
       it 'returns false' do
-        expect(BlackRook).not_to be_starting_at(2, 1)
+        expect(described_class).not_to be_starting_at(2, 1)
       end
     end
   end

@@ -13,8 +13,6 @@ describe ComputerPlayer do
   describe '#play_round' do
     context 'when the board was just set' do
       before do
-        allow(computer_player).to receive(:puts)
-        allow(computer_player).to receive(:sleep)
         board.set
         computer_player.play_round
       end

@@ -9,25 +9,25 @@ describe BlackKing do
   describe '::starts_at?' do
     context 'when given 0 and 4' do
       it 'returns true' do
-        expect(BlackKing).to be_starting_at(0, 4)
+        expect(described_class).to be_starting_at(0, 4)
       end
     end
 
     context 'when given 0 and 3' do
       it 'returns false' do
-        expect(BlackKing).not_to be_starting_at(0, 3)
+        expect(described_class).not_to be_starting_at(0, 3)
       end
     end
 
     context 'when given 2 and 4' do
       it 'returns false' do
-        expect(BlackKing).not_to be_starting_at(2, 4)
+        expect(described_class).not_to be_starting_at(2, 4)
       end
     end
 
     context 'when given 3 and 3' do
       it 'returns false' do
-        expect(BlackKing).not_to be_starting_at(3, 3)
+        expect(described_class).not_to be_starting_at(3, 3)
       end
     end
   end

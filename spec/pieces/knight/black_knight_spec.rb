@@ -9,37 +9,37 @@ describe BlackKnight do
   describe '::starts_at?' do
     context 'when given 0 and 1' do
       it 'returns true' do
-        expect(BlackKnight).to be_starting_at(0, 1)
+        expect(described_class).to be_starting_at(0, 1)
       end
     end
 
     context 'when given 0 and 6' do
       it 'returns true' do
-        expect(BlackKnight).to be_starting_at(0, 6)
+        expect(described_class).to be_starting_at(0, 6)
       end
     end
 
     context 'when given 0 and 4' do
       it 'returns false' do
-        expect(BlackKnight).not_to be_starting_at(0, 4)
+        expect(described_class).not_to be_starting_at(0, 4)
       end
     end
 
     context 'when given 2 and 1' do
       it 'returns false' do
-        expect(BlackKnight).not_to be_starting_at(2, 1)
+        expect(described_class).not_to be_starting_at(2, 1)
       end
     end
 
     context 'when given 5 and 6' do
       it 'returns false' do
-        expect(BlackKnight).not_to be_starting_at(5, 6)
+        expect(described_class).not_to be_starting_at(5, 6)
       end
     end
 
     context 'when given 2 and 3' do
       it 'returns false' do
-        expect(BlackKnight).not_to be_starting_at(2, 3)
+        expect(described_class).not_to be_starting_at(2, 3)
       end
     end
   end
