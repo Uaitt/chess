@@ -9,9 +9,11 @@ describe WhiteEnPassant do
   let(:white_pawn) { WhitePawn.new }
   let(:black_pawn) { BlackPawn.new }
   let(:board) { Board.new }
+
   describe '#valid?' do
     context 'when the white pawn is on third row row' do
       let(:end_position) { [2, 1] }
+
       before do
         board.place_piece(white_pawn, [3, 0])
       end
@@ -49,9 +51,11 @@ describe WhiteEnPassant do
 
     context 'when our pawn is not on third row' do
       let(:end_position) { [4, 1] }
+
       before do
         board.place_piece(white_pawn, [4, 0])
       end
+
       it 'returns false' do
         expect(white_en_passant).not_to be_valid
       end
@@ -60,6 +64,7 @@ describe WhiteEnPassant do
 
   describe '#apply' do
     let(:end_position) { [2, 1] }
+
     before do
       board.place_piece(white_pawn, [3, 0])
       board.place_piece(black_pawn, [3, 1])

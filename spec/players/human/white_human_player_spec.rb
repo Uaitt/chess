@@ -7,12 +7,14 @@ require_all "#{__dir__}/../../../lib/"
 
 describe WhiteHumanPlayer do
   subject(:white_human_player) { described_class.new('Lorenzo', board) }
+
   let(:board) { Board.new }
+
   before do
     board.set
   end
 
-  context '#play_round' do
+  describe '#play_round' do
     before do
       allow(white_human_player).to receive(:puts)
       allow(board).to receive(:show)
@@ -23,6 +25,7 @@ describe WhiteHumanPlayer do
         before do
           allow(white_human_player).to receive(:gets).and_return('a2', 'a4')
         end
+
         it 'applies the right movement' do
           white_human_player.play_round
           expect(board.piece_at([4, 0])).to be_instance_of(WhitePawn)

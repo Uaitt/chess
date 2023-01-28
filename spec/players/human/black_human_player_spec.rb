@@ -7,12 +7,14 @@ require_all "#{__dir__}/../../../lib/"
 
 describe BlackHumanPlayer do
   subject(:black_human_player) { described_class.new('Leonardo', board) }
+
   let(:board) { Board.new }
+
   before do
     board.set
   end
 
-  context '#play_round' do
+  describe '#play_round' do
     before do
       allow(black_human_player).to receive(:puts)
       allow(board).to receive(:show)
@@ -23,6 +25,7 @@ describe BlackHumanPlayer do
         before do
           allow(black_human_player).to receive(:gets).and_return('a7', 'a5')
         end
+
         it 'applies the right movement' do
           black_human_player.play_round
           expect(board.piece_at([3, 0])).to be_instance_of(BlackPawn)

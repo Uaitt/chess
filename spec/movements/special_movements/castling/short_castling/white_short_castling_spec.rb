@@ -6,10 +6,12 @@ require_all "#{__dir__}/../../../../../lib/"
 
 describe WhiteShortCastling do
   subject(:subject) { described_class.new(board, white_king, end_position) }
+
   let(:end_position)  { [7, 6] }
   let(:white_king) { WhiteKing.new }
   let(:white_rook) { WhiteRook.new }
   let(:board) { Board.new }
+
   describe '#valid?' do
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
@@ -90,11 +92,13 @@ describe WhiteShortCastling do
   context 'when moving to a wrong square' do
     context 'when moving towards left' do
       let(:end_position) { [0, 1] }
+
       it { is_expected.not_to be_valid }
     end
 
     context 'when moving towards right' do
       let(:end_position) { [0, 5] }
+
       it { is_expected.not_to be_valid }
     end
   end

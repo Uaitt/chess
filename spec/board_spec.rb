@@ -103,6 +103,7 @@ describe Board do
 
   describe '#current_position' do
     let(:black_piece) { BlackPiece.new }
+
     it 'returns the current position of the knight' do
       board.place_piece(black_piece, [0, 0])
       expect(board.current_position(black_piece)).to eq([0, 0])
@@ -145,6 +146,7 @@ describe Board do
   describe '#at_least_a_valid_movement?' do
     let(:white_rook) { WhiteRook.new }
     let(:white_piece) { WhitePiece.new }
+
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
       board.place_piece(white_rook, [0, 0])
@@ -173,6 +175,7 @@ describe Board do
     let(:white_rook) { WhiteRook.new }
     let(:white_bishop) { WhiteBishop.new }
     let(:white_pawn) { WhitePawn.new }
+
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
       board.place_piece(black_king, [0, 0])
@@ -229,6 +232,7 @@ describe Board do
     let(:black_pawn) { BlackPawn.new }
     let(:white_rook) { WhiteRook.new }
     let(:white_queen) { WhiteQueen.new }
+
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
       board.place_piece(black_king, [0, 7])
@@ -282,6 +286,7 @@ describe Board do
     let(:white_rook) { WhiteRook.new }
     let(:white_queen) { WhiteQueen.new }
     let(:white_king) { WhiteKing.new }
+
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
       board.place_piece(black_king, [0, 7])
@@ -334,6 +339,7 @@ describe Board do
     let(:black_king) { BlackKing.new }
     let(:black_rook) { BlackRook.new }
     let(:white_rook) { WhiteRook.new }
+
     before do
       board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
     end
@@ -341,6 +347,7 @@ describe Board do
     context 'when it is black long castling' do
       let(:king_path) { [[0, 2], [0, 3]] }
       let(:separating_squares) { [[0, 1], [0, 2], [0, 3]] }
+
       before do
         board.place_piece(black_king, [0, 4])
         board.place_piece(black_rook, [0, 0])

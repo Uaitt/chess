@@ -5,6 +5,7 @@ require_relative '../../../lib/chess/pieces/king/black_king'
 
 describe BlackKing do
   subject(:black_king) { described_class.new }
+
   describe '::starts_at?' do
     context 'when given 0 and 4' do
       it 'returns true' do

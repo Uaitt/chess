@@ -7,7 +7,9 @@ require_all "#{__dir__}/../../lib/"
 
 describe ComputerPlayer do
   subject(:computer_player) { described_class.new(board) }
+
   let(:board) { Board.new }
+
   describe '#play_round' do
     context 'when the board was just set' do
       before do

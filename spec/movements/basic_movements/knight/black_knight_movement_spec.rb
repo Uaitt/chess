@@ -6,15 +6,18 @@ require_all "#{__dir__}/../../../../lib/"
 
 describe BlackKnightMovement do
   subject { described_class.new(board, black_knight, end_position) }
+
   let(:black_knight) { BlackKnight.new }
   let(:piece) { color_class.new }
   let(:board) { Board.new }
+
   before do
     board.instance_variable_set(:@data, Array.new(8) { Array.new(8, NilPiece.new) })
   end
 
   describe '::moving?' do
     let(:end_position) { [] }
+
     context 'when moving a BlackKnight' do
       it 'returns true' do
         expect(BlackKnightMovement).to be_moving(BlackKnight.new, end_position)
@@ -42,6 +45,7 @@ describe BlackKnightMovement do
 
       context 'when the movement is one step towards bottom and two towards right' do
         let(:end_position) { [1, 2] }
+
         context 'when it is not blocked' do
           it { is_expected.to be_valid }
         end
@@ -53,11 +57,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.to be_valid }
           end
         end
@@ -69,17 +75,20 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.not_to be_valid }
           end
         end
 
         context 'when the movement is two steps towards bottom and one towards right' do
           let(:end_position) { [2, 1] }
+
           context 'when it is not blocked' do
             it { is_expected.to be_valid }
           end
@@ -91,11 +100,13 @@ describe BlackKnightMovement do
 
             context 'when the blocking piece is of the opposite color' do
               let(:color_class) { WhitePiece }
+
               it { is_expected.to be_valid }
             end
 
             context 'when the blocking piece is of the same color' do
               let(:color_class) { BlackPiece }
+
               it { is_expected.to be_valid }
             end
           end
@@ -107,11 +118,13 @@ describe BlackKnightMovement do
 
             context 'when the blocking piece is of the opposite color' do
               let(:color_class) { WhitePiece }
+
               it { is_expected.to be_valid }
             end
 
             context 'when the blocking piece is of the same color' do
               let(:color_class) { BlackPiece }
+
               it { is_expected.not_to be_valid }
             end
           end
@@ -119,21 +132,25 @@ describe BlackKnightMovement do
 
         context 'when the movement is one step towards bottom' do
           let(:end_position) { [1, 0] }
+
           it { is_expected.not_to be_valid }
         end
 
         context 'when the movement is one step towards right' do
           let(:end_position) { [0, 1] }
+
           it { is_expected.not_to be_valid }
         end
 
         context 'when the movement is one step towards bottom right corner' do
           let(:end_position) { [1, 1] }
+
           it { is_expected.not_to be_valid }
         end
 
         context 'when the movement is one step towards bottom and three towards right' do
           let(:end_position) { [1, 3] }
+
           it { is_expected.not_to be_valid }
         end
       end
@@ -146,6 +163,7 @@ describe BlackKnightMovement do
 
       context 'when the movement is one step towards bottom and two towards right' do
         let(:end_position) { [4, 6] }
+
         context 'when it is not blocked' do
           it { is_expected.to be_valid }
         end
@@ -157,11 +175,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.to be_valid }
           end
         end
@@ -173,11 +193,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.not_to be_valid }
           end
         end
@@ -185,6 +207,7 @@ describe BlackKnightMovement do
 
       context 'when the movement is two steps towards bottom and one towards right' do
         let(:end_position) { [5, 5] }
+
         context 'when it is not blocked' do
           it { is_expected.to be_valid }
         end
@@ -196,11 +219,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.to be_valid }
           end
         end
@@ -212,11 +237,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.not_to be_valid }
           end
         end
@@ -224,6 +251,7 @@ describe BlackKnightMovement do
 
       context 'when the movement is one step towards top and two towards left' do
         let(:end_position) { [2, 2] }
+
         context 'when it is not blocked' do
           it { is_expected.to be_valid }
         end
@@ -235,11 +263,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.to be_valid }
           end
         end
@@ -251,11 +281,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.not_to be_valid }
           end
         end
@@ -263,6 +295,7 @@ describe BlackKnightMovement do
 
       context 'when the movement is twp steps towards top and ond towards left' do
         let(:end_position) { [1, 3] }
+
         context 'when it is not blocked' do
           it { is_expected.to be_valid }
         end
@@ -274,11 +307,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.to be_valid }
           end
         end
@@ -290,11 +325,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.not_to be_valid }
           end
         end
@@ -302,6 +339,7 @@ describe BlackKnightMovement do
 
       context 'when the movement is one step towards bottom and two towards left' do
         let(:end_position) { [4, 2] }
+
         context 'when it is not blocked' do
           it { is_expected.to be_valid }
         end
@@ -313,11 +351,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.to be_valid }
           end
         end
@@ -329,11 +369,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.not_to be_valid }
           end
         end
@@ -341,6 +383,7 @@ describe BlackKnightMovement do
 
       context 'when the movement is two steps towards bottom and one towards left' do
         let(:end_position) { [5, 3] }
+
         context 'when it is not blocked' do
           it { is_expected.to be_valid }
         end
@@ -352,11 +395,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.to be_valid }
           end
         end
@@ -368,11 +413,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.not_to be_valid }
           end
         end
@@ -380,6 +427,7 @@ describe BlackKnightMovement do
 
       context 'when the movement is one step towards top and two towards right' do
         let(:end_position) { [2, 6] }
+
         context 'when it is not blocked' do
           it { is_expected.to be_valid }
         end
@@ -391,11 +439,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.to be_valid }
           end
         end
@@ -407,11 +457,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.not_to be_valid }
           end
         end
@@ -419,6 +471,7 @@ describe BlackKnightMovement do
 
       context 'when the movement is two steps towards bottom and one towards right' do
         let(:end_position) { [1, 5] }
+
         context 'when it is not blocked' do
           it { is_expected.to be_valid }
         end
@@ -430,11 +483,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.to be_valid }
           end
         end
@@ -446,11 +501,13 @@ describe BlackKnightMovement do
 
           context 'when the blocking piece is of the opposite color' do
             let(:color_class) { WhitePiece }
+
             it { is_expected.to be_valid }
           end
 
           context 'when the blocking piece is of the same color' do
             let(:color_class) { BlackPiece }
+
             it { is_expected.not_to be_valid }
           end
         end
@@ -458,21 +515,25 @@ describe BlackKnightMovement do
 
       context 'when the movement is two steps towards bottom' do
         let(:end_position) { [5, 4] }
+
         it { is_expected.not_to be_valid }
       end
 
       context 'when the movement is one step towards top and three towards left' do
         let(:end_position) { [2, 1] }
+
         it { is_expected.not_to be_valid }
       end
 
       context 'when the movement is one step towards bottom and one towards left' do
         let(:end_position) { [4, 3] }
+
         it { is_expected.not_to be_valid }
       end
 
       context 'when the movement is three steps towards bottom and one towards left' do
         let(:end_position) { [6, 3] }
+
         it { is_expected.not_to be_valid }
       end
     end
@@ -483,8 +544,10 @@ describe BlackKnightMovement do
       board.place_piece(BlackKing.new, [0, 0])
       board.place_piece(black_knight, [1, 0])
     end
+
     context 'when it puts its own king in check' do
       let(:end_position) { [2, 2] }
+
       it 'returns true' do
         board.place_piece(WhiteRook.new, [2, 0])
         expect(subject.checks_own_king?).to eq(true)
@@ -497,6 +560,7 @@ describe BlackKnightMovement do
 
     context 'when it does not put its own king in check' do
       let(:end_position) { [2, 2] }
+
       it 'returns false' do
         expect(subject.checks_own_king?).to eq(false)
       end
@@ -509,10 +573,12 @@ describe BlackKnightMovement do
 
   describe '#apply' do
     let(:end_position) { [1, 2] }
+
     before do
       board.place_piece(black_knight, [0, 0])
       subject.apply
     end
+
     it 'places the bishop on the right position' do
       expect(board.piece_at([1, 2])).to eq(black_knight)
     end
@@ -524,6 +590,7 @@ describe BlackKnightMovement do
 
   describe '#double_moving?' do
     let(:end_position) { [1, 2] }
+
     it 'returns false' do
       expect(subject).not_to be_double_moving(BlackPawn.new)
     end
@@ -536,6 +603,7 @@ describe BlackKnightMovement do
 
     context 'when the movement is one step towards top and two towards left' do
       let(:end_position) { [2, 2] }
+
       it 'returns [-1, -2]' do
         expect(subject.direction).to eq([-1, -2])
       end
@@ -543,6 +611,7 @@ describe BlackKnightMovement do
 
     context 'when the movement is two steps towards top and one towards left' do
       let(:end_position) { [1, 3] }
+
       it 'returns [-2, -1]' do
         expect(subject.direction).to eq([-2, -1])
       end
@@ -550,6 +619,7 @@ describe BlackKnightMovement do
 
     context 'when the movement is two steps towards top and one towards right' do
       let(:end_position) { [1, 5] }
+
       it 'returns [-2, 1]' do
         expect(subject.direction).to eq([-2, 1])
       end
@@ -557,6 +627,7 @@ describe BlackKnightMovement do
 
     context 'when the movement is one step towards top and two towards right' do
       let(:end_position) { [2, 6] }
+
       it 'returns [-1, 2]' do
         expect(subject.direction).to eq([-1, 2])
       end
@@ -564,6 +635,7 @@ describe BlackKnightMovement do
 
     context 'when the movement is one step towards bottom and two towards right' do
       let(:end_position) { [4, 6] }
+
       it 'returns [1, 2]' do
         expect(subject.direction).to eq([1, 2])
       end
@@ -571,6 +643,7 @@ describe BlackKnightMovement do
 
     context 'when the movement is two steps towards bottom and one towards right' do
       let(:end_position) { [5, 5] }
+
       it 'returns [2, 1]' do
         expect(subject.direction).to eq([2, 1])
       end
@@ -578,6 +651,7 @@ describe BlackKnightMovement do
 
     context 'when the the movement is one step towards bottom and two towards left' do
       let(:end_position) { [4, 2] }
+
       it 'returns [1, -2]' do
         expect(subject.direction).to eq([1, -2])
       end
@@ -585,6 +659,7 @@ describe BlackKnightMovement do
 
     context 'when the movement is two steps towards bottom and one towards left' do
       let(:end_position) { [5, 3] }
+
       it 'returns [2, -1]' do
         expect(subject.direction).to eq([2, -1])
       end

@@ -5,6 +5,7 @@ require_relative '../../../lib/chess/pieces/rook/black_rook'
 
 describe BlackRook do
   subject(:black_rook) { described_class.new }
+
   describe '::starts_at?' do
     context 'when given 0 and 0' do
       it 'returns true' do
