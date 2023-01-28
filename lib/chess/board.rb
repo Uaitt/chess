@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'pry-byebug'
 require_relative 'display/board_display'
 
@@ -54,7 +55,8 @@ class Board
     king = king_of_color(color)
     return false if king.basic_moves.all? do |move|
       new_position = new_position(move, king)
-      !(0..7).include?(new_position[0]) || !(0..7).include?(new_position[1]) || !BasicMovement.for(self, king, new_position).valid?
+      !(0..7).include?(new_position[0]) || !(0..7).include?(new_position[1]) || !BasicMovement.for(self, king,
+                                                                                                   new_position).valid?
     end
 
     king.basic_moves.all? do |move|

@@ -59,7 +59,8 @@ module ChessDisplay
   def winner_greeting
     puts ''
     if winner.type == :human
-      print "#{winner.color.capitalize} has checkmated #{loser.color}! #{'Congratulation'.colorize(color: :green, mode: :bold)}"
+      print "#{winner.color.capitalize} has checkmated #{loser.color}! #{'Congratulation'.colorize(color: :green,
+                                                                                                   mode: :bold)}"
       puts " #{winner.name.colorize(color: :green, mode: :bold)} for winning!"
     else
       puts 'Black has checkmated white! You just lost to a computer, loser!'
@@ -117,7 +118,8 @@ module ChessDisplay
 
   def same_name_saved_game_warning
     puts ''
-    puts "#{'A saved game with the same name already exists'.colorize(color: :light_red, mode: :bold)}, please enter a different one"
+    puts "#{'A saved game with the same name already exists'.colorize(color: :light_red,
+                                                                      mode: :bold)}, please enter a different one"
     puts ''
   end
 end

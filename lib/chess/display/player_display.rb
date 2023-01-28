@@ -7,7 +7,8 @@ module PlayerDisplay
     puts "\t\t #{@color.capitalize} Turn".colorize(color: :light_blue, mode: :bold)
     checked_alarm if @board.checked?(@color)
     puts ''
-    puts "Please #{@name} enter your move (or '#{'save'.colorize(color: :light_blue, mode: :bold)}' if you want to save the game)"
+    puts "Please #{@name} enter your move (or '#{'save'.colorize(color: :light_blue,
+                                                                 mode: :bold)}' if you want to save the game)"
     puts ''
   end
 
