@@ -26,7 +26,6 @@ class Chess
     players_instruction
     add_players
     @round = 0
-    @board.set
   end
 
   def try_to_restore
@@ -67,9 +66,12 @@ class Chess
 
   def play
     loop do
+      @board.set
       single_match
       finished_match_output
       break if @saved || gets(chomp: true) != 'new'
+
+      system 'clear'
     end
     final_greeting
   end

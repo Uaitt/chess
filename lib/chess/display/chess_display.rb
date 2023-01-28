@@ -48,6 +48,8 @@ module ChessDisplay
   end
 
   def final_greeting
+    system 'clear'
+    @board.show
     puts ''
     puts 'Thanks for playing'
     puts 'We hope you enjoyed the game, see you soon!'
@@ -60,7 +62,7 @@ module ChessDisplay
       print "#{winner.color} has checkmated #{loser.color}! #{'Congratulation'.colorize(color: :green)}"
       puts " #{winner.name.colorize(color: :green)} for winning!"
     else
-      puts 'You just lost to a computer, loser!'
+      puts 'Black has checkmated white! You just lost to a computer, loser!'
     end
   end
 
@@ -71,6 +73,7 @@ module ChessDisplay
   def ask_for_new_match
     print "Type '#{'new'.colorize(color: :light_blue)}' if you want to play a new game,\n"
     puts  "'#{'anything else'.colorize(color: :light_blue)}' if you want to quit"
+    puts ''
   end
 
   def winner
