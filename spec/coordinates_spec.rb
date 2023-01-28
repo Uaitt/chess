@@ -123,7 +123,7 @@ describe Coordinates do
     context 'when given \'e4\'' do
       let(:input) { 'e4' }
 
-      it 'returns  [4, 4]' do
+      it 'returns [4, 4]' do
         expect(coordinates.convert).to eq([4, 4])
       end
     end

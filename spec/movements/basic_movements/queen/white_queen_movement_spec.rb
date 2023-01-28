@@ -165,25 +165,25 @@ describe WhiteQueenMovement do
         end
       end
 
-      context ' when the movement is one step towards bottom and two towards right' do
+      context 'when the movement is one step towards bottom and two towards right' do
         let(:end_position) { [1, 2] }
 
         it { is_expected.not_to be_valid }
       end
 
-      context ' when the movement is two steps towards bottom and one towards right' do
+      context 'when the movement is two steps towards bottom and one towards right' do
         let(:end_position) { [2, 1] }
 
         it { is_expected.not_to be_valid }
       end
 
-      context ' when the movement is one step towards bottom and four towards right' do
+      context 'when the movement is one step towards bottom and four towards right' do
         let(:end_position) { [1, 4] }
 
         it { is_expected.not_to be_valid }
       end
 
-      context ' when the movement is four steps towards bottom and three towards right' do
+      context 'when the movement is four steps towards bottom and three towards right' do
         let(:end_position) { [4, 3] }
 
         it { is_expected.not_to be_valid }

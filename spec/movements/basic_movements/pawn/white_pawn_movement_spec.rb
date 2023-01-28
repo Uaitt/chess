@@ -56,7 +56,7 @@ describe WhitePawnMovement do
             board.place_piece(piece, [2, 4])
           end
 
-          context 'when the blocking piece is of the  color' do
+          context 'when the blocking piece is of the color' do
             let(:color_class) { BlackPiece }
 
             it { is_expected.not_to be_valid }
