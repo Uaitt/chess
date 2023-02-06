@@ -1,11 +1,17 @@
-require: rubocop-rspec
+---
+inherit_from:
+  - https://relaxed.ruby.style/rubocop.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rspec
 
 AllCops:
   TargetRubyVersion: 2.7
-  NewCops: enable
   Exclude:
-  - 'spec/spec_helper.rb'
-  - 'bin/chess'
+    - 'spec/spec_helper.rb'
+    - 'bin/*'
+  NewCops: enable
 
 Metrics/BlockLength:
   Exclude:
