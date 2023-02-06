@@ -9,7 +9,7 @@ module Queen
   include Bishop
 
   def basic_moves
-    Rook.instance_method(:basic_moves).bind(self).call +
-      Bishop.instance_method(:basic_moves).bind(self).call
+    Rook.instance_method(:basic_moves).bind_call(self) +
+      Bishop.instance_method(:basic_moves).bind_call(self)
   end
 end

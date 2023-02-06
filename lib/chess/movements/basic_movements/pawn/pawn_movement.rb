@@ -16,7 +16,7 @@ module PawnMovement
   end
 
   def direction
-    rook_or_bishop_movement.instance_method(:direction).bind(self).call
+    rook_or_bishop_movement.instance_method(:direction).bind_call(self)
   end
 
   def apply
