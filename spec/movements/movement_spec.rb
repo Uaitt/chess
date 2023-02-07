@@ -23,7 +23,7 @@ describe Movement do
         let(:end_position) { [1, 0] }
 
         it 'returns a BlackRookMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(BlackRookMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(BlackRookMovement)
         end
       end
 
@@ -31,7 +31,7 @@ describe Movement do
         let(:end_position) { [1, 1] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -47,7 +47,7 @@ describe Movement do
         let(:end_position) { [1, 2] }
 
         it 'returns a BlackKnightMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(BlackKnightMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(BlackKnightMovement)
         end
       end
 
@@ -55,7 +55,7 @@ describe Movement do
         let(:end_position) { [1, 1] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -71,7 +71,7 @@ describe Movement do
         let(:end_position) { [1, 1] }
 
         it 'returns a BlackBishopMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(BlackBishopMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(BlackBishopMovement)
         end
       end
 
@@ -79,7 +79,7 @@ describe Movement do
         let(:end_position) { [1, 0] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -95,7 +95,7 @@ describe Movement do
         let(:end_position) { [1, 1] }
 
         it 'returns a BlackQueenMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(BlackQueenMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(BlackQueenMovement)
         end
       end
 
@@ -103,7 +103,7 @@ describe Movement do
         let(:end_position) { [1, 2] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -119,7 +119,7 @@ describe Movement do
         let(:end_position) { [1, 1] }
 
         it 'returns a BlackKingMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(BlackKingMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(BlackKingMovement)
         end
       end
 
@@ -127,7 +127,7 @@ describe Movement do
         let(:end_position) { [1, 2] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -143,7 +143,7 @@ describe Movement do
         end
 
         it 'returns a BlackPawnMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(BlackPawnMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(BlackPawnMovement)
         end
       end
 
@@ -158,7 +158,7 @@ describe Movement do
         end
 
         it 'returns a BlackEnPassant' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(BlackEnPassant)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(BlackEnPassant)
         end
       end
 
@@ -170,7 +170,7 @@ describe Movement do
         let(:end_position) { [1, 2] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -187,7 +187,7 @@ describe Movement do
         end
 
         it 'returns a WhitePawnMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhitePawnMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(WhitePawnMovement)
         end
       end
 
@@ -202,7 +202,7 @@ describe Movement do
         end
 
         it 'returns a WhiteEnPassant' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhiteEnPassant)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(WhiteEnPassant)
         end
       end
 
@@ -214,7 +214,7 @@ describe Movement do
         let(:end_position) { [1, 0] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -230,7 +230,7 @@ describe Movement do
         let(:end_position) { [2, 0] }
 
         it 'returns a WhiteRookMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhiteRookMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(WhiteRookMovement)
         end
       end
 
@@ -238,7 +238,7 @@ describe Movement do
         let(:end_position) { [2, 2] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -254,7 +254,7 @@ describe Movement do
         let(:end_position) { [1, 2] }
 
         it 'returns a WhiteKnightMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhiteKnightMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(WhiteKnightMovement)
         end
       end
 
@@ -262,7 +262,7 @@ describe Movement do
         let(:end_position) { [1, 1] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -278,7 +278,7 @@ describe Movement do
         let(:end_position) { [1, 1] }
 
         it 'returns a WhiteBishopMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhiteBishopMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(WhiteBishopMovement)
         end
       end
 
@@ -286,7 +286,7 @@ describe Movement do
         let(:end_position) { [1, 0] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -302,7 +302,7 @@ describe Movement do
         let(:end_position) { [1, 1] }
 
         it 'returns a WhiteQueenMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhiteQueenMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(WhiteQueenMovement)
         end
       end
 
@@ -310,7 +310,7 @@ describe Movement do
         let(:end_position) { [1, 2] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -326,7 +326,7 @@ describe Movement do
         let(:end_position) { [1, 1] }
 
         it 'returns a WhiteKingMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(WhiteKingMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(WhiteKingMovement)
         end
       end
 
@@ -334,7 +334,7 @@ describe Movement do
         let(:end_position) { [1, 2] }
 
         it 'returns a NilMovement' do
-          expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+          expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
         end
       end
     end
@@ -344,7 +344,7 @@ describe Movement do
       let(:end_position) { [2, 3] }
 
       it 'returns a NilMovement' do
-        expect(Movement.for(board, piece, end_position)).to be_instance_of(NilMovement)
+        expect(described_class.for(board, piece, end_position)).to be_instance_of(NilMovement)
       end
     end
   end
