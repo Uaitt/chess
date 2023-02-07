@@ -10,7 +10,7 @@ AllCops:
   TargetRubyVersion: 2.7
   Exclude:
     - 'spec/spec_helper.rb'
-    - 'bin/*'
+    - 'bin/chess'
   NewCops: enable
 
 Metrics/BlockLength:
@@ -20,3 +20,13 @@ Metrics/BlockLength:
 Security/MarshalLoad:
   Exclude:
   - 'lib/chess/serialize.rb'
+
+RSpec/SubjectStub:
+  Exclude:
+  - 'spec/players/human/black_human_player_spec.rb'
+  - 'spec/players/human/white_human_player_spec.rb'
+
+Rspec/ExampleLength:
+  Exclude:
+  - 'spec/pieces/queen/black_queen_spec.rb'
+  - 'spec/pieces/queen/white_queen_spec.rb'
