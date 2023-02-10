@@ -69,8 +69,8 @@ describe BlackHumanPlayer do
       end
 
       it 'does not ask for an end position and returns' do
-        expect(black_human_player).to receive(:gets).once
         black_human_player.play_round
+        expect(black_human_player).to have_received(:gets).once
       end
     end
   end
