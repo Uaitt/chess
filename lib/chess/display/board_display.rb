@@ -19,8 +19,7 @@ module BoardDisplay
 
   def show_row(row, index_row)
     row.each_with_index do |piece, index_column|
-      print "  \033[48;2;#{background_color(index_row, index_column)}m\033[#{color(piece)}m#{piece.symbol}\033[39;49m"
-
+      print "\033[48;2;#{background_color(index_row, index_column)}m\033[#{color(piece)}m  #{piece.symbol}   \033[0m"
       #print "  #{piece.symbol}  ".colorize(background: background_color(index_row, index_column),
       #                                    color: color(piece))
     end
