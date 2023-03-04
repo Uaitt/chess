@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry-byebug'
 require_relative 'display/board_display'
 
 # this class represents the board in chess
