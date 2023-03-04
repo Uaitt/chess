@@ -1,6 +1,9 @@
 # chess
 Chess board game written in Ruby and tested with RSpec.
 
+## Demo
+![White checkmating black](./demo/chess.gif)
+
 ## Overview
 This is a command line interface for a chess board game. The game can be either played Human vs Human, or Human vs Computer.
 
