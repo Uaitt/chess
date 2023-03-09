@@ -25,7 +25,7 @@ $ cd chess/
 Install the gem dependencies listed in Gemfile
 ```
 $ bundle install
-```
+``` 
 
 Launch the application
 ```

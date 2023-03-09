@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry-byebug'
-
 # set of methods that display the board in chess
 module BoardDisplay
   def show
