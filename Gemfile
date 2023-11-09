@@ -2,6 +2,15 @@
 
 source 'https://rubygems.org'
 
-gem 'colorize'
-gem 'require_all'
-gem 'rspec'
+gemspec
+
+group :development, :test do
+  # Linters
+  gem 'rubocop', require: false
+  gem 'rubocop-performance', require: false
+  gem 'rubocop-rspec', require: false
+
+  # Tests
+  gem 'rspec'
+  gem 'simplecov', require: false
+end

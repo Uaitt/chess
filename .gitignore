@@ -1,3 +1,4 @@
-Gemfile.lock
-saved_games/
+*.lock
 .rubocop-*
+saved_games/
+coverage/
